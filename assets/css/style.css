@@ -166,7 +166,9 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .home-card-links .taxonomy-filter span { color: var(--accent); font-weight: 700; }
 .spell-level-links { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
 .spell-level-links .taxonomy-filter { justify-content: center; min-height: 29px; padding: 5px 4px; font-size: 10px; white-space: nowrap; }
-.spell-level-links .taxonomy-filter span { display: none; }
+.spell-class-links { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+.spell-class-links .taxonomy-filter { min-height: 29px; padding: 5px 6px; font-size: 10px; }
+.home-card-label { display: block; margin-top: 10px; color: var(--muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .taxonomy-list button span { color: var(--accent); }
 .taxonomy-note { display: flex; gap: 13px; align-items: flex-start; max-width: 720px; margin-top: 26px; padding: 15px 17px; color: var(--muted); border: 1px solid var(--line); border-radius: 8px; background: #faf8f5; }
 .taxonomy-note-icon { color: var(--accent); font-size: 18px; }

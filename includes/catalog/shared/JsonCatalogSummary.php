@@ -66,6 +66,8 @@ final class JsonCatalogSummary implements CatalogSummaryInterface
                 ],
                 range(0, 9)
             ),
+            'spell-classes' => $this->spellClasses(),
+            'monsters' => $this->monsterTypes(),
             default => throw new InvalidArgumentException("Categorie non supportate per la risorsa: {$resource}")
         };
     }
@@ -114,5 +116,71 @@ final class JsonCatalogSummary implements CatalogSummaryInterface
             $this->store->get('spells')['items'] ?? [],
             static fn (array $spell): bool => $spell['level'] === $level
         ));
+    }
+
+    /**
+     * Returns navigation metadata for spell classes.
+     *
+     * @return array<int, array{id: string, label: string, route: string, count: int}> Spell class metadata.
+     */
+    private function spellClasses(): array
+    {
+        $classes = [];
+        foreach ($this->store->get('spells')['items'] ?? [] as $spell) {
+            if (!is_array($spell) || !isset($spell['classes']) || !is_array($spell['classes'])) {
+                continue;
+            }
+
+            foreach ($spell['classes'] as $class) {
+                if (!is_string($class)) {
+                    continue;
+                }
+
+                $classes[$class] = ($classes[$class] ?? 0) + 1;
+            }
+        }
+
+        ksort($classes);
+
+        return array_map(
+            static fn (string $class, int $count): array => [
+                'id' => $class,
+                'label' => ucfirst($class),
+                'route' => 'incantesimi?classe=' . rawurlencode($class),
+                'count' => $count
+            ],
+            array_keys($classes),
+            array_values($classes)
+        );
+    }
+
+    /**
+     * Returns navigation metadata for monster types.
+     *
+     * @return array<int, array{id: string, label: string, route: string, count: int}> Monster type metadata.
+     */
+    private function monsterTypes(): array
+    {
+        $types = [];
+        foreach ($this->store->get('monsters')['items'] ?? [] as $monster) {
+            if (!is_array($monster) || !isset($monster['type']) || !is_string($monster['type'])) {
+                continue;
+            }
+
+            $types[$monster['type']] = ($types[$monster['type']] ?? 0) + 1;
+        }
+
+        ksort($types);
+
+        return array_map(
+            static fn (string $type, int $count): array => [
+                'id' => $type,
+                'label' => $type,
+                'route' => 'mostri?tipo=' . rawurlencode($type),
+                'count' => $count
+            ],
+            array_keys($types),
+            array_values($types)
+        );
     }
 }

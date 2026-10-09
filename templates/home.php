@@ -17,12 +17,18 @@
                 </div>
             </div>
             <p>Consulta incantesimi per livello, scuola e classe.</p>
+            <strong class="home-card-label">Livelli</strong>
             <div class="category-buttons home-card-links spell-level-links">
                 <a class="taxonomy-filter" href="<?= e(appUrl('incantesimi')) ?>">Tutti <span><?= $spellsCount ?></span></a>
-                <a class="taxonomy-filter" href="<?= e(appUrl('incantesimi?livello=0')) ?>">Trucchetti</a>
-<?php for ($level = 1; $level <= 9; $level++): ?>
-                <a class="taxonomy-filter" href="<?= e(appUrl('incantesimi?livello=' . $level)) ?>"><?= $level ?>° Liv.</a>
-<?php endfor; ?>
+<?php foreach ($spellCategories as $category): ?>
+                <a class="taxonomy-filter" href="<?= e(appUrl($category['route'])) ?>"><?= e($category['label']) ?> <span><?= $category['count'] ?></span></a>
+<?php endforeach; ?>
+            </div>
+            <strong class="home-card-label">Classi</strong>
+            <div class="category-buttons home-card-links spell-class-links">
+<?php foreach ($spellClassCategories as $category): ?>
+                <a class="taxonomy-filter" href="<?= e(appUrl($category['route'])) ?>"><?= e($category['label']) ?> <span><?= $category['count'] ?></span></a>
+<?php endforeach; ?>
             </div>
         </article>
         <article class="area-card area-card-monsters">
@@ -33,7 +39,12 @@
                 </div>
             </div>
             <p>Trova blocchi statistiche per tipo e grado di sfida.</p>
-            <div class="category-buttons home-card-links"><a class="taxonomy-filter" href="<?= e(appUrl('mostri')) ?>">Tutti i mostri <span><?= $monsterCount ?></span></a></div>
+            <div class="category-buttons home-card-links">
+                <a class="taxonomy-filter" href="<?= e(appUrl('mostri')) ?>">Tutti i mostri <span><?= $monsterCount ?></span></a>
+<?php foreach ($monsterCategories as $category): ?>
+                <a class="taxonomy-filter" href="<?= e(appUrl($category['route'])) ?>"><?= e($category['label']) ?> <span><?= $category['count'] ?></span></a>
+<?php endforeach; ?>
+            </div>
         </article>
         <article class="area-card area-card-items">
             <div class="area-card-heading">
@@ -45,10 +56,9 @@
             <p>Esplora armi, armature, strumenti e oggetti magici.</p>
             <div class="category-buttons home-card-links">
                 <a class="taxonomy-filter" href="<?= e(appUrl('oggetti')) ?>">Tutti gli oggetti <span><?= $objectCount ?></span></a>
-                <a class="taxonomy-filter" href="<?= e(appUrl('oggetti/armi')) ?>">Armi <span>→</span></a>
-                <a class="taxonomy-filter" href="<?= e(appUrl('oggetti/armature')) ?>">Armature <span>→</span></a>
-                <a class="taxonomy-filter" href="<?= e(appUrl('oggetti/strumenti')) ?>">Strumenti <span>→</span></a>
-                <a class="taxonomy-filter" href="<?= e(appUrl('oggetti/avventura')) ?>">Equipaggiamento <span>→</span></a>
+<?php foreach ($objectCategories as $category): ?>
+                <a class="taxonomy-filter" href="<?= e(appUrl($category['route'])) ?>"><?= e($category['label']) ?> <span><?= $category['count'] ?></span></a>
+<?php endforeach; ?>
             </div>
         </article>
     </div>

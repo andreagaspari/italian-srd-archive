@@ -37,6 +37,10 @@ $catalog = new DataCatalog(
 $spellsCount = $summary->count('spells');
 $monsterCount = $summary->count('monsters');
 $objectCount = $summary->count('objects');
+$spellCategories = $summary->categories('spells');
+$spellClassCategories = $summary->categories('spell-classes');
+$monsterCategories = $summary->categories('monsters');
+$objectCategories = $summary->categories('objects');
 $frontendController = new FrontendController($catalog, __DIR__ . '/templates');
 $page = $frontendController->resolve(
     route: is_string($route) ? $route : 'home',
