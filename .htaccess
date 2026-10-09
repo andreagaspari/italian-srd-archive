@@ -1,5 +1,6 @@
 RewriteEngine On
 
+RewriteRule ^api/search/?$ api-search.php [L,QSA]
 RewriteRule ^oggetti/armi/?$ index.php?route=oggetti/armi [L,QSA]
 RewriteRule ^oggetti/armature/?$ index.php?route=oggetti/armature [L,QSA]
 RewriteRule ^oggetti/munizioni/?$ index.php?route=oggetti/munizioni [L,QSA]

@@ -32,6 +32,7 @@ final class JsonWeaponProvider implements WeaponProviderInterface
         $filteredWeapons = array_values(array_filter(
             $this->loadWeapons(),
             fn (array $weapon): bool => $this->matchesCategory($weapon, $query->category)
+                && $this->matchesSearch($weapon, $query->search)
         ));
         $totalItems = count($filteredWeapons);
 
@@ -90,5 +91,19 @@ final class JsonWeaponProvider implements WeaponProviderInterface
             'items-weapons-martial-ranged' => $weapon['proficiency'] === 'Da guerra' && $weapon['mode'] === 'A distanza',
             default => false
         };
+    }
+
+    /**
+     * Determines whether a weapon contains the requested search text.
+     *
+     * @param array<string, mixed> $weapon Weapon record.
+     * @param string|null $search Search text.
+     *
+     * @return bool True when the record matches.
+     */
+    private function matchesSearch(array $weapon, ?string $search): bool
+    {
+        return $search === null || $search === ''
+            || str_contains(mb_strtolower(json_encode($weapon, JSON_UNESCAPED_UNICODE) ?: '', 'UTF-8'), mb_strtolower($search, 'UTF-8'));
     }
 }

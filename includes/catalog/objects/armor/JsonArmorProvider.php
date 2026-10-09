@@ -32,6 +32,7 @@ final class JsonArmorProvider implements ArmorProviderInterface
         $filteredArmor = array_values(array_filter(
             $this->loadArmor(),
             fn (array $item): bool => $this->matchesCategory($item, $query->category)
+                && $this->matchesSearch($item, $query->search)
         ));
         $totalItems = count($filteredArmor);
 
@@ -90,5 +91,19 @@ final class JsonArmorProvider implements ArmorProviderInterface
             'armor-shields' => $item['armor_type'] === 'scudo',
             default => false
         };
+    }
+
+    /**
+     * Determines whether an armor item contains the requested search text.
+     *
+     * @param array<string, mixed> $item Armor record.
+     * @param string|null $search Search text.
+     *
+     * @return bool True when the record matches.
+     */
+    private function matchesSearch(array $item, ?string $search): bool
+    {
+        return $search === null || $search === ''
+            || str_contains(mb_strtolower(json_encode($item, JSON_UNESCAPED_UNICODE) ?: '', 'UTF-8'), mb_strtolower($search, 'UTF-8'));
     }
 }

@@ -63,6 +63,7 @@ if ($allResults) {
             },
             $catalog->getWeapons(new WeaponQuery(
                 category: (string) ($request['categoria'] ?? 'items-weapons'),
+                search: (string) ($request['q'] ?? ''),
                 pageSize: null
             ))->items
         ),
@@ -83,6 +84,7 @@ if ($allResults) {
             },
             $catalog->getArmor(new ArmorQuery(
                 category: (string) ($request['categoria'] ?? 'armor'),
+                search: (string) ($request['q'] ?? ''),
                 pageSize: null
             ))->items
         ),
@@ -94,7 +96,10 @@ if ($allResults) {
                 '<div><b>Quantità per acquisto:</b> ' . $item['quantity'] . '</div>'
                     . '<div><b>Armi compatibili:</b> ' . implode(' · ', $item['compatible_weapons']) . '</div>'
             ),
-            $catalog->getAmmunition(new AmmunitionQuery(pageSize: null))->items
+            $catalog->getAmmunition(new AmmunitionQuery(
+                search: (string) ($request['q'] ?? ''),
+                pageSize: null
+            ))->items
         ),
         'oggetti/strumenti' => array_map(
             static function (array $item): array {
@@ -111,6 +116,7 @@ if ($allResults) {
             },
             $catalog->getTools(new ToolsQuery(
                 category: (string) ($request['categoria'] ?? 'tools'),
+                search: (string) ($request['q'] ?? ''),
                 pageSize: null
             ))->items
         ),
@@ -123,6 +129,7 @@ if ($allResults) {
             ),
             $catalog->getAdventuringGear(new AdventuringGearQuery(
                 category: (string) ($request['categoria'] ?? 'gear'),
+                search: (string) ($request['q'] ?? ''),
                 pageSize: null
             ))->items
         ),
@@ -145,6 +152,7 @@ if ($allResults) {
                 size: (string) ($request['taglia'] ?? ''),
                 challengeRating: (string) ($request['gs'] ?? ''),
                 alignment: (string) ($request['allineamento'] ?? ''),
+                search: (string) ($request['q'] ?? ''),
                 pageSize: null
             ))->items
         ),

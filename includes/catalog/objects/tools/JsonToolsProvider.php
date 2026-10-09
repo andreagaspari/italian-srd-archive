@@ -31,10 +31,14 @@ final class JsonToolsProvider implements ToolsProviderInterface
     {
         $filteredTools = array_values(array_filter(
             $this->loadTools(),
-            fn (array $tool): bool => $query->category === null
+            fn (array $tool): bool => (
+                $query->category === null
                 || $query->category === ''
                 || $query->category === 'tools'
                 || $tool['tool_type'] === $query->category
+            )
+                && ($query->search === null || $query->search === ''
+                    || str_contains(mb_strtolower(json_encode($tool, JSON_UNESCAPED_UNICODE) ?: '', 'UTF-8'), mb_strtolower($query->search, 'UTF-8')))
         ));
         $totalItems = count($filteredTools);
 

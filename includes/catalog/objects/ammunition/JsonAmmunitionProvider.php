@@ -29,7 +29,11 @@ final class JsonAmmunitionProvider implements AmmunitionProviderInterface
      */
     public function getAmmunition(AmmunitionQuery $query): PageResult
     {
-        $ammunition = $this->loadAmmunition();
+        $ammunition = array_values(array_filter(
+            $this->loadAmmunition(),
+            static fn (array $item): bool => $query->search === null || $query->search === ''
+                || str_contains(mb_strtolower(json_encode($item, JSON_UNESCAPED_UNICODE) ?: '', 'UTF-8'), mb_strtolower($query->search, 'UTF-8'))
+        ));
         $totalItems = count($ammunition);
 
         if ($query->pageSize === null) {

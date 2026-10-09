@@ -36,6 +36,8 @@ final class JsonMonsterProvider implements MonsterProviderInterface
                 && ($query->size === null || $query->size === '' || $monster['size'] === $query->size)
                 && ($query->challengeRating === null || $query->challengeRating === '' || $monster['challenge_rating'] === $query->challengeRating)
                 && ($query->alignment === null || $query->alignment === '' || $monster['alignment'] === $query->alignment)
+                && ($query->search === null || $query->search === ''
+                    || str_contains(mb_strtolower(json_encode($monster, JSON_UNESCAPED_UNICODE) ?: '', 'UTF-8'), mb_strtolower($query->search, 'UTF-8')))
         ));
         $totalItems = count($filteredMonsters);
 

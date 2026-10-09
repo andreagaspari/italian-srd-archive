@@ -37,9 +37,6 @@ $catalog = new DataCatalog(
 $spellsCount = $summary->count('spells');
 $monsterCount = $summary->count('monsters');
 $objectCount = $summary->count('objects');
-$searchIndexProvider = new JsonSearchIndexProvider($datasetStore, new SearchIndexBuilder());
-$globalSearchIndex = $searchIndexProvider->getIndex();
-
 $frontendController = new FrontendController($catalog, __DIR__ . '/templates');
 $page = $frontendController->resolve(
     route: is_string($route) ? $route : 'home',

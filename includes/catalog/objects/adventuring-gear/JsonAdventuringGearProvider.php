@@ -31,10 +31,14 @@ final class JsonAdventuringGearProvider implements AdventuringGearProviderInterf
     {
         $filteredGear = array_values(array_filter(
             $this->loadGear(),
-            fn (array $item): bool => $query->category === null
+            fn (array $item): bool => (
+                $query->category === null
                 || $query->category === ''
                 || $query->category === 'gear'
                 || $item['category'] === $query->category
+            )
+                && ($query->search === null || $query->search === ''
+                    || str_contains(mb_strtolower(json_encode($item, JSON_UNESCAPED_UNICODE) ?: '', 'UTF-8'), mb_strtolower($query->search, 'UTF-8')))
         ));
         $totalItems = count($filteredGear);
 

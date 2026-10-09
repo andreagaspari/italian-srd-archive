@@ -46,6 +46,7 @@ final class FrontendController
 
                 $weaponsResult = $this->catalog->getWeapons(new WeaponQuery(
                     category: $selectedCategory,
+                    search: $this->parseSearch($request),
                     page: $page,
                     pageSize: $pageSize
                 ));
@@ -72,6 +73,7 @@ final class FrontendController
 
                 $armorResult = $this->catalog->getArmor(new ArmorQuery(
                     category: $selectedCategory,
+                    search: $this->parseSearch($request),
                     page: $page,
                     pageSize: $pageSize
                 ));
@@ -85,6 +87,7 @@ final class FrontendController
             case 'oggetti/munizioni':
                 $pageTitle = 'Munizioni';
                 $ammunitionResult = $this->catalog->getAmmunition(new AmmunitionQuery(
+                    search: $this->parseSearch($request),
                     page: $page,
                     pageSize: $pageSize
                 ));
@@ -108,6 +111,7 @@ final class FrontendController
 
                 $toolsResult = $this->catalog->getTools(new ToolsQuery(
                     category: $selectedCategory,
+                    search: $this->parseSearch($request),
                     page: $page,
                     pageSize: $pageSize
                 ));
@@ -132,6 +136,7 @@ final class FrontendController
 
                 $adventuringGearResult = $this->catalog->getAdventuringGear(new AdventuringGearQuery(
                     category: $selectedCategory,
+                    search: $this->parseSearch($request),
                     page: $page,
                     pageSize: $pageSize
                 ));
@@ -189,7 +194,7 @@ final class FrontendController
                     level: $selectedLevel === 'all' ? null : (int) $selectedLevel,
                     school: $selectedSchool,
                     className: $selectedClass,
-                    search: is_string($request['q'] ?? null) ? trim($request['q']) : null,
+                    search: $this->parseSearch($request),
                     page: $page,
                     pageSize: $pageSize
                 ));
@@ -239,6 +244,7 @@ final class FrontendController
                     size: $selectedMonsterSize,
                     challengeRating: $selectedMonsterChallenge,
                     alignment: $selectedMonsterAlignment,
+                    search: $this->parseSearch($request),
                     page: $page,
                     pageSize: $pageSize
                 ));
@@ -295,5 +301,23 @@ final class FrontendController
         }
 
         return min($pageSize, 100);
+    }
+
+    /**
+     * Reads the optional section search term.
+     *
+     * @param array<string, mixed> $request Request query parameters.
+     *
+     * @return string|null Trimmed search term, or null when absent.
+     */
+    private function parseSearch(array $request): ?string
+    {
+        if (!is_string($request['q'] ?? null)) {
+            return null;
+        }
+
+        $search = trim($request['q']);
+
+        return $search === '' ? null : $search;
     }
 }

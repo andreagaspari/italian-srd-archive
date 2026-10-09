@@ -6,8 +6,7 @@ const sortSelect = document.querySelector('#object-sort-select');
 const resultsGrid = document.querySelector('#results-grid');
 const globalSearchInput = document.querySelector('#search-input');
 const globalSearchPreview = document.querySelector('#global-search-preview');
-const globalSearchDataElement = document.querySelector('#global-search-data');
-const globalSearchData = globalSearchDataElement ? JSON.parse(globalSearchDataElement.textContent) : [];
+let globalSearchData = [];
 const spellFilterSelects = [...document.querySelectorAll('.spell-filter-select')];
 const monsterFilterSelects = [...document.querySelectorAll('.monster-filter-select')];
 const resultContainers = resultsGrid?.classList.contains('monster-species-groups')
@@ -338,7 +337,24 @@ function escapeAttribute(value) {
 }
 
 if (globalSearchInput) {
-    globalSearchInput.addEventListener('input', renderGlobalSearch);
+    globalSearchInput.addEventListener('input', async () => {
+        const query = globalSearchInput.value.trim();
+        if (query.length < 2) {
+            globalSearchData = [];
+            renderGlobalSearch();
+            return;
+        }
+
+        const response = await fetch(`api/search?q=${encodeURIComponent(query)}`);
+        if (!response.ok) {
+            globalSearchData = [];
+            renderGlobalSearch();
+            return;
+        }
+        const data = await response.json();
+        globalSearchData = data.items || [];
+        renderGlobalSearch();
+    });
     globalSearchInput.addEventListener('focus', renderGlobalSearch);
 }
 

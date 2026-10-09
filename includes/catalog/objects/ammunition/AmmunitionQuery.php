@@ -15,7 +15,8 @@ final class AmmunitionQuery
      */
     public function __construct(
         public readonly int $page = 1,
-        public readonly ?int $pageSize = null
+        public readonly ?int $pageSize = null,
+        public readonly ?string $search = null
     ) {
         if ($this->page < 1) {
             throw new InvalidArgumentException('La pagina deve essere maggiore o uguale a 1.');
