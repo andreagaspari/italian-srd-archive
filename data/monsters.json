@@ -3,8 +3,11 @@
     "name": "System Reference Document 5.2.1",
     "language": "it",
     "license": "CC-BY-4.0",
-    "publisher": "Wizards of the Coast",
-    "url": "https://www.dndbeyond.com/srd"
+    "publisher": "Wizards of the Coast LLC",
+    "sourceUrl": "https://www.dndbeyond.com/srd",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/legalcode",
+    "disclaimer": "Quest'opera include materiale tratto dalla versione italiana del System Reference Document (\"SRD\") 5.2.1 di Wizards of the Coast LLC, disponibile all'indirizzo https://www.dndbeyond.com/srd. Il SRD è concesso in licenza ai sensi della licenza di attribuzione 4.0 Internazionale di Creative Commons, disponibile all'indirizzo https://creativecommons.org/licenses/by/4.0/legalcode.",
+    "compatibility": "I dati riportati sono compatibili con la v5.5 (2024)."
   },
   "items": [
     {

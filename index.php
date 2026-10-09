@@ -22,13 +22,14 @@ declare(strict_types=1);
 require __DIR__ . '/includes/bootstrap.php';
 
 $route = $_GET['route'] ?? 'home';
-$objectData = loadJsonFile(__DIR__ . '/data/weapons.json');
-$armorData = loadJsonFile(__DIR__ . '/data/armor.json');
-$ammunitionData = loadJsonFile(__DIR__ . '/data/ammunition.json');
-$toolsData = loadJsonFile(__DIR__ . '/data/tools.json');
-$adventuringGearData = loadJsonFile(__DIR__ . '/data/adventuring-gear.json');
-$spellsData = loadJsonFile(__DIR__ . '/data/spells.json');
-$monstersData = loadJsonFile(__DIR__ . '/data/monsters.json');
+$catalog = new DataCatalog(new JsonFileImporter(), __DIR__ . '/data');
+$objectData = $catalog->weapons();
+$armorData = $catalog->armor();
+$ammunitionData = $catalog->ammunition();
+$toolsData = $catalog->tools();
+$adventuringGearData = $catalog->adventuringGear();
+$spellsData = $catalog->spells();
+$monstersData = $catalog->monsters();
 $monsterCount = count($monstersData['items'] ?? []);
 $objectCount = count($objectData['items'] ?? []) + count($armorData['items'] ?? []) + count($ammunitionData['items'] ?? []) + count($toolsData['items'] ?? []) + count($adventuringGearData['items'] ?? []);
 
