@@ -1,6 +1,7 @@
 <footer class="page-footer" id="fonti">
     <span>Fonte: <a href="https://www.dndbeyond.com/srd" target="_blank" rel="noopener noreferrer">SRD 5.2.1</a></span>
     <span>Licenza: <a href="https://creativecommons.org/licenses/by/4.0/legalcode" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></span>
+    <span>Versione <?= e(APP_VERSION) ?></span>
 </footer>
 
 <dialog class="source-dialog" id="source-dialog" aria-labelledby="source-dialog-title">
