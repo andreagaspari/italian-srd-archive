@@ -81,9 +81,29 @@ final class SearchIndexBuilder
                 'description' => implode(' · ', array_slice($descriptionValues, 0, 3)),
                 'tags' => $tags,
                 'search' => implode(' ', $values),
-                'url' => $url
+                'url' => $this->buildItemUrl($url, $title)
             ];
         }
+    }
+
+    /**
+     * Adds the item name as a section search query to an item result URL.
+     *
+     * @param string $url Base section URL, optionally containing filters.
+     * @param string $title Item name used to narrow the destination results.
+     *
+     * @return string URL that opens the matching section search.
+     */
+    private function buildItemUrl(string $url, string $title): string
+    {
+        $separator = str_contains($url, '?') ? '&' : '?';
+
+        return $url . $separator . http_build_query(
+            ['q' => $title],
+            '',
+            '&',
+            PHP_QUERY_RFC3986
+        );
     }
 
     /**
