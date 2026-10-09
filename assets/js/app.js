@@ -168,6 +168,9 @@ function openExportDialog(items) {
                     <input name="cardColorText" type="text" value="#ef4444" pattern="#[0-9a-fA-F]{6}" maxlength="7" disabled>
                 </span>
             </label>
+            <label class="export-field">
+                <span class="export-checkbox-label"><input name="separateZips" type="checkbox" ${itemCount > 1 ? '' : 'disabled'}> Crea uno ZIP separato per ogni elemento</span>
+            </label>
             <div class="export-dialog-actions">
                 <button class="button-secondary" type="button" data-export-cancel>Annulla</button>
                 <button class="button-primary" type="submit">Scarica ZIP</button>
@@ -199,6 +202,7 @@ function openExportDialog(items) {
         const error = form.querySelector('.export-error');
         const folderId = form.elements.folderId.value.trim();
         const cardColor = useCardColor.checked ? colorText.value.trim() : '';
+        const separateZips = form.elements.separateZips.checked;
         if (folderId && !/^[A-Za-z0-9_-]+$/.test(folderId)) {
             error.textContent = 'L’ID cartella può contenere solo lettere, numeri, trattini e underscore.';
             error.hidden = false;
@@ -213,6 +217,7 @@ function openExportDialog(items) {
         body.append('items', JSON.stringify(items));
         body.append('folderId', folderId);
         body.append('cardColor', cardColor);
+        body.append('separateZips', separateZips ? '1' : '0');
         const submit = form.querySelector('[type="submit"]');
         submit.disabled = true;
         submit.textContent = 'Preparazione...';

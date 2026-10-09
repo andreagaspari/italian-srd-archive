@@ -164,9 +164,21 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .category-buttons .taxonomy-filter { display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 32px; margin: 0; padding: 6px 8px; text-align: center; }
 .home-card-links .taxonomy-filter { justify-content: space-between; }
 .home-card-links .taxonomy-filter span { color: var(--accent); font-weight: 700; }
-.spell-level-links { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
-.spell-level-links .taxonomy-filter { justify-content: center; min-height: 29px; padding: 5px 4px; font-size: 10px; white-space: nowrap; }
-.spell-class-links { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+.spell-level-links { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.spell-level-links .taxonomy-filter { justify-content: space-between; min-height: 29px; padding: 5px 4px; font-size: 10px; white-space: nowrap; }
+.spell-level-links .taxonomy-filter:nth-child(n + 3) { font-size: 0; }
+.spell-level-links .taxonomy-filter:nth-child(n + 3)::before { color: inherit; font-size: 10px; }
+.spell-level-links .taxonomy-filter:nth-child(n + 3) span { font-size: 10px; }
+.spell-level-links .taxonomy-filter:nth-child(3)::before { content: "1° liv."; }
+.spell-level-links .taxonomy-filter:nth-child(4)::before { content: "2° liv."; }
+.spell-level-links .taxonomy-filter:nth-child(5)::before { content: "3° liv."; }
+.spell-level-links .taxonomy-filter:nth-child(6)::before { content: "4° liv."; }
+.spell-level-links .taxonomy-filter:nth-child(7)::before { content: "5° liv."; }
+.spell-level-links .taxonomy-filter:nth-child(8)::before { content: "6° liv."; }
+.spell-level-links .taxonomy-filter:nth-child(9)::before { content: "7° liv."; }
+.spell-level-links .taxonomy-filter:nth-child(10)::before { content: "8° liv."; }
+.spell-level-links .taxonomy-filter:nth-child(11)::before { content: "9° liv."; }
+.spell-class-links { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
 .spell-class-links .taxonomy-filter { min-height: 29px; padding: 5px 6px; font-size: 10px; }
 .home-card-label { display: block; margin-top: 10px; color: var(--muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .taxonomy-list button span { color: var(--accent); }

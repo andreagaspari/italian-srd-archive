@@ -186,6 +186,7 @@ foreach ($items as $item) {
 
 $folderId = trim((string) ($_POST['folderId'] ?? ''));
 $cardColor = trim((string) ($_POST['cardColor'] ?? ''));
+$separateZips = filter_var($_POST['separateZips'] ?? false, FILTER_VALIDATE_BOOLEAN);
 if ($folderId !== '' && !preg_match('/^[A-Za-z0-9_-]+$/', $folderId)) {
     http_response_code(400);
     header('Content-Type: text/plain; charset=UTF-8');
@@ -237,8 +238,84 @@ if ($temporaryZip === false || $zip->open($temporaryZip, ZipArchive::OVERWRITE) 
 }
 
 $json = json_encode(['items' => $items], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
-$zip->addFromString('data.json', $json);
-$zip->close();
+if (!$separateZips) {
+    if (!$zip->addFromString('data.json', $json) || !$zip->close()) {
+        @unlink($temporaryZip);
+        http_response_code(500);
+        header('Content-Type: text/plain; charset=UTF-8');
+        echo 'Impossibile completare il file ZIP.';
+        exit;
+    }
+} else {
+    $usedEntryNames = [];
+    foreach ($items as $index => $item) {
+        $itemTitle = preg_replace('/[^A-Za-z0-9À-ÿ._-]+/u', '-', (string) $item['title']);
+        $itemTitle = trim((string) $itemTitle, '-.') ?: 'elemento-' . ($index + 1);
+        $entryName = $itemTitle . '.zip';
+        $suffix = 2;
+        while (isset($usedEntryNames[$entryName])) {
+            $entryName = $itemTitle . '-' . $suffix . '.zip';
+            $suffix++;
+        }
+        $usedEntryNames[$entryName] = true;
+
+        $itemZipPath = tempnam(sys_get_temp_dir(), 'srd-item-export-');
+        if ($itemZipPath === false) {
+            $zip->close();
+            @unlink($temporaryZip);
+            http_response_code(500);
+            header('Content-Type: text/plain; charset=UTF-8');
+            echo 'Impossibile creare gli ZIP separati.';
+            exit;
+        }
+
+        $itemZip = new ZipArchive();
+        if ($itemZip->open($itemZipPath, ZipArchive::OVERWRITE) !== true) {
+            @unlink($itemZipPath);
+            $zip->close();
+            @unlink($temporaryZip);
+            http_response_code(500);
+            header('Content-Type: text/plain; charset=UTF-8');
+            echo 'Impossibile creare gli ZIP separati.';
+            exit;
+        }
+
+        $itemJson = json_encode(['items' => [$item]], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+        if (!$itemZip->addFromString('data.json', $itemJson) || !$itemZip->close()) {
+            @unlink($itemZipPath);
+            @unlink($temporaryZip);
+            http_response_code(500);
+            header('Content-Type: text/plain; charset=UTF-8');
+            echo 'Impossibile completare gli ZIP separati.';
+            exit;
+        }
+
+        if (!$zip->addFile($itemZipPath, $entryName)) {
+            @unlink($itemZipPath);
+            $zip->close();
+            @unlink($temporaryZip);
+            http_response_code(500);
+            header('Content-Type: text/plain; charset=UTF-8');
+            echo 'Impossibile assemblare gli ZIP separati.';
+            exit;
+        }
+        $itemZipPaths[] = $itemZipPath;
+    }
+
+    if (!$zip->close()) {
+        foreach ($itemZipPaths ?? [] as $itemZipPath) {
+            @unlink($itemZipPath);
+        }
+        @unlink($temporaryZip);
+        http_response_code(500);
+        header('Content-Type: text/plain; charset=UTF-8');
+        echo 'Impossibile completare il file ZIP.';
+        exit;
+    }
+    foreach ($itemZipPaths as $itemZipPath) {
+        @unlink($itemZipPath);
+    }
+}
 
 $safeName = count($items) === 1 ? $items[0]['title'] : (($items[0]['type'] ?? '') === 'armi' ? 'incantesimi' : 'oggetti');
 $safeName = preg_replace('/[^A-Za-z0-9À-ÿ._-]+/u', '-', $safeName);
