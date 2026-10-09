@@ -62,7 +62,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
         <?php endif; ?>
     </form>
 
-    <div class="result-summary"><strong id="result-count"><?= count($monsters) ?></strong> mostri trovati</div>
+    <div class="result-summary">Mostrati <strong id="result-count"><?= count($monsters) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> mostri</div>
     <div id="results-grid" class="results-grid monster-results-grid">
 <?php foreach ($monsters as $monster): ?>
 <?php

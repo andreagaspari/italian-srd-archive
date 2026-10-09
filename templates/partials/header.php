@@ -12,7 +12,6 @@
         <label class="top-search">
             <span class="search-icon" aria-hidden="true">🔎</span>
             <input id="search-input" type="search" placeholder="Cerca nell’archivio..." autocomplete="off" aria-controls="global-search-preview" aria-expanded="false">
-            <kbd>/</kbd>
         </label>
         <div id="global-search-preview" class="global-search-preview" hidden></div>
         </div>

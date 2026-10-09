@@ -134,6 +134,7 @@ if ($allResults) {
                     : null,
                 school: (string) ($request['scuola'] ?? ''),
                 className: (string) ($request['classe'] ?? ''),
+                search: (string) ($request['q'] ?? ''),
                 pageSize: null
             ))->items
         ),

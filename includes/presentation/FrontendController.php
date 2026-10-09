@@ -189,6 +189,7 @@ final class FrontendController
                     level: $selectedLevel === 'all' ? null : (int) $selectedLevel,
                     school: $selectedSchool,
                     className: $selectedClass,
+                    search: is_string($request['q'] ?? null) ? trim($request['q']) : null,
                     page: $page,
                     pageSize: $pageSize
                 ));

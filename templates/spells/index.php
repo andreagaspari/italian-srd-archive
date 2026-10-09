@@ -43,7 +43,7 @@
         <?php if ($selectedLevel !== 'all'): ?><input type="hidden" name="livello" value="<?= e($selectedLevel) ?>"><?php endif; ?>
     </form>
 
-    <div class="result-summary"><strong id="result-count"><?= count($spells) ?></strong> incantesimi trovati</div>
+    <div class="result-summary">Mostrati <strong id="result-count"><?= count($spells) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> incantesimi</div>
     <div id="results-grid" class="results-grid">
 <?php foreach ($spells as $spell): ?>
 <?php $exportData = buildSpellExportData($spell); ?>

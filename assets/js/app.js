@@ -15,6 +15,52 @@ const resultContainers = resultsGrid?.classList.contains('monster-species-groups
     : (resultsGrid ? [resultsGrid] : []);
 const originalCardOrders = resultContainers.map((container) => [...container.querySelectorAll('.result-card')]);
 
+/**
+ * Persists the section search term in the browser URL without reloading the page.
+ *
+ * @param {string} value Current section search term.
+ * @returns {void}
+ */
+function persistSectionSearch(value) {
+    const url = new URL(window.location.href);
+    const normalizedValue = value.trim();
+    if (normalizedValue) {
+        url.searchParams.set('q', normalizedValue);
+    } else {
+        url.searchParams.delete('q');
+    }
+    url.searchParams.delete('page');
+    window.history.replaceState({}, '', url);
+}
+
+/**
+ * Keeps the current section search term when navigating through filters.
+ *
+ * @returns {void}
+ */
+function preserveSectionSearchOnNavigation() {
+    const query = new URLSearchParams(window.location.search).get('q');
+    const resultsView = document.querySelector('.results-view');
+    if (!query || !resultsView) return;
+
+    resultsView.querySelectorAll('a[href]').forEach((link) => {
+        const url = new URL(link.href, window.location.href);
+        if (url.origin === window.location.origin) {
+            url.searchParams.set('q', query);
+            link.href = url.toString();
+        }
+    });
+    resultsView.querySelectorAll('form[method="get"]').forEach((form) => {
+        if (!form.querySelector('input[name="q"]')) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'q';
+            input.value = query;
+            form.appendChild(input);
+        }
+    });
+}
+
 function filterResults() {
     const query = searchInput.value.trim().toLocaleLowerCase('it');
     let visibleCount = 0;
@@ -76,8 +122,12 @@ function sortResults() {
 }
 
 if (searchInput) {
+    searchInput.value = new URLSearchParams(window.location.search).get('q') || '';
     searchInput.addEventListener('input', filterResults);
+    searchInput.addEventListener('input', () => persistSectionSearch(searchInput.value));
+    filterResults();
 }
+preserveSectionSearchOnNavigation();
 if (sortSelect) {
     sortSelect.addEventListener('change', sortResults);
     sortResults();

@@ -19,7 +19,7 @@
 <?php endforeach; ?>
     </nav>
 
-    <div class="result-summary"><strong id="result-count"><?= count($filteredWeapons) ?></strong> elementi trovati</div>
+    <div class="result-summary">Mostrati <strong id="result-count"><?= count($filteredWeapons) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> elementi</div>
 
     <div id="results-grid" class="results-grid">
 <?php foreach ($filteredWeapons as $weapon): ?>

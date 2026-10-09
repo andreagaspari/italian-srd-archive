@@ -13,7 +13,7 @@
 
     <?php require __DIR__ . '/search.php'; ?>
 
-    <div class="result-summary"><strong id="result-count"><?= count($ammunition) ?></strong> elementi trovati</div>
+    <div class="result-summary">Mostrati <strong id="result-count"><?= count($ammunition) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> elementi</div>
 
     <div id="results-grid" class="results-grid">
 <?php foreach ($ammunition as $item): ?>

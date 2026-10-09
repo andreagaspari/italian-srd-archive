@@ -15,7 +15,7 @@ $gearCategoryLabels = [
         <a class="taxonomy-filter <?= $category === $selectedCategory ? 'is-selected' : '' ?>" href="<?= e(appUrl('oggetti/avventura?categoria=' . urlencode($category))) ?>"><?= e($label) ?></a>
 <?php endforeach; ?>
     </nav>
-    <div class="result-summary"><strong id="result-count"><?= count($adventuringGear) ?></strong> elementi trovati</div>
+    <div class="result-summary">Mostrati <strong id="result-count"><?= count($adventuringGear) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> elementi</div>
     <div id="results-grid" class="results-grid">
 <?php foreach ($adventuringGear as $item): ?>
 <?php $exportData = buildObjectExportData($item['name'], $item['cost'], $item['weight'], '<div><b>Utilizzo:</b> ' . $item['use'] . '</div>'); ?>

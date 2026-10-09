@@ -2,7 +2,6 @@
     <label class="object-search">
         <span class="search-icon" aria-hidden="true">🔎</span>
         <input id="object-search-input" type="search" placeholder="Cerca in questa sezione..." autocomplete="off">
-        <kbd>/</kbd>
     </label>
     <label class="object-sort">
         <span>Ordina</span>

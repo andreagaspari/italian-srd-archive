@@ -32,7 +32,21 @@ final class JsonSpellProvider implements SpellProviderInterface
         $filteredSpells = array_values(array_filter(
             $this->loadSpells(),
             fn (array $spell): bool =>
-                ($query->level === null || $spell['level'] === $query->level)
+                ($query->search === null || $query->search === '' || str_contains(
+                    mb_strtolower(implode(' ', [
+                        $spell['name'],
+                        $spell['school'],
+                        implode(' ', $spell['classes']),
+                        $spell['casting_time'],
+                        $spell['range'],
+                        $spell['components'],
+                        $spell['duration'],
+                        $spell['description'],
+                        $spell['higher_level']
+                    ]), 'UTF-8'),
+                    mb_strtolower($query->search, 'UTF-8')
+                ))
+                && ($query->level === null || $spell['level'] === $query->level)
                 && ($query->school === null || $query->school === '' || $spell['school'] === $query->school)
                 && ($query->className === null || $query->className === '' || in_array($query->className, $spell['classes'], true))
         ));

@@ -15,7 +15,7 @@ $toolTypeLabels = [
         <a class="taxonomy-filter <?= $category === $selectedCategory ? 'is-selected' : '' ?>" href="<?= e(appUrl('oggetti/strumenti?categoria=' . urlencode($category))) ?>"><?= e($label) ?></a>
 <?php endforeach; ?>
     </nav>
-    <div class="result-summary"><strong id="result-count"><?= count($tools) ?></strong> elementi trovati</div>
+    <div class="result-summary">Mostrati <strong id="result-count"><?= count($tools) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> elementi</div>
     <div id="results-grid" class="results-grid">
 <?php foreach ($tools as $tool): ?>
 <?php
