@@ -5,6 +5,29 @@ declare(strict_types=1);
 require_once __DIR__ . '/import/DataImporterInterface.php';
 require_once __DIR__ . '/import/JsonFileImporter.php';
 require_once __DIR__ . '/catalog/DataCatalog.php';
+require_once __DIR__ . '/catalog/shared/PageResult.php';
+require_once __DIR__ . '/catalog/shared/JsonDatasetStore.php';
+require_once __DIR__ . '/catalog/objects/weapons/WeaponQuery.php';
+require_once __DIR__ . '/catalog/objects/weapons/WeaponProviderInterface.php';
+require_once __DIR__ . '/catalog/objects/weapons/JsonWeaponProvider.php';
+require_once __DIR__ . '/catalog/objects/armor/ArmorQuery.php';
+require_once __DIR__ . '/catalog/objects/armor/ArmorProviderInterface.php';
+require_once __DIR__ . '/catalog/objects/armor/JsonArmorProvider.php';
+require_once __DIR__ . '/catalog/objects/ammunition/AmmunitionQuery.php';
+require_once __DIR__ . '/catalog/objects/ammunition/AmmunitionProviderInterface.php';
+require_once __DIR__ . '/catalog/objects/ammunition/JsonAmmunitionProvider.php';
+require_once __DIR__ . '/catalog/objects/tools/ToolsQuery.php';
+require_once __DIR__ . '/catalog/objects/tools/ToolsProviderInterface.php';
+require_once __DIR__ . '/catalog/objects/tools/JsonToolsProvider.php';
+require_once __DIR__ . '/catalog/objects/adventuring-gear/AdventuringGearQuery.php';
+require_once __DIR__ . '/catalog/objects/adventuring-gear/AdventuringGearProviderInterface.php';
+require_once __DIR__ . '/catalog/objects/adventuring-gear/JsonAdventuringGearProvider.php';
+require_once __DIR__ . '/catalog/spells/SpellQuery.php';
+require_once __DIR__ . '/catalog/spells/SpellProviderInterface.php';
+require_once __DIR__ . '/catalog/spells/JsonSpellProvider.php';
+require_once __DIR__ . '/catalog/monsters/MonsterQuery.php';
+require_once __DIR__ . '/catalog/monsters/MonsterProviderInterface.php';
+require_once __DIR__ . '/catalog/monsters/JsonMonsterProvider.php';
 
 /**
  * Loads a JSON file through the default JSON importer.

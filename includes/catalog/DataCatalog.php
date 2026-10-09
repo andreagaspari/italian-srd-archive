@@ -8,18 +8,109 @@ declare(strict_types=1);
 final class DataCatalog
 {
     /**
-     * @var array<string, array<string, mixed>>
-     */
-    private array $loadedData = [];
-
-    /**
-     * @param DataImporterInterface $importer Component used to import datasets.
-     * @param string $dataDirectory Directory containing the JSON datasets.
+     * @param JsonDatasetStore $store Shared dataset store for raw dataset access.
+     * @param WeaponProviderInterface $weaponProvider Provider for weapon queries.
+     * @param ArmorProviderInterface $armorProvider Provider for armor queries.
+     * @param AmmunitionProviderInterface $ammunitionProvider Provider for ammunition queries.
+     * @param ToolsProviderInterface $toolsProvider Provider for tool queries.
+     * @param AdventuringGearProviderInterface $adventuringGearProvider Provider for adventuring gear queries.
+     * @param SpellProviderInterface $spellProvider Provider for spell queries.
+     * @param MonsterProviderInterface $monsterProvider Provider for monster queries.
      */
     public function __construct(
-        private readonly DataImporterInterface $importer,
-        private readonly string $dataDirectory
+        private readonly JsonDatasetStore $store,
+        private readonly WeaponProviderInterface $weaponProvider,
+        private readonly ArmorProviderInterface $armorProvider,
+        private readonly AmmunitionProviderInterface $ammunitionProvider,
+        private readonly ToolsProviderInterface $toolsProvider,
+        private readonly AdventuringGearProviderInterface $adventuringGearProvider,
+        private readonly SpellProviderInterface $spellProvider,
+        private readonly MonsterProviderInterface $monsterProvider
     ) {
+    }
+
+    /**
+     * Retrieves filtered and paginated weapons.
+     *
+     * @param WeaponQuery $query Filtering and pagination criteria.
+     *
+     * @return PageResult Query results and pagination metadata.
+     */
+    public function getWeapons(WeaponQuery $query): PageResult
+    {
+        return $this->weaponProvider->getWeapons($query);
+    }
+
+    /**
+     * Retrieves filtered and paginated armor.
+     *
+     * @param ArmorQuery $query Filtering and pagination criteria.
+     *
+     * @return PageResult Query results and pagination metadata.
+     */
+    public function getArmor(ArmorQuery $query): PageResult
+    {
+        return $this->armorProvider->getArmor($query);
+    }
+
+    /**
+     * Retrieves paginated ammunition.
+     *
+     * @param AmmunitionQuery $query Pagination criteria.
+     *
+     * @return PageResult Query results and pagination metadata.
+     */
+    public function getAmmunition(AmmunitionQuery $query): PageResult
+    {
+        return $this->ammunitionProvider->getAmmunition($query);
+    }
+
+    /**
+     * Retrieves filtered and paginated tools.
+     *
+     * @param ToolsQuery $query Filtering and pagination criteria.
+     *
+     * @return PageResult Query results and pagination metadata.
+     */
+    public function getTools(ToolsQuery $query): PageResult
+    {
+        return $this->toolsProvider->getTools($query);
+    }
+
+    /**
+     * Retrieves filtered and paginated adventuring gear.
+     *
+     * @param AdventuringGearQuery $query Filtering and pagination criteria.
+     *
+     * @return PageResult Query results and pagination metadata.
+     */
+    public function getAdventuringGear(AdventuringGearQuery $query): PageResult
+    {
+        return $this->adventuringGearProvider->getAdventuringGear($query);
+    }
+
+    /**
+     * Retrieves filtered and paginated spells.
+     *
+     * @param SpellQuery $query Filtering and pagination criteria.
+     *
+     * @return PageResult Query results and pagination metadata.
+     */
+    public function getSpells(SpellQuery $query): PageResult
+    {
+        return $this->spellProvider->getSpells($query);
+    }
+
+    /**
+     * Retrieves filtered and paginated monsters.
+     *
+     * @param MonsterQuery $query Filtering and pagination criteria.
+     *
+     * @return PageResult Query results and pagination metadata.
+     */
+    public function getMonsters(MonsterQuery $query): PageResult
+    {
+        return $this->monsterProvider->getMonsters($query);
     }
 
     /**
@@ -29,7 +120,7 @@ final class DataCatalog
      */
     public function weapons(): array
     {
-        return $this->load('weapons');
+        return $this->store->get('weapons');
     }
 
     /**
@@ -39,7 +130,7 @@ final class DataCatalog
      */
     public function armor(): array
     {
-        return $this->load('armor');
+        return $this->store->get('armor');
     }
 
     /**
@@ -49,7 +140,7 @@ final class DataCatalog
      */
     public function ammunition(): array
     {
-        return $this->load('ammunition');
+        return $this->store->get('ammunition');
     }
 
     /**
@@ -59,7 +150,7 @@ final class DataCatalog
      */
     public function tools(): array
     {
-        return $this->load('tools');
+        return $this->store->get('tools');
     }
 
     /**
@@ -69,7 +160,7 @@ final class DataCatalog
      */
     public function adventuringGear(): array
     {
-        return $this->load('adventuring-gear');
+        return $this->store->get('adventuring-gear');
     }
 
     /**
@@ -79,7 +170,7 @@ final class DataCatalog
      */
     public function spells(): array
     {
-        return $this->load('spells');
+        return $this->store->get('spells');
     }
 
     /**
@@ -89,26 +180,6 @@ final class DataCatalog
      */
     public function monsters(): array
     {
-        return $this->load('monsters');
-    }
-
-    /**
-     * Loads a dataset and caches it for subsequent requests.
-     *
-     * @param string $dataset Dataset filename without the `.json` extension.
-     *
-     * @return array<string, mixed>
-     *
-     * @throws RuntimeException If the dataset cannot be read.
-     * @throws UnexpectedValueException If the dataset contains invalid JSON data.
-     */
-    private function load(string $dataset): array
-    {
-        if (!array_key_exists($dataset, $this->loadedData)) {
-            $path = $this->dataDirectory . '/' . $dataset . '.json';
-            $this->loadedData[$dataset] = $this->importer->import($path);
-        }
-
-        return $this->loadedData[$dataset];
+        return $this->store->get('monsters');
     }
 }

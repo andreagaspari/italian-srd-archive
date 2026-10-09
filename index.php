@@ -22,7 +22,17 @@ declare(strict_types=1);
 require __DIR__ . '/includes/bootstrap.php';
 
 $route = $_GET['route'] ?? 'home';
-$catalog = new DataCatalog(new JsonFileImporter(), __DIR__ . '/data');
+$datasetStore = new JsonDatasetStore(new JsonFileImporter(), __DIR__ . '/data');
+$catalog = new DataCatalog(
+    store: $datasetStore,
+    weaponProvider: new JsonWeaponProvider($datasetStore),
+    armorProvider: new JsonArmorProvider($datasetStore),
+    ammunitionProvider: new JsonAmmunitionProvider($datasetStore),
+    toolsProvider: new JsonToolsProvider($datasetStore),
+    adventuringGearProvider: new JsonAdventuringGearProvider($datasetStore),
+    spellProvider: new JsonSpellProvider($datasetStore),
+    monsterProvider: new JsonMonsterProvider($datasetStore)
+);
 $objectData = $catalog->weapons();
 $armorData = $catalog->armor();
 $ammunitionData = $catalog->ammunition();
@@ -105,21 +115,9 @@ switch ($route) {
             $selectedCategory = 'items-weapons';
         }
 
-        $weapons = $objectData['items'] ?? [];
-        $filteredWeapons = array_values(array_filter(
-            $weapons,
-            static function (array $weapon) use ($selectedCategory): bool {
-                return match ($selectedCategory) {
-                    'items-weapons' => true,
-                    'items-weapons-simple-melee' => $weapon['proficiency'] === 'Semplice' && $weapon['mode'] === 'Mischia',
-                    'items-weapons-simple-ranged' => $weapon['proficiency'] === 'Semplice' && $weapon['mode'] === 'A distanza',
-                    'items-weapons-martial-melee' => $weapon['proficiency'] === 'Da guerra' && $weapon['mode'] === 'Mischia',
-                    'items-weapons-martial-ranged' => $weapon['proficiency'] === 'Da guerra' && $weapon['mode'] === 'A distanza',
-                    'items-armor' => false,
-                    default => false
-                };
-            }
-        ));
+        $filteredWeapons = $catalog->getWeapons(new WeaponQuery(
+            category: $selectedCategory
+        ))->items;
 
         $pageTitle = $categoryLabels[$selectedCategory];
         $contentView = __DIR__ . '/templates/objects/weapons.php';
@@ -138,20 +136,9 @@ switch ($route) {
             $selectedCategory = 'armor';
         }
 
-        $armor = $armorData['items'] ?? [];
-        $filteredArmor = array_values(array_filter(
-            $armor,
-            static function (array $item) use ($selectedCategory): bool {
-                return match ($selectedCategory) {
-                    'armor' => true,
-                    'armor-light' => $item['armor_type'] === 'leggera',
-                    'armor-medium' => $item['armor_type'] === 'media',
-                    'armor-heavy' => $item['armor_type'] === 'pesante',
-                    'armor-shields' => $item['armor_type'] === 'scudo',
-                    default => false
-                };
-            }
-        ));
+        $filteredArmor = $catalog->getArmor(new ArmorQuery(
+            category: $selectedCategory
+        ))->items;
 
         $pageTitle = $categoryLabels[$selectedCategory];
         $contentView = __DIR__ . '/templates/objects/armor.php';
@@ -159,7 +146,7 @@ switch ($route) {
 
     case 'oggetti/munizioni':
         $pageTitle = 'Munizioni';
-        $ammunition = $ammunitionData['items'] ?? [];
+        $ammunition = $catalog->getAmmunition(new AmmunitionQuery())->items;
         $contentView = __DIR__ . '/templates/objects/ammunition.php';
         break;
 
@@ -176,10 +163,9 @@ switch ($route) {
             $selectedCategory = 'tools';
         }
 
-        $tools = array_values(array_filter(
-            $toolsData['items'] ?? [],
-            static fn (array $tool): bool => $selectedCategory === 'tools' || $tool['tool_type'] === $selectedCategory
-        ));
+        $tools = $catalog->getTools(new ToolsQuery(
+            category: $selectedCategory
+        ))->items;
         $pageTitle = $categoryLabels[$selectedCategory];
         $contentView = __DIR__ . '/templates/objects/tools.php';
         break;
@@ -197,10 +183,9 @@ switch ($route) {
             $selectedCategory = 'gear';
         }
 
-        $adventuringGear = array_values(array_filter(
-            $adventuringGearData['items'] ?? [],
-            static fn (array $item): bool => $selectedCategory === 'gear' || $item['category'] === $selectedCategory
-        ));
+        $adventuringGear = $catalog->getAdventuringGear(new AdventuringGearQuery(
+            category: $selectedCategory
+        ))->items;
         $pageTitle = $categoryLabels[$selectedCategory];
         $contentView = __DIR__ . '/templates/objects/adventuring-gear.php';
         break;
@@ -248,13 +233,11 @@ switch ($route) {
         if ($selectedClass !== '' && !array_key_exists($selectedClass, $spellClasses)) {
             $selectedClass = '';
         }
-        $spells = array_values(array_filter(
-            $spellsData['items'] ?? [],
-            static fn (array $spell): bool =>
-                ($selectedLevel === 'all' || (string) $spell['level'] === $selectedLevel)
-                && ($selectedSchool === '' || $spell['school'] === $selectedSchool)
-                && ($selectedClass === '' || in_array($selectedClass, $spell['classes'], true))
-        ));
+        $spells = $catalog->getSpells(new SpellQuery(
+            level: $selectedLevel === 'all' ? null : (int) $selectedLevel,
+            school: $selectedSchool,
+            className: $selectedClass
+        ))->items;
         $pageTitle = $levelLabels[$selectedLevel];
         $contentView = __DIR__ . '/templates/spells/index.php';
         break;
@@ -293,14 +276,12 @@ switch ($route) {
         if (!array_key_exists($selectedMonsterAlignment, $monsterAlignments)) {
             $selectedMonsterAlignment = '';
         }
-        $monsters = array_values(array_filter(
-            $monsters,
-            static fn (array $monster): bool =>
-                ($selectedMonsterType === '' || $monster['type'] === $selectedMonsterType)
-                && ($selectedMonsterSize === '' || $monster['size'] === $selectedMonsterSize)
-                && ($selectedMonsterChallenge === '' || $monster['challenge_rating'] === $selectedMonsterChallenge)
-                && ($selectedMonsterAlignment === '' || $monster['alignment'] === $selectedMonsterAlignment)
-        ));
+        $monsters = $catalog->getMonsters(new MonsterQuery(
+            type: $selectedMonsterType,
+            size: $selectedMonsterSize,
+            challengeRating: $selectedMonsterChallenge,
+            alignment: $selectedMonsterAlignment
+        ))->items;
         $pageTitle = 'Mostri';
         $contentView = __DIR__ . '/templates/monsters/index.php';
         break;
