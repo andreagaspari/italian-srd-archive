@@ -178,6 +178,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
                     </div>
                 </div>
             </section>
+
 <?php endforeach; ?>
             <button class="export-button" type="button">⇩ Esporta</button>
         </article>
@@ -185,3 +186,4 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
     </div>
     <div id="empty-state" class="empty-state" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca o i filtri.</p></div>
 </section>
+<?php require __DIR__ . '/../partials/pagination.php'; ?>

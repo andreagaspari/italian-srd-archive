@@ -154,3 +154,4 @@
         <p>Prova a modificare la ricerca o a scegliere un’altra categoria.</p>
     </div>
 </section>
+<?php require __DIR__ . '/../partials/pagination.php'; ?>

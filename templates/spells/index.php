@@ -114,3 +114,4 @@ if ($selectedSchool !== '') {
         <p>Prova a modificare la ricerca o a scegliere un altro filtro.</p>
     </div>
 </section>
+<?php require __DIR__ . '/../partials/pagination.php'; ?>

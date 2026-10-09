@@ -195,11 +195,39 @@ document.addEventListener('click', (event) => {
         return;
     }
     if (event.target.closest('#export-visible-button')) {
-        const items = [...document.querySelectorAll('#results-grid .result-card:not([hidden])')]
-            .map((card) => JSON.parse(card.dataset.export));
-        if (items.length) {
-            openExportDialog(items);
-        }
+        const exportButton = event.target.closest('#export-visible-button');
+        const request = Object.fromEntries(new URLSearchParams(window.location.search));
+        const basePath = new URL(document.baseURI).pathname.replace(/\/+$/, '');
+        const route = window.location.pathname
+            .slice(basePath.length)
+            .replace(/^\/+|\/+$/g, '');
+        delete request.route;
+        delete request.page;
+        delete request.pageSize;
+        exportButton.disabled = true;
+        fetch('export.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                exportAll: '1',
+                route,
+                request: JSON.stringify(request)
+            })
+        })
+            .then((response) => response.ok
+                ? response.json()
+                : response.json().then((data) => Promise.reject(new Error(data.error || 'Impossibile preparare l’esportazione.'))))
+            .then((data) => {
+                if (data.items?.length > 0) {
+                    openExportDialog(data.items);
+                }
+            })
+            .catch((error) => {
+                window.alert(error.message);
+            })
+            .finally(() => {
+                exportButton.disabled = false;
+            });
     }
 });
 

@@ -18,5 +18,5 @@
             <option value="value-desc">Valore ↓</option>
         </select>
     </label>
-    <button class="export-visible-button" id="export-visible-button" type="button">⇩ Esporta selezione</button>
+    <button class="export-visible-button" id="export-visible-button" type="button">⇩ Esporta risultati filtrati (<?= e((string) $pagination->totalItems) ?>)</button>
 </div>

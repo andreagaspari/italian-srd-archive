@@ -18,7 +18,7 @@
             </div>
             <p>Consulta incantesimi per livello, scuola e classe.</p>
             <div class="category-buttons home-card-links spell-level-links">
-                <a class="taxonomy-filter" href="<?= e(appUrl('incantesimi')) ?>">Tutti <span><?= count($spellsData['items'] ?? []) ?></span></a>
+                <a class="taxonomy-filter" href="<?= e(appUrl('incantesimi')) ?>">Tutti <span><?= $spellsCount ?></span></a>
                 <a class="taxonomy-filter" href="<?= e(appUrl('incantesimi?livello=0')) ?>">Trucchetti</a>
 <?php for ($level = 1; $level <= 9; $level++): ?>
                 <a class="taxonomy-filter" href="<?= e(appUrl('incantesimi?livello=' . $level)) ?>"><?= $level ?>° Liv.</a>

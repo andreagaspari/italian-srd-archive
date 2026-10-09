@@ -33,3 +33,4 @@ $gearCategoryLabels = [
     </div>
     <div id="empty-state" class="empty-state" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca.</p></div>
 </section>
+<?php require __DIR__ . '/../partials/pagination.php'; ?>

@@ -10,7 +10,7 @@
                 <a class="nav-item <?= $route === 'incantesimi' ? 'is-active' : '' ?>" href="<?= e(appUrl('incantesimi')) ?>">
                     <span class="nav-icon" aria-hidden="true">✨</span>
                     Incantesimi
-                    <span class="nav-count"><?= count($spellsData['items'] ?? []) ?: '' ?></span>
+                    <span class="nav-count"><?= $spellsCount ?: '' ?></span>
                 </a>
             <?php
             $spellLevelLabels = [

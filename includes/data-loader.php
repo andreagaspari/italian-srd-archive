@@ -7,6 +7,8 @@ require_once __DIR__ . '/import/JsonFileImporter.php';
 require_once __DIR__ . '/catalog/DataCatalog.php';
 require_once __DIR__ . '/catalog/shared/PageResult.php';
 require_once __DIR__ . '/catalog/shared/JsonDatasetStore.php';
+require_once __DIR__ . '/catalog/shared/CatalogSummaryInterface.php';
+require_once __DIR__ . '/catalog/shared/JsonCatalogSummary.php';
 require_once __DIR__ . '/catalog/objects/weapons/WeaponQuery.php';
 require_once __DIR__ . '/catalog/objects/weapons/WeaponProviderInterface.php';
 require_once __DIR__ . '/catalog/objects/weapons/JsonWeaponProvider.php';
@@ -28,6 +30,10 @@ require_once __DIR__ . '/catalog/spells/JsonSpellProvider.php';
 require_once __DIR__ . '/catalog/monsters/MonsterQuery.php';
 require_once __DIR__ . '/catalog/monsters/MonsterProviderInterface.php';
 require_once __DIR__ . '/catalog/monsters/JsonMonsterProvider.php';
+require_once __DIR__ . '/presentation/FrontendController.php';
+require_once __DIR__ . '/presentation/SearchIndexBuilder.php';
+require_once __DIR__ . '/presentation/SearchIndexProviderInterface.php';
+require_once __DIR__ . '/presentation/JsonSearchIndexProvider.php';
 
 /**
  * Loads a JSON file through the default JSON importer.
