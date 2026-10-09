@@ -1,0 +1,159 @@
+{
+  "source": {
+    "name": "System Reference Document 5.2.1",
+    "language": "it",
+    "license": "CC-BY-4.0",
+    "publisher": "Wizards of the Coast"
+  },
+  "category": "armor",
+  "donning": {
+    "leggera": {
+      "wear": "1 minuto",
+      "remove": "1 minuto"
+    },
+    "media": {
+      "wear": "5 minuti",
+      "remove": "1 minuto"
+    },
+    "pesante": {
+      "wear": "10 minuti",
+      "remove": "5 minuti"
+    },
+    "scudo": {
+      "wear": "1 azione di Utilizzo",
+      "remove": "1 azione di Utilizzo"
+    }
+  },
+  "items": [
+    {
+      "id": "armatura-imbottita",
+      "name": "Armatura imbottita",
+      "armor_type": "leggera",
+      "armor_class": "11 + modificatore di Destrezza",
+      "strength_requirement": null,
+      "stealth_disadvantage": true,
+      "weight": "4 kg",
+      "cost": "5 mo"
+    },
+    {
+      "id": "armatura-di-cuoio",
+      "name": "Armatura di cuoio",
+      "armor_type": "leggera",
+      "armor_class": "11 + modificatore di Destrezza",
+      "strength_requirement": null,
+      "stealth_disadvantage": false,
+      "weight": "5 kg",
+      "cost": "10 mo"
+    },
+    {
+      "id": "armatura-di-cuoio-borchiato",
+      "name": "Armatura di cuoio borchiato",
+      "armor_type": "leggera",
+      "armor_class": "12 + modificatore di Destrezza",
+      "strength_requirement": null,
+      "stealth_disadvantage": false,
+      "weight": "6,5 kg",
+      "cost": "45 mo"
+    },
+    {
+      "id": "armatura-di-pelle",
+      "name": "Armatura di pelle",
+      "armor_type": "media",
+      "armor_class": "12 + modificatore di Destrezza (max 2)",
+      "strength_requirement": null,
+      "stealth_disadvantage": false,
+      "weight": "6 kg",
+      "cost": "10 mo"
+    },
+    {
+      "id": "giaco-di-maglia",
+      "name": "Giaco di maglia",
+      "armor_type": "media",
+      "armor_class": "13 + modificatore di Destrezza (max 2)",
+      "strength_requirement": null,
+      "stealth_disadvantage": false,
+      "weight": "10 kg",
+      "cost": "50 mo"
+    },
+    {
+      "id": "corazza-a-scaglie",
+      "name": "Corazza a scaglie",
+      "armor_type": "media",
+      "armor_class": "14 + modificatore di Destrezza (max 2)",
+      "strength_requirement": null,
+      "stealth_disadvantage": true,
+      "weight": "22,5 kg",
+      "cost": "50 mo"
+    },
+    {
+      "id": "corazza-di-piastre",
+      "name": "Corazza di piastre",
+      "armor_type": "media",
+      "armor_class": "14 + modificatore di Destrezza (max 2)",
+      "strength_requirement": null,
+      "stealth_disadvantage": false,
+      "weight": "10 kg",
+      "cost": "400 mo"
+    },
+    {
+      "id": "mezza-armatura",
+      "name": "Mezza armatura",
+      "armor_type": "media",
+      "armor_class": "15 + modificatore di Destrezza (max 2)",
+      "strength_requirement": null,
+      "stealth_disadvantage": true,
+      "weight": "20 kg",
+      "cost": "750 mo"
+    },
+    {
+      "id": "corazza-ad-anelli",
+      "name": "Corazza ad anelli",
+      "armor_type": "pesante",
+      "armor_class": "14",
+      "strength_requirement": null,
+      "stealth_disadvantage": true,
+      "weight": "20 kg",
+      "cost": "30 mo"
+    },
+    {
+      "id": "cotta-di-maglia",
+      "name": "Cotta di maglia",
+      "armor_type": "pesante",
+      "armor_class": "16",
+      "strength_requirement": 13,
+      "stealth_disadvantage": true,
+      "weight": "27,5 kg",
+      "cost": "75 mo"
+    },
+    {
+      "id": "corazza-a-strisce",
+      "name": "Corazza a strisce",
+      "armor_type": "pesante",
+      "armor_class": "17",
+      "strength_requirement": 15,
+      "stealth_disadvantage": true,
+      "weight": "30 kg",
+      "cost": "200 mo"
+    },
+    {
+      "id": "armatura-a-piastre",
+      "name": "Armatura a piastre",
+      "armor_type": "pesante",
+      "armor_class": "18",
+      "strength_requirement": 15,
+      "stealth_disadvantage": true,
+      "weight": "32,5 kg",
+      "cost": "1.500 mo"
+    },
+    {
+      "id": "scudo",
+      "name": "Scudo",
+      "armor_type": "scudo",
+      "armor_class": "+2",
+      "strength_requirement": null,
+      "stealth_disadvantage": false,
+      "weight": "3 kg",
+      "cost": "10 mo"
+    }
+  ]
+}

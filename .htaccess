@@ -1,0 +1,10 @@
+RewriteEngine On
+
+RewriteRule ^oggetti/armi/?$ index.php?route=oggetti/armi [L,QSA]
+RewriteRule ^oggetti/armature/?$ index.php?route=oggetti/armature [L,QSA]
+RewriteRule ^oggetti/munizioni/?$ index.php?route=oggetti/munizioni [L,QSA]
+RewriteRule ^oggetti/strumenti/?$ index.php?route=oggetti/strumenti [L,QSA]
+RewriteRule ^oggetti/avventura/?$ index.php?route=oggetti/avventura [L,QSA]
+RewriteRule ^oggetti/?$ index.php?route=oggetti [L,QSA]
+RewriteRule ^incantesimi/?$ index.php?route=incantesimi [L,QSA]
+RewriteRule ^mostri/?$ index.php?route=mostri [L,QSA]

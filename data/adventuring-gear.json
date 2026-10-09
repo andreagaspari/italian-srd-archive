@@ -1,0 +1,583 @@
+{
+  "source": {
+    "title": "SRD 5.2.1 Italiano",
+    "license": "CC-BY-4.0",
+    "publisher": "Wizards of the Coast"
+  },
+  "items": [
+    {
+      "name": "Abiti da viaggiatore",
+      "category": "avventura",
+      "weight": "2 kg",
+      "cost": "2 mo",
+      "use": "Gli abiti da viaggiatore sono resistenti e progettati per sopportare svariati ambienti."
+    },
+    {
+      "name": "Abiti eleganti",
+      "category": "avventura",
+      "weight": "3 kg",
+      "cost": "15 mo",
+      "use": "Gli abiti eleganti sono realizzati con stoffe pregiate e decorati con dettagli raffinati. Alcuni eventi e luoghi consentono l'accesso solo a chi li indossa."
+    },
+    {
+      "name": "Acciarino con pietra focaia",
+      "category": "avventura",
+      "weight": "0,5 kg",
+      "cost": "5 ma",
+      "use": "Si tratta di un piccolo contenitore usato per accendere il fuoco, che contiene acciarino, pietra focaia e materiale combustibile (solitamente stracci essiccati e bagnati d'olio). Utilizzarlo per accendere una candela, una lampada, una lanterna, una torcia o qualunque altra cosa con sopra materiale infiammabile richiede un'azione bonus. Per accendere un fuoco di qualsiasi altro tipo è richiesto 1 minuto."
+    },
+    {
+      "name": "Acido",
+      "category": "consumabili",
+      "weight": "0,5 kg",
+      "cost": "25 mo",
+      "use": "Quando il personaggio effettua un'azione di Attacco, puoi sostituire uno dei suoi attacchi con il lancio di una fiala di acido. Può prendere di mira una creatura o un oggetto che egli è in grado di vedere entro 6 metri da sé. Il bersaglio deve superare un tiro salvezza su Destrezza (CD 8 più il modificatore di Destrezza e il bonus di competenza del personaggio), altrimenti subirà 2d6 danni da acido."
+    },
+    {
+      "name": "Acqua santa",
+      "category": "consumabili",
+      "weight": "0,5 kg",
+      "cost": "25 mo",
+      "use": "Quando il personaggio effettua un'azione di Attacco, puoi sostituire uno dei suoi attacchi con il lancio di una ampolla di acqua santa verso una creatura che egli è in grado di vedere entro un raggio di 6 metri da sé. Il bersaglio deve superare un tiro salvezza su Destrezza (CD 8 più il modificatore di Destrezza e il bonus di competenza del personaggio), altrimenti subirà 2d8 danni radiosi se è un immondo o un non morto."
+    },
+    {
+      "name": "Ampolla",
+      "category": "avventura",
+      "weight": "0,5 kg",
+      "cost": "2 mr",
+      "use": "Un'ampolla ha una capacità di 0,5 litri."
+    },
+    {
+      "name": "Antitossina",
+      "category": "consumabili",
+      "weight": "—",
+      "cost": "50 mo",
+      "use": "Come azione bonus, per evitare di essere avvelenato o interrompere tale condizione, il personaggio può bere una fiala di antitossina per ottenere vantaggio ai relativi tiri salvezza."
+    },
+    {
+      "name": "Ariete portatile",
+      "category": "avventura",
+      "weight": "17,5 kg",
+      "cost": "4 mo",
+      "use": "Un ariete portatile può essere usato per sfondare le porte e conferisce un bonus di +4 alla prova di Forza del personaggio. Un altro personaggio può aiutare il primo a usare l'ariete, nel qual caso quest'ultimo dispone di vantaggio alla prova."
+    },
+    {
+      "name": "Asta",
+      "category": "avventura",
+      "weight": "3,5 kg",
+      "cost": "5 mr",
+      "use": "Un'asta è lunga 3 metri. Il personaggio può usarla per toccare qualcosa a massimo 3 metri di distanza da sé. Se deve effettuare una prova di Forza (Atletica) come parte di un salto in alto o in lungo, può effettuarla con vantaggio sfruttando l'asta."
+    },
+    {
+      "name": "Attrezzi da scalatore",
+      "category": "avventura",
+      "weight": "6 kg",
+      "cost": "25 mo",
+      "use": "Un kit da scalatore è composto da punte per stivali, guanti, chiodi da rocciatore e un'imbragatura. Come azione di Utilizzo, il personaggio può usare gli attrezzi da scalatore per ancorarsi; quando lo fa, non può cadere per più di 7,5 metri dal punto in cui si è ancorato e non può arrampicarsi per più di 7,5 metri dal quel punto senza disfare l'ancoraggio come azione bonus."
+    },
+    {
+      "name": "Barile",
+      "category": "avventura",
+      "weight": "35 kg",
+      "cost": "2 mo",
+      "use": "Un barile può contenere fino a 16 litri di liquido o 4 cubi con spigolo di 30 centimetri di merci essiccate."
+    },
+    {
+      "name": "Borsa",
+      "category": "contenitori",
+      "weight": "0,5 kg",
+      "cost": "5 ma",
+      "use": "Una borsa può contenere fino a 3 chilogrammi e 5 litri."
+    },
+    {
+      "name": "Borsa del guaritore",
+      "category": "contenitori",
+      "weight": "1,5 kg",
+      "cost": "5 mo",
+      "use": "La borsa del guaritore è utilizzabile dieci volte. Come azione di Utilizzo, il personaggio può consumarne un uso per stabilizzare una creatura priva di sensi con 0 punti ferita senza dover effettuare una prova di Saggezza (Medicina)."
+    },
+    {
+      "name": "Borsa per componenti",
+      "category": "contenitori",
+      "weight": "1 kg",
+      "cost": "25 mo",
+      "use": "Una borsa per componenti è impermeabile e piena di scompartimenti in cui sono conservate tutte le componenti materiali sfuse degli incantesimi del personaggio."
+    },
+    {
+      "name": "Bottiglia di vetro",
+      "category": "contenitori",
+      "weight": "1 kg",
+      "cost": "2 mo",
+      "use": "Una bottiglia di vetro ha una capacità di 0,75 litri."
+    },
+    {
+      "name": "Brocca",
+      "category": "contenitori",
+      "weight": "2 kg",
+      "cost": "2 mr",
+      "use": "Una brocca ha una capacità di 4 litri."
+    },
+    {
+      "name": "Campanella",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "1 mo",
+      "use": "Come azione di Utilizzo, la campana può essere suonata affinché produca un suono udibile fino a 18 metri di distanza."
+    },
+    {
+      "name": "Candela",
+      "category": "illuminazione",
+      "weight": "—",
+      "cost": "1 mr",
+      "use": "Per 1 ora, una candela accesa proietta luce intensa entro un raggio di 1,5 metri e luce fioca per altri 1,5 metri."
+    },
+    {
+      "name": "Cannocchiale",
+      "category": "avventura",
+      "weight": "0,5 kg",
+      "cost": "1.000 mo",
+      "use": "Gli oggetti osservati attraverso un cannocchiale appaiono grandi il doppio della loro taglia."
+    },
+    {
+      "name": "Carrucola e paranco",
+      "category": "avventura",
+      "weight": "2,5 kg",
+      "cost": "1 mo",
+      "use": "Carrucola e paranco consentono al personaggio di sollevare fino a quattro volte il peso massimo che solleverebbe normalmente."
+    },
+    {
+      "name": "Carta",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "2 ma",
+      "use": "Un foglio di carta può contenere circa 250 parole scritte a mano."
+    },
+    {
+      "name": "Catena",
+      "category": "avventura",
+      "weight": "5 kg",
+      "cost": "5 mo",
+      "use": "Come azione di Utilizzo, se supera una prova di Forza (Atletica) con CD 13, il personaggio può avvolgere la catena attorno a una creatura non consenziente entro 1,5 metri da sé che sia afferrata, incapacitata o trattenuta. Se le vengono legate le gambe, sarà trattenuta finché non riuscirà a scappare. Per liberarsi dalla catena è necessario superare una prova di Destrezza (Acrobazia) con CD 18 con un'azione. Rompere la catena richiede il superamento di una prova di Forza (Atletica) con CD 20 con un'azione."
+    },
+    {
+      "name": "Cesto",
+      "category": "avventura",
+      "weight": "1 kg",
+      "cost": "4 ma",
+      "use": "Un cesto può contenere fino a 20 chilogrammi entro 2 cubi con spigolo di 30 centimetri."
+    },
+    {
+      "name": "Coperta",
+      "category": "avventura",
+      "weight": "1,5 kg",
+      "cost": "5 ma",
+      "use": "Finché il personaggio è avvolto dalla coperta, dispone di vantaggio ai tiri salvezza contro il freddo estremo (vedi \"Strumenti per le modalità di gioco\")."
+    },
+    {
+      "name": "Corda",
+      "category": "avventura",
+      "weight": "2,5 kg",
+      "cost": "1 mo",
+      "use": "Come azione di Utilizzo, il personaggio può stringere un nodo con la corda se supera una prova di Destrezza (Rapidità di mano) con CD 10. La corda può essere spezzata superando una prova di Forza (Atletica) con CD 20. Il personaggio può legare una creatura non consenziente con la corda solo se questa è afferrata, incapacitata o trattenuta. Se le vengono legate le gambe, sarà trattenuta finché non riuscirà a scappare. Per liberarsi dalla corda è necessario superare una prova di Destrezza (Acrobazia) con CD 15 con un'azione."
+    },
+    {
+      "name": "Costume",
+      "category": "avventura",
+      "weight": "2 kg",
+      "cost": "5 mo",
+      "use": "Quando il personaggio indossa un costume, dispone di vantaggio a qualsiasi prova di caratteristica effettuata per impersonare qualcuno o una specifica tipologia di persona."
+    },
+    {
+      "name": "Custodia per mappe o pergamene",
+      "category": "contenitori",
+      "weight": "0,5 kg",
+      "cost": "1 mo",
+      "use": "Una custodia per mappe o pergamene può contenere fino a 10 fogli di carta o 5 di pergamena."
+    },
+    {
+      "name": "Custodia per quadrelli da balestra",
+      "category": "contenitori",
+      "weight": "0,5 kg",
+      "cost": "1 mo",
+      "use": "Una custodia per quadrelli da balestra può contenerne fino a 20 unità."
+    },
+    {
+      "name": "Dotazione da avventuriero",
+      "category": "avventura",
+      "weight": "27,5 kg",
+      "cost": "12 mo",
+      "use": "Una dotazione da avventuriero contiene i seguenti oggetti: zaino, triboli, piede di porco, 2 ampolle di olio, 10 razioni giornaliere, corda, acciarino con pietra focaia, 10 torce e un otre."
+    },
+    {
+      "name": "Dotazione da diplomatico",
+      "category": "avventura",
+      "weight": "19,5 kg",
+      "cost": "39 mo",
+      "use": "Una dotazione da diplomatico contiene i seguenti oggetti: forziere, abiti eleganti, inchiostro, 5 pennini, lampada, 2 custodie per mappe o pergamene, 4 ampolle di olio, 5 fogli di carta, 5 fogli di pergamena, profumo e acciarino con pietra focaia."
+    },
+    {
+      "name": "Dotazione da esploratore",
+      "category": "avventura",
+      "weight": "27,5 kg",
+      "cost": "10 mo",
+      "use": "Una dotazione da esploratore contiene i seguenti oggetti: zaino, giaciglio, 2 ampolle di olio, 10 razioni giornaliere, corda, acciarino con pietra focaia, 10 torce e un otre."
+    },
+    {
+      "name": "Dotazione da intrattenitore",
+      "category": "avventura",
+      "weight": "29 kg",
+      "cost": "40 mo",
+      "use": "Una dotazione da intrattenitore contiene i seguenti i oggetti: zaino, giaciglio, campana, lanterna a lente sporgente, 3 costumi, specchio, 8 ampolle di olio, 9 razioni giornaliere e un otre."
+    },
+    {
+      "name": "Dotazione da sacerdote",
+      "category": "avventura",
+      "weight": "14 kg",
+      "cost": "33 mo",
+      "use": "Una dotazione da sacerdote contiene i seguenti oggetti: zaino, coperta, acqua santa, lampada, 7 razioni giornaliere, tunica e acciarino con pietra focaia."
+    },
+    {
+      "name": "Dotazione da scassinatore",
+      "category": "avventura",
+      "weight": "19 kg",
+      "cost": "16 mo",
+      "use": "Una dotazione da scassinatore comprende i seguenti oggetti: zaino, sfere metalliche, campana, 10 candele, piede di porco, lanterna schermabile, 7 ampolle di olio, 5 razioni giornaliere, corda, acciarino con pietra focaia e un otre."
+    },
+    {
+      "name": "Dotazione da studioso",
+      "category": "avventura",
+      "weight": "11 kg",
+      "cost": "40 mo",
+      "use": "Una dotazione da studioso contiene i seguenti oggetti: zaino, libro, inchiostro, pennino, lampada, 10 ampolle di olio, 10 fogli di pergamena e acciarino con pietra focaia."
+    },
+    {
+      "name": "Faretra",
+      "category": "contenitori",
+      "weight": "0,5 kg",
+      "cost": "1 mo",
+      "use": "Una faretra può contenere fino a 20 frecce."
+    },
+    {
+      "name": "Fiala",
+      "category": "contenitori",
+      "weight": "—",
+      "cost": "1 mo",
+      "use": "Una fiala ha una capacità di 120 millilitri."
+    },
+    {
+      "name": "Fischietto da richiamo",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "5 mr",
+      "use": "Se il personaggio soffia al suo interno con un'azione di Utilizzo, il fischietto da richiamo produce un suono udibile fino a 180 metri di distanza."
+    },
+    {
+      "name": "Focus arcano",
+      "category": "avventura",
+      "weight": "Variabile",
+      "cost": "variabile",
+      "use": "Un focus arcano assume una delle forme elencate nella tabella Focus arcani, ed è adornato con gioielli o intagliato affinché possa incanalare l'energia arcana. Un mago, uno stregone o un warlock può usare questo oggetto come focus da incantatore. Focus arcani Focus Peso Costo Bacchetta 0,5 kg 10 mo Bastone (anche bastone ferrato) 2 kg 5 mo Cristallo 0,5 kg 10 mo Globo 1,5 kg 20 mo Verga 1 kg 10 mo"
+    },
+    {
+      "name": "Focus druidico",
+      "category": "avventura",
+      "weight": "Variabile",
+      "cost": "variabile",
+      "use": "Un focus druidico assume una delle forme indicate nella tabella Focus druidici ed è intagliato, legato con del nastro o dipinto per incanalare la magia primordiale. Un oggetto del genere è utilizzabile come focus da incantatore da un druido o un ranger. Focus druidici Focus Peso Costo Bacchetta in legno di tasso 0,5 kg 10 mo Bastone di legno (anche bastone ferrato) 2 kg 5 mo Rametto di vischio — 1 mo"
+    },
+    {
+      "name": "Forziere",
+      "category": "contenitori",
+      "weight": "12,5 kg",
+      "cost": "5 mo",
+      "use": "Un forziere ha una capacità di 12 cubi con spigolo di 30 centimetri."
+    },
+    {
+      "name": "Fuoco dell'alchimista",
+      "category": "consumabili",
+      "weight": "0,5 kg",
+      "cost": "50 mo",
+      "use": "Quando il personaggio effettua un'azione di Attacco, puoi sostituire uno dei suoi attacchi con il lancio di una ampolla di fuoco dell'alchimista. Può prendere di mira una creatura o un oggetto che egli è in grado di vedere entro 6 metri da sé. Il bersaglio deve superare un tiro salvezza su Destrezza (CD 8 più il modificatore di Destrezza e il bonus di competenza del personaggio), altrimenti subirà 1d4 danni da fuoco e sarà in fiamme (vedi \"Glossario delle regole\")."
+    },
+    {
+      "name": "Giaciglio",
+      "category": "avventura",
+      "weight": "3,5 kg",
+      "cost": "1 mo",
+      "use": "Su un giaciglio può dormire una creatura di taglia Piccola o Media. Finché il personaggio si trova in un giaciglio, supera automaticamente i tiri salvezza contro il freddo estremo (vedi \"Strumenti per le modalità di gioco\")."
+    },
+    {
+      "name": "Inchiostro",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "10 mo",
+      "use": "L'inchiostro è reperibile in boccette da 30 grammi ciascuna, con abbastanza materiale per scrivere circa 500 pagine."
+    },
+    {
+      "name": "Lampada",
+      "category": "illuminazione",
+      "weight": "0,5 kg",
+      "cost": "5 ma",
+      "use": "Una lampada brucia olio per proiettare luce intensa in un raggio di 4,5 metri e luce fioca per ulteriori 9 metri."
+    },
+    {
+      "name": "Lanterna a lente sporgente",
+      "category": "illuminazione",
+      "weight": "1 kg",
+      "cost": "10 mo",
+      "use": "Una lanterna a lente sporgente sfrutta l'olio come combustibile per proiettare luce intensa in un cono di 18 metri e luce fioca per ulteriori 18 metri."
+    },
+    {
+      "name": "Lanterna schermabile",
+      "category": "illuminazione",
+      "weight": "1 kg",
+      "cost": "5 mo",
+      "use": "Una lanterna schermabile brucia olio per proiettare luce intensa in un raggio di 9 metri e luce fioca per ulteriori 9 metri. Come azione bonus, un personaggio può schermare la lanterna, riducendo la luce proiettata a luce fioca in un raggio di 1,5 metri o riaprirla."
+    },
+    {
+      "name": "Lente d'ingrandimento",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "100 mo",
+      "use": "Una lente d'ingrandimento conferisce vantaggio a ogni prova di caratteristica effettuata per valutare o ispezionare un oggetto estremamente dettagliato. Per accendere un fuoco con la lente d'ingrandimento è necessaria una luce da concentrare intensa quanto quella del sole, dei rametti da accendere e circa 5 minuti affinché il fuoco attecchisca."
+    },
+    {
+      "name": "Libro",
+      "category": "avventura",
+      "weight": "2,5 kg",
+      "cost": "25 mo",
+      "use": "I libri possono contenere sia opere di finzione che di carattere divulgativo. Se il personaggio ne consulta uno che tratta di un determinato argomento, ottiene un bonus di +5 alle prove di Intelligenza (Arcano, Storia, Natura o Religione) eseguite su tale argomento."
+    },
+    {
+      "name": "Manette",
+      "category": "avventura",
+      "weight": "3 kg",
+      "cost": "2 mo",
+      "use": "Come azione di Utilizzo, se supera una prova di Destrezza (Rapidità di mano) con CD 13, il personaggio può usare le manette per bloccare una creatura non consenziente di taglia Piccola o Media entro 1,5 metri da sé che sia afferrata, incapacitata o trattenuta. Mentre è ammanettata, la creatura ha svantaggio ai tiri per colpire ed è trattenuta se le manette sono attaccate a una catena o un gancio fissi in posizione. Per liberarsi è necessario superare una prova di Destrezza (Rapidità di mano) con CD 20 con un'azione. Per romperle bisogna invece superare una prova di Forza (Atletica) con CD 25 con un'azione. Ogni coppia di manette ha la sua chiave. Senza di essa, una creatura può scassinarne la serratura utilizzando gli arnesi da scasso e superando una prova di Destrezza (Rapidità di mano) con CD 15."
+    },
+    {
+      "name": "Mappa",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "1 mo",
+      "use": "Se il personaggio consulta una mappa accurata, ottiene un bonus di +5 alle prove di Saggezza (Sopravvivenza) effettuate per tracciare un percorso nel luogo che raffigura."
+    },
+    {
+      "name": "Munizioni",
+      "category": "avventura",
+      "weight": "Variabile",
+      "cost": "variabili",
+      "use": "Se un'arma possiede la proprietà munizioni, richiederà l'uso di munizioni. La tipologia è specificata nella descrizione dell'arma. La tabella Munizioni elenca i diversi tipi di munizioni e la quantità ottenuta con ogni acquisto, oltre all'oggetto utilizzato per conservarle (da acquistare separatamente). Munizioni Tipo Quantità Conservazione Peso Costo Aghi 50 Borsa 0,5 kg 1 mo Frecce 20 Faretra 0,5 kg 1 mo Proiettili, arma da fuoco 10 Borsa 1 kg 3 mo Proiettili, fionda 20 Borsa 0,75 kg 4 mr Quadrelli 20 Custodia 0,75 kg 1 mo"
+    },
+    {
+      "name": "Olio",
+      "category": "consumabili",
+      "weight": "0,5 kg",
+      "cost": "1 ma",
+      "use": "Il personaggio può gettare olio su una creatura, un oggetto o un'area. In alternativa, può usarlo come combustibile, come descritto sotto. Gettare olio su una creatura o un oggetto. Quando il personaggio effettua un'azione di Attacco, puoi sostituire uno dei suoi attacchi con il lancio di un'ampolla di olio verso una creatura o un oggetto entro 6 metri da sé. Il bersaglio deve superare un tiro salvezza su Destrezza (CD 8 più il modificatore di Destrezza e il bonus di competenza del personaggio), altrimenti sarà coperto di olio. Se il bersaglio subisce danni da fuoco prima che l'olio si asciughi (dopo 1 minuto), subisce 5 danni da fuoco extra a causa dell'olio incendiato. Gettare olio su una superficie. Come azione di Utilizzo, il personaggio può versare un'ampolla di olio su una superficie piana per coprire una zona di 1,5 metri quadrati entro 1,5 metri da sé. Se incendiato, l'olio brucia per 2 round fino al termine del turno (o 12 secondi) e infligge 5 danni da fuoco a qualsiasi creatura entri in quell'area o finisca lì il suo turno. Una creatura può subire questi danni solo una volta per turno. Combustibile. L'olio è utilizzabile come combustibile per lampade e lanterne. Una volta versata un'ampolla di olio in una lampada o una lanterna, questo brucerà per 6 ore. Tale durata non deve necessariamente essere consecutiva: è possibile spegnere il fuoco (come azione di Utilizzo) e riaccenderlo finché la durata totale della combustione non raggiunge le 6 ore."
+    },
+    {
+      "name": "Otre",
+      "category": "contenitori",
+      "weight": "2,5 kg",
+      "cost": "2 ma",
+      "use": "Un otre ha una capacità di 2 litri. Se il personaggio non beve abbastanza acqua, corre il rischio di disidratazione (vedi \"Glossario delle regole\")."
+    },
+    {
+      "name": "Pala",
+      "category": "avventura",
+      "weight": "2,5 kg",
+      "cost": "2 mo",
+      "use": "Se il personaggio impiega 1 ora di lavoro, può usare la pala per scavare una buca nel terreno di 1,5 metri per lato."
+    },
+    {
+      "name": "Pennino",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "2 mr",
+      "use": "Usando pennino e inchiostro è possibile scrivere o disegnare."
+    },
+    {
+      "name": "Pentola di ferro",
+      "category": "avventura",
+      "weight": "5 kg",
+      "cost": "2 mo",
+      "use": "Una pentola di ferro ha una capacità di 4 litri."
+    },
+    {
+      "name": "Pergamena",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "1 ma",
+      "use": "Un foglio di pergamena può contenere circa 250 parole scritte a mano."
+    },
+    {
+      "name": "Pergamena magica (trucchetto)",
+      "category": "consumabili",
+      "weight": "—",
+      "cost": "30 mo",
+      "use": "Una pergamena magica (trucchetto) è un oggetto magico contenente le parole di un trucchetto, che variano in base al volere del suo creatore. Se l'incantesimo è nella lista degli incantesimi della classe del personaggio, quest'ultimo può leggere la pergamena e lanciare l'incantesimo con il suo normale tempo di lancio e senza fornire componenti materiali. Se l'incantesimo richiede di effettuare un tiro salvezza o un tiro per colpire, la CD del tiro salvezza sull'incantesimo è 13, mentre il bonus di attacco è +5. Una volta terminato il lancio, la pergamena si disintegra."
+    },
+    {
+      "name": "Pergamena magica (livello 1)",
+      "category": "consumabili",
+      "weight": "—",
+      "cost": "50 mo",
+      "use": "Una pergamena magica (livello 1) è un oggetto magico contenente le parole di un incantesimo di livello 1, che variano in base al volere del suo creatore. Se l'incantesimo è nella lista degli incantesimi della classe del personaggio, quest'ultimo può leggere la pergamena e lanciare l'incantesimo con il suo normale tempo di lancio e senza fornire componenti materiali. Se l'incantesimo richiede di effettuare un tiro salvezza o un tiro per colpire, la CD del tiro salvezza sull'incantesimo è 13, mentre il bonus di attacco è +5. Una volta terminato il lancio, la pergamena si disintegra."
+    },
+    {
+      "name": "Piede di porco",
+      "category": "avventura",
+      "weight": "2,5 kg",
+      "cost": "2 mo",
+      "use": "Utilizzando un piede di porco, il personaggio ottiene vantaggio alle prove di Forza in cui è possibile applicare la sua leva."
+    },
+    {
+      "name": "Pozione di guarigione",
+      "category": "consumabili",
+      "weight": "0,25 kg",
+      "cost": "50 mo",
+      "use": "Questa pozione è un oggetto magico. Come azione bonus, il personaggio può berne una o somministrarla a un'altra creatura entro 1,5 metri da sé. Chi beve il fluido magico rosso contenuto in questa fiala recupera 2d4 + 2 punti ferita."
+    },
+    {
+      "name": "Profumo",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "5 mo",
+      "use": "I profumi sono disponibili in ampolle con capacità di 120 millilitri. Dopo che il personaggio ha applicato su di sé il profumo, per 1 ora avrà vantaggio alle prove di Carisma (Persuasione) effettuate per influenzare un umanoide indifferente entro 1,5 metri da sé."
+    },
+    {
+      "name": "Rampino",
+      "category": "avventura",
+      "weight": "2 kg",
+      "cost": "2 mo",
+      "use": "Come azione di Utilizzo, il personaggio può lanciare il rampino verso una ringhiera, una sporgenza o un altro appiglio entro 15 metri da sé. Per far sì che il gancio faccia presa è necessario superare una prova di Destrezza (Acrobazia) con CD 13. Se al gancio viene legata una corda, è possibile arrampicarsi."
+    },
+    {
+      "name": "Razioni",
+      "category": "consumabili",
+      "weight": "1 kg",
+      "cost": "5 ma",
+      "use": "Le razioni sono composte da cibo da viaggio, come carne secca, frutta secca, gallette e noci. Per scoprire i rischi del digiuno, consulta la sezione \"Malnutrizione\" nel \"Glossario delle regole\"."
+    },
+    {
+      "name": "Rete",
+      "category": "avventura",
+      "weight": "1,5 kg",
+      "cost": "1 mo",
+      "use": "Quando il personaggio effettua un'azione di Attacco, puoi sostituire uno dei suoi attacchi con il lancio di una rete verso una creatura che egli è in grado di vedere entro un raggio di 4,5 metri da sé. Il bersaglio deve superare un tiro salvezza su Destrezza (CD 8 più il modificatore di Destrezza e il bonus di competenza del personaggio), altrimenti sarà trattenuto finché non riuscirà a liberarsi. Se il bersaglio è di taglia Enorme o superiore, supera automaticamente la prova. Per fuggire, il bersaglio o una creatura entro 1,5 metri da lui deve effettuare un'azione per eseguire una prova di Forza (Atletica) con CD 10, liberando la creatura trattenuta in caso di successo. È possibile ottenere il medesimo risultato distruggendo la rete (CA 10; 5 PF; immunità a danni contundenti, da veleno e psichici)."
+    },
+    {
+      "name": "Sacco",
+      "category": "contenitori",
+      "weight": "0,25 kg",
+      "cost": "1 mr",
+      "use": "Un sacco può contenere fino a 15 chilogrammi all'interno di 1 cubo con spigolo di 30 centimetri."
+    },
+    {
+      "name": "Scala a pioli",
+      "category": "avventura",
+      "weight": "12,5 kg",
+      "cost": "1 ma",
+      "use": "Una scala a pioli è alta 3 metri. Per scendere dalla scala o salirci è necessario arrampicarsi."
+    },
+    {
+      "name": "Secchio",
+      "category": "contenitori",
+      "weight": "1 kg",
+      "cost": "5 mr",
+      "use": "Un secchio ha una capacità di 14 litri."
+    },
+    {
+      "name": "Serratura",
+      "category": "contenitori",
+      "weight": "0,5 kg",
+      "cost": "10 mo",
+      "use": "Ogni serratura è dotata della sua chiave. Senza tale chiave, una creatura può scassinarla utilizzando gli arnesi da scasso e superando una prova di Destrezza (Rapidità di mano) con CD 15."
+    },
+    {
+      "name": "Sfere metalliche",
+      "category": "avventura",
+      "weight": "1 kg",
+      "cost": "1 mo",
+      "use": "Con un'azione di Utilizzo, il personaggio può far cadere delle sfere metalliche dalla sua borsa. Queste si diffonderanno per coprire una superficie piana di 3 metri quadrati entro 3 metri da sé. Chiunque entri in quest'area per la prima volta in un turno deve superare un tiro salvezza su Destrezza con CD 10, altrimenti cadrà prono. Per recuperare le sfere metalliche sono necessari 10 minuti."
+    },
+    {
+      "name": "Simbolo sacro",
+      "category": "avventura",
+      "weight": "Variabile",
+      "cost": "variabile",
+      "use": "Un simbolo sacro può assumere una delle forme elencate nella tabella Simbolo sacro ed è adornato o dipinto in modo che incanali l'energia divina. Un chierico o un paladino possono usare un simbolo sacro come focus da incantatore. La tabella indica se il simbolo sacro deve essere tenuto in mano, indossato o portato su un tessuto (tabarro o striscione) o su uno scudo. Simboli sacri Simbolo Peso Costo Amuleto (indossato o tenuto in mano) 0,5 kg 5 mo Emblema (portato su un tessuto o uno scudo) — 5 mo Reliquiario (tenuto in mano) 1 kg 5 mo"
+    },
+    {
+      "name": "Spago",
+      "category": "avventura",
+      "weight": "—",
+      "cost": "1 ma",
+      "use": "Una matassa di spago è lunga 3 metri. Come azione di Utilizzo, il personaggio può utilizzarlo per stringere un nodo."
+    },
+    {
+      "name": "Specchio",
+      "category": "avventura",
+      "weight": "0,25 kg",
+      "cost": "5 mo",
+      "use": "Uno specchio d'acciaio portatile è utile sia per la cura della persona che per sbirciare dietro gli angoli o riflettere la luce per mandare un segnale a qualcuno."
+    },
+    {
+      "name": "Spuntoni di ferro",
+      "category": "avventura",
+      "weight": "2,5 kg",
+      "cost": "1 mo",
+      "use": "Gli spuntoni di ferro sono ottenibili in gruppi di dieci. Come azione di Utilizzo, il personaggio può usare un oggetto contundente come un martello leggero per conficcare gli spuntoni nel legno, nel terreno o in altri materiali simili. Tale azione è utile per bloccare una porta o per avere un supporto a cui legare una corda o una catena."
+    },
+    {
+      "name": "Tagliola",
+      "category": "avventura",
+      "weight": "12,5 kg",
+      "cost": "5 mo",
+      "use": "Come azione di Utilizzo, il personaggio può piazzare una tagliola, ovvero un anello metallico dentellato che si chiude di scatto qualora una creatura calpesti la piastra a pressione collocata al centro. La trappola viene fissata a una pesante catena o a un oggetto immobile come un albero o un palo piantato a terra. Quando una creatura mette un piede sulla piastra, deve superare un tiro salvezza su Destrezza con CD 13, altrimenti subisce 1d4 danni perforanti e la sua velocità scende a 0 fino all'inizio del turno successivo. A quel punto, finché non si libera dalla trappola, il suo movimento è limitato dalla lunghezza della catena (solitamente 90 centimetri). Una creatura può usare la sua azione per effettuare una prova di Forza (Atletica) con CD 13 e liberare se stessa o qualcun altro a portata in caso di successo. Ogni prova fallita infligge 1 danno perforante alla creatura intrappolata."
+    },
+    {
+      "name": "Tenda",
+      "category": "avventura",
+      "weight": "10 kg",
+      "cost": "2 mo",
+      "use": "In una tenda possono dormire un massimo di due creature di taglia Piccola o Media."
+    },
+    {
+      "name": "Torcia",
+      "category": "illuminazione",
+      "weight": "0,5 kg",
+      "cost": "1 mr",
+      "use": "Una torcia arde per 1 ora e proietta luce intensa in un raggio di 6 metri e luce fioca per ulteriori 6 metri. Quando il personaggio effettua l'azione di Attacco, può farlo con la torcia usandola come arma da mischia semplice. Se il colpo va a segno, il bersaglio subisce 1 danno da fuoco."
+    },
+    {
+      "name": "Triboli",
+      "category": "avventura",
+      "weight": "1 kg",
+      "cost": "1 mo",
+      "use": "Come azione di Utilizzo, il personaggio può spargere triboli dalla sua borsa per coprire una superficie di 1,5 metri quadrati entro 1,5 metri da sé. Chiunque entri in quest'area per la prima volta in un turno deve superare un tiro salvezza su Destrezza con CD 15, altrimenti subirà 1 danno perforante e la sua velocità sarà ridotta a 0 fino all'inizio del proprio turno successivo. Per recuperare i triboli sono necessari 10 minuti."
+    },
+    {
+      "name": "Tunica",
+      "category": "avventura",
+      "weight": "2 kg",
+      "cost": "1 mo",
+      "use": "Una tunica può avere un significato cerimoniale o professionale. In alcuni luoghi ed eventi sono ammesse solo persone che indossano una tunica di un determinato colore e recante uno specifico simbolo."
+    },
+    {
+      "name": "Veleno base",
+      "category": "consumabili",
+      "weight": "—",
+      "cost": "100 mo",
+      "use": "Come azione bonus, il personaggio può cospargere un'arma o fino a tre munizioni col contenuto di una fiala di veleno base. Una creatura che subisce danni perforanti o taglienti da armi o munizioni avvelenate subisce 1d4 danni da veleno extra. Una volta applicato, il veleno preserva le sue proprietà per 1 minuto o finché non vengono inflitti dei danni, a seconda dell'opzione che si verifica per prima."
+    },
+    {
+      "name": "Zaino",
+      "category": "contenitori",
+      "weight": "2,5 kg",
+      "cost": "2 mo",
+      "use": "Uno zaino può contenere fino a 15 chilogrammi all'interno di un cubo con spigolo di 30 centimetri. Può fungere anche da bisaccia."
+    }
+  ]
+}

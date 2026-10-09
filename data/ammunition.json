@@ -1,0 +1,56 @@
+{
+  "source": {
+    "name": "System Reference Document 5.2.1",
+    "language": "it",
+    "license": "CC-BY-4.0",
+    "publisher": "Wizards of the Coast"
+  },
+  "category": "ammunition",
+  "items": [
+    {
+      "id": "aghi",
+      "name": "Aghi",
+      "quantity": 50,
+      "container": "Borsa",
+      "weight": "0,5 kg",
+      "cost": "1 mo",
+      "compatible_weapons": ["Cerbottana"]
+    },
+    {
+      "id": "frecce",
+      "name": "Frecce",
+      "quantity": 20,
+      "container": "Faretra",
+      "weight": "0,5 kg",
+      "cost": "1 mo",
+      "compatible_weapons": ["Arco corto", "Arco lungo"]
+    },
+    {
+      "id": "proiettili-arma-da-fuoco",
+      "name": "Proiettili, arma da fuoco",
+      "quantity": 10,
+      "container": "Borsa",
+      "weight": "1 kg",
+      "cost": "3 mo",
+      "compatible_weapons": ["Moschetto", "Pistola"]
+    },
+    {
+      "id": "proiettili-fionda",
+      "name": "Proiettili, fionda",
+      "quantity": 20,
+      "container": "Borsa",
+      "weight": "0,75 kg",
+      "cost": "4 mr",
+      "compatible_weapons": ["Fionda"]
+    },
+    {
+      "id": "quadrelli",
+      "name": "Quadrelli",
+      "quantity": 20,
+      "container": "Custodia",
+      "weight": "0,75 kg",
+      "cost": "1 mo",
+      "compatible_weapons": ["Balestra a mano", "Balestra leggera", "Balestra pesante"]
+    }
+  ]
+}

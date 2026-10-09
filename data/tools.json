@@ -1,0 +1,36 @@
+{
+  "source": {
+    "name": "System Reference Document 5.2.1",
+    "language": "it",
+    "license": "CC-BY-4.0",
+    "publisher": "Wizards of the Coast"
+  },
+  "category": "tools",
+  "items": [
+    {"id":"scorte-da-alchimista","name":"Scorte da alchimista","tool_type":"artigiano","ability":"Intelligenza","weight":"4 kg","cost":"50 mo","use":"Identificare una sostanza (CD 15) o appiccare il fuoco (CD 15).","creation":"Acido, fuoco dell'alchimista, borsa per componenti, olio, carta, profumo."},
+    {"id":"scorte-da-birraio","name":"Scorte da birraio","tool_type":"artigiano","ability":"Intelligenza","weight":"4,5 kg","cost":"20 mo","use":"Individuare una bevanda avvelenata (CD 15) o identificare alcolici (CD 10).","creation":"Antitossina."},
+    {"id":"scorte-da-calligrafo","name":"Scorte da calligrafo","tool_type":"artigiano","ability":"Destrezza","weight":"2,5 kg","cost":"10 mo","use":"Scrivere testi usando una calligrafia articolata per impedirne la riproduzione (CD 15).","creation":"Inchiostro, pergamena magica."},
+    {"id":"strumenti-da-calzolaio","name":"Strumenti da calzolaio","tool_type":"artigiano","ability":"Destrezza","weight":"2,5 kg","cost":"5 mo","use":"Modificare calzature per conferire vantaggio alla prossima prova di Destrezza (Acrobazia) di chi le indossa (CD 10).","creation":"Attrezzi da scalatore."},
+    {"id":"strumenti-da-cartografo","name":"Strumenti da cartografo","tool_type":"artigiano","ability":"Saggezza","weight":"3 kg","cost":"15 mo","use":"Disegnare una mappa di una piccola area (CD 15).","creation":"Mappa."},
+    {"id":"strumenti-da-conciatore","name":"Strumenti da conciatore","tool_type":"artigiano","ability":"Destrezza","weight":"2,5 kg","cost":"5 mo","use":"Aggiungere un motivo a un oggetto di cuoio (CD 10).","creation":"Fionda, frusta, armature di pelle e cuoio, zaino, custodie, pergamena, borsa, faretra, otre."},
+    {"id":"strumenti-da-fabbro","name":"Strumenti da fabbro","tool_type":"artigiano","ability":"Forza","weight":"4 kg","cost":"20 mo","use":"Forzare l'apertura di una porta o un contenitore (CD 20).","creation":"Armi da mischia, armature medie e pesanti, catena, piede di porco, rampino, pentola, proiettili e altri oggetti metallici."},
+    {"id":"strumenti-da-falegname","name":"Strumenti da falegname","tool_type":"artigiano","ability":"Forza","weight":"3 kg","cost":"8 mo","use":"Sigillare o forzare l'apertura di una porta o un contenitore (CD 20).","creation":"Randello, bastone ferrato, barile, forziere, scala, asta, ariete portatile, torcia."},
+    {"id":"strumenti-da-gioielliere","name":"Strumenti da gioielliere","tool_type":"artigiano","ability":"Intelligenza","weight":"1 kg","cost":"25 mo","use":"Determinare il valore di una gemma (CD 15).","creation":"Focus arcano, simbolo sacro."},
+    {"id":"strumenti-da-intagliatore","name":"Strumenti da intagliatore","tool_type":"artigiano","ability":"Destrezza","weight":"2,5 kg","cost":"1 mo","use":"Intagliare un motivo nel legno (CD 10).","creation":"Armi semplici, focus arcano o druidico, frecce, quadrelli, aghi, pennino."},
+    {"id":"strumenti-da-inventore","name":"Strumenti da inventore","tool_type":"artigiano","ability":"Destrezza","weight":"5 kg","cost":"50 mo","use":"Realizzare un oggetto minuscolo con materiali di scarto (CD 20).","creation":"Moschetto, pistola, campanella, lanterne, ampolla, tagliola, serratura, manette e altri oggetti."},
+    {"id":"strumenti-da-muratore","name":"Strumenti da muratore","tool_type":"artigiano","ability":"Forza","weight":"4 kg","cost":"10 mo","use":"Intagliare un simbolo o scavare un buco nella pietra (CD 10).","creation":"Carrucola e paranco."},
+    {"id":"strumenti-da-pittore","name":"Strumenti da pittore","tool_type":"artigiano","ability":"Saggezza","weight":"2,5 kg","cost":"10 mo","use":"Dipingere un’immagine riconoscibile di qualcosa che hai visto (CD 10).","creation":"Focus druidico, simbolo sacro."},
+    {"id":"strumenti-da-soffiatore","name":"Strumenti da soffiatore","tool_type":"artigiano","ability":"Intelligenza","weight":"2,5 kg","cost":"30 mo","use":"Capire il contenuto di un oggetto di vetro delle ultime 24 ore (CD 15).","creation":"Bottiglia, lente d’ingrandimento, cannocchiale, fiala."},
+    {"id":"strumenti-da-tessitore","name":"Strumenti da tessitore","tool_type":"artigiano","ability":"Destrezza","weight":"2,5 kg","cost":"1 mo","use":"Rammendare tessuti lacerati o cucire un motivo minuscolo (CD 10).","creation":"Armatura imbottita, cesto, giaciglio, coperta, abiti, rete, veste, corda, sacco, spago, tenda."},
+    {"id":"strumenti-da-vasaio","name":"Strumenti da vasaio","tool_type":"artigiano","ability":"Intelligenza","weight":"1,5 kg","cost":"10 mo","use":"Capire il contenuto di un oggetto di ceramica delle ultime 24 ore (CD 15).","creation":"Brocca, lampada."},
+    {"id":"utensili-da-cuoco","name":"Utensili da cuoco","tool_type":"artigiano","ability":"Saggezza","weight":"4 kg","cost":"1 mo","use":"Migliorare il sapore del cibo (CD 10) o individuare cibo avariato o avvelenato (CD 15).","creation":"Razioni."},
+    {"id":"arnesi-da-falsario","name":"Arnesi da falsario","tool_type":"altri","ability":"Destrezza","weight":"2,5 kg","cost":"15 mo","use":"Copiare una scrittura (CD 15) o duplicare un sigillo di cera (CD 20).","creation":null},
+    {"id":"arnesi-da-scasso","name":"Arnesi da scasso","tool_type":"altri","ability":"Destrezza","weight":"0,5 kg","cost":"25 mo","use":"Scassinare una serratura o disattivare una trappola (CD 15).","creation":null},
+    {"id":"borsa-da-erborista","name":"Borsa da erborista","tool_type":"altri","ability":"Intelligenza","weight":"1,5 kg","cost":"5 mo","use":"Identificare una pianta (CD 10).","creation":"Antitossina, candela, borsa del guaritore, pozione di guarigione."},
+    {"id":"gioco","name":"Gioco","tool_type":"giochi","ability":"Saggezza","weight":"—","cost":"Variabile","use":"Capire se qualcuno sta barando (CD 10) o vincere una partita (CD 20).","creation":null,"variants":"Dadi (1 ma), scacchi dei draghi (1 mo), carte da gioco (5 ma), Tre draghi al buio (1 mo)."},
+    {"id":"kit-per-travestimenti","name":"Kit per travestimenti","tool_type":"altri","ability":"Carisma","weight":"1,5 kg","cost":"25 mo","use":"Creare un travestimento su se stessi o su qualcun altro (CD 15).","creation":null},
+    {"id":"sostanze-da-avvelenatore","name":"Sostanze da avvelenatore","tool_type":"altri","ability":"Intelligenza","weight":"1 kg","cost":"50 mo","use":"Individuare un oggetto avvelenato (CD 10).","creation":"Veleno base."},
+    {"id":"strumenti-da-navigatore","name":"Strumenti da navigatore","tool_type":"altri","ability":"Saggezza","weight":"1 kg","cost":"25 mo","use":"Pianificare una rotta (CD 10) o determinare la propria posizione scrutando le stelle (CD 15).","creation":null},
+    {"id":"strumento-musicale","name":"Strumento musicale","tool_type":"musicali","ability":"Carisma","weight":"Variabile","cost":"Variabile","use":"Suonare una canzone conosciuta (CD 10) o improvvisarne una (CD 15).","creation":null,"variants":"Cornamusa, tamburo, dulcimer, flauto, corno, liuto, lira, flauto di pan, ciaramella, viola."}
+  ]
+}
