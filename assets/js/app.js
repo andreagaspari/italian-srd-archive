@@ -121,10 +121,13 @@ function sortResults() {
 }
 
 if (searchInput) {
-    searchInput.value = new URLSearchParams(window.location.search).get('q') || '';
-    searchInput.addEventListener('input', filterResults);
-    searchInput.addEventListener('input', () => persistSectionSearch(searchInput.value));
-    filterResults();
+    let searchSubmitTimer;
+    searchInput.addEventListener('input', () => {
+        window.clearTimeout(searchSubmitTimer);
+        searchSubmitTimer = window.setTimeout(() => {
+            searchInput.form?.requestSubmit();
+        }, 300);
+    });
 }
 preserveSectionSearchOnNavigation();
 if (sortSelect) {

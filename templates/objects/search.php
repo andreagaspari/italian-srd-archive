@@ -1,7 +1,16 @@
-<div class="object-toolbar">
+<?php
+$searchFormParameters = $_GET;
+unset($searchFormParameters['route'], $searchFormParameters['page'], $searchFormParameters['pageSize'], $searchFormParameters['q']);
+?>
+<form class="object-toolbar" id="section-search-form" method="get" action="<?= e(appUrl($route)) ?>">
+    <?php foreach ($searchFormParameters as $name => $value): ?>
+        <?php if (is_scalar($value)): ?>
+            <input type="hidden" name="<?= e((string) $name) ?>" value="<?= e((string) $value) ?>">
+        <?php endif; ?>
+    <?php endforeach; ?>
     <label class="object-search">
         <span class="search-icon" aria-hidden="true">🔎</span>
-        <input id="object-search-input" type="search" placeholder="Cerca in questa sezione..." autocomplete="off">
+        <input id="object-search-input" name="q" type="search" value="<?= e(is_string($_GET['q'] ?? null) ? $_GET['q'] : '') ?>" placeholder="Cerca in questa sezione..." autocomplete="off">
     </label>
     <label class="object-sort">
         <span>Ordina</span>
@@ -18,4 +27,4 @@
         </select>
     </label>
     <button class="export-visible-button" id="export-visible-button" type="button">⇩ Esporta risultati filtrati (<?= e((string) $pagination->totalItems) ?>)</button>
-</div>
+</form>
