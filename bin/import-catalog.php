@@ -6,11 +6,11 @@ declare(strict_types=1);
  * Imports all JSON catalog datasets into MySQL using idempotent upserts.
  */
 
-require __DIR__ . '/../includes/database/DatabaseConnection.php';
-require __DIR__ . '/../includes/import/DataImporterInterface.php';
-require __DIR__ . '/../includes/import/JsonFileImporter.php';
+require_once __DIR__ . '/../includes/database/DatabaseConnection.php';
+require_once __DIR__ . '/../includes/import/DataImporterInterface.php';
+require_once __DIR__ . '/../includes/import/JsonFileImporter.php';
 
-if (PHP_SAPI !== 'cli') {
+if (PHP_SAPI !== 'cli' && !defined('CATALOG_IMPORT_WEB')) {
     http_response_code(404);
     exit;
 }
@@ -352,6 +352,13 @@ try {
 
     printf("Import completato: %d elementi totali.\n", $totalItems);
 } catch (Throwable $exception) {
+    if (defined('CATALOG_IMPORT_WEB')) {
+        http_response_code(500);
+        header('Content-Type: text/plain; charset=UTF-8');
+        echo "Import fallito: {$exception->getMessage()}\n";
+        exit;
+    }
+
     fwrite(STDERR, $exception->getMessage() . PHP_EOL);
     exit(1);
 }

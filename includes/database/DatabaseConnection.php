@@ -8,6 +8,13 @@ declare(strict_types=1);
 final class DatabaseConnection
 {
     /**
+     * Values loaded from `.env` when the hosting environment disables `putenv`.
+     *
+     * @var array<string, string>
+     */
+    private static array $loadedEnvironment = [];
+
+    /**
      * Loads the optional local `.env` file into the process environment.
      *
      * @return void
@@ -30,7 +37,7 @@ final class DatabaseConnection
         self::loadEnvironment();
         $dsn = self::requiredEnvironment('DB_DSN');
         $username = self::requiredEnvironment('DB_USER');
-        $password = getenv('DB_PASSWORD');
+        $password = self::getEnvironment('DB_PASSWORD');
 
         if ($password === false) {
             throw new RuntimeException('Variabile d’ambiente DB_PASSWORD non configurata.');
@@ -41,6 +48,25 @@ final class DatabaseConnection
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
+    }
+
+    /**
+     * Reads a value from the process environment or the local `.env` fallback.
+     *
+     * Process-level variables take precedence over values loaded from `.env`.
+     *
+     * @param string $name Environment variable name.
+     *
+     * @return string|false Environment value, or false when it is not configured.
+     */
+    public static function getEnvironment(string $name): string|false
+    {
+        $value = getenv($name);
+        if ($value !== false) {
+            return $value;
+        }
+
+        return self::$loadedEnvironment[$name] ?? false;
     }
 
     /**
@@ -79,7 +105,7 @@ final class DatabaseConnection
 
             $name = trim(substr($line, 0, $separator));
             $value = trim(substr($line, $separator + 1));
-            if ($name === '' || getenv($name) !== false) {
+            if ($name === '' || self::getEnvironment($name) !== false) {
                 continue;
             }
             if (
@@ -89,7 +115,12 @@ final class DatabaseConnection
                 $value = substr($value, 1, -1);
             }
 
-            putenv("{$name}={$value}");
+            if (function_exists('putenv')) {
+                putenv("{$name}={$value}");
+                continue;
+            }
+
+            self::$loadedEnvironment[$name] = $value;
         }
     }
 
@@ -104,7 +135,7 @@ final class DatabaseConnection
      */
     private static function requiredEnvironment(string $name): string
     {
-        $value = getenv($name);
+        $value = self::getEnvironment($name);
         if ($value === false || trim($value) === '') {
             throw new RuntimeException("Variabile d’ambiente {$name} non configurata.");
         }

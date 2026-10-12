@@ -25,57 +25,146 @@ L'archivio mette a disposizione:
 
 - PHP 8.0 o superiore;
 - web server con supporto PHP;
-- estensione PHP `mbstring`.
-- Per l'importazione del catalogo: estensione PHP `pdo_mysql` e MySQL 8.0 o superiore.
+- estensione PHP `mbstring`;
+- Apache con `mod_rewrite` per le route definite in [`.htaccess`](./.htaccess).
 
-Non è richiesto alcun database: i dati sono caricati direttamente dai file JSON in [`data/`](./data/).
+MySQL 8.0 o superiore e `pdo_mysql` sono necessari solo per la modalità
+`MYSQL` e per l'importazione del catalogo.
 
-## Preparazione del catalogo MySQL
+## Installazione
 
-Il catalogo continua a funzionare tramite JSON. Per installare la variante con database è disponibile una procedura unica:
+L'applicazione supporta due modalità indipendenti:
 
-```bash
-mysql -u root -p < database/schema.sql
+- `JSON` (predefinita), senza database;
+- `MYSQL`, con database e importazione dei JSON.
+
+### 1. Preparare i file da pubblicare
+
+Copiare sul server i file necessari all'esecuzione:
+
+```text
+index.php
+api-search.php
+export.php
+.htaccess
+assets/
+data/
+includes/
+templates/
 ```
 
-Lo schema crea il database `italian_srd_archive`. Dopo la creazione dello schema:
+Creare `.env` a partire da `.env.example` solo se serve configurare la
+sorgente dati:
 
 ```bash
 cp .env.example .env
-# configurare DB_DSN, DB_USER e DB_PASSWORD in .env
-php bin/import-catalog.php
 ```
 
-`DB_PASSWORD` non deve essere inserita nel repository. L'importatore conserva il documento originale in `payload`, costruisce il testo indicizzato in `search_text` e usa la coppia `dataset` + `item_id` come chiave stabile. La chiave applicativa completa resta disponibile nel formato `dataset:item_id`. Ripetere l'importazione aggiorna gli elementi esistenti senza duplicarli.
+Il file `.env` contiene dati sensibili: non inserirlo nel repository e non
+renderlo scaricabile via HTTP. Il file [`.htaccess`](./.htaccess) incluso nel
+progetto ne blocca l'accesso quando viene usato Apache.
 
-La fonte dati dell'applicazione è controllata dalla variabile `DATA_SOURCE`:
+### 2. Scegliere la sorgente dati
+
+Senza `.env`, oppure con:
 
 ```env
 DATA_SOURCE=JSON
 ```
 
-I valori ammessi sono:
+l'applicazione legge i file JSON dalla directory [`data/`](./data/) e non
+richiede alcun database.
 
-- `JSON` (predefinito): legge i file in [`data/`](./data/);
-- `MYSQL`: usa il database configurato tramite `DB_DSN`, `DB_USER` e `DB_PASSWORD`.
-
-Lo stesso valore viene applicato anche alla ricerca globale dell’header.
-
-Per usare il database:
+Per usare MySQL:
 
 ```env
 DATA_SOURCE=MYSQL
+DB_DSN=mysql:host=127.0.0.1;port=3306;dbname=italian_srd_archive;charset=utf8mb4
+DB_USER=nome_utente
+DB_PASSWORD=password
 ```
 
-Se `DATA_SOURCE` contiene un valore diverso da `JSON` o `MYSQL`, l'applicazione interrompe l'avvio con un errore esplicito.
+I valori ammessi per `DATA_SOURCE` sono solo `JSON` e `MYSQL`. Se la variabile
+manca, il valore predefinito è `JSON`.
 
-### Aggiornamento dei dati
+### 3. Installare la modalità MYSQL
 
-I file JSON in [`data/`](./data/) restano la sorgente importabile. Dopo averli aggiornati, non è necessario ricreare il database: è sufficiente eseguire nuovamente:
+Questa procedura serve solo se `DATA_SOURCE=MYSQL`.
+
+Creare il database con lo schema per una nuova installazione:
+
+```bash
+mysql -u root -p < database/schema.sql
+```
+
+Lo schema crea il database `italian_srd_archive`. Dopo aver configurato `.env`,
+importare tutti i dataset JSON:
 
 ```bash
 php bin/import-catalog.php
 ```
+
+L'importatore è idempotente: può essere eseguito nuovamente dopo un
+aggiornamento dei JSON senza ricreare il database né duplicare gli elementi.
+Conserva il documento completo in `payload`, il testo per la ricerca in
+`search_text` e usa `dataset` + `item_id` come chiave stabile.
+
+### 4. Importazione senza accesso CLI
+
+L'importazione da CLI è il metodo consigliato. Se l'hosting non offre SSH o un
+terminale, è possibile usare temporaneamente `import-catalog-web.php`:
+
+1. caricare `import-catalog-web.php` nella directory pubblica;
+2. aggiungere a `.env` un token casuale:
+
+   ```env
+   IMPORT_TOKEN=token-casuale-e-lungo
+   ```
+
+3. inviare una richiesta `POST` con l'header `X-Import-Token`:
+
+   ```bash
+   curl -X POST \
+     -H "X-Import-Token: token-casuale-e-lungo" \
+     https://example.com/italian-srd-archive/import-catalog-web.php
+   ```
+
+L'endpoint rifiuta le richieste `GET` e richiede un token configurato. Dopo
+aver verificato l'importazione, eliminarlo immediatamente insieme a
+`IMPORT_TOKEN` dal `.env`. Non lasciare questo endpoint online.
+
+### 5. Pulizia dopo l'installazione
+
+Questi elementi non sono necessari al funzionamento ordinario e possono
+restare solo nel repository o nell'ambiente locale:
+
+```text
+database/              # schema per la creazione iniziale
+tests/                 # test locali
+import-catalog-web.php # endpoint temporaneo, da eliminare sempre
+bin/migrate.php        # vecchio script, se presente
+.user.ini              # eventuale file temporaneo per il debug
+```
+
+`bin/import-catalog.php` può essere rimosso se non si dispone di accesso CLI o
+non si prevedono futuri reimport. È preferibile mantenerlo fuori dalla
+directory pubblica oppure conservarlo sul server solo per esecuzioni CLI.
+
+Con `DATA_SOURCE=JSON` è possibile rimuovere anche `.env` e tutti i componenti
+MySQL. Con `DATA_SOURCE=MYSQL`, invece, il database deve rimanere disponibile;
+la directory `database/` non viene letta durante il normale funzionamento.
+
+### Aggiornamento dei dati
+
+I file JSON in [`data/`](./data/) restano la sorgente ufficiale. Per aggiornare
+un'installazione MYSQL:
+
+1. sostituire i JSON nella directory `data/`;
+2. eseguire nuovamente `php bin/import-catalog.php` da CLI, oppure usare
+   temporaneamente l'importazione web descritta sopra;
+3. rimuovere l'endpoint web e il relativo token.
+
+Non è necessario ricreare il database.
 
 ## Avvio locale
 

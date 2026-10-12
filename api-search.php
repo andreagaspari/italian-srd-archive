@@ -14,7 +14,7 @@ if ($query === '') {
 }
 
 DatabaseConnection::loadEnvironment();
-$dataSource = strtoupper(trim((string) (getenv('DATA_SOURCE') ?: 'JSON')));
+$dataSource = strtoupper(trim((string) (DatabaseConnection::getEnvironment('DATA_SOURCE') ?: 'JSON')));
 if (!in_array($dataSource, ['JSON', 'MYSQL'], true)) {
     throw new RuntimeException('DATA_SOURCE deve essere JSON oppure MYSQL.');
 }
