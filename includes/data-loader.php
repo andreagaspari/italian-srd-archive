@@ -30,10 +30,12 @@ require_once __DIR__ . '/catalog/spells/JsonSpellProvider.php';
 require_once __DIR__ . '/catalog/monsters/MonsterQuery.php';
 require_once __DIR__ . '/catalog/monsters/MonsterProviderInterface.php';
 require_once __DIR__ . '/catalog/monsters/JsonMonsterProvider.php';
+require_once __DIR__ . '/catalog/MySqlCatalogProvider.php';
 require_once __DIR__ . '/presentation/FrontendController.php';
 require_once __DIR__ . '/presentation/SearchIndexBuilder.php';
 require_once __DIR__ . '/presentation/SearchIndexProviderInterface.php';
 require_once __DIR__ . '/presentation/JsonSearchIndexProvider.php';
+require_once __DIR__ . '/presentation/MySqlSearchIndexProvider.php';
 
 /**
  * Loads a JSON file through the default JSON importer.

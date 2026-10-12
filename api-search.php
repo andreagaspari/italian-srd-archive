@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/includes/bootstrap.php';
+require_once __DIR__ . '/includes/database/DatabaseConnection.php';
 
 $query = trim((string) ($_GET['q'] ?? ''));
 header('Content-Type: application/json; charset=UTF-8');
@@ -12,8 +13,20 @@ if ($query === '') {
     exit;
 }
 
-$datasetStore = new JsonDatasetStore(new JsonFileImporter(), __DIR__ . '/data');
-$provider = new JsonSearchIndexProvider($datasetStore, new SearchIndexBuilder());
+DatabaseConnection::loadEnvironment();
+$dataSource = strtoupper(trim((string) (getenv('DATA_SOURCE') ?: 'JSON')));
+if (!in_array($dataSource, ['JSON', 'MYSQL'], true)) {
+    throw new RuntimeException('DATA_SOURCE deve essere JSON oppure MYSQL.');
+}
+$provider = $dataSource === 'MYSQL'
+    ? new MySqlSearchIndexProvider(
+        DatabaseConnection::createFromEnvironment(),
+        new SearchIndexBuilder()
+    )
+    : new JsonSearchIndexProvider(
+        new JsonDatasetStore(new JsonFileImporter(), __DIR__ . '/data'),
+        new SearchIndexBuilder()
+    );
 $normalizedQuery = mb_strtolower($query, 'UTF-8');
 $items = array_values(array_filter(
     $provider->getIndex(),

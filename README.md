@@ -26,8 +26,56 @@ L'archivio mette a disposizione:
 - PHP 8.0 o superiore;
 - web server con supporto PHP;
 - estensione PHP `mbstring`.
+- Per l'importazione del catalogo: estensione PHP `pdo_mysql` e MySQL 8.0 o superiore.
 
 Non è richiesto alcun database: i dati sono caricati direttamente dai file JSON in [`data/`](./data/).
+
+## Preparazione del catalogo MySQL
+
+Il catalogo continua a funzionare tramite JSON. Per installare la variante con database è disponibile una procedura unica:
+
+```bash
+mysql -u root -p < database/schema.sql
+```
+
+Lo schema crea il database `italian_srd_archive`. Dopo la creazione dello schema:
+
+```bash
+cp .env.example .env
+# configurare DB_DSN, DB_USER e DB_PASSWORD in .env
+php bin/import-catalog.php
+```
+
+`DB_PASSWORD` non deve essere inserita nel repository. L'importatore conserva il documento originale in `payload`, costruisce il testo indicizzato in `search_text` e usa la coppia `dataset` + `item_id` come chiave stabile. La chiave applicativa completa resta disponibile nel formato `dataset:item_id`. Ripetere l'importazione aggiorna gli elementi esistenti senza duplicarli.
+
+La fonte dati dell'applicazione è controllata dalla variabile `DATA_SOURCE`:
+
+```env
+DATA_SOURCE=JSON
+```
+
+I valori ammessi sono:
+
+- `JSON` (predefinito): legge i file in [`data/`](./data/);
+- `MYSQL`: usa il database configurato tramite `DB_DSN`, `DB_USER` e `DB_PASSWORD`.
+
+Lo stesso valore viene applicato anche alla ricerca globale dell’header.
+
+Per usare il database:
+
+```env
+DATA_SOURCE=MYSQL
+```
+
+Se `DATA_SOURCE` contiene un valore diverso da `JSON` o `MYSQL`, l'applicazione interrompe l'avvio con un errore esplicito.
+
+### Aggiornamento dei dati
+
+I file JSON in [`data/`](./data/) restano la sorgente importabile. Dopo averli aggiornati, non è necessario ricreare il database: è sufficiente eseguire nuovamente:
+
+```bash
+php bin/import-catalog.php
+```
 
 ## Avvio locale
 

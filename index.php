@@ -20,19 +20,28 @@
 declare(strict_types=1);
 
 require __DIR__ . '/includes/bootstrap.php';
+require_once __DIR__ . '/includes/database/DatabaseConnection.php';
 
 $route = $_GET['route'] ?? 'home';
+DatabaseConnection::loadEnvironment();
+$dataSource = strtoupper(trim((string) (getenv('DATA_SOURCE') ?: 'JSON')));
+if (!in_array($dataSource, ['JSON', 'MYSQL'], true)) {
+    throw new RuntimeException('DATA_SOURCE deve essere JSON oppure MYSQL.');
+}
 $datasetStore = new JsonDatasetStore(new JsonFileImporter(), __DIR__ . '/data');
 $summary = new JsonCatalogSummary($datasetStore);
+$mysqlProvider = $dataSource === 'MYSQL'
+    ? new MySqlCatalogProvider(DatabaseConnection::createFromEnvironment())
+    : null;
 $catalog = new DataCatalog(
     store: $datasetStore,
-    weaponProvider: new JsonWeaponProvider($datasetStore),
-    armorProvider: new JsonArmorProvider($datasetStore),
-    ammunitionProvider: new JsonAmmunitionProvider($datasetStore),
-    toolsProvider: new JsonToolsProvider($datasetStore),
-    adventuringGearProvider: new JsonAdventuringGearProvider($datasetStore),
-    spellProvider: new JsonSpellProvider($datasetStore),
-    monsterProvider: new JsonMonsterProvider($datasetStore)
+    weaponProvider: $mysqlProvider ?? new JsonWeaponProvider($datasetStore),
+    armorProvider: $mysqlProvider ?? new JsonArmorProvider($datasetStore),
+    ammunitionProvider: $mysqlProvider ?? new JsonAmmunitionProvider($datasetStore),
+    toolsProvider: $mysqlProvider ?? new JsonToolsProvider($datasetStore),
+    adventuringGearProvider: $mysqlProvider ?? new JsonAdventuringGearProvider($datasetStore),
+    spellProvider: $mysqlProvider ?? new JsonSpellProvider($datasetStore),
+    monsterProvider: $mysqlProvider ?? new JsonMonsterProvider($datasetStore)
 );
 $spellsCount = $summary->count('spells');
 $monsterCount = $summary->count('monsters');
