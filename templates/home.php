@@ -5,7 +5,6 @@
             <h1>Cosa stai cercando?</h1>
             <p class="hero-copy">Scegli un’area per consultare rapidamente regole, incantesimi, mostri e oggetti.</p>
         </div>
-        <span class="hero-decoration" aria-hidden="true">✦</span>
     </div>
 
     <div class="area-grid">

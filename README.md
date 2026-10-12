@@ -4,6 +4,8 @@ Archivio web in italiano dei contenuti dello **System Reference Document (SRD)**
 
 L'applicazione legge i dati dai file JSON presenti in [`data/`](./data/) e li rende consultabili tramite un'interfaccia web con ricerca, filtri, paginazione ed esportazione.
 
+I preferiti sono salvati localmente nel browser tramite `localStorage`. Vengono memorizzati i riferimenti canonici nel formato `dataset:id`, non la copia completa dell'elemento; questo mantiene i preferiti compatibili con gli aggiornamenti dei dataset e non richiede un database.
+
 ## Contenuti
 
 L'archivio mette a disposizione:
@@ -52,6 +54,14 @@ In alternativa, il progetto può essere pubblicato in un ambiente Apache/PHP. Il
 ├── tests/               # Test funzionali del catalogo
 └── index.php            # Entry point dell'applicazione
 ```
+
+## Preferiti
+
+Ogni elemento del catalogo ha un ID stabile all'interno del proprio dataset. La chiave usata dai preferiti combina dataset e ID, per esempio `spells:aculeo-mentale` o `armor:scudo`, così anche ID uguali in categorie diverse non entrano in conflitto.
+
+La lista viene salvata nella chiave `isa:favorites:v1` di `localStorage`. È quindi specifica del browser e del dispositivo: non viene sincronizzata e può essere persa cancellando i dati del sito. La pagina dei preferiti segnala gli elementi che non sono più presenti nei JSON correnti.
+
+La struttura versionata e l'uso di riferimenti invece dei dati completi permettono di sostituire in futuro l'implementazione locale con un archivio associato a un account e a più liste, senza cambiare il formato con cui gli elementi del catalogo vengono identificati.
 
 ## Test
 

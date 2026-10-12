@@ -111,7 +111,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
         $description
     ]);
 ?>
-        <article class="result-card monster-card" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($monster['name']) ?>" data-sort-category="<?= e($monster['type']) ?>" data-sort-weight="0" data-sort-value="<?= e($monster['challenge_rating']) ?>" data-search="<?= e($searchText) ?>">
+        <article class="result-card monster-card" data-favorite-dataset="monsters" data-favorite-id="<?= e($monster['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($monster['name']) ?>" data-sort-category="<?= e($monster['type']) ?>" data-sort-weight="0" data-sort-value="<?= e($monster['challenge_rating']) ?>" data-search="<?= e($searchText) ?>">
         <div class="weapon-category"><a class="weapon-category-main monster-filter-link" href="<?= e($monsterTypeUrl) ?>"><?= e($monster['type']) ?></a></div>
         <div class="weapon-heading"><h3><?= e($monster['name']) ?></h3><a class="weapon-mode monster-filter-link" href="<?= e($monsterChallengeUrl) ?>">GS <?= e($monster['challenge_rating']) ?></a></div>
         <div class="weapon-details monster-details">

@@ -71,7 +71,7 @@ if ($selectedSchool !== '') {
     $spellClassBaseQuery['scuola'] = $selectedSchool;
 }
 ?>
-        <article class="result-card spell-card" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($spell['name']) ?>" data-sort-category="<?= e($spell['school']) ?>" data-sort-weight="0" data-sort-value="0" data-search="<?= e(implode(' ', [$spell['name'], $spell['school'], implode(' ', $spell['classes']), $spell['casting_time'], $spell['range'], $spell['components'], $spell['duration'], $spell['description'], $spell['higher_level']])) ?>">
+        <article class="result-card spell-card" data-favorite-dataset="spells" data-favorite-id="<?= e($spell['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($spell['name']) ?>" data-sort-category="<?= e($spell['school']) ?>" data-sort-weight="0" data-sort-value="0" data-search="<?= e(implode(' ', [$spell['name'], $spell['school'], implode(' ', $spell['classes']), $spell['casting_time'], $spell['range'], $spell['components'], $spell['duration'], $spell['higher_level']])) ?>">
             <div class="spell-heading">
                 <div>
                     <a class="spell-level spell-filter-link" href="<?= e(appUrl('incantesimi?' . http_build_query($spellLevelQuery))) ?>"><?= $spell['level'] === 0 ? 'Trucchetto' : e((string) $spell['level']) . '° livello' ?></a>

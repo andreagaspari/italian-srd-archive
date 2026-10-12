@@ -49,7 +49,7 @@ $armorTypeLabels = [
     $armorDescription .= '<div>Indossare: ' . $armorData['donning'][$armor['armor_type']]['wear'] . ' · Togliere: ' . $armorData['donning'][$armor['armor_type']]['remove'] . '</div>';
     $exportData = buildObjectExportData($armor['name'], $armor['cost'], $armor['weight'], $armorDescription);
 ?>
-        <article class="result-card armor-card" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($armor['name']) ?>" data-sort-category="<?= e($armor['armor_type']) ?>" data-sort-weight="<?= e($armor['weight']) ?>" data-sort-value="<?= e($armor['cost']) ?>" data-search="<?= e(implode(' ', [
+        <article class="result-card armor-card" data-favorite-dataset="armor" data-favorite-id="<?= e($armor['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($armor['name']) ?>" data-sort-category="<?= e($armor['armor_type']) ?>" data-sort-weight="<?= e($armor['weight']) ?>" data-sort-value="<?= e($armor['cost']) ?>" data-search="<?= e(implode(' ', [
             $armor['name'],
             $armor['armor_type'],
             $armor['armor_class'],

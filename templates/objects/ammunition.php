@@ -22,7 +22,7 @@
     $exportDescription .= '<div><b>Armi compatibili:</b> ' . implode(' · ', $item['compatible_weapons']) . '</div>';
     $exportData = buildObjectExportData($item['name'], $item['cost'], $item['weight'], $exportDescription);
 ?>
-        <article class="result-card ammunition-card" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($item['name']) ?>" data-sort-category="<?= e($item['container']) ?>" data-sort-weight="<?= e($item['weight']) ?>" data-sort-value="<?= e($item['cost']) ?>" data-search="<?= e(implode(' ', [
+        <article class="result-card ammunition-card" data-favorite-dataset="ammunition" data-favorite-id="<?= e($item['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($item['name']) ?>" data-sort-category="<?= e($item['container']) ?>" data-sort-weight="<?= e($item['weight']) ?>" data-sort-value="<?= e($item['cost']) ?>" data-search="<?= e(implode(' ', [
             $item['name'],
             $item['container'],
             implode(' ', $item['compatible_weapons']),

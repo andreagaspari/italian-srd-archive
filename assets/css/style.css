@@ -200,16 +200,35 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .section-heading h1, h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: 25px; letter-spacing: -.02em; }
 .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); gap: 14px; }
 .result-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     min-height: 280px;
-    padding: 17px 18px 15px;
+    padding: 17px 18px 58px;
     border: 1px solid var(--line);
     border-radius: 8px;
     background: var(--panel);
     transition: border-color .15s, transform .15s, box-shadow .15s;
 }
 .result-card:hover { border-color: #d7b5ab; box-shadow: var(--shadow); transform: translateY(-2px); }
-.export-button { display: block; margin: 16px 0 0 auto; padding: 6px 9px; color: var(--accent); border: 1px solid #d7b5ab; border-radius: 5px; background: var(--accent-soft); font-size: 10px; font-weight: 700; cursor: pointer; }
+.export-button { position: absolute; right: 14px; bottom: 14px; display: block; margin: 0; padding: 6px 9px; color: var(--accent); border: 1px solid #d7b5ab; border-radius: 5px; background: var(--accent-soft); font-size: 10px; font-weight: 700; cursor: pointer; }
 .export-button:hover { color: var(--ink); border-color: var(--accent); }
+.favorite-button { position: absolute; bottom: 14px; left: 14px; display: grid; width: 28px; height: 28px; margin: 0; padding: 0; place-items: center; color: var(--accent); border: 1px solid #d7b5ab; border-radius: 50%; background: var(--accent-soft); font-size: 14px; line-height: 1; cursor: pointer; }
+.favorite-button:hover, .favorite-button.is-favorite { color: var(--accent); border-color: #d7b5ab; background: var(--accent-soft); }
+.favorites-link { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; color: var(--muted); border: 1px solid transparent; border-radius: 6px; font-size: 17px; text-decoration: none; white-space: nowrap; }
+.favorites-link:hover, .favorites-link:focus-visible { color: var(--accent); border-color: #e6c5b9; background: var(--accent-soft); outline: 0; }
+.favorites-icon { display: block; line-height: 1; }
+.favorites-link strong { position: absolute; top: -4px; right: -5px; display: grid; min-width: 16px; height: 16px; padding: 0 3px; place-items: center; color: #fff; border: 2px solid var(--panel); border-radius: 999px; background: var(--accent); font-size: 9px; line-height: 1; }
+.favorites-intro { max-width: 650px; color: var(--muted); }
+.favorites-filters { display: flex; align-items: end; gap: 10px; margin: 20px 0; }
+.favorites-search { display: flex; flex: 1 1 300px; align-items: center; gap: 9px; max-width: 520px; padding: 0 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+.favorites-search .search-icon { color: var(--accent); font-size: 16px; }
+.favorites-search input { width: 100%; padding: 9px 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 12px; }
+.favorites-type-filter { display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: 10px; }
+.favorites-type-filter select { padding: 8px 28px 8px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--ink); font: inherit; font-size: 11px; }
+.favorites-filter-empty { margin: 24px 0; color: var(--muted); }
+.favorites-missing { margin-top: 24px; padding: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; }
+.favorites-missing .button-secondary { margin-left: 10px; }
 .export-dialog-backdrop { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(47, 37, 31, .34); }
 .export-dialog { position: relative; width: min(100%, 430px); padding: 25px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); box-shadow: 0 18px 45px rgba(47, 37, 31, .2); }
 .export-dialog h2 { margin: 0 0 8px; font-size: 24px; }
@@ -352,6 +371,8 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
     .top-search { width: min(52vw, 240px); }
     .top-search kbd, .version-badge { display: none; }
     .icon-button span { display: block; width: 18px; height: 2px; background: var(--ink); }
+    .favorites-filters { align-items: stretch; flex-direction: column; }
+    .favorites-search { flex-basis: auto; max-width: none; }
     .main-content { padding: 36px 18px 22px; }
     .hero { margin-bottom: 32px; }
     .hero-decoration { display: none; }

@@ -12,6 +12,7 @@
   "items": [
     {
       "name": "Aboleth",
+      "id": "aboleth",
       "type": "Aberrazione",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -88,6 +89,7 @@
     },
     {
       "name": "Albero risvegliato",
+      "id": "albero-risvegliato",
       "type": "Vegetale",
       "size": "Enorme",
       "alignment": "neutrale",
@@ -154,6 +156,7 @@
     },
     {
       "name": "Alce",
+      "id": "alce",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -220,6 +223,7 @@
     },
     {
       "name": "Alce gigante",
+      "id": "alce-gigante",
       "type": "Celestiale",
       "size": "Enorme",
       "alignment": "neutrale buono",
@@ -290,6 +294,7 @@
     },
     {
       "name": "Allosauro",
+      "id": "allosauro",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -356,6 +361,7 @@
     },
     {
       "name": "Ameba paglierina",
+      "id": "ameba-paglierina",
       "type": "Melma",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -436,6 +442,7 @@
     },
     {
       "name": "Anchilosauro",
+      "id": "anchilosauro",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -498,6 +505,7 @@
     },
     {
       "name": "Ankheg",
+      "id": "ankheg",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -565,6 +573,7 @@
     },
     {
       "name": "Aquila",
+      "id": "aquila",
       "type": "Bestia",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -631,6 +640,7 @@
     },
     {
       "name": "Aquila gigante",
+      "id": "aquila-gigante",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "neutrale buono",
@@ -701,6 +711,7 @@
     },
     {
       "name": "Archelon",
+      "id": "archelon",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -772,6 +783,7 @@
     },
     {
       "name": "Arcimago",
+      "id": "arcimago",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -861,6 +873,7 @@
     },
     {
       "name": "Armatura animata",
+      "id": "armatura-animata",
       "type": "Costrutto",
       "size": "",
       "alignment": "senza allineamento",
@@ -927,6 +940,7 @@
     },
     {
       "name": "Arpia",
+      "id": "arpia",
       "type": "Mostruosità",
       "size": "Media",
       "alignment": "caotico malvagio",
@@ -989,6 +1003,7 @@
     },
     {
       "name": "Arto di troll",
+      "id": "arto-di-troll",
       "type": "Gigante",
       "size": "",
       "alignment": "caotico malvagio",
@@ -1056,6 +1071,7 @@
     },
     {
       "name": "Assassino",
+      "id": "assassino",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -1140,6 +1156,7 @@
     },
     {
       "name": "Avvoltoio",
+      "id": "avvoltoio",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -1211,6 +1228,7 @@
     },
     {
       "name": "Avvoltoio gigante",
+      "id": "avvoltoio-gigante",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "neutrale malvagio",
@@ -1286,6 +1304,7 @@
     },
     {
       "name": "Azer sentinella",
+      "id": "azer-sentinella",
       "type": "Elementale",
       "size": "",
       "alignment": "legale neutrale",
@@ -1357,6 +1376,7 @@
     },
     {
       "name": "Babbuino",
+      "id": "babbuino",
       "type": "Bestia",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -1424,6 +1444,7 @@
     },
     {
       "name": "Balor",
+      "id": "balor",
       "type": "Immondo",
       "size": "Enorme",
       "alignment": "caotico malvagio",
@@ -1508,6 +1529,7 @@
     },
     {
       "name": "Banco di piranha",
+      "id": "banco-di-piranha",
       "type": "Sciame",
       "size": "",
       "alignment": "senza allineamento",
@@ -1583,6 +1605,7 @@
     },
     {
       "name": "Bandito",
+      "id": "bandito",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -1649,6 +1672,7 @@
     },
     {
       "name": "Basilisco",
+      "id": "basilisco",
       "type": "Mostruosità",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -1716,6 +1740,7 @@
     },
     {
       "name": "Beccoaguzzo",
+      "id": "beccoaguzzo",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -1778,6 +1803,7 @@
     },
     {
       "name": "Behir",
+      "id": "behir",
       "type": "Mostruosità",
       "size": "Enorme",
       "alignment": "neutrale malvagio",
@@ -1853,6 +1879,7 @@
     },
     {
       "name": "Berserker",
+      "id": "berserker",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -1924,6 +1951,7 @@
     },
     {
       "name": "Boleto stridente",
+      "id": "boleto-stridente",
       "type": "Vegetale",
       "size": "",
       "alignment": "senza allineamento",
@@ -1990,6 +2018,7 @@
     },
     {
       "name": "Bruto",
+      "id": "bruto",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -2061,6 +2090,7 @@
     },
     {
       "name": "Bugbear cacciatore",
+      "id": "bugbear-cacciatore",
       "type": "Folletto",
       "size": "",
       "alignment": "caotico malvagio",
@@ -2141,6 +2171,7 @@
     },
     {
       "name": "Bugbear guerriero",
+      "id": "bugbear-guerriero",
       "type": "Folletto",
       "size": "",
       "alignment": "caotico malvagio",
@@ -2216,6 +2247,7 @@
     },
     {
       "name": "Bulette",
+      "id": "bulette",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -2287,6 +2319,7 @@
     },
     {
       "name": "Cacciatore invisibile",
+      "id": "cacciatore-invisibile",
       "type": "Elementale",
       "size": "Grande",
       "alignment": "neutrale",
@@ -2366,6 +2399,7 @@
     },
     {
       "name": "Cammello",
+      "id": "cammello",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -2428,6 +2462,7 @@
     },
     {
       "name": "Cane della morte",
+      "id": "cane-della-morte",
       "type": "Mostruosità",
       "size": "Media",
       "alignment": "neutrale malvagio",
@@ -2498,6 +2533,7 @@
     },
     {
       "name": "Cane intermittente",
+      "id": "cane-intermittente",
       "type": "Folletto",
       "size": "",
       "alignment": "legale buono",
@@ -2569,6 +2605,7 @@
     },
     {
       "name": "Capitano dei pirati",
+      "id": "capitano-dei-pirati",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -2649,6 +2686,7 @@
     },
     {
       "name": "Capitano delle guardie",
+      "id": "capitano-delle-guardie",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -2719,6 +2757,7 @@
     },
     {
       "name": "Capo dei banditi",
+      "id": "capo-dei-banditi",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -2794,6 +2833,7 @@
     },
     {
       "name": "Capo dei bruti",
+      "id": "capo-dei-bruti",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -2865,6 +2905,7 @@
     },
     {
       "name": "Capra",
+      "id": "capra",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -2931,6 +2972,7 @@
     },
     {
       "name": "Capra gigante",
+      "id": "capra-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -2997,6 +3039,7 @@
     },
     {
       "name": "Cavaliere",
+      "id": "cavaliere",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -3072,6 +3115,7 @@
     },
     {
       "name": "Cavallo da galoppo",
+      "id": "cavallo-da-galoppo",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -3134,6 +3178,7 @@
     },
     {
       "name": "Cavallo da guerra",
+      "id": "cavallo-da-guerra",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -3196,6 +3241,7 @@
     },
     {
       "name": "Cavallo da tiro",
+      "id": "cavallo-da-tiro",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -3258,6 +3304,7 @@
     },
     {
       "name": "Cavallo degli incubi",
+      "id": "cavallo-degli-incubi",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "neutrale malvagio",
@@ -3329,6 +3376,7 @@
     },
     {
       "name": "Cavalluccio marino",
+      "id": "cavalluccio-marino",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -3400,6 +3448,7 @@
     },
     {
       "name": "Cavalluccio marino gigante",
+      "id": "cavalluccio-marino-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -3472,6 +3521,7 @@
     },
     {
       "name": "Centauro combattente",
+      "id": "centauro-combattente",
       "type": "Folletto",
       "size": "Grande",
       "alignment": "neutrale buono",
@@ -3547,6 +3597,7 @@
     },
     {
       "name": "Cespuglio risvegliato",
+      "id": "cespuglio-risvegliato",
       "type": "Vegetale",
       "size": "",
       "alignment": "neutrale",
@@ -3613,6 +3664,7 @@
     },
     {
       "name": "Chimera",
+      "id": "chimera",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -3679,6 +3731,7 @@
     },
     {
       "name": "Chuul",
+      "id": "chuul",
       "type": "Aberrazione",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -3754,6 +3807,7 @@
     },
     {
       "name": "Cinghiale",
+      "id": "cinghiale",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -3821,6 +3875,7 @@
     },
     {
       "name": "Cinghiale gigante",
+      "id": "cinghiale-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -3888,6 +3943,7 @@
     },
     {
       "name": "Cinghiale mannaro",
+      "id": "cinghiale-mannaro",
       "type": "Mostruosità",
       "size": "Media o Piccola",
       "alignment": "neutrale",
@@ -3963,6 +4019,7 @@
     },
     {
       "name": "Coboldo guerriero",
+      "id": "coboldo-guerriero",
       "type": "Drago",
       "size": "",
       "alignment": "neutrale",
@@ -4034,6 +4091,7 @@
     },
     {
       "name": "Coccatrice",
+      "id": "coccatrice",
       "type": "Mostruosità",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -4100,6 +4158,7 @@
     },
     {
       "name": "Coccodrillo",
+      "id": "coccodrillo",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -4171,6 +4230,7 @@
     },
     {
       "name": "Coccodrillo gigante",
+      "id": "coccodrillo-gigante",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -4242,6 +4302,7 @@
     },
     {
       "name": "Colonia di serpenti velenosi",
+      "id": "colonia-di-serpenti-velenosi",
       "type": "Sciame",
       "size": "",
       "alignment": "senza allineamento",
@@ -4317,6 +4378,7 @@
     },
     {
       "name": "Colonia di topi",
+      "id": "colonia-di-topi",
       "type": "Sciame",
       "size": "",
       "alignment": "senza allineamento",
@@ -4392,6 +4454,7 @@
     },
     {
       "name": "Corvo",
+      "id": "corvo",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -4463,6 +4526,7 @@
     },
     {
       "name": "Couatl",
+      "id": "couatl",
       "type": "Celestiale",
       "size": "",
       "alignment": "legale buono",
@@ -4543,6 +4607,7 @@
     },
     {
       "name": "Cubo gelatinoso",
+      "id": "cubo-gelatinoso",
       "type": "Melma",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -4614,6 +4679,7 @@
     },
     {
       "name": "Cultista",
+      "id": "cultista",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -4684,6 +4750,7 @@
     },
     {
       "name": "Cultista fanatico",
+      "id": "cultista-fanatico",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -4759,6 +4826,7 @@
     },
     {
       "name": "Cumulo strisciante",
+      "id": "cumulo-strisciante",
       "type": "Vegetale",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -4838,6 +4906,7 @@
     },
     {
       "name": "Daino",
+      "id": "daino",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -4909,6 +4978,7 @@
     },
     {
       "name": "Deva",
+      "id": "deva",
       "type": "Celestiale",
       "size": "",
       "alignment": "legale buono",
@@ -4993,6 +5063,7 @@
     },
     {
       "name": "Diavolo barbuto",
+      "id": "diavolo-barbuto",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -5068,6 +5139,7 @@
     },
     {
       "name": "Diavolo cornuto",
+      "id": "diavolo-cornuto",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -5143,6 +5215,7 @@
     },
     {
       "name": "Diavolo d'ossa",
+      "id": "diavolo-d-ossa",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -5222,6 +5295,7 @@
     },
     {
       "name": "Diavolo del ghiaccio",
+      "id": "diavolo-del-ghiaccio",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -5297,6 +5371,7 @@
     },
     {
       "name": "Diavolo della fossa",
+      "id": "diavolo-della-fossa",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -5376,6 +5451,7 @@
     },
     {
       "name": "Diavolo delle catene",
+      "id": "diavolo-delle-catene",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -5456,6 +5532,7 @@
     },
     {
       "name": "Diavolo uncinato",
+      "id": "diavolo-uncinato",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -5535,6 +5612,7 @@
     },
     {
       "name": "Djinni",
+      "id": "djinni",
       "type": "Elementale",
       "size": "Grande",
       "alignment": "neutrale",
@@ -5606,6 +5684,7 @@
     },
     {
       "name": "Doppelganger",
+      "id": "doppelganger",
       "type": "Mostruosità",
       "size": "Media",
       "alignment": "neutrale",
@@ -5681,6 +5760,7 @@
     },
     {
       "name": "Drago bianco adulto",
+      "id": "drago-bianco-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -5761,6 +5841,7 @@
     },
     {
       "name": "Drago bianco antico",
+      "id": "drago-bianco-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "caotico malvagio",
@@ -5841,6 +5922,7 @@
     },
     {
       "name": "Drago bianco cucciolo",
+      "id": "drago-bianco-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "caotico malvagio",
@@ -5916,6 +5998,7 @@
     },
     {
       "name": "Drago bianco giovane",
+      "id": "drago-bianco-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -5991,6 +6074,7 @@
     },
     {
       "name": "Drago blu adulto",
+      "id": "drago-blu-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -6071,6 +6155,7 @@
     },
     {
       "name": "Drago blu antico",
+      "id": "drago-blu-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "legale malvagio",
@@ -6151,6 +6236,7 @@
     },
     {
       "name": "Drago blu cucciolo",
+      "id": "drago-blu-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "legale malvagio",
@@ -6221,6 +6307,7 @@
     },
     {
       "name": "Drago blu giovane",
+      "id": "drago-blu-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -6291,6 +6378,7 @@
     },
     {
       "name": "Drago d'argento adulto",
+      "id": "drago-d-argento-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale buono",
@@ -6371,6 +6459,7 @@
     },
     {
       "name": "Drago d'argento antico",
+      "id": "drago-d-argento-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "legale buono",
@@ -6451,6 +6540,7 @@
     },
     {
       "name": "Drago d'argento cucciolo",
+      "id": "drago-d-argento-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "legale buono",
@@ -6521,6 +6611,7 @@
     },
     {
       "name": "Drago d'argento giovane",
+      "id": "drago-d-argento-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale buono",
@@ -6591,6 +6682,7 @@
     },
     {
       "name": "Drago d'oro adulto",
+      "id": "drago-d-oro-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale buono",
@@ -6671,6 +6763,7 @@
     },
     {
       "name": "Drago d'oro antico",
+      "id": "drago-d-oro-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "legale buono",
@@ -6751,6 +6844,7 @@
     },
     {
       "name": "Drago d'oro cucciolo",
+      "id": "drago-d-oro-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "legale buono",
@@ -6826,6 +6920,7 @@
     },
     {
       "name": "Drago d'oro giovane",
+      "id": "drago-d-oro-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale buono",
@@ -6901,6 +6996,7 @@
     },
     {
       "name": "Drago d'ottone adulto",
+      "id": "drago-d-ottone-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico buono",
@@ -6981,6 +7077,7 @@
     },
     {
       "name": "Drago d'ottone antico",
+      "id": "drago-d-ottone-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "caotico buono",
@@ -7061,6 +7158,7 @@
     },
     {
       "name": "Drago d'ottone cucciolo",
+      "id": "drago-d-ottone-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "caotico buono",
@@ -7131,6 +7229,7 @@
     },
     {
       "name": "Drago d'ottone giovane",
+      "id": "drago-d-ottone-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico buono",
@@ -7201,6 +7300,7 @@
     },
     {
       "name": "Drago di bronzo adulto",
+      "id": "drago-di-bronzo-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale buono",
@@ -7281,6 +7381,7 @@
     },
     {
       "name": "Drago di bronzo antico",
+      "id": "drago-di-bronzo-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "legale buono",
@@ -7361,6 +7462,7 @@
     },
     {
       "name": "Drago di bronzo cucciolo",
+      "id": "drago-di-bronzo-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "legale buono",
@@ -7436,6 +7538,7 @@
     },
     {
       "name": "Drago di bronzo giovane",
+      "id": "drago-di-bronzo-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale buono",
@@ -7511,6 +7614,7 @@
     },
     {
       "name": "Drago di rame adulto",
+      "id": "drago-di-rame-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico buono",
@@ -7591,6 +7695,7 @@
     },
     {
       "name": "Drago di rame antico",
+      "id": "drago-di-rame-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "caotico buono",
@@ -7671,6 +7776,7 @@
     },
     {
       "name": "Drago di rame cucciolo",
+      "id": "drago-di-rame-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "caotico buono",
@@ -7741,6 +7847,7 @@
     },
     {
       "name": "Drago di rame giovane",
+      "id": "drago-di-rame-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico buono",
@@ -7811,6 +7918,7 @@
     },
     {
       "name": "Drago nero adulto",
+      "id": "drago-nero-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -7891,6 +7999,7 @@
     },
     {
       "name": "Drago nero antico",
+      "id": "drago-nero-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "caotico malvagio",
@@ -7971,6 +8080,7 @@
     },
     {
       "name": "Drago nero cucciolo",
+      "id": "drago-nero-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "caotico malvagio",
@@ -8046,6 +8156,7 @@
     },
     {
       "name": "Drago nero giovane",
+      "id": "drago-nero-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -8121,6 +8232,7 @@
     },
     {
       "name": "Drago rosso adulto",
+      "id": "drago-rosso-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -8201,6 +8313,7 @@
     },
     {
       "name": "Drago rosso antico",
+      "id": "drago-rosso-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "caotico malvagio",
@@ -8281,6 +8394,7 @@
     },
     {
       "name": "Drago rosso cucciolo",
+      "id": "drago-rosso-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "caotico malvagio",
@@ -8351,6 +8465,7 @@
     },
     {
       "name": "Drago rosso giovane",
+      "id": "drago-rosso-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -8421,6 +8536,7 @@
     },
     {
       "name": "Drago verde adulto",
+      "id": "drago-verde-adulto",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -8501,6 +8617,7 @@
     },
     {
       "name": "Drago verde antico",
+      "id": "drago-verde-antico",
       "type": "Drago",
       "size": "Enorme",
       "alignment": "legale malvagio",
@@ -8581,6 +8698,7 @@
     },
     {
       "name": "Drago verde cucciolo",
+      "id": "drago-verde-cucciolo",
       "type": "Drago",
       "size": "Media",
       "alignment": "legale malvagio",
@@ -8656,6 +8774,7 @@
     },
     {
       "name": "Drago verde giovane",
+      "id": "drago-verde-giovane",
       "type": "Drago",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -8731,6 +8850,7 @@
     },
     {
       "name": "Dretch",
+      "id": "dretch",
       "type": "Immondo",
       "size": "",
       "alignment": "caotico malvagio",
@@ -8801,6 +8921,7 @@
     },
     {
       "name": "Driade",
+      "id": "driade",
       "type": "Folletto",
       "size": "",
       "alignment": "neutrale",
@@ -8877,6 +8998,7 @@
     },
     {
       "name": "Drider",
+      "id": "drider",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -8953,6 +9075,7 @@
     },
     {
       "name": "Druido",
+      "id": "druido",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -9023,6 +9146,7 @@
     },
     {
       "name": "Efreeti",
+      "id": "efreeti",
       "type": "Elementale",
       "size": "Grande",
       "alignment": "neutrale",
@@ -9094,6 +9218,7 @@
     },
     {
       "name": "Elefante",
+      "id": "elefante",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -9161,6 +9286,7 @@
     },
     {
       "name": "Elementale del fuoco",
+      "id": "elementale-del-fuoco",
       "type": "Elementale",
       "size": "Grande",
       "alignment": "neutrale",
@@ -9236,6 +9362,7 @@
     },
     {
       "name": "Elementale dell'acqua",
+      "id": "elementale-dell-acqua",
       "type": "Elementale",
       "size": "Grande",
       "alignment": "neutrale",
@@ -9311,6 +9438,7 @@
     },
     {
       "name": "Elementale dell'aria",
+      "id": "elementale-dell-aria",
       "type": "Elementale",
       "size": "Grande",
       "alignment": "neutrale",
@@ -9386,6 +9514,7 @@
     },
     {
       "name": "Elementale della terra",
+      "id": "elementale-della-terra",
       "type": "Elementale",
       "size": "Grande",
       "alignment": "neutrale",
@@ -9457,6 +9586,7 @@
     },
     {
       "name": "Erinni",
+      "id": "erinni",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -9541,6 +9671,7 @@
     },
     {
       "name": "Esploratore",
+      "id": "esploratore",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -9611,6 +9742,7 @@
     },
     {
       "name": "Ettercap",
+      "id": "ettercap",
       "type": "Mostruosità",
       "size": "Media",
       "alignment": "neutrale malvagio",
@@ -9687,6 +9819,7 @@
     },
     {
       "name": "Ettin",
+      "id": "ettin",
       "type": "Gigante",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -9761,6 +9894,7 @@
     },
     {
       "name": "Faina",
+      "id": "faina",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -9827,6 +9961,7 @@
     },
     {
       "name": "Faina gigante",
+      "id": "faina-gigante",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -9893,6 +10028,7 @@
     },
     {
       "name": "Falco",
+      "id": "falco",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -9959,6 +10095,7 @@
     },
     {
       "name": "Falco di sangue",
+      "id": "falco-di-sangue",
       "type": "Bestia",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -10030,6 +10167,7 @@
     },
     {
       "name": "Famiglio del vampiro",
+      "id": "famiglio-del-vampiro",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -10118,6 +10256,7 @@
     },
     {
       "name": "Fantasma",
+      "id": "fantasma",
       "type": "Non morto",
       "size": "",
       "alignment": "neutrale",
@@ -10193,6 +10332,7 @@
     },
     {
       "name": "Fauce gorgogliante",
+      "id": "fauce-gorgogliante",
       "type": "Aberrazione",
       "size": "Media",
       "alignment": "caotico neutrale",
@@ -10264,6 +10404,7 @@
     },
     {
       "name": "Fungo viola",
+      "id": "fungo-viola",
       "type": "Vegetale",
       "size": "",
       "alignment": "senza allineamento",
@@ -10330,6 +10471,7 @@
     },
     {
       "name": "Fuoco fatuo",
+      "id": "fuoco-fatuo",
       "type": "Non morto",
       "size": "",
       "alignment": "caotico malvagio",
@@ -10410,6 +10552,7 @@
     },
     {
       "name": "Fustigatore",
+      "id": "fustigatore",
       "type": "Aberrazione",
       "size": "Grande",
       "alignment": "neutrale malvagio",
@@ -10481,6 +10624,7 @@
     },
     {
       "name": "Gargoyle",
+      "id": "gargoyle",
       "type": "Elementale",
       "size": "",
       "alignment": "caotico malvagio",
@@ -10556,6 +10700,7 @@
     },
     {
       "name": "Gatto",
+      "id": "gatto",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -10627,6 +10772,7 @@
     },
     {
       "name": "Ghast",
+      "id": "ghast",
       "type": "Non morto",
       "size": "",
       "alignment": "caotico malvagio",
@@ -10702,6 +10848,7 @@
     },
     {
       "name": "Ghoul",
+      "id": "ghoul",
       "type": "Non morto",
       "size": "",
       "alignment": "caotico malvagio",
@@ -10768,6 +10915,7 @@
     },
     {
       "name": "Gigante del fuoco",
+      "id": "gigante-del-fuoco",
       "type": "Gigante",
       "size": "Enorme",
       "alignment": "legale malvagio",
@@ -10838,6 +10986,7 @@
     },
     {
       "name": "Gigante del gelo",
+      "id": "gigante-del-gelo",
       "type": "Gigante",
       "size": "Enorme",
       "alignment": "neutrale malvagio",
@@ -10913,6 +11062,7 @@
     },
     {
       "name": "Gigante delle colline",
+      "id": "gigante-delle-colline",
       "type": "Gigante",
       "size": "Enorme",
       "alignment": "caotico malvagio",
@@ -10979,6 +11129,7 @@
     },
     {
       "name": "Gigante delle nuvole",
+      "id": "gigante-delle-nuvole",
       "type": "Gigante",
       "size": "Enorme",
       "alignment": "neutrale",
@@ -11050,6 +11201,7 @@
     },
     {
       "name": "Gigante delle pietre",
+      "id": "gigante-delle-pietre",
       "type": "Gigante",
       "size": "Enorme",
       "alignment": "neutrale",
@@ -11121,6 +11273,7 @@
     },
     {
       "name": "Gigante delle tempeste",
+      "id": "gigante-delle-tempeste",
       "type": "Gigante",
       "size": "Enorme",
       "alignment": "caotico buono",
@@ -11200,6 +11353,7 @@
     },
     {
       "name": "Glabrezu",
+      "id": "glabrezu",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -11279,6 +11433,7 @@
     },
     {
       "name": "Gladiatore",
+      "id": "gladiatore",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -11354,6 +11509,7 @@
     },
     {
       "name": "Gnoll guerriero",
+      "id": "gnoll-guerriero",
       "type": "Immondo",
       "size": "",
       "alignment": "caotico malvagio",
@@ -11421,6 +11577,7 @@
     },
     {
       "name": "Goblin capo",
+      "id": "goblin-capo",
       "type": "Folletto",
       "size": "",
       "alignment": "caotico neutrale",
@@ -11501,6 +11658,7 @@
     },
     {
       "name": "Goblin guerriero",
+      "id": "goblin-guerriero",
       "type": "Folletto",
       "size": "",
       "alignment": "caotico neutrale",
@@ -11576,6 +11734,7 @@
     },
     {
       "name": "Goblin tirapiedi",
+      "id": "goblin-tirapiedi",
       "type": "Folletto",
       "size": "",
       "alignment": "caotico neutrale",
@@ -11651,6 +11810,7 @@
     },
     {
       "name": "Golem di argilla",
+      "id": "golem-di-argilla",
       "type": "Costrutto",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -11731,6 +11891,7 @@
     },
     {
       "name": "Golem di carne",
+      "id": "golem-di-carne",
       "type": "Costrutto",
       "size": "",
       "alignment": "neutrale",
@@ -11802,6 +11963,7 @@
     },
     {
       "name": "Golem di ferro",
+      "id": "golem-di-ferro",
       "type": "Costrutto",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -11873,6 +12035,7 @@
     },
     {
       "name": "Golem di pietra",
+      "id": "golem-di-pietra",
       "type": "Costrutto",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -11949,6 +12112,7 @@
     },
     {
       "name": "Gorgone",
+      "id": "gorgone",
       "type": "Costrutto",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -12024,6 +12188,7 @@
     },
     {
       "name": "Gorilla",
+      "id": "gorilla",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -12090,6 +12255,7 @@
     },
     {
       "name": "Gorilla gigante",
+      "id": "gorilla-gigante",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -12161,6 +12327,7 @@
     },
     {
       "name": "Granchio",
+      "id": "granchio",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -12232,6 +12399,7 @@
     },
     {
       "name": "Granchio gigante",
+      "id": "granchio-gigante",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -12303,6 +12471,7 @@
     },
     {
       "name": "Grick",
+      "id": "grick",
       "type": "Aberrazione",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -12369,6 +12538,7 @@
     },
     {
       "name": "Grifone",
+      "id": "grifone",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -12435,6 +12605,7 @@
     },
     {
       "name": "Grimlock",
+      "id": "grimlock",
       "type": "Aberrazione",
       "size": "Media",
       "alignment": "neutrale malvagio",
@@ -12501,6 +12672,7 @@
     },
     {
       "name": "Guardia",
+      "id": "guardia",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -12571,6 +12743,7 @@
     },
     {
       "name": "Guardiano protettore",
+      "id": "guardiano-protettore",
       "type": "Costrutto",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -12647,6 +12820,7 @@
     },
     {
       "name": "Guerriero di fanteria",
+      "id": "guerriero-di-fanteria",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -12718,6 +12892,7 @@
     },
     {
       "name": "Guerriero veterano",
+      "id": "guerriero-veterano",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -12793,6 +12968,7 @@
     },
     {
       "name": "Gufo",
+      "id": "gufo",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -12864,6 +13040,7 @@
     },
     {
       "name": "Gufo gigante",
+      "id": "gufo-gigante",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "neutrale",
@@ -12939,6 +13116,7 @@
     },
     {
       "name": "Hezrou",
+      "id": "hezrou",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -13019,6 +13197,7 @@
     },
     {
       "name": "Hobgoblin capitano",
+      "id": "hobgoblin-capitano",
       "type": "Folletto",
       "size": "",
       "alignment": "legale malvagio",
@@ -13090,6 +13269,7 @@
     },
     {
       "name": "Hobgoblin guerriero",
+      "id": "hobgoblin-guerriero",
       "type": "Folletto",
       "size": "",
       "alignment": "legale malvagio",
@@ -13161,6 +13341,7 @@
     },
     {
       "name": "Idra",
+      "id": "idra",
       "type": "Mostruosità",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -13236,6 +13417,7 @@
     },
     {
       "name": "Iena",
+      "id": "iena",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -13307,6 +13489,7 @@
     },
     {
       "name": "Iena gigante",
+      "id": "iena-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -13378,6 +13561,7 @@
     },
     {
       "name": "Imp",
+      "id": "imp",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -13457,6 +13641,7 @@
     },
     {
       "name": "Incubo",
+      "id": "incubo",
       "type": "Immondo",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -13537,6 +13722,7 @@
     },
     {
       "name": "Ippogrifo",
+      "id": "ippogrifo",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -13608,6 +13794,7 @@
     },
     {
       "name": "Ippopotamo",
+      "id": "ippopotamo",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -13679,6 +13866,7 @@
     },
     {
       "name": "Kraken",
+      "id": "kraken",
       "type": "Mostruosità",
       "size": "Mastodontica",
       "alignment": "caotico malvagio",
@@ -13759,6 +13947,7 @@
     },
     {
       "name": "Lamia",
+      "id": "lamia",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -13830,6 +14019,7 @@
     },
     {
       "name": "Lemure",
+      "id": "lemure",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -13905,6 +14095,7 @@
     },
     {
       "name": "Leone",
+      "id": "leone",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -13976,6 +14167,7 @@
     },
     {
       "name": "Lich",
+      "id": "lich",
       "type": "Non morto",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -14069,6 +14261,7 @@
     },
     {
       "name": "Lucertola",
+      "id": "lucertola",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -14136,6 +14329,7 @@
     },
     {
       "name": "Lucertola gigante",
+      "id": "lucertola-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -14203,6 +14397,7 @@
     },
     {
       "name": "Lupo",
+      "id": "lupo",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -14274,6 +14469,7 @@
     },
     {
       "name": "Lupo feroce",
+      "id": "lupo-feroce",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -14345,6 +14541,7 @@
     },
     {
       "name": "Lupo invernale",
+      "id": "lupo-invernale",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "neutrale malvagio",
@@ -14420,6 +14617,7 @@
     },
     {
       "name": "Lupo mannaro",
+      "id": "lupo-mannaro",
       "type": "Mostruosità",
       "size": "Media o Piccola",
       "alignment": "caotico malvagio",
@@ -14500,6 +14698,7 @@
     },
     {
       "name": "Magmin",
+      "id": "magmin",
       "type": "Elementale",
       "size": "",
       "alignment": "caotico neutrale",
@@ -14576,6 +14775,7 @@
     },
     {
       "name": "Mago",
+      "id": "mago",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -14656,6 +14856,7 @@
     },
     {
       "name": "Mammut",
+      "id": "mammut",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -14723,6 +14924,7 @@
     },
     {
       "name": "Manticora",
+      "id": "manticora",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -14785,6 +14987,7 @@
     },
     {
       "name": "Manto assassino",
+      "id": "manto-assassino",
       "type": "Aberrazione",
       "size": "Grande",
       "alignment": "caotico neutrale",
@@ -14865,6 +15068,7 @@
     },
     {
       "name": "Mantoscuro",
+      "id": "mantoscuro",
       "type": "Aberrazione",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -14931,6 +15135,7 @@
     },
     {
       "name": "Marilith",
+      "id": "marilith",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -15020,6 +15225,7 @@
     },
     {
       "name": "Marinide schermagliatore",
+      "id": "marinide-schermagliatore",
       "type": "Elementale",
       "size": "",
       "alignment": "neutrale",
@@ -15087,6 +15293,7 @@
     },
     {
       "name": "Mastino",
+      "id": "mastino",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -15153,6 +15360,7 @@
     },
     {
       "name": "Medusa",
+      "id": "medusa",
       "type": "Mostruosità",
       "size": "Media",
       "alignment": "legale malvagio",
@@ -15224,6 +15432,7 @@
     },
     {
       "name": "Megera marina",
+      "id": "megera-marina",
       "type": "Folletto",
       "size": "",
       "alignment": "caotico malvagio",
@@ -15291,6 +15500,7 @@
     },
     {
       "name": "Megera notturna",
+      "id": "megera-notturna",
       "type": "Immondo",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -15375,6 +15585,7 @@
     },
     {
       "name": "Megera verde",
+      "id": "megera-verde",
       "type": "Folletto",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -15446,6 +15657,7 @@
     },
     {
       "name": "Melma grigia",
+      "id": "melma-grigia",
       "type": "Melma",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -15525,6 +15737,7 @@
     },
     {
       "name": "Mephit del ghiaccio",
+      "id": "mephit-del-ghiaccio",
       "type": "Elementale",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -15600,6 +15813,7 @@
     },
     {
       "name": "Mephit del magma",
+      "id": "mephit-del-magma",
       "type": "Elementale",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -15675,6 +15889,7 @@
     },
     {
       "name": "Mephit del vapore",
+      "id": "mephit-del-vapore",
       "type": "Elementale",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -15750,6 +15965,7 @@
     },
     {
       "name": "Mephit della polvere",
+      "id": "mephit-della-polvere",
       "type": "Elementale",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -15825,6 +16041,7 @@
     },
     {
       "name": "Merrow",
+      "id": "merrow",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -15892,6 +16109,7 @@
     },
     {
       "name": "Mezzodrago",
+      "id": "mezzodrago",
       "type": "Drago",
       "size": "",
       "alignment": "neutrale",
@@ -15972,6 +16190,7 @@
     },
     {
       "name": "Millepiedi gigante",
+      "id": "millepiedi-gigante",
       "type": "Bestia",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -16034,6 +16253,7 @@
     },
     {
       "name": "Mimic",
+      "id": "mimic",
       "type": "Mostruosità",
       "size": "Media",
       "alignment": "neutrale",
@@ -16114,6 +16334,7 @@
     },
     {
       "name": "Minotauro di Baphomet",
+      "id": "minotauro-di-baphomet",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -16180,6 +16401,7 @@
     },
     {
       "name": "Mulo",
+      "id": "mulo",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -16247,6 +16469,7 @@
     },
     {
       "name": "Mummia",
+      "id": "mummia",
       "type": "Non morto",
       "size": "",
       "alignment": "legale malvagio",
@@ -16313,6 +16536,7 @@
     },
     {
       "name": "Naga guardiana",
+      "id": "naga-guardiana",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "legale buono",
@@ -16388,6 +16612,7 @@
     },
     {
       "name": "Naga spirituale",
+      "id": "naga-spirituale",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -16459,6 +16684,7 @@
     },
     {
       "name": "Nalfeshnee",
+      "id": "nalfeshnee",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -16544,6 +16770,7 @@
     },
     {
       "name": "Nobile",
+      "id": "nobile",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -16619,6 +16846,7 @@
     },
     {
       "name": "Ogre",
+      "id": "ogre",
       "type": "Gigante",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -16685,6 +16913,7 @@
     },
     {
       "name": "Ombra",
+      "id": "ombra",
       "type": "Non morto",
       "size": "",
       "alignment": "caotico malvagio",
@@ -16769,6 +16998,7 @@
     },
     {
       "name": "Omuncolo",
+      "id": "omuncolo",
       "type": "Costrutto",
       "size": "",
       "alignment": "neutrale",
@@ -16840,6 +17070,7 @@
     },
     {
       "name": "Oni",
+      "id": "oni",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -16920,6 +17151,7 @@
     },
     {
       "name": "Orca assassina",
+      "id": "orca-assassina",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -16991,6 +17223,7 @@
     },
     {
       "name": "Orda di artigli striscianti",
+      "id": "orda-di-artigli-striscianti",
       "type": "Sciame",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -17066,6 +17299,7 @@
     },
     {
       "name": "Orso bruno",
+      "id": "orso-bruno",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -17132,6 +17366,7 @@
     },
     {
       "name": "Orso mannaro",
+      "id": "orso-mannaro",
       "type": "Mostruosità",
       "size": "Media o Piccola",
       "alignment": "neutrale buono",
@@ -17207,6 +17442,7 @@
     },
     {
       "name": "Orso nero",
+      "id": "orso-nero",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -17273,6 +17509,7 @@
     },
     {
       "name": "Orso polare",
+      "id": "orso-polare",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -17343,6 +17580,7 @@
     },
     {
       "name": "Orsogufo",
+      "id": "orsogufo",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -17409,6 +17647,7 @@
     },
     {
       "name": "Otyugh",
+      "id": "otyugh",
       "type": "Aberrazione",
       "size": "Grande",
       "alignment": "neutrale",
@@ -17471,6 +17710,7 @@
     },
     {
       "name": "Pantera",
+      "id": "pantera",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -17542,6 +17782,7 @@
     },
     {
       "name": "Pegaso",
+      "id": "pegaso",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "caotico buono",
@@ -17608,6 +17849,7 @@
     },
     {
       "name": "Piovra",
+      "id": "piovra",
       "type": "Bestia",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -17684,6 +17926,7 @@
     },
     {
       "name": "Piovra gigante",
+      "id": "piovra-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -17760,6 +18003,7 @@
     },
     {
       "name": "Pipistrello",
+      "id": "pipistrello",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -17822,6 +18066,7 @@
     },
     {
       "name": "Pipistrello gigante",
+      "id": "pipistrello-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -17884,6 +18129,7 @@
     },
     {
       "name": "Piranha",
+      "id": "piranha",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -17951,6 +18197,7 @@
     },
     {
       "name": "Pirata",
+      "id": "pirata",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -18017,6 +18264,7 @@
     },
     {
       "name": "Planetar",
+      "id": "planetar",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "legale buono",
@@ -18101,6 +18349,7 @@
     },
     {
       "name": "Plesiosauro",
+      "id": "plesiosauro",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -18172,6 +18421,7 @@
     },
     {
       "name": "Pony",
+      "id": "pony",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -18234,6 +18484,7 @@
     },
     {
       "name": "Popolano",
+      "id": "popolano",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -18305,6 +18556,7 @@
     },
     {
       "name": "Progenie vampirica",
+      "id": "progenie-vampirica",
       "type": "Non morto",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -18385,6 +18637,7 @@
     },
     {
       "name": "Protoplasma nero",
+      "id": "protoplasma-nero",
       "type": "Melma",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -18461,6 +18714,7 @@
     },
     {
       "name": "Pseudodrago",
+      "id": "pseudodrago",
       "type": "Drago",
       "size": "",
       "alignment": "neutrale buono",
@@ -18532,6 +18786,7 @@
     },
     {
       "name": "Pteranodonte",
+      "id": "pteranodonte",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -18603,6 +18858,7 @@
     },
     {
       "name": "Quasit",
+      "id": "quasit",
       "type": "Immondo",
       "size": "",
       "alignment": "caotico malvagio",
@@ -18682,6 +18938,7 @@
     },
     {
       "name": "Ragno",
+      "id": "ragno",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -18753,6 +19010,7 @@
     },
     {
       "name": "Ragno gigante",
+      "id": "ragno-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -18824,6 +19082,7 @@
     },
     {
       "name": "Ragno lupo gigante",
+      "id": "ragno-lupo-gigante",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -18895,6 +19154,7 @@
     },
     {
       "name": "Ragno-fase",
+      "id": "ragno-fase",
       "type": "Mostruosità",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -18971,6 +19231,7 @@
     },
     {
       "name": "Rakshasa",
+      "id": "rakshasa",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -19046,6 +19307,7 @@
     },
     {
       "name": "Rana",
+      "id": "rana",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -19117,6 +19379,7 @@
     },
     {
       "name": "Rana gigante",
+      "id": "rana-gigante",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -19188,6 +19451,7 @@
     },
     {
       "name": "Remorhaz",
+      "id": "remorhaz",
       "type": "Mostruosità",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -19264,6 +19528,7 @@
     },
     {
       "name": "Rinoceronte",
+      "id": "rinoceronte",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -19326,6 +19591,7 @@
     },
     {
       "name": "Roc",
+      "id": "roc",
       "type": "Mostruosità",
       "size": "Mastodontica",
       "alignment": "senza allineamento",
@@ -19397,6 +19663,7 @@
     },
     {
       "name": "Rospo gigante",
+      "id": "rospo-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -19464,6 +19731,7 @@
     },
     {
       "name": "Rugginofago",
+      "id": "rugginofago",
       "type": "Mostruosità",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -19536,6 +19804,7 @@
     },
     {
       "name": "Sacerdote",
+      "id": "sacerdote",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -19611,6 +19880,7 @@
     },
     {
       "name": "Sacerdote accolito",
+      "id": "sacerdote-accolito",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -19686,6 +19956,7 @@
     },
     {
       "name": "Sahuagin guerriero",
+      "id": "sahuagin-guerriero",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -19766,6 +20037,7 @@
     },
     {
       "name": "Salamandra",
+      "id": "salamandra",
       "type": "Elementale",
       "size": "Grande",
       "alignment": "neutrale malvagio",
@@ -19837,6 +20109,7 @@
     },
     {
       "name": "Satiro",
+      "id": "satiro",
       "type": "Folletto",
       "size": "",
       "alignment": "caotico neutrale",
@@ -19908,6 +20181,7 @@
     },
     {
       "name": "Scarabeo di fuoco gigante",
+      "id": "scarabeo-di-fuoco-gigante",
       "type": "Bestia",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -19975,6 +20249,7 @@
     },
     {
       "name": "Scheletro",
+      "id": "scheletro",
       "type": "Non morto",
       "size": "",
       "alignment": "legale malvagio",
@@ -20045,6 +20320,7 @@
     },
     {
       "name": "Scheletro di cavallo da guerra",
+      "id": "scheletro-di-cavallo-da-guerra",
       "type": "Non morto",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -20111,6 +20387,7 @@
     },
     {
       "name": "Scheletro di minotauro",
+      "id": "scheletro-di-minotauro",
       "type": "Non morto",
       "size": "Grande",
       "alignment": "legale malvagio",
@@ -20177,6 +20454,7 @@
     },
     {
       "name": "Sciacallo",
+      "id": "sciacallo",
       "type": "Bestia",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -20243,6 +20521,7 @@
     },
     {
       "name": "Sciame di insetti",
+      "id": "sciame-di-insetti",
       "type": "Sciame",
       "size": "",
       "alignment": "senza allineamento",
@@ -20318,6 +20597,7 @@
     },
     {
       "name": "Sciame di pipistrelli",
+      "id": "sciame-di-pipistrelli",
       "type": "Sciame",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -20393,6 +20673,7 @@
     },
     {
       "name": "Scorpione",
+      "id": "scorpione",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -20455,6 +20736,7 @@
     },
     {
       "name": "Scorpione gigante",
+      "id": "scorpione-gigante",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -20517,6 +20799,7 @@
     },
     {
       "name": "Segugio infernale",
+      "id": "segugio-infernale",
       "type": "Immondo",
       "size": "",
       "alignment": "legale malvagio",
@@ -20592,6 +20875,7 @@
     },
     {
       "name": "Serpente stritolatore",
+      "id": "serpente-stritolatore",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -20658,6 +20942,7 @@
     },
     {
       "name": "Serpente stritolatore gigante",
+      "id": "serpente-stritolatore-gigante",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -20724,6 +21009,7 @@
     },
     {
       "name": "Serpente velenoso",
+      "id": "serpente-velenoso",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -20786,6 +21072,7 @@
     },
     {
       "name": "Serpente velenoso gigante",
+      "id": "serpente-velenoso-gigante",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -20852,6 +21139,7 @@
     },
     {
       "name": "Serpente volante",
+      "id": "serpente-volante",
       "type": "Mostruosità",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -20919,6 +21207,7 @@
     },
     {
       "name": "Sfinge del valore",
+      "id": "sfinge-del-valore",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "legale neutrale",
@@ -21003,6 +21292,7 @@
     },
     {
       "name": "Sfinge della conoscenza",
+      "id": "sfinge-della-conoscenza",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "legale neutrale",
@@ -21087,6 +21377,7 @@
     },
     {
       "name": "Sfinge della meraviglia",
+      "id": "sfinge-della-meraviglia",
       "type": "Celestiale",
       "size": "",
       "alignment": "legale buono",
@@ -21167,6 +21458,7 @@
     },
     {
       "name": "Signore delle mummie",
+      "id": "signore-delle-mummie",
       "type": "Non morto",
       "size": "",
       "alignment": "legale malvagio",
@@ -21252,6 +21544,7 @@
     },
     {
       "name": "Solar",
+      "id": "solar",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "legale buono",
@@ -21337,6 +21630,7 @@
     },
     {
       "name": "Spada volante animata",
+      "id": "spada-volante-animata",
       "type": "Costrutto",
       "size": "",
       "alignment": "senza allineamento",
@@ -21403,6 +21697,7 @@
     },
     {
       "name": "Spettro",
+      "id": "spettro",
       "type": "Non morto",
       "size": "",
       "alignment": "caotico malvagio",
@@ -21478,6 +21773,7 @@
     },
     {
       "name": "Spia",
+      "id": "spia",
       "type": "Umanoide",
       "size": "",
       "alignment": "neutrale",
@@ -21553,6 +21849,7 @@
     },
     {
       "name": "Spiritello",
+      "id": "spiritello",
       "type": "Folletto",
       "size": "",
       "alignment": "neutrale buono",
@@ -21619,6 +21916,7 @@
     },
     {
       "name": "Squalo cacciatore",
+      "id": "squalo-cacciatore",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -21690,6 +21988,7 @@
     },
     {
       "name": "Squalo gigante",
+      "id": "squalo-gigante",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -21761,6 +22060,7 @@
     },
     {
       "name": "Squalo tropicale",
+      "id": "squalo-tropicale",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -21832,6 +22132,7 @@
     },
     {
       "name": "Stormo di corvi",
+      "id": "stormo-di-corvi",
       "type": "Sciame",
       "size": "",
       "alignment": "senza allineamento",
@@ -21911,6 +22212,7 @@
     },
     {
       "name": "Succube",
+      "id": "succube",
       "type": "Immondo",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -21991,6 +22293,7 @@
     },
     {
       "name": "Tappeto soffocante animato",
+      "id": "tappeto-soffocante-animato",
       "type": "Costrutto",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -22057,6 +22360,7 @@
     },
     {
       "name": "Tarrasque",
+      "id": "tarrasque",
       "type": "Mostruosità",
       "size": "Mastodontica",
       "alignment": "senza allineamento",
@@ -22146,6 +22450,7 @@
     },
     {
       "name": "Tasso",
+      "id": "tasso",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -22216,6 +22521,7 @@
     },
     {
       "name": "Tasso gigante",
+      "id": "tasso-gigante",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -22286,6 +22592,7 @@
     },
     {
       "name": "Testuggine dragona",
+      "id": "testuggine-dragona",
       "type": "Drago",
       "size": "",
       "alignment": "neutrale",
@@ -22357,6 +22664,7 @@
     },
     {
       "name": "Tigre",
+      "id": "tigre",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -22428,6 +22736,7 @@
     },
     {
       "name": "Tigre dai denti a sciabola",
+      "id": "tigre-dai-denti-a-sciabola",
       "type": "Bestia",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -22504,6 +22813,7 @@
     },
     {
       "name": "Tigre mannara",
+      "id": "tigre-mannara",
       "type": "Mostruosità",
       "size": "Media o Piccola",
       "alignment": "neutrale",
@@ -22579,6 +22889,7 @@
     },
     {
       "name": "Tirannosauro",
+      "id": "tirannosauro",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -22645,6 +22956,7 @@
     },
     {
       "name": "Topo",
+      "id": "topo",
       "type": "Bestia",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -22716,6 +23028,7 @@
     },
     {
       "name": "Topo gigante",
+      "id": "topo-gigante",
       "type": "Bestia",
       "size": "Piccola",
       "alignment": "senza allineamento",
@@ -22787,6 +23100,7 @@
     },
     {
       "name": "Topo mannaro",
+      "id": "topo-mannaro",
       "type": "Mostruosità",
       "size": "Media o Piccola",
       "alignment": "legale malvagio",
@@ -22862,6 +23176,7 @@
     },
     {
       "name": "Treant",
+      "id": "treant",
       "type": "Vegetale",
       "size": "Enorme",
       "alignment": "caotico buono",
@@ -22933,6 +23248,7 @@
     },
     {
       "name": "Triceratopo",
+      "id": "triceratopo",
       "type": "Bestia",
       "size": "Enorme",
       "alignment": "senza allineamento",
@@ -22995,6 +23311,7 @@
     },
     {
       "name": "Troll",
+      "id": "troll",
       "type": "Gigante",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -23071,6 +23388,7 @@
     },
     {
       "name": "Uccello stigeo",
+      "id": "uccello-stigeo",
       "type": "Mostruosità",
       "size": "Minuscola",
       "alignment": "senza allineamento",
@@ -23133,6 +23451,7 @@
     },
     {
       "name": "Unicorno",
+      "id": "unicorno",
       "type": "Celestiale",
       "size": "Grande",
       "alignment": "legale buono",
@@ -23214,6 +23533,7 @@
     },
     {
       "name": "Vampiro",
+      "id": "vampiro",
       "type": "Non morto",
       "size": "",
       "alignment": "legale malvagio",
@@ -23299,6 +23619,7 @@
     },
     {
       "name": "Verme purpureo",
+      "id": "verme-purpureo",
       "type": "Mostruosità",
       "size": "Mastodontica",
       "alignment": "senza allineamento",
@@ -23371,6 +23692,7 @@
     },
     {
       "name": "Vespa gigante",
+      "id": "vespa-gigante",
       "type": "Bestia",
       "size": "Media",
       "alignment": "senza allineamento",
@@ -23438,6 +23760,7 @@
     },
     {
       "name": "Viverna",
+      "id": "viverna",
       "type": "Drago",
       "size": "Grande",
       "alignment": "senza allineamento",
@@ -23504,6 +23827,7 @@
     },
     {
       "name": "Vrock",
+      "id": "vrock",
       "type": "Immondo",
       "size": "Grande",
       "alignment": "caotico malvagio",
@@ -23579,6 +23903,7 @@
     },
     {
       "name": "Wight",
+      "id": "wight",
       "type": "Non morto",
       "size": "",
       "alignment": "neutrale malvagio",
@@ -23662,6 +23987,7 @@
     },
     {
       "name": "Worg",
+      "id": "worg",
       "type": "Folletto",
       "size": "Grande",
       "alignment": "neutrale malvagio",
@@ -23728,6 +24054,7 @@
     },
     {
       "name": "Wraith",
+      "id": "wraith",
       "type": "Non morto",
       "size": "",
       "alignment": "neutrale malvagio",

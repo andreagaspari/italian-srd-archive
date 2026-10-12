@@ -12,6 +12,7 @@
   "items": [
     {
       "name": "Abiti da viaggiatore",
+      "id": "abiti-da-viaggiatore",
       "category": "avventura",
       "weight": "2 kg",
       "cost": "2 mo",
@@ -19,6 +20,7 @@
     },
     {
       "name": "Abiti eleganti",
+      "id": "abiti-eleganti",
       "category": "avventura",
       "weight": "3 kg",
       "cost": "15 mo",
@@ -26,6 +28,7 @@
     },
     {
       "name": "Acciarino con pietra focaia",
+      "id": "acciarino-con-pietra-focaia",
       "category": "avventura",
       "weight": "0,5 kg",
       "cost": "5 ma",
@@ -33,6 +36,7 @@
     },
     {
       "name": "Acido",
+      "id": "acido",
       "category": "consumabili",
       "weight": "0,5 kg",
       "cost": "25 mo",
@@ -40,6 +44,7 @@
     },
     {
       "name": "Acqua santa",
+      "id": "acqua-santa",
       "category": "consumabili",
       "weight": "0,5 kg",
       "cost": "25 mo",
@@ -47,6 +52,7 @@
     },
     {
       "name": "Ampolla",
+      "id": "ampolla",
       "category": "avventura",
       "weight": "0,5 kg",
       "cost": "2 mr",
@@ -54,6 +60,7 @@
     },
     {
       "name": "Antitossina",
+      "id": "antitossina",
       "category": "consumabili",
       "weight": "—",
       "cost": "50 mo",
@@ -61,6 +68,7 @@
     },
     {
       "name": "Ariete portatile",
+      "id": "ariete-portatile",
       "category": "avventura",
       "weight": "17,5 kg",
       "cost": "4 mo",
@@ -68,6 +76,7 @@
     },
     {
       "name": "Asta",
+      "id": "asta",
       "category": "avventura",
       "weight": "3,5 kg",
       "cost": "5 mr",
@@ -75,6 +84,7 @@
     },
     {
       "name": "Attrezzi da scalatore",
+      "id": "attrezzi-da-scalatore",
       "category": "avventura",
       "weight": "6 kg",
       "cost": "25 mo",
@@ -82,6 +92,7 @@
     },
     {
       "name": "Barile",
+      "id": "barile",
       "category": "avventura",
       "weight": "35 kg",
       "cost": "2 mo",
@@ -89,6 +100,7 @@
     },
     {
       "name": "Borsa",
+      "id": "borsa",
       "category": "contenitori",
       "weight": "0,5 kg",
       "cost": "5 ma",
@@ -96,6 +108,7 @@
     },
     {
       "name": "Borsa del guaritore",
+      "id": "borsa-del-guaritore",
       "category": "contenitori",
       "weight": "1,5 kg",
       "cost": "5 mo",
@@ -103,6 +116,7 @@
     },
     {
       "name": "Borsa per componenti",
+      "id": "borsa-per-componenti",
       "category": "contenitori",
       "weight": "1 kg",
       "cost": "25 mo",
@@ -110,6 +124,7 @@
     },
     {
       "name": "Bottiglia di vetro",
+      "id": "bottiglia-di-vetro",
       "category": "contenitori",
       "weight": "1 kg",
       "cost": "2 mo",
@@ -117,6 +132,7 @@
     },
     {
       "name": "Brocca",
+      "id": "brocca",
       "category": "contenitori",
       "weight": "2 kg",
       "cost": "2 mr",
@@ -124,6 +140,7 @@
     },
     {
       "name": "Campanella",
+      "id": "campanella",
       "category": "avventura",
       "weight": "—",
       "cost": "1 mo",
@@ -131,6 +148,7 @@
     },
     {
       "name": "Candela",
+      "id": "candela",
       "category": "illuminazione",
       "weight": "—",
       "cost": "1 mr",
@@ -138,6 +156,7 @@
     },
     {
       "name": "Cannocchiale",
+      "id": "cannocchiale",
       "category": "avventura",
       "weight": "0,5 kg",
       "cost": "1.000 mo",
@@ -145,6 +164,7 @@
     },
     {
       "name": "Carrucola e paranco",
+      "id": "carrucola-e-paranco",
       "category": "avventura",
       "weight": "2,5 kg",
       "cost": "1 mo",
@@ -152,6 +172,7 @@
     },
     {
       "name": "Carta",
+      "id": "carta",
       "category": "avventura",
       "weight": "—",
       "cost": "2 ma",
@@ -159,6 +180,7 @@
     },
     {
       "name": "Catena",
+      "id": "catena",
       "category": "avventura",
       "weight": "5 kg",
       "cost": "5 mo",
@@ -166,6 +188,7 @@
     },
     {
       "name": "Cesto",
+      "id": "cesto",
       "category": "avventura",
       "weight": "1 kg",
       "cost": "4 ma",
@@ -173,6 +196,7 @@
     },
     {
       "name": "Coperta",
+      "id": "coperta",
       "category": "avventura",
       "weight": "1,5 kg",
       "cost": "5 ma",
@@ -180,6 +204,7 @@
     },
     {
       "name": "Corda",
+      "id": "corda",
       "category": "avventura",
       "weight": "2,5 kg",
       "cost": "1 mo",
@@ -187,6 +212,7 @@
     },
     {
       "name": "Costume",
+      "id": "costume",
       "category": "avventura",
       "weight": "2 kg",
       "cost": "5 mo",
@@ -194,6 +220,7 @@
     },
     {
       "name": "Custodia per mappe o pergamene",
+      "id": "custodia-per-mappe-o-pergamene",
       "category": "contenitori",
       "weight": "0,5 kg",
       "cost": "1 mo",
@@ -201,6 +228,7 @@
     },
     {
       "name": "Custodia per quadrelli da balestra",
+      "id": "custodia-per-quadrelli-da-balestra",
       "category": "contenitori",
       "weight": "0,5 kg",
       "cost": "1 mo",
@@ -208,6 +236,7 @@
     },
     {
       "name": "Dotazione da avventuriero",
+      "id": "dotazione-da-avventuriero",
       "category": "avventura",
       "weight": "27,5 kg",
       "cost": "12 mo",
@@ -215,6 +244,7 @@
     },
     {
       "name": "Dotazione da diplomatico",
+      "id": "dotazione-da-diplomatico",
       "category": "avventura",
       "weight": "19,5 kg",
       "cost": "39 mo",
@@ -222,6 +252,7 @@
     },
     {
       "name": "Dotazione da esploratore",
+      "id": "dotazione-da-esploratore",
       "category": "avventura",
       "weight": "27,5 kg",
       "cost": "10 mo",
@@ -229,6 +260,7 @@
     },
     {
       "name": "Dotazione da intrattenitore",
+      "id": "dotazione-da-intrattenitore",
       "category": "avventura",
       "weight": "29 kg",
       "cost": "40 mo",
@@ -236,6 +268,7 @@
     },
     {
       "name": "Dotazione da sacerdote",
+      "id": "dotazione-da-sacerdote",
       "category": "avventura",
       "weight": "14 kg",
       "cost": "33 mo",
@@ -243,6 +276,7 @@
     },
     {
       "name": "Dotazione da scassinatore",
+      "id": "dotazione-da-scassinatore",
       "category": "avventura",
       "weight": "19 kg",
       "cost": "16 mo",
@@ -250,6 +284,7 @@
     },
     {
       "name": "Dotazione da studioso",
+      "id": "dotazione-da-studioso",
       "category": "avventura",
       "weight": "11 kg",
       "cost": "40 mo",
@@ -257,6 +292,7 @@
     },
     {
       "name": "Faretra",
+      "id": "faretra",
       "category": "contenitori",
       "weight": "0,5 kg",
       "cost": "1 mo",
@@ -264,6 +300,7 @@
     },
     {
       "name": "Fiala",
+      "id": "fiala",
       "category": "contenitori",
       "weight": "—",
       "cost": "1 mo",
@@ -271,6 +308,7 @@
     },
     {
       "name": "Fischietto da richiamo",
+      "id": "fischietto-da-richiamo",
       "category": "avventura",
       "weight": "—",
       "cost": "5 mr",
@@ -278,6 +316,7 @@
     },
     {
       "name": "Focus arcano",
+      "id": "focus-arcano",
       "category": "avventura",
       "weight": "Variabile",
       "cost": "variabile",
@@ -285,6 +324,7 @@
     },
     {
       "name": "Focus druidico",
+      "id": "focus-druidico",
       "category": "avventura",
       "weight": "Variabile",
       "cost": "variabile",
@@ -292,6 +332,7 @@
     },
     {
       "name": "Forziere",
+      "id": "forziere",
       "category": "contenitori",
       "weight": "12,5 kg",
       "cost": "5 mo",
@@ -299,6 +340,7 @@
     },
     {
       "name": "Fuoco dell'alchimista",
+      "id": "fuoco-dell-alchimista",
       "category": "consumabili",
       "weight": "0,5 kg",
       "cost": "50 mo",
@@ -306,6 +348,7 @@
     },
     {
       "name": "Giaciglio",
+      "id": "giaciglio",
       "category": "avventura",
       "weight": "3,5 kg",
       "cost": "1 mo",
@@ -313,6 +356,7 @@
     },
     {
       "name": "Inchiostro",
+      "id": "inchiostro",
       "category": "avventura",
       "weight": "—",
       "cost": "10 mo",
@@ -320,6 +364,7 @@
     },
     {
       "name": "Lampada",
+      "id": "lampada",
       "category": "illuminazione",
       "weight": "0,5 kg",
       "cost": "5 ma",
@@ -327,6 +372,7 @@
     },
     {
       "name": "Lanterna a lente sporgente",
+      "id": "lanterna-a-lente-sporgente",
       "category": "illuminazione",
       "weight": "1 kg",
       "cost": "10 mo",
@@ -334,6 +380,7 @@
     },
     {
       "name": "Lanterna schermabile",
+      "id": "lanterna-schermabile",
       "category": "illuminazione",
       "weight": "1 kg",
       "cost": "5 mo",
@@ -341,6 +388,7 @@
     },
     {
       "name": "Lente d'ingrandimento",
+      "id": "lente-d-ingrandimento",
       "category": "avventura",
       "weight": "—",
       "cost": "100 mo",
@@ -348,6 +396,7 @@
     },
     {
       "name": "Libro",
+      "id": "libro",
       "category": "avventura",
       "weight": "2,5 kg",
       "cost": "25 mo",
@@ -355,6 +404,7 @@
     },
     {
       "name": "Manette",
+      "id": "manette",
       "category": "avventura",
       "weight": "3 kg",
       "cost": "2 mo",
@@ -362,6 +412,7 @@
     },
     {
       "name": "Mappa",
+      "id": "mappa",
       "category": "avventura",
       "weight": "—",
       "cost": "1 mo",
@@ -369,6 +420,7 @@
     },
     {
       "name": "Munizioni",
+      "id": "munizioni",
       "category": "avventura",
       "weight": "Variabile",
       "cost": "variabili",
@@ -376,6 +428,7 @@
     },
     {
       "name": "Olio",
+      "id": "olio",
       "category": "consumabili",
       "weight": "0,5 kg",
       "cost": "1 ma",
@@ -383,6 +436,7 @@
     },
     {
       "name": "Otre",
+      "id": "otre",
       "category": "contenitori",
       "weight": "2,5 kg",
       "cost": "2 ma",
@@ -390,6 +444,7 @@
     },
     {
       "name": "Pala",
+      "id": "pala",
       "category": "avventura",
       "weight": "2,5 kg",
       "cost": "2 mo",
@@ -397,6 +452,7 @@
     },
     {
       "name": "Pennino",
+      "id": "pennino",
       "category": "avventura",
       "weight": "—",
       "cost": "2 mr",
@@ -404,6 +460,7 @@
     },
     {
       "name": "Pentola di ferro",
+      "id": "pentola-di-ferro",
       "category": "avventura",
       "weight": "5 kg",
       "cost": "2 mo",
@@ -411,6 +468,7 @@
     },
     {
       "name": "Pergamena",
+      "id": "pergamena",
       "category": "avventura",
       "weight": "—",
       "cost": "1 ma",
@@ -418,6 +476,7 @@
     },
     {
       "name": "Pergamena magica (trucchetto)",
+      "id": "pergamena-magica-trucchetto",
       "category": "consumabili",
       "weight": "—",
       "cost": "30 mo",
@@ -425,6 +484,7 @@
     },
     {
       "name": "Pergamena magica (livello 1)",
+      "id": "pergamena-magica-livello-1",
       "category": "consumabili",
       "weight": "—",
       "cost": "50 mo",
@@ -432,6 +492,7 @@
     },
     {
       "name": "Piede di porco",
+      "id": "piede-di-porco",
       "category": "avventura",
       "weight": "2,5 kg",
       "cost": "2 mo",
@@ -439,6 +500,7 @@
     },
     {
       "name": "Pozione di guarigione",
+      "id": "pozione-di-guarigione",
       "category": "consumabili",
       "weight": "0,25 kg",
       "cost": "50 mo",
@@ -446,6 +508,7 @@
     },
     {
       "name": "Profumo",
+      "id": "profumo",
       "category": "avventura",
       "weight": "—",
       "cost": "5 mo",
@@ -453,6 +516,7 @@
     },
     {
       "name": "Rampino",
+      "id": "rampino",
       "category": "avventura",
       "weight": "2 kg",
       "cost": "2 mo",
@@ -460,6 +524,7 @@
     },
     {
       "name": "Razioni",
+      "id": "razioni",
       "category": "consumabili",
       "weight": "1 kg",
       "cost": "5 ma",
@@ -467,6 +532,7 @@
     },
     {
       "name": "Rete",
+      "id": "rete",
       "category": "avventura",
       "weight": "1,5 kg",
       "cost": "1 mo",
@@ -474,6 +540,7 @@
     },
     {
       "name": "Sacco",
+      "id": "sacco",
       "category": "contenitori",
       "weight": "0,25 kg",
       "cost": "1 mr",
@@ -481,6 +548,7 @@
     },
     {
       "name": "Scala a pioli",
+      "id": "scala-a-pioli",
       "category": "avventura",
       "weight": "12,5 kg",
       "cost": "1 ma",
@@ -488,6 +556,7 @@
     },
     {
       "name": "Secchio",
+      "id": "secchio",
       "category": "contenitori",
       "weight": "1 kg",
       "cost": "5 mr",
@@ -495,6 +564,7 @@
     },
     {
       "name": "Serratura",
+      "id": "serratura",
       "category": "contenitori",
       "weight": "0,5 kg",
       "cost": "10 mo",
@@ -502,6 +572,7 @@
     },
     {
       "name": "Sfere metalliche",
+      "id": "sfere-metalliche",
       "category": "avventura",
       "weight": "1 kg",
       "cost": "1 mo",
@@ -509,6 +580,7 @@
     },
     {
       "name": "Simbolo sacro",
+      "id": "simbolo-sacro",
       "category": "avventura",
       "weight": "Variabile",
       "cost": "variabile",
@@ -516,6 +588,7 @@
     },
     {
       "name": "Spago",
+      "id": "spago",
       "category": "avventura",
       "weight": "—",
       "cost": "1 ma",
@@ -523,6 +596,7 @@
     },
     {
       "name": "Specchio",
+      "id": "specchio",
       "category": "avventura",
       "weight": "0,25 kg",
       "cost": "5 mo",
@@ -530,6 +604,7 @@
     },
     {
       "name": "Spuntoni di ferro",
+      "id": "spuntoni-di-ferro",
       "category": "avventura",
       "weight": "2,5 kg",
       "cost": "1 mo",
@@ -537,6 +612,7 @@
     },
     {
       "name": "Tagliola",
+      "id": "tagliola",
       "category": "avventura",
       "weight": "12,5 kg",
       "cost": "5 mo",
@@ -544,6 +620,7 @@
     },
     {
       "name": "Tenda",
+      "id": "tenda",
       "category": "avventura",
       "weight": "10 kg",
       "cost": "2 mo",
@@ -551,6 +628,7 @@
     },
     {
       "name": "Torcia",
+      "id": "torcia",
       "category": "illuminazione",
       "weight": "0,5 kg",
       "cost": "1 mr",
@@ -558,6 +636,7 @@
     },
     {
       "name": "Triboli",
+      "id": "triboli",
       "category": "avventura",
       "weight": "1 kg",
       "cost": "1 mo",
@@ -565,6 +644,7 @@
     },
     {
       "name": "Tunica",
+      "id": "tunica",
       "category": "avventura",
       "weight": "2 kg",
       "cost": "1 mo",
@@ -572,6 +652,7 @@
     },
     {
       "name": "Veleno base",
+      "id": "veleno-base",
       "category": "consumabili",
       "weight": "—",
       "cost": "100 mo",
@@ -579,6 +660,7 @@
     },
     {
       "name": "Zaino",
+      "id": "zaino",
       "category": "contenitori",
       "weight": "2,5 kg",
       "cost": "2 mo",

@@ -15,6 +15,260 @@ const resultContainers = resultsGrid?.classList.contains('monster-species-groups
 const originalCardOrders = resultContainers.map((container) => [...container.querySelectorAll('.result-card')]);
 
 /**
+ * Stores browser-local favorite references and keeps their format versioned for future migrations.
+ */
+class LocalStorageFavoriteStore {
+    /**
+     * @param {string} storageKey Key used in localStorage.
+     */
+    constructor(storageKey = 'isa:favorites:v1') {
+        this.storageKey = storageKey;
+    }
+
+    /**
+     * Returns all saved favorite references.
+     *
+     * @returns {Array<{key: string, dataset: string, id: string, addedAt: string}>} Favorite references.
+     */
+    getAll() {
+        const raw = window.localStorage.getItem(this.storageKey);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed?.favorites) ? parsed.favorites : [];
+    }
+
+    /**
+     * Checks whether an item is saved.
+     *
+     * @param {string} dataset Dataset name.
+     * @param {string} id Stable item identifier.
+     * @returns {boolean} Whether the item is saved.
+     */
+    has(dataset, id) {
+        return this.getAll().some((favorite) => favorite.key === `${dataset}:${id}`);
+    }
+
+    /**
+     * Adds an item unless it is already saved.
+     *
+     * @param {string} dataset Dataset name.
+     * @param {string} id Stable item identifier.
+     * @returns {void}
+     */
+    add(dataset, id) {
+        const favorites = this.getAll();
+        const key = `${dataset}:${id}`;
+        if (favorites.some((favorite) => favorite.key === key)) return;
+        favorites.push({ key, dataset, id, addedAt: new Date().toISOString() });
+        this.save(favorites);
+    }
+
+    /**
+     * Removes an item.
+     *
+     * @param {string} dataset Dataset name.
+     * @param {string} id Stable item identifier.
+     * @returns {void}
+     */
+    remove(dataset, id) {
+        const key = `${dataset}:${id}`;
+        this.save(this.getAll().filter((favorite) => favorite.key !== key));
+    }
+
+    /**
+     * Replaces all saved references.
+     *
+     * @param {Array<{key: string, dataset: string, id: string, addedAt: string}>} favorites Favorite references.
+     * @returns {void}
+     */
+    save(favorites) {
+        window.localStorage.setItem(this.storageKey, JSON.stringify({ version: 1, favorites }));
+        window.dispatchEvent(new CustomEvent('favoriteschange'));
+    }
+}
+
+const favoriteStore = new LocalStorageFavoriteStore();
+
+/**
+ * Updates the favorite counter in the global header.
+ *
+ * @returns {void}
+ */
+function updateFavoriteCount() {
+    const counter = document.querySelector('#favorites-count');
+    const icon = document.querySelector('.favorites-icon');
+    const count = favoriteStore.getAll().length;
+    if (counter) counter.textContent = String(count);
+    if (icon) {
+        icon.textContent = count > 0 ? '❤️' : '🤍';
+        icon.classList.toggle('is-active', count > 0);
+    }
+}
+
+/**
+ * Filters the original cards currently rendered in the favorites groups.
+ *
+ * @returns {void}
+ */
+function filterFavoriteCards() {
+    const query = document.querySelector('#favorites-search')?.value.trim().toLocaleLowerCase('it') ?? '';
+    const dataset = document.querySelector('#favorites-type-filter')?.value ?? '';
+    let visibleCards = 0;
+
+    document.querySelectorAll('.favorite-group').forEach((group) => {
+        const matchesDataset = !dataset || group.dataset.favoriteGroup === dataset;
+        let visibleInGroup = 0;
+        group.querySelectorAll('.result-card').forEach((card) => {
+            const matchesQuery = !query || card.textContent.toLocaleLowerCase('it').includes(query);
+            const visible = matchesDataset && matchesQuery;
+            card.hidden = !visible;
+            if (visible) visibleInGroup += 1;
+        });
+        group.hidden = visibleInGroup === 0;
+        visibleCards += visibleInGroup;
+    });
+
+    const emptyState = document.querySelector('#favorites-filter-empty');
+    if (emptyState) emptyState.hidden = visibleCards > 0 || (!query && !dataset);
+}
+
+/**
+ * Adds or updates the favorite action on a catalog card.
+ *
+ * @param {HTMLElement} card Catalog result card.
+ * @returns {void}
+ */
+function enhanceFavoriteCard(card) {
+    const dataset = card.dataset.favoriteDataset;
+    const id = card.dataset.favoriteId;
+    if (!dataset || !id || card.querySelector('.favorite-button')) return;
+
+    const button = document.createElement('button');
+    button.className = 'favorite-button';
+    button.type = 'button';
+    button.addEventListener('click', () => {
+        if (favoriteStore.has(dataset, id)) {
+            favoriteStore.remove(dataset, id);
+        } else {
+            favoriteStore.add(dataset, id);
+        }
+        updateFavoriteButton(button, dataset, id);
+    });
+    card.insertBefore(button, card.firstChild);
+    updateFavoriteButton(button, dataset, id);
+}
+
+/**
+ * Reflects the saved state in a favorite button.
+ *
+ * @param {HTMLButtonElement} button Favorite action.
+ * @param {string} dataset Dataset name.
+ * @param {string} id Stable item identifier.
+ * @returns {void}
+ */
+function updateFavoriteButton(button, dataset, id) {
+    const isFavorite = favoriteStore.has(dataset, id);
+    button.textContent = isFavorite ? '❤️' : '🤍';
+    button.classList.toggle('is-favorite', isFavorite);
+    button.setAttribute('aria-pressed', String(isFavorite));
+    button.setAttribute('aria-label', isFavorite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti');
+    button.title = isFavorite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti';
+}
+
+/**
+ * Loads and renders the client-side favorites page using the original catalog cards.
+ *
+ * @returns {Promise<void>} Resolves after rendering the page.
+ */
+async function renderFavoritesPage() {
+    const groupsContainer = document.querySelector('#favorites-groups');
+    if (!groupsContainer) return;
+
+    const groups = [
+        { dataset: 'spells', label: 'Incantesimi', route: 'incantesimi' },
+        { dataset: 'monsters', label: 'Mostri', route: 'mostri' },
+        { dataset: 'weapons', label: 'Oggetti · Armi', route: 'oggetti/armi' },
+        { dataset: 'armor', label: 'Oggetti · Armature', route: 'oggetti/armature' },
+        { dataset: 'ammunition', label: 'Oggetti · Munizioni', route: 'oggetti/munizioni' },
+        { dataset: 'tools', label: 'Oggetti · Strumenti', route: 'oggetti/strumenti' },
+        { dataset: 'adventuring-gear', label: 'Oggetti · Equipaggiamento', route: 'oggetti/avventura' }
+    ];
+    const favorites = favoriteStore.getAll();
+    const foundKeys = new Set();
+    const renderedGroups = [];
+
+    for (const group of groups) {
+        const groupFavorites = favorites.filter((favorite) => favorite.dataset === group.dataset);
+        if (groupFavorites.length === 0) continue;
+
+        const pendingKeys = new Set(groupFavorites.map((favorite) => favorite.key));
+        const cards = new Map();
+        for (let page = 1; page <= 10 && pendingKeys.size > 0; page += 1) {
+            const response = await fetch(`${group.route}?pageSize=100&page=${page}`);
+            if (!response.ok) throw new Error(`Impossibile caricare la sezione ${group.label}.`);
+            const document = new DOMParser().parseFromString(await response.text(), 'text/html');
+            const pageCards = [...document.querySelectorAll('[data-favorite-dataset][data-favorite-id]')];
+            if (pageCards.length === 0) break;
+            pageCards.forEach((card) => {
+                const key = `${card.dataset.favoriteDataset}:${card.dataset.favoriteId}`;
+                if (pendingKeys.has(key)) {
+                    cards.set(key, card);
+                    pendingKeys.delete(key);
+                    foundKeys.add(key);
+                }
+            });
+        }
+
+        if (cards.size > 0) {
+            renderedGroups.push({
+                ...group,
+                cards: groupFavorites.filter((favorite) => cards.has(favorite.key)).map((favorite) => cards.get(favorite.key))
+            });
+        }
+    }
+
+    groupsContainer.innerHTML = renderedGroups.map((group) => `
+        <section class="favorite-group" data-favorite-group="${group.dataset}" aria-labelledby="favorites-${group.dataset}">
+            <div class="section-heading">
+                <div><p class="eyebrow">Categoria</p><h2 id="favorites-${group.dataset}">${group.label}</h2></div>
+            </div>
+            <div class="results-grid"></div>
+        </section>
+    `).join('');
+    renderedGroups.forEach((group, index) => {
+        const grid = groupsContainer.querySelectorAll('.favorite-group .results-grid')[index];
+        group.cards.forEach((card) => {
+            const clone = card.cloneNode(true);
+            grid.appendChild(clone);
+            enhanceFavoriteCard(clone);
+        });
+    });
+    filterFavoriteCards();
+
+    const missing = favorites.filter((favorite) => !foundKeys.has(favorite.key));
+    document.querySelector('#favorites-empty').hidden = favorites.length > 0;
+    document.querySelector('#favorites-missing').hidden = missing.length === 0;
+    document.querySelector('#remove-missing-favorites').onclick = () => {
+        favoriteStore.save(favorites.filter((favorite) => foundKeys.has(favorite.key)));
+        renderFavoritesPage();
+    };
+}
+
+document.querySelectorAll('[data-favorite-dataset]').forEach(enhanceFavoriteCard);
+updateFavoriteCount();
+window.addEventListener('favoriteschange', updateFavoriteCount);
+document.querySelector('#favorites-search')?.addEventListener('input', filterFavoriteCards);
+document.querySelector('#favorites-type-filter')?.addEventListener('change', filterFavoriteCards);
+renderFavoritesPage().catch((error) => {
+    const missingMessage = document.querySelector('#favorites-missing');
+    if (missingMessage) {
+        missingMessage.hidden = false;
+        missingMessage.textContent = 'Non è stato possibile caricare i preferiti. Riprova più tardi.';
+        console.error(error);
+    }
+});
+
+/**
  * Persists the section search term in the browser URL without reloading the page.
  *
  * @param {string} value Current section search term.

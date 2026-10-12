@@ -31,6 +31,11 @@ final class FrontendController
         $pageSize = $this->parsePageSize($request);
 
         switch ($route) {
+            case 'preferiti':
+                $pageTitle = 'Preferiti';
+                $contentView = $this->templatesDirectory . '/favorites.php';
+                break;
+
             case 'oggetti/armi':
                 $categoryLabels = [
                     'items-weapons' => 'Tutte le armi',

@@ -70,7 +70,7 @@
         'Vessazione' => 'Se colpisci una creatura, hai vantaggio sul prossimo tiro per colpire che effettui contro di essa prima della fine del tuo turno successivo.'
     ];
 ?>
-        <article class="result-card" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($weapon['name']) ?>" data-sort-category="<?= e($weapon['subcategory']) ?>" data-sort-weight="<?= e($weapon['weight']) ?>" data-sort-value="<?= e($weapon['cost']) ?>" data-search="<?= e(implode(' ', [
+        <article class="result-card" data-favorite-dataset="weapons" data-favorite-id="<?= e($weapon['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($weapon['name']) ?>" data-sort-category="<?= e($weapon['subcategory']) ?>" data-sort-weight="<?= e($weapon['weight']) ?>" data-sort-value="<?= e($weapon['cost']) ?>" data-search="<?= e(implode(' ', [
             $weapon['name'],
             $weapon['proficiency'],
             $weapon['mode'],

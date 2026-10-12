@@ -15,6 +15,10 @@
         </label>
         <div id="global-search-preview" class="global-search-preview" hidden></div>
         </div>
+        <a class="favorites-link" href="<?= e(appUrl('preferiti')) ?>" aria-label="Apri i preferiti">
+            <span class="favorites-icon" aria-hidden="true">🤍</span>
+            <strong id="favorites-count" aria-label="Numero di preferiti">0</strong>
+        </a>
         <span class="version-badge">SRD 5.2.1</span>
         <button class="icon-button menu-button" type="button" aria-label="Apri il menu" aria-expanded="false">
             <span></span><span></span><span></span>
