@@ -24,6 +24,7 @@
                 <option value="adventuring-gear">Oggetti · Equipaggiamento</option>
             </select>
         </label>
+        <button class="export-visible-button favorites-export-button" id="export-favorites-button" type="button" disabled>⇩ Esporta preferiti (0)</button>
     </div>
     <div id="favorites-groups"></div>
     <p id="favorites-filter-empty" class="favorites-filter-empty" hidden>Nessun preferito corrisponde ai filtri selezionati.</p>

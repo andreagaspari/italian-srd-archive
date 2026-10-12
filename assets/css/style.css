@@ -226,6 +226,8 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .favorites-search input { width: 100%; padding: 9px 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 12px; }
 .favorites-type-filter { display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: 10px; }
 .favorites-type-filter select { padding: 8px 28px 8px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--ink); font: inherit; font-size: 11px; }
+.favorites-export-button { white-space: nowrap; }
+.favorites-export-button:disabled { opacity: .5; cursor: not-allowed; }
 .favorites-filter-empty { margin: 24px 0; color: var(--muted); }
 .favorites-missing { margin-top: 24px; padding: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; }
 .favorites-missing .button-secondary { margin-left: 10px; }
@@ -373,6 +375,7 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
     .icon-button span { display: block; width: 18px; height: 2px; background: var(--ink); }
     .favorites-filters { align-items: stretch; flex-direction: column; }
     .favorites-search { flex-basis: auto; max-width: none; }
+    .favorites-export-button { width: 100%; }
     .main-content { padding: 36px 18px 22px; }
     .hero { margin-bottom: 32px; }
     .hero-decoration { display: none; }

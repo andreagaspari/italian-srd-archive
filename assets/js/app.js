@@ -130,6 +130,11 @@ function filterFavoriteCards() {
 
     const emptyState = document.querySelector('#favorites-filter-empty');
     if (emptyState) emptyState.hidden = visibleCards > 0 || (!query && !dataset);
+    const exportButton = document.querySelector('#export-favorites-button');
+    if (exportButton) {
+        exportButton.disabled = visibleCards === 0;
+        exportButton.textContent = `⇩ Esporta preferiti (${visibleCards})`;
+    }
 }
 
 /**
@@ -402,10 +407,12 @@ function closeExportDialog() {
 function openExportDialog(items) {
     const itemCount = items.length;
     const firstTitle = items[0].title;
-    const isSpellExport = items[0].type === 'armi';
-    const itemLabel = isSpellExport ? 'incantesimo' : 'oggetto';
-    const itemLabelPlural = isSpellExport ? 'incantesimi' : 'oggetti';
-    const archiveName = isSpellExport ? 'incantesimi.zip' : 'oggetti.zip';
+    const exportTypes = new Set(items.map((item) => item.type));
+    const isSpellExport = exportTypes.size === 1 && items[0].type === 'armi';
+    const isMixedExport = exportTypes.size > 1;
+    const itemLabel = isMixedExport ? 'preferito' : (isSpellExport ? 'incantesimo' : 'oggetto');
+    const itemLabelPlural = isMixedExport ? 'preferiti' : (isSpellExport ? 'incantesimi' : 'oggetti');
+    const archiveName = isMixedExport ? 'preferiti.zip' : (isSpellExport ? 'incantesimi.zip' : 'oggetti.zip');
     const backdrop = document.createElement('div');
     backdrop.className = 'export-dialog-backdrop';
     backdrop.innerHTML = `
@@ -539,6 +546,15 @@ document.addEventListener('click', (event) => {
             .finally(() => {
                 exportButton.disabled = false;
             });
+    }
+    if (event.target.closest('#export-favorites-button')) {
+        const exportButton = event.target.closest('#export-favorites-button');
+        const items = [...document.querySelectorAll('#favorites-groups .result-card:not([hidden])')]
+            .map((card) => JSON.parse(card.dataset.export));
+        if (items.length > 0) {
+            openExportDialog(items);
+        }
+        exportButton.blur();
     }
 });
 
