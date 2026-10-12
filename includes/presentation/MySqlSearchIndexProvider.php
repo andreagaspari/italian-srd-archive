@@ -20,15 +20,35 @@ final class MySqlSearchIndexProvider implements SearchIndexProviderInterface
     /**
      * Returns catalog records in the shape expected by the global search UI.
      *
+     * When a query is supplied, only matching catalog records are read from
+     * MySQL. Static navigation entries are still built so the caller can
+     * search them with the same rules as the JSON-backed implementation.
+     *
+     * @param string|null $query Search term used to limit catalog records.
+     *
      * @return array<int, array<string, mixed>> Search index entries.
      */
-    public function getIndex(): array
+    public function getIndex(?string $query = null): array
     {
-        $statement = $this->database->query(
-            'SELECT dataset, payload
-             FROM catalog_items
-             ORDER BY name ASC'
-        );
+        $sql = 'SELECT dataset, payload
+                FROM catalog_items';
+        $parameters = [];
+        $query = trim((string) $query);
+        if ($query !== '') {
+            $sql .= " WHERE name LIKE :search_name ESCAPE '\\\\'
+                      OR search_text LIKE :search_text ESCAPE '\\\\'";
+            $escapedQuery = str_replace(
+                ['\\', '%', '_'],
+                ['\\\\', '\\%', '\\_'],
+                $query
+            );
+            $searchPattern = '%' . $escapedQuery . '%';
+            $parameters['search_name'] = $searchPattern;
+            $parameters['search_text'] = $searchPattern;
+        }
+        $sql .= ' ORDER BY name ASC';
+        $statement = $this->database->prepare($sql);
+        $statement->execute($parameters);
         $datasets = [
             'objectData' => ['items' => []],
             'armorData' => ['items' => []],
@@ -48,7 +68,7 @@ final class MySqlSearchIndexProvider implements SearchIndexProviderInterface
             'monsters' => 'monstersData',
         ];
 
-        foreach ($statement->fetchAll() as $row) {
+        foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $row) {
             $dataset = (string) $row['dataset'];
             if (!isset($datasetMap[$dataset])) {
                 continue;

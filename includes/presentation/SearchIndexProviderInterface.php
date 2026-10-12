@@ -8,9 +8,11 @@ declare(strict_types=1);
 interface SearchIndexProviderInterface
 {
     /**
-     * Returns the complete search index.
+     * Returns the search index, optionally narrowed to a query.
+     *
+     * @param string|null $query Search term used to limit data-backed entries.
      *
      * @return array<int, array<string, mixed>> Search index entries.
      */
-    public function getIndex(): array;
+    public function getIndex(?string $query = null): array;
 }

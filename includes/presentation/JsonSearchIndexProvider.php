@@ -25,9 +25,11 @@ final class JsonSearchIndexProvider implements SearchIndexProviderInterface
     /**
      * Returns the cached JSON-backed search index.
      *
+     * @param string|null $query Ignored because the JSON index is cached as a whole.
+     *
      * @return array<int, array<string, mixed>> Search index entries.
      */
-    public function getIndex(): array
+    public function getIndex(?string $query = null): array
     {
         if ($this->index === null) {
             $this->index = $this->builder->build([

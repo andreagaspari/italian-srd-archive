@@ -29,7 +29,7 @@ $provider = $dataSource === 'MYSQL'
     );
 $normalizedQuery = mb_strtolower($query, 'UTF-8');
 $items = array_values(array_filter(
-    $provider->getIndex(),
+    $provider->getIndex($query),
     static fn (array $item): bool => str_contains(
         mb_strtolower(implode(' ', [
             (string) ($item['search'] ?? ''),
