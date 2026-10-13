@@ -42,6 +42,7 @@ final class SearchIndexBuilder
             ...$item['classes']
         ]);
         $this->appendSearchItems($index, $datasets['monstersData']['items'] ?? [], 'Mostri', appUrl('mostri'), static fn (array $item): string => $item['name'], static fn (array $item): array => [$item['type'], $item['size'], $item['challenge_rating']]);
+        $this->appendSearchItems($index, $datasets['rulesData']['items'] ?? [], 'Regole', appUrl('regole'), static fn (array $item): string => $item['name'], static fn (array $item): array => [(string) ($item['category'] ?? '')]);
 
         return $index;
     }
@@ -69,16 +70,20 @@ final class SearchIndexBuilder
             $tags = array_values(array_filter($tagFormatter($item)));
             $values = $this->flattenSearchValues($item);
             $descriptionValues = $this->flattenSearchValues(array_diff_key($item, array_flip([
-                'id', 'name', 'mode', 'proficiency', 'subcategory', 'armor_type', 'tool_type', 'category', 'container'
+                'id', 'name', 'mode', 'proficiency', 'subcategory', 'armor_type', 'tool_type', 'category', 'container', 'source_page'
             ])));
             $descriptionValues = array_values(array_unique(array_filter(
                 $descriptionValues,
                 static fn (string $value): bool => !in_array($value, $tags, true)
             )));
+            $description = implode(' · ', array_slice($descriptionValues, 0, 3));
+            if (isset($item['source_page']) && is_scalar($item['source_page'])) {
+                $description = 'p. ' . $item['source_page'] . ($description !== '' ? ' · ' . $description : '');
+            }
             $index[] = [
                 'section' => $section,
                 'title' => $title,
-                'description' => implode(' · ', array_slice($descriptionValues, 0, 3)),
+                'description' => $description,
                 'tags' => $tags,
                 'search' => implode(' ', $values),
                 'url' => $this->buildItemUrl($url, $title)

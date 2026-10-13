@@ -19,6 +19,7 @@ L'archivio mette a disposizione:
   - strumenti;
   - equipaggiamento d'avventura;
 - ricerca globale nell'archivio;
+- glossario delle regole con introduzione, abbreviazioni, categorie e filtri;
 - esportazione dei risultati e dei singoli elementi.
 
 ## Requisiti
@@ -166,6 +167,30 @@ un'installazione MYSQL:
 
 Non è necessario ricreare il database.
 
+## Glossario delle regole
+
+Il Glossario delle regole è pubblicato come dataset JSON in
+[`data/rules.json`](./data/rules.json), estratto dall'SRD italiano 5.2.1
+[PDF ufficiale](https://media.dndbeyond.com/compendium-images/srd/5.2/IT_SRD_CC_v5.2.1.pdf).
+Il dataset contiene:
+
+- l'introduzione completa con le convenzioni del glossario;
+- le abbreviazioni con il relativo significato;
+- le 154 voci del glossario;
+- le categorie `azione`, `area di effetto`, `atteggiamento`, `condizione` e
+  `pericolo`.
+
+Nei nomi delle voci i descrittori tra parentesi quadre, per esempio
+`Accecato [condizione]`, vengono rimossi dal titolo e conservati nel campo
+`category`. Questo permette di filtrare le regole senza perdere
+l'informazione originale. Le abbreviazioni presenti nel testo delle regole
+vengono mostrate come tooltip nella pagina [`/regole`](./templates/rules/index.php).
+
+In modalità `DATA_SOURCE=MYSQL`, il glossario viene importato nelle tabelle
+`rule_documents` e `rule_items`, incluse introduzione, abbreviazioni, categorie
+e voci. In modalità `DATA_SOURCE=JSON`, `rules.json` resta la sorgente
+utilizzata dall'applicazione.
+
 ## Avvio locale
 
 Dalla directory del progetto è possibile avviare il server web integrato di PHP:
@@ -185,6 +210,7 @@ In alternativa, il progetto può essere pubblicato in un ambiente Apache/PHP. Il
 ├── api-search.php       # Endpoint JSON per la ricerca globale
 ├── assets/              # CSS, JavaScript e risorse grafiche
 ├── data/                # Dataset JSON dell'archivio
+│   └── rules.json       # Glossario delle regole e metadati introduttivi
 ├── export.php           # Endpoint per l'esportazione dei risultati
 ├── includes/            # Bootstrap, caricamento dati e logica applicativa
 ├── templates/            # Layout e viste HTML

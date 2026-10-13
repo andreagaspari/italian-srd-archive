@@ -9,7 +9,7 @@
  * 
  * I dati riportati sono compatibili con la v5.5 (2024).
  * 
- * Version: 0.0.5
+ * Version: 0.0.6
  * SRDVersion: 5.2.1
  * Author: Andrea Gaspari
  * Author URI: https://andreagaspari.dev
@@ -30,9 +30,13 @@ if (!in_array($dataSource, ['JSON', 'MYSQL'], true)) {
 }
 $datasetStore = new JsonDatasetStore(new JsonFileImporter(), __DIR__ . '/data');
 $summary = new JsonCatalogSummary($datasetStore);
-$mysqlProvider = $dataSource === 'MYSQL'
-    ? new MySqlCatalogProvider(DatabaseConnection::createFromEnvironment())
+$database = $dataSource === 'MYSQL'
+    ? DatabaseConnection::createFromEnvironment()
     : null;
+$mysqlProvider = $dataSource === 'MYSQL'
+    ? new MySqlCatalogProvider($database)
+    : null;
+$rulesCatalog = new RulesCatalog($datasetStore, $database);
 $catalog = new DataCatalog(
     store: $datasetStore,
     weaponProvider: $mysqlProvider ?? new JsonWeaponProvider($datasetStore),
@@ -46,11 +50,12 @@ $catalog = new DataCatalog(
 $spellsCount = $summary->count('spells');
 $monsterCount = $summary->count('monsters');
 $objectCount = $summary->count('objects');
+$rulesCount = count($rulesCatalog->document()['items'] ?? []);
 $spellCategories = $summary->categories('spells');
 $spellClassCategories = $summary->categories('spell-classes');
 $monsterCategories = $summary->categories('monsters');
 $objectCategories = $summary->categories('objects');
-$frontendController = new FrontendController($catalog, __DIR__ . '/templates');
+$frontendController = new FrontendController($catalog, $rulesCatalog, __DIR__ . '/templates');
 $page = $frontendController->resolve(
     route: is_string($route) ? $route : 'home',
     request: $_GET

@@ -15,6 +15,7 @@ $store = new JsonDatasetStore(new JsonFileImporter(), dirname(__DIR__) . '/data'
 $weapons = new JsonWeaponProvider($store);
 $spells = new JsonSpellProvider($store);
 $monsters = new JsonMonsterProvider($store);
+$rules = new RulesCatalog($store);
 
 $weaponPage = $weapons->getWeapons(new WeaponQuery(page: 2, pageSize: 10));
 expectTrue(count($weaponPage->items) === 10, 'La seconda pagina delle armi deve contenere 10 elementi.');
@@ -28,5 +29,11 @@ expectTrue($spellSearch->items[0]['name'] === 'Palla di fuoco', 'La ricerca deve
 $monsterSearch = $monsters->getMonsters(new MonsterQuery(search: 'drago', pageSize: 24));
 expectTrue($monsterSearch->totalItems > 0, 'La ricerca dei mostri deve trovare almeno un risultato.');
 expectTrue(count($monsterSearch->items) <= 24, 'La ricerca dei mostri deve rispettare la paginazione.');
+
+$conditionRules = $rules->getRules('condizione', 'accecato', 1, 24);
+expectTrue($conditionRules->totalItems > 0, 'Il glossario deve trovare la regola Accecato.');
+expectTrue($conditionRules->items[0]['name'] === 'Accecato', 'La regola deve rimuovere il descrittore dal nome.');
+expectTrue($conditionRules->items[0]['category'] === 'condizione', 'Il descrittore deve diventare la categoria.');
+expectTrue(count($rules->document()['abbreviations']) > 0, 'Il glossario deve includere le abbreviazioni.');
 
 echo "Catalog tests passed.\n";

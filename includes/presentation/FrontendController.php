@@ -9,10 +9,12 @@ final class FrontendController
 {
     /**
      * @param DataCatalog $catalog Application facade for filtered dataset queries.
+     * @param RulesCatalog $rulesCatalog Glossary rules provider.
      * @param string $templatesDirectory Absolute path to the template directory.
      */
     public function __construct(
         private readonly DataCatalog $catalog,
+        private readonly RulesCatalog $rulesCatalog,
         private readonly string $templatesDirectory
     ) {
     }
@@ -257,6 +259,25 @@ final class FrontendController
                 $pagination = $monstersResult;
                 $pageTitle = 'Mostri';
                 $contentView = $this->templatesDirectory . '/monsters/index.php';
+                break;
+
+            case 'regole':
+                $rulesDocument = $this->rulesCatalog->document();
+                $ruleCategories = $this->rulesCatalog->categories();
+                $selectedRuleCategory = (string) ($request['categoria'] ?? '');
+                if ($selectedRuleCategory !== '' && !in_array($selectedRuleCategory, $ruleCategories, true)) {
+                    $selectedRuleCategory = '';
+                }
+                $rulesResult = $this->rulesCatalog->getRules(
+                    category: $selectedRuleCategory,
+                    search: $this->parseSearch($request),
+                    page: $page,
+                    pageSize: $pageSize
+                );
+                $rules = $rulesResult->items;
+                $pagination = $rulesResult;
+                $pageTitle = 'Glossario delle regole';
+                $contentView = $this->templatesDirectory . '/rules/index.php';
                 break;
 
             case 'home':

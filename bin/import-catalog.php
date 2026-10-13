@@ -133,6 +133,18 @@ try {
     if ($files === false || $files === []) {
         throw new RuntimeException('Nessun dataset JSON trovato.');
     }
+    $files = array_values(array_filter(
+        $files,
+        static fn (string $file): bool => in_array(pathinfo($file, PATHINFO_FILENAME), [
+            'spells',
+            'monsters',
+            'weapons',
+            'armor',
+            'ammunition',
+            'tools',
+            'adventuring-gear'
+        ], true)
+    ));
     sort($files, SORT_STRING);
 
     $baseInsert = $database->prepare(
@@ -349,6 +361,73 @@ try {
         $totalItems += $datasetItems;
         printf("%s: %d elementi importati\n", $dataset, $datasetItems);
     }
+
+    $rulesDocument = $importer->import($dataDirectory . '/rules.json');
+    $source = $rulesDocument['source'] ?? [];
+    $pages = is_array($source['pages'] ?? null) ? $source['pages'] : [];
+    $rulesItems = $rulesDocument['items'] ?? null;
+    if (!is_array($source) || !is_array($pages) || !is_array($rulesItems)) {
+        throw new UnexpectedValueException('Dataset delle regole non valido.');
+    }
+    $documentStatement = $database->prepare(
+        'INSERT INTO rule_documents
+            (document_key, source_title, source_version, source_pages_from, source_pages_to,
+             source_url, introduction, abbreviations, categories, updated_at)
+         VALUES
+            ("rules", :source_title, :source_version, :pages_from, :pages_to, :source_url,
+             :introduction, :abbreviations, :categories, NOW())
+         ON DUPLICATE KEY UPDATE
+            source_title = VALUES(source_title), source_version = VALUES(source_version),
+            source_pages_from = VALUES(source_pages_from), source_pages_to = VALUES(source_pages_to),
+            source_url = VALUES(source_url), introduction = VALUES(introduction),
+            abbreviations = VALUES(abbreviations), categories = VALUES(categories),
+            updated_at = NOW()'
+    );
+    $ruleStatement = $database->prepare(
+        'INSERT INTO rule_items
+            (document_key, item_id, name, category, source_page, content, see_also, search_text, payload, updated_at)
+         VALUES
+            ("rules", :item_id, :name, :category, :source_page, :content, :see_also, :search_text, :payload, NOW())
+         ON DUPLICATE KEY UPDATE
+            name = VALUES(name), category = VALUES(category), source_page = VALUES(source_page),
+            content = VALUES(content), see_also = VALUES(see_also), search_text = VALUES(search_text),
+            payload = VALUES(payload), updated_at = NOW()'
+    );
+    $database->beginTransaction();
+    try {
+        $documentStatement->execute([
+            'source_title' => catalogString($source, 'title', 'rules.source'),
+            'source_version' => catalogString($source, 'version', 'rules.source'),
+            'pages_from' => (int) ($pages['from'] ?? 0),
+            'pages_to' => (int) ($pages['to'] ?? 0),
+            'source_url' => catalogString($source, 'url', 'rules.source'),
+            'introduction' => json_encode($rulesDocument['introduction'] ?? [], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+            'abbreviations' => json_encode($rulesDocument['abbreviations'] ?? [], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+            'categories' => json_encode($rulesDocument['categories'] ?? [], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+        ]);
+        $database->exec('DELETE FROM rule_items WHERE document_key = "rules"');
+        foreach ($rulesItems as $rule) {
+            if (!is_array($rule)) {
+                throw new UnexpectedValueException('Elemento non valido nel dataset rules.');
+            }
+            $ruleStatement->execute([
+                'item_id' => catalogString($rule, 'id', 'rules'),
+                'name' => catalogString($rule, 'name', 'rules'),
+                'category' => catalogNullableString($rule, 'category', 'rules'),
+                'source_page' => (int) ($rule['source_page'] ?? 0),
+                'content' => catalogString($rule, 'content', 'rules'),
+                'see_also' => json_encode($rule['see_also'] ?? [], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+                'search_text' => catalogSearchText($rule),
+                'payload' => json_encode($rule, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+            ]);
+        }
+        $database->commit();
+    } catch (Throwable $exception) {
+        $database->rollBack();
+        throw $exception;
+    }
+    printf("rules: %d elementi importati\n", count($rulesItems));
+    $totalItems += count($rulesItems);
 
     printf("Import completato: %d elementi totali.\n", $totalItems);
 } catch (Throwable $exception) {

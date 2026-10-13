@@ -9,6 +9,7 @@ require_once __DIR__ . '/catalog/shared/PageResult.php';
 require_once __DIR__ . '/catalog/shared/JsonDatasetStore.php';
 require_once __DIR__ . '/catalog/shared/CatalogSummaryInterface.php';
 require_once __DIR__ . '/catalog/shared/JsonCatalogSummary.php';
+require_once __DIR__ . '/catalog/rules/RulesCatalog.php';
 require_once __DIR__ . '/catalog/objects/weapons/WeaponQuery.php';
 require_once __DIR__ . '/catalog/objects/weapons/WeaponProviderInterface.php';
 require_once __DIR__ . '/catalog/objects/weapons/JsonWeaponProvider.php';

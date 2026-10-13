@@ -42,6 +42,11 @@
                 Mostri
                 <span class="nav-count"><?= $monsterCount ?: '' ?></span>
             </a>
+            <a class="nav-item <?= $route === 'regole' ? 'is-active' : '' ?>" href="<?= e(appUrl('regole')) ?>">
+                <span class="nav-icon" aria-hidden="true">📖</span>
+                Regole
+                <span class="nav-count"><?= $rulesCount ?: '' ?></span>
+            </a>
             <div class="nav-group <?= str_starts_with($route, 'oggetti') ? 'is-active' : '' ?>">
                 <a class="nav-item <?= str_starts_with($route, 'oggetti') ? 'is-active' : '' ?>" href="<?= e(appUrl('oggetti')) ?>">
                     <span class="nav-icon" aria-hidden="true">🎒</span>

@@ -23,6 +23,6 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js?v=13"></script>
+    <script src="assets/js/app.js?v=16"></script>
 </body>
 </html>

@@ -7,6 +7,46 @@ function e(string $value): string
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
+/**
+ * Marks glossary abbreviations with accessible browser tooltips.
+ *
+ * @param string $content Rule text to render.
+ * @param array<int, array{abbreviation: string, meaning: string}> $abbreviations Glossary abbreviations.
+ *
+ * @return string Escaped rule text containing safe abbreviation markup.
+ */
+function ruleContentWithAbbreviations(string $content, array $abbreviations): string
+{
+    $escapedContent = e($content);
+    $definitions = [];
+    foreach ($abbreviations as $abbreviation) {
+        $key = (string) ($abbreviation['abbreviation'] ?? '');
+        $meaning = (string) ($abbreviation['meaning'] ?? '');
+        if ($key === '' || $meaning === '') {
+            continue;
+        }
+        $definitions[$key] = $meaning;
+    }
+    uksort($definitions, static fn (string $left, string $right): int => strlen($right) <=> strlen($left));
+    if ($definitions === []) {
+        return $escapedContent;
+    }
+
+    $pattern = '/(?<![\p{L}])(' . implode('|', array_map(
+        static fn (string $value): string => preg_quote(e($value), '/'),
+        array_keys($definitions)
+    )) . ')(?![\p{L}])/u';
+
+    return preg_replace_callback(
+        $pattern,
+        static function (array $match) use ($definitions): string {
+            $abbreviation = html_entity_decode($match[1], ENT_QUOTES, 'UTF-8');
+            return '<abbr class="rule-abbreviation" title="' . e($definitions[$abbreviation]) . '">' . $match[1] . '</abbr>';
+        },
+        $escapedContent
+    ) ?? $escapedContent;
+}
+
 function monsterDescriptionFeatures(string $content): array
 {
     preg_match_all('/<b>(.*?)<\/b>(.*?)(?=<b>|$)/su', $content, $matches, PREG_SET_ORDER);

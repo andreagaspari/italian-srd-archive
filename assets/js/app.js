@@ -1,18 +1,18 @@
 const searchInput = document.querySelector('#object-search-input');
-const resultCards = [...document.querySelectorAll('[data-search]')];
-const resultCount = document.querySelector('#result-count');
-const emptyState = document.querySelector('#empty-state');
+let resultCards = [...document.querySelectorAll('[data-search]')];
+let resultCount = document.querySelector('#result-count');
+let emptyState = document.querySelector('#empty-state');
 const sortSelect = document.querySelector('#object-sort-select');
-const resultsGrid = document.querySelector('#results-grid');
+let resultsGrid = document.querySelector('#results-grid');
 const globalSearchInput = document.querySelector('#search-input');
 const globalSearchPreview = document.querySelector('#global-search-preview');
 let globalSearchData = [];
 const spellFilterSelects = [...document.querySelectorAll('.spell-filter-select')];
 const monsterFilterSelects = [...document.querySelectorAll('.monster-filter-select')];
-const resultContainers = resultsGrid?.classList.contains('monster-species-groups')
+let resultContainers = resultsGrid?.classList.contains('monster-species-groups')
     ? [...resultsGrid.querySelectorAll('.monster-results-grid')]
     : (resultsGrid ? [resultsGrid] : []);
-const originalCardOrders = resultContainers.map((container) => [...container.querySelectorAll('.result-card')]);
+let originalCardOrders = resultContainers.map((container) => [...container.querySelectorAll('.result-card')]);
 
 /**
  * Stores browser-local favorite references and keeps their format versioned for future migrations.
@@ -196,7 +196,8 @@ async function renderFavoritesPage() {
         { dataset: 'armor', label: 'Oggetti · Armature', route: 'oggetti/armature' },
         { dataset: 'ammunition', label: 'Oggetti · Munizioni', route: 'oggetti/munizioni' },
         { dataset: 'tools', label: 'Oggetti · Strumenti', route: 'oggetti/strumenti' },
-        { dataset: 'adventuring-gear', label: 'Oggetti · Equipaggiamento', route: 'oggetti/avventura' }
+        { dataset: 'adventuring-gear', label: 'Oggetti · Equipaggiamento', route: 'oggetti/avventura' },
+        { dataset: 'rules', label: 'Glossario delle regole', route: 'regole' }
     ];
     const favorites = favoriteStore.getAll();
     const foundKeys = new Set();
@@ -320,6 +321,7 @@ function preserveSectionSearchOnNavigation() {
 }
 
 function filterResults() {
+    if (!searchInput) return;
     const query = searchInput.value.trim().toLocaleLowerCase('it');
     let visibleCount = 0;
 
@@ -329,7 +331,6 @@ function filterResults() {
         if (matches) {
             visibleCount += 1;
         }
-
     });
 
     if (resultCount) {
@@ -339,6 +340,67 @@ function filterResults() {
     if (emptyState) {
         emptyState.hidden = visibleCount > 0;
     }
+}
+
+/**
+ * Refreshes references to section result elements after an asynchronous render.
+ *
+ * @returns {void}
+ */
+function refreshSectionResultReferences() {
+    resultCards = [...document.querySelectorAll('[data-search]')];
+    resultCount = document.querySelector('#result-count');
+    emptyState = document.querySelector('#empty-state');
+    resultsGrid = document.querySelector('#results-grid');
+    resultContainers = resultsGrid?.classList.contains('monster-species-groups')
+        ? [...resultsGrid.querySelectorAll('.monster-results-grid')]
+        : (resultsGrid ? [resultsGrid] : []);
+    originalCardOrders = resultContainers.map((container) => [...container.querySelectorAll('.result-card')]);
+    resultCards.forEach(enhanceFavoriteCard);
+}
+
+/**
+ * Loads section search results from the server without replacing the page.
+ *
+ * @param {string} value Current search term.
+ * @returns {Promise<void>} Resolves after the result fragments are replaced.
+ */
+async function fetchSectionResults(value) {
+    const url = new URL(window.location.href);
+    const normalizedValue = value.trim();
+    if (normalizedValue) {
+        url.searchParams.set('q', normalizedValue);
+    } else {
+        url.searchParams.delete('q');
+    }
+    url.searchParams.delete('page');
+    window.history.replaceState({}, '', url);
+
+    const response = await fetch(url, { headers: { Accept: 'text/html' }, cache: 'no-store' });
+    if (!response.ok) {
+        throw new Error(`Impossibile aggiornare i risultati (${response.status}).`);
+    }
+
+    const documentFragment = new DOMParser().parseFromString(await response.text(), 'text/html');
+    const currentResults = document.querySelector('#results-grid') || document.querySelector('.rules-list');
+    const nextResults = documentFragment.querySelector('#results-grid') || documentFragment.querySelector('.rules-list');
+    if (currentResults && nextResults) currentResults.replaceWith(nextResults);
+
+    const currentSummary = document.querySelector('.result-summary');
+    const nextSummary = documentFragment.querySelector('.result-summary');
+    if (currentSummary && nextSummary) currentSummary.replaceWith(nextSummary);
+
+    const currentEmptyState = document.querySelector('#empty-state');
+    const nextEmptyState = documentFragment.querySelector('#empty-state');
+    if (currentEmptyState && nextEmptyState) currentEmptyState.replaceWith(nextEmptyState);
+
+    ['.pagination-summary', '.pagination'].forEach((selector) => {
+        const currentElement = document.querySelector(selector);
+        const nextElement = documentFragment.querySelector(selector);
+        if (currentElement && nextElement) currentElement.replaceWith(nextElement);
+        else if (currentElement && !nextElement) currentElement.remove();
+    });
+    refreshSectionResultReferences();
 }
 
 function sortableNumber(value) {
@@ -380,13 +442,14 @@ function sortResults() {
 }
 
 if (searchInput) {
-    let searchSubmitTimer;
+    let searchRequestTimer;
     searchInput.addEventListener('input', () => {
-        window.clearTimeout(searchSubmitTimer);
-        searchSubmitTimer = window.setTimeout(() => {
-            searchInput.form?.requestSubmit();
-        }, 300);
+        window.clearTimeout(searchRequestTimer);
+        searchRequestTimer = window.setTimeout(() => {
+            fetchSectionResults(searchInput.value).catch((error) => console.error(error));
+        }, 250);
     });
+    searchInput.form?.addEventListener('submit', (event) => event.preventDefault());
 }
 preserveSectionSearchOnNavigation();
 if (sortSelect) {
@@ -550,6 +613,7 @@ document.addEventListener('click', (event) => {
     if (event.target.closest('#export-favorites-button')) {
         const exportButton = event.target.closest('#export-favorites-button');
         const items = [...document.querySelectorAll('#favorites-groups .result-card:not([hidden])')]
+            .filter((card) => card.dataset.export)
             .map((card) => JSON.parse(card.dataset.export));
         if (items.length > 0) {
             openExportDialog(items);

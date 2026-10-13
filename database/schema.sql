@@ -128,3 +128,38 @@ CREATE TABLE IF NOT EXISTS adventuring_gear_items (
     CONSTRAINT fk_adventuring_gear_items_catalog
         FOREIGN KEY (catalog_item_id) REFERENCES catalog_items (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS rule_documents (
+    document_key VARCHAR(64) NOT NULL,
+    source_title VARCHAR(255) NOT NULL,
+    source_version VARCHAR(32) NOT NULL,
+    source_pages_from SMALLINT UNSIGNED NOT NULL,
+    source_pages_to SMALLINT UNSIGNED NOT NULL,
+    source_url VARCHAR(512) NOT NULL,
+    introduction JSON NOT NULL,
+    abbreviations JSON NOT NULL,
+    categories JSON NOT NULL,
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (document_key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS rule_items (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    document_key VARCHAR(64) NOT NULL,
+    item_id VARCHAR(160) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(64) NULL,
+    source_page SMALLINT UNSIGNED NOT NULL,
+    content MEDIUMTEXT NOT NULL,
+    see_also JSON NOT NULL,
+    search_text MEDIUMTEXT NOT NULL,
+    payload JSON NOT NULL,
+    updated_at DATETIME NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_rule_items_document_id (document_key, item_id),
+    KEY idx_rule_items_category (category),
+    KEY idx_rule_items_source_page (source_page),
+    FULLTEXT KEY ft_rule_items_search (name, search_text),
+    CONSTRAINT fk_rule_items_document
+        FOREIGN KEY (document_key) REFERENCES rule_documents (document_key) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -39,7 +39,8 @@ final class JsonSearchIndexProvider implements SearchIndexProviderInterface
                 'toolsData' => $this->store->get('tools'),
                 'adventuringGearData' => $this->store->get('adventuring-gear'),
                 'spellsData' => $this->store->get('spells'),
-                'monstersData' => $this->store->get('monsters')
+                'monstersData' => $this->store->get('monsters'),
+                'rulesData' => $this->store->get('rules')
             ]);
         }
 

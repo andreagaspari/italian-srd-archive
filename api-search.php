@@ -19,10 +19,15 @@ if (!in_array($dataSource, ['JSON', 'MYSQL'], true)) {
     throw new RuntimeException('DATA_SOURCE deve essere JSON oppure MYSQL.');
 }
 $provider = $dataSource === 'MYSQL'
-    ? new MySqlSearchIndexProvider(
-        DatabaseConnection::createFromEnvironment(),
-        new SearchIndexBuilder()
-    )
+    ? (function (): MySqlSearchIndexProvider {
+        $store = new JsonDatasetStore(new JsonFileImporter(), __DIR__ . '/data');
+        $database = DatabaseConnection::createFromEnvironment();
+        return new MySqlSearchIndexProvider(
+            $database,
+            new SearchIndexBuilder(),
+            new RulesCatalog($store, $database)
+        );
+    })()
     : new JsonSearchIndexProvider(
         new JsonDatasetStore(new JsonFileImporter(), __DIR__ . '/data'),
         new SearchIndexBuilder()

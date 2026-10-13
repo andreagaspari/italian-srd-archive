@@ -10,10 +10,12 @@ final class MySqlSearchIndexProvider implements SearchIndexProviderInterface
     /**
      * @param PDO $database Configured MySQL connection.
      * @param SearchIndexBuilder $builder Shared index formatting logic.
+     * @param RulesCatalog $rulesCatalog Glossary rules provider.
      */
     public function __construct(
         private readonly PDO $database,
-        private readonly SearchIndexBuilder $builder
+        private readonly SearchIndexBuilder $builder,
+        private readonly RulesCatalog $rulesCatalog
     ) {
     }
 
@@ -57,6 +59,7 @@ final class MySqlSearchIndexProvider implements SearchIndexProviderInterface
             'adventuringGearData' => ['items' => []],
             'spellsData' => ['items' => []],
             'monstersData' => ['items' => []],
+            'rulesData' => $this->rulesCatalog->document(),
         ];
         $datasetMap = [
             'weapons' => 'objectData',
