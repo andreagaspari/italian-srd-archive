@@ -1,9 +1,9 @@
 <section class="home-view">
+
     <div class="hero">
         <div>
-            <p class="eyebrow">Archivio SRD · Italiano</p>
-            <h1>Cosa stai cercando?</h1>
-            <p class="hero-copy">Scegli un’area per consultare rapidamente regole, incantesimi, mostri e oggetti.</p>
+            <h1>Italian SRD 5.2.1 Archive</h1>
+            <p>Usa la ricerca globale nella barra superiore oppure apri una sezione per filtrare e ordinare i contenuti.<br/> Le funzioni di esportazione sono pensate per essere utilizzate con <a href="https://le12avventure.com/pages/makeamaster" target="_blank" rel="noopener noreferrer">MakeAMaster</a> di <i>Le 12 Avventure</i>, il gestionale per le tue avventure.</p>
         </div>
     </div>
 
@@ -62,11 +62,4 @@
         </article>
     </div>
 
-    <div class="taxonomy-note">
-        <span class="taxonomy-note-icon">📚</span>
-        <div>
-            <strong>Archivio SRD 5.2.1 in italiano</strong>
-            <p>Usa la ricerca globale nella barra superiore oppure apri una sezione per filtrare e ordinare i contenuti.</p>
-        </div>
-    </div>
 </section>

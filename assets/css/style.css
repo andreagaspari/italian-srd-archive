@@ -130,9 +130,13 @@ button { cursor: pointer; }
 .sidebar-link:hover { color: var(--accent); }
 
 .main-content { width: min(100%, 1120px); margin: 0 auto; padding: 62px 54px 30px; }
-.hero { display: flex; justify-content: space-between; max-width: 690px; margin-bottom: 42px; }
+.home-view .hero { max-width: none; margin-bottom: 46px; }
+.home-view .hero > div { width: 100%; }
 .hero h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
-.hero h1 { margin: 0 0 10px; font-size: clamp(32px, 4vw, 46px); letter-spacing: -.035em; }
+.home-view .hero h1 { margin: 0 0 22px; font-size: clamp(40px, 5vw, 64px); letter-spacing: -.035em; }
+.home-view .hero p { max-width: 1050px; margin: 0; color: var(--ink); font-size: 16px; line-height: 1.45; }
+.home-view .hero a { color: var(--accent); }
+.home-view .hero a:hover { color: var(--ink); }
 .hero-copy { max-width: 490px; margin: 0; color: var(--muted); font-size: 15px; }
 .hero-decoration { color: var(--accent); padding: 8px 20px 0; font-size: 34px; opacity: .7; }
 
@@ -183,9 +187,12 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .home-card-label { display: block; margin-top: 10px; color: var(--muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .taxonomy-list button span { color: var(--accent); }
 .taxonomy-note { display: flex; gap: 13px; align-items: flex-start; max-width: 720px; margin-top: 26px; padding: 15px 17px; color: var(--muted); border: 1px solid var(--line); border-radius: 8px; background: #faf8f5; }
+.home-view .taxonomy-note { max-width: none; margin: -18px 0 24px; }
 .taxonomy-note-icon { color: var(--accent); font-size: 18px; }
 .taxonomy-note strong { color: var(--ink); font-size: 12px; }
 .taxonomy-note p { margin: 3px 0 0; font-size: 11px; }
+.taxonomy-note a { color: var(--accent); }
+.taxonomy-note a:hover { color: var(--ink); }
 .results-view[hidden] { display: none; }
 .breadcrumb { display: flex; gap: 8px; margin-bottom: 27px; color: var(--subtle); font-size: 12px; }
 .breadcrumb a { color: var(--accent); text-decoration: none; }
@@ -402,7 +409,9 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
     .favorites-search { flex-basis: auto; max-width: none; }
     .favorites-export-button { width: 100%; }
     .main-content { padding: 36px 18px 22px; }
-    .hero { margin-bottom: 32px; }
+    .home-view .hero { margin-bottom: 32px; }
+    .home-view .hero h1 { margin-bottom: 16px; font-size: clamp(34px, 10vw, 48px); }
+    .home-view .hero p { font-size: 14px; }
     .hero-decoration { display: none; }
     .results-grid { grid-template-columns: 1fr; }
     .category-buttons { grid-template-columns: 1fr; }
