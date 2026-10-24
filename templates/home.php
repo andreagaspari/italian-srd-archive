@@ -3,7 +3,7 @@
     <div class="hero">
         <div>
             <h1>Italian SRD 5.2.1 Archive</h1>
-            <p>Usa la ricerca globale nella barra superiore oppure apri una sezione per filtrare e ordinare i contenuti.<br/> Le funzioni di esportazione sono pensate per essere utilizzate con <a href="https://le12avventure.com/pages/makeamaster" target="_blank" rel="noopener noreferrer">MakeAMaster</a> di <i>Le 12 Avventure</i>, il gestionale per le tue avventure.</p>
+            <p>Usa la ricerca globale nella barra superiore oppure apri una sezione per filtrare e ordinare i contenuti.<br/> Le funzioni di esportazione sono pensate per essere utilizzate con <a href="https://le12avventure.com/pages/makeamaster" target="_blank" rel="noopener noreferrer">MakeAMaster</a> di <i>Le 12 Avventure</i>.</p>
         </div>
     </div>
 
