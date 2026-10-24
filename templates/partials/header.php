@@ -1,10 +1,6 @@
 <header class="topbar">
-    <a class="brand" href="<?= e(appUrl()) ?>" aria-label="Torna alla home">
-        <span class="brand-mark">S</span>
-        <span>
-            <strong>SRD Italia</strong>
-            <small>Archivio locale</small>
-        </span>
+    <a class="brand" href="<?= e(appUrl()) ?>" aria-label="Torna alla home" title="Torna alla home">
+        <img src="assets/images/italian_srd_archive.png" class="brand-mark" alt="Italian SRD Archive">
     </a>
 
     <div class="topbar-actions">
@@ -19,7 +15,6 @@
             <span class="favorites-icon" aria-hidden="true">🤍</span>
             <strong id="favorites-count" aria-label="Numero di preferiti">0</strong>
         </a>
-        <span class="version-badge">SRD 5.2.1</span>
         <button class="icon-button menu-button" type="button" aria-label="Apri il menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>

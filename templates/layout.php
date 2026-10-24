@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Archivio locale SRD di Dungeons & Dragons 5.2.1">
-    <title><?= e($pageTitle) ?> · SRD Italia</title>
+    <title><?= e($pageTitle) ?> · SRD Italian Archive</title>
     <base href="<?= e(appUrl()) ?>">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>

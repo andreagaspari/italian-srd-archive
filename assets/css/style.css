@@ -39,20 +39,9 @@ button { cursor: pointer; }
 }
 
 .brand, .sidebar-link { color: inherit; text-decoration: none; }
-.brand { display: flex; align-items: center; gap: 11px; }
-.brand-mark {
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    color: #fff;
-    background: var(--accent);
-    border-radius: 9px;
-    font: 700 18px Georgia, serif;
-}
-.brand strong, .brand small { display: block; }
-.brand strong { font: 700 14px/1.1 Georgia, serif; letter-spacing: .01em; }
-.brand small { margin-top: 4px; color: var(--muted); font-size: 10px; }
+.brand { display: flex; align-items: center; gap: 11px; height: 100%; padding:4px;}
+.brand-mark { height: 100%; }
+
 .topbar-actions { display: flex; align-items: center; gap: 18px; }
 .top-search {
     display: flex;
@@ -129,7 +118,7 @@ button { cursor: pointer; }
 .sidebar-link { display: block; padding: 6px 0; color: var(--muted); font-size: 12px; }
 .sidebar-link:hover { color: var(--accent); }
 
-.main-content { width: min(100%, 1120px); margin: 0 auto; padding: 62px 54px 30px; }
+.main-content { width: min(100%, 1200px); margin: 0 auto; padding: 62px 32px 30px; }
 .home-view .hero { max-width: none; margin-bottom: 46px; }
 .home-view .hero > div { width: 100%; }
 .hero h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
