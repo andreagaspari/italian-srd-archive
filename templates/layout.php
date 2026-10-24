@@ -31,6 +31,7 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js?v=19"></script>
+    <button class="back-to-top" type="button" aria-label="Torna in cima" hidden>⌃</button>
+    <script src="assets/js/app.js?v=20"></script>
 </body>
 </html>

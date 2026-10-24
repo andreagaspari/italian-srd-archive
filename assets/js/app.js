@@ -732,6 +732,7 @@ const sidebar = document.querySelector('.sidebar');
 const mobileSearchButton = document.querySelector('.mobile-search-button');
 const topSearchWrap = document.querySelector('.top-search-wrap');
 const themeToggle = document.querySelector('.theme-toggle');
+const backToTop = document.querySelector('.back-to-top');
 
 /**
  * Updates the theme toggle state and persists the selected color scheme.
@@ -754,6 +755,27 @@ if (themeToggle) {
     themeToggle.addEventListener('click', () => {
         setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
     });
+}
+
+/**
+ * Shows or hides the back-to-top control according to the current scroll position.
+ *
+ * @returns {void}
+ */
+function updateBackToTopVisibility() {
+    if (!backToTop) return;
+    const shouldShow = window.scrollY > window.innerHeight;
+    backToTop.hidden = !shouldShow;
+    backToTop.classList.toggle('is-visible', shouldShow);
+}
+
+if (backToTop) {
+    window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+    window.addEventListener('resize', updateBackToTopVisibility);
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    });
+    updateBackToTopVisibility();
 }
 
 if (mobileSearchButton && topSearchWrap && globalSearchInput) {
