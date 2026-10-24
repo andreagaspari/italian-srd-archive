@@ -3,7 +3,9 @@
     <div class="hero">
         <div>
             <h1>Italian SRD 5.2.1 Archive</h1>
-            <p>Usa la ricerca globale nella barra superiore oppure apri una sezione per filtrare e ordinare i contenuti.<br/> Le funzioni di esportazione sono pensate per essere utilizzate con <a href="https://le12avventure.com/pages/makeamaster" target="_blank" rel="noopener noreferrer">MakeAMaster</a> di <i>Le 12 Avventure</i>.</p>
+            <p>Questo archivio raccoglie i dati localizzati in italiano del System Reference Document (SRD 5.2.1) di <i>Wizards of the Coast</i>, compatibili con la <strong>v5.5 (2024)</strong>. I dati sono stati estratti mediante <i>strumenti di AI</i>, pertanto potrebbero contenere <strong>imprecisioni o errori</strong>.</p>
+            <p>Per iniziare, usa la <strong>ricerca globale</strong> nella barra superiore oppure apri una sezione dal menu per <strong>filtrare e ordinare i contenuti</strong>.</p>
+            <p><i><strong>NB:</strong> Le funzioni di esportazione sono pensate per essere utilizzate con <a href="https://le12avventure.com/pages/makeamaster" target="_blank" rel="noopener noreferrer">MakeAMaster</a> di <i>Le 12 Avventure</i>.</i></p>
         </div>
     </div>
 
@@ -54,7 +56,6 @@
             </div>
             <p>Esplora armi, armature, strumenti e oggetti magici.</p>
             <div class="category-buttons home-card-links">
-                <a class="taxonomy-filter" href="<?= e(appUrl('oggetti')) ?>">Tutti gli oggetti <span><?= $objectCount ?></span></a>
 <?php foreach ($objectCategories as $category): ?>
                 <a class="taxonomy-filter" href="<?= e(appUrl($category['route'])) ?>"><?= e($category['label']) ?> <span><?= $category['count'] ?></span></a>
 <?php endforeach; ?>

@@ -28,7 +28,7 @@ $armorTypeLabels = [
 <?php endforeach; ?>
     </nav>
 
-    <div class="result-summary">Mostrati <strong id="result-count"><?= count($filteredArmor) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> elementi</div>
+<?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
 
     <div id="results-grid" class="results-grid">
 <?php foreach ($filteredArmor as $armor): ?>
@@ -120,4 +120,4 @@ $armorTypeLabels = [
         <p>Prova a modificare la ricerca o a scegliere un’altra categoria.</p>
     </div>
 </section>
-<?php require __DIR__ . '/../partials/pagination.php'; ?>
+<?php $paginationPosition = 'bottom'; require __DIR__ . '/../partials/pagination.php'; ?>

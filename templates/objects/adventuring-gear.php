@@ -15,7 +15,7 @@ $gearCategoryLabels = [
         <a class="taxonomy-filter <?= $category === $selectedCategory ? 'is-selected' : '' ?>" href="<?= e(appUrl('oggetti/avventura?categoria=' . urlencode($category))) ?>"><?= e($label) ?></a>
 <?php endforeach; ?>
     </nav>
-    <div class="result-summary">Mostrati <strong id="result-count"><?= count($adventuringGear) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> elementi</div>
+<?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
     <div id="results-grid" class="results-grid">
 <?php foreach ($adventuringGear as $item): ?>
 <?php $exportData = buildObjectExportData($item['name'], $item['cost'], $item['weight'], '<div><b>Utilizzo:</b> ' . $item['use'] . '</div>'); ?>
@@ -33,4 +33,4 @@ $gearCategoryLabels = [
     </div>
     <div id="empty-state" class="empty-state" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca.</p></div>
 </section>
-<?php require __DIR__ . '/../partials/pagination.php'; ?>
+<?php $paginationPosition = 'bottom'; require __DIR__ . '/../partials/pagination.php'; ?>

@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Archivio locale SRD di Dungeons & Dragons 5.2.1">
+    <meta name="description" content="Archivio localizzato in italiano del System Reference Document (SRD 5.2.1) di Wizards of the Coast">
     <title><?= e($pageTitle) ?> · SRD Italian Archive</title>
     <base href="<?= e(appUrl()) ?>">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= e((string) filemtime(__DIR__ . '/../assets/css/style.css')) ?>">
+    <link rel="icon" href="assets/images/italian_srd_archive.png" type="image/png">
 </head>
 <body>
     <div class="app-shell">
@@ -23,6 +24,6 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js?v=16"></script>
+    <script src="assets/js/app.js?v=18"></script>
 </body>
 </html>

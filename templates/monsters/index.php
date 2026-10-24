@@ -62,7 +62,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
         <?php endif; ?>
     </form>
 
-    <div class="result-summary">Mostrati <strong id="result-count"><?= count($monsters) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> mostri</div>
+<?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
     <div id="results-grid" class="results-grid monster-results-grid">
 <?php foreach ($monsters as $monster): ?>
 <?php
@@ -186,4 +186,4 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
     </div>
     <div id="empty-state" class="empty-state" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca o i filtri.</p></div>
 </section>
-<?php require __DIR__ . '/../partials/pagination.php'; ?>
+<?php $paginationPosition = 'bottom'; require __DIR__ . '/../partials/pagination.php'; ?>

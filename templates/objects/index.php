@@ -4,7 +4,6 @@
             <h1>Oggetti</h1>
             <p class="hero-copy">Scegli una categoria per consultare gli elementi dell’equipaggiamento.</p>
         </div>
-        <span class="hero-decoration" aria-hidden="true">🎒</span>
     </div>
 
     <div class="area-grid object-area-grid">

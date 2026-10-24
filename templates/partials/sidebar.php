@@ -1,11 +1,6 @@
 <aside class="sidebar" aria-label="Navigazione principale">
     <div class="sidebar-section">
-        <p class="sidebar-label">Esplora</p>
         <nav class="main-nav">
-            <a class="nav-item <?= $route === 'home' ? 'is-active' : '' ?>" href="<?= e(appUrl()) ?>">
-                <span class="nav-icon" aria-hidden="true">🔎</span>
-                Tutto
-            </a>
             <div class="nav-group <?= $route === 'incantesimi' ? 'is-active' : '' ?>">
                 <a class="nav-item <?= $route === 'incantesimi' ? 'is-active' : '' ?>" href="<?= e(appUrl('incantesimi')) ?>">
                     <span class="nav-icon" aria-hidden="true">✨</span>
@@ -31,7 +26,6 @@
             <div class="nav-submenu" aria-label="Livelli degli incantesimi">
 <?php foreach ($spellLevelLabels as $level => $label): ?>
                 <a class="nav-subitem <?= $route === 'incantesimi' && $activeSpellLevel === (string) $level ? 'is-active' : '' ?>" href="<?= e(appUrl('incantesimi' . ($level === 'all' ? '' : '?livello=' . $level))) ?>">
-                    <span class="nav-subitem-marker" aria-hidden="true"><?= $level === 'all' ? '✦' : ($level === '0' ? '•' : $level) ?></span>
                     <?= e($label) ?>
                 </a>
 <?php endforeach; ?>

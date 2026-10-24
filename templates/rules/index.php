@@ -26,30 +26,30 @@ $categoryLabels = [
 
     <div class="rules-introduction">
 <?php foreach ($introduction as $section): ?>
-        <section class="rules-introduction-section">
-            <h2><?= e((string) ($section['title'] ?? '')) ?></h2>
+        <details class="rules-introduction-section">
+            <summary><?= e((string) ($section['title'] ?? '')) ?></summary>
+            <div class="rules-introduction-content">
 <?php foreach (($section['paragraphs'] ?? []) as $paragraph): ?>
             <p><?= e((string) $paragraph) ?></p>
 <?php endforeach; ?>
-        </section>
-<?php endforeach; ?>
-        <section class="rules-abbreviations">
-            <h2>Abbreviazioni</h2>
-            <dl>
+            <section class="rules-abbreviations">
+                <h3>Abbreviazioni</h3>
+                <div class="rules-abbreviations-content">
+                <dl>
 <?php foreach ($abbreviations as $abbreviation): ?>
-                <div>
-                    <dt><?= e((string) ($abbreviation['abbreviation'] ?? '')) ?></dt>
-                    <dd><?= e((string) ($abbreviation['meaning'] ?? '')) ?></dd>
-                </div>
+                    <div>
+                        <dt><?= e((string) ($abbreviation['abbreviation'] ?? '')) ?></dt>
+                        <dd><?= e((string) ($abbreviation['meaning'] ?? '')) ?></dd>
+                    </div>
 <?php endforeach; ?>
-            </dl>
-        </section>
+                </dl>
+                </div>
+            </section>
+            </div>
+        </details>
+<?php endforeach; ?>
     </div>
 
-    <div class="rules-divider">
-        <h2>Definizione delle regole</h2>
-        <p>Consulta le voci del glossario oppure filtra per gruppo di appartenenza.</p>
-    </div>
     <?php require __DIR__ . '/../objects/search.php'; ?>
 
     <nav class="taxonomy-filters" aria-label="Categorie delle regole">
@@ -59,7 +59,7 @@ $categoryLabels = [
 <?php endforeach; ?>
     </nav>
 
-    <div class="result-summary">Mostrate <strong id="result-count"><?= count($rules) ?></strong> di <strong><?= $pagination->totalItems ?></strong> regole</div>
+<?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
     <?php
     $ruleColumns = [[], []];
     foreach ($rules as $ruleIndex => $rule) {
@@ -86,4 +86,4 @@ $categoryLabels = [
 <?php endforeach; ?>
     </div>
 </section>
-<?php require __DIR__ . '/../partials/pagination.php'; ?>
+<?php $paginationPosition = 'bottom'; require __DIR__ . '/../partials/pagination.php'; ?>

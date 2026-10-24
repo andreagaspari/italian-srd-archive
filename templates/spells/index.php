@@ -43,7 +43,7 @@
         <?php if ($selectedLevel !== 'all'): ?><input type="hidden" name="livello" value="<?= e($selectedLevel) ?>"><?php endif; ?>
     </form>
 
-    <div class="result-summary">Mostrati <strong id="result-count"><?= count($spells) ?></strong> di <strong><?= e((string) $pagination->totalItems) ?></strong> incantesimi</div>
+<?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
     <div id="results-grid" class="results-grid">
 <?php foreach ($spells as $spell): ?>
 <?php $exportData = buildSpellExportData($spell); ?>
@@ -114,4 +114,4 @@ if ($selectedSchool !== '') {
         <p>Prova a modificare la ricerca o a scegliere un altro filtro.</p>
     </div>
 </section>
-<?php require __DIR__ . '/../partials/pagination.php'; ?>
+<?php $paginationPosition = 'bottom'; require __DIR__ . '/../partials/pagination.php'; ?>
