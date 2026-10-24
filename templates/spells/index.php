@@ -38,7 +38,7 @@
             </select>
         </label>
         <?php if ($selectedLevel !== 'all' || $selectedSchool !== '' || $selectedClass !== ''): ?>
-            <a class="button-secondary spell-reset-filters" href="<?= e(appUrl('incantesimi')) ?>">Resetta filtri</a>
+            <a class="button-secondary spell-reset-filters" href="<?= e(appUrl('incantesimi')) ?>">× Resetta filtri</a>
         <?php endif; ?>
         <?php if ($selectedLevel !== 'all'): ?><input type="hidden" name="livello" value="<?= e($selectedLevel) ?>"><?php endif; ?>
     </form>

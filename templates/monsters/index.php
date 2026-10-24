@@ -58,7 +58,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
             </select>
         </label>
         <?php if ($selectedMonsterType !== '' || $selectedMonsterSize !== '' || $selectedMonsterChallenge !== '' || $selectedMonsterAlignment !== ''): ?>
-            <a class="button-secondary monster-reset-filters" href="<?= e(appUrl('mostri')) ?>">Resetta filtri</a>
+            <a class="button-secondary monster-reset-filters" href="<?= e(appUrl('mostri')) ?>">× Resetta filtri</a>
         <?php endif; ?>
     </form>
 
