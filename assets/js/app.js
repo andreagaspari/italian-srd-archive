@@ -731,6 +731,30 @@ const menuButton = document.querySelector('.menu-button');
 const sidebar = document.querySelector('.sidebar');
 const mobileSearchButton = document.querySelector('.mobile-search-button');
 const topSearchWrap = document.querySelector('.top-search-wrap');
+const themeToggle = document.querySelector('.theme-toggle');
+
+/**
+ * Updates the theme toggle state and persists the selected color scheme.
+ *
+ * @param {'dark'|'light'} theme Theme to apply to the document.
+ * @returns {void}
+ */
+function setTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem('isa:theme', theme);
+    if (!themeToggle) return;
+    const isDark = theme === 'dark';
+    themeToggle.setAttribute('aria-label', isDark ? 'Attiva il tema chiaro' : 'Attiva il tema scuro');
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.querySelector('.theme-toggle-icon').textContent = isDark ? '☀️' : '🌙';
+}
+
+if (themeToggle) {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+    themeToggle.addEventListener('click', () => {
+        setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+}
 
 if (mobileSearchButton && topSearchWrap && globalSearchInput) {
     mobileSearchButton.addEventListener('click', () => {

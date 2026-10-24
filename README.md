@@ -21,6 +21,14 @@ L'archivio mette a disposizione:
 - ricerca globale nell'archivio;
 - glossario delle regole con introduzione, abbreviazioni, categorie e filtri;
 - esportazione dei risultati e dei singoli elementi.
+- tema chiaro/scuro con preferenza salvata nel browser.
+
+## Tema
+
+Il tema può essere cambiato dal pulsante con l'icona della luna o del sole
+nell'intestazione. La scelta viene salvata localmente nel browser con
+`localStorage` e viene mantenuta tra le visite. Alla prima apertura,
+l'applicazione segue la preferenza del sistema operativo.
 
 ## Requisiti
 

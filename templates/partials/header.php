@@ -17,6 +17,9 @@
             <span class="favorites-icon" aria-hidden="true">🤍</span>
             <strong id="favorites-count" aria-label="Numero di preferiti">0</strong>
         </a>
+        <button class="theme-toggle" type="button" aria-label="Attiva il tema scuro" aria-pressed="false">
+            <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+        </button>
         <button class="icon-button menu-button" type="button" aria-label="Apri il menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
