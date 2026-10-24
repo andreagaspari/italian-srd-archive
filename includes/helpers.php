@@ -138,17 +138,40 @@ function exportNumber(string|int|float|null $value): int|float
 
 function exportCurrencyValue(string|int|float|null $value): int|float
 {
-    $text = strtolower(trim((string) $value));
-    $number = (float) exportNumber($text);
-    if (str_contains($text, 'mr')) {
-        $number /= 100;
-    } elseif (str_contains($text, 'ma')) {
-        $number /= 10;
-    }
-
-    return fmod($number, 1.0) === 0.0 ? (int) $number : $number;
+    return exportNumber($value);
 }
 
+/**
+ * Converts an Italian SRD currency abbreviation to Make a Master currency.
+ *
+ * @param string|int|float|null $value Cost containing an optional currency abbreviation.
+ *
+ * @return string Make a Master currency identifier.
+ */
+function exportCurrency(string|int|float|null $value): string
+{
+    $text = strtolower(trim((string) $value));
+
+    return match (true) {
+        str_contains($text, 'mr') => 'bronze',
+        str_contains($text, 'ma') => 'silver',
+        str_contains($text, 'mo') => 'gold',
+        default => 'gold'
+    };
+}
+
+/**
+ * Builds the Make a Master export payload for a catalog object.
+ *
+ * @param string $title Object title.
+ * @param string|int|float|null $value Object cost, including its currency abbreviation.
+ * @param string|int|float|null $weight Object weight.
+ * @param string|null $description Optional formatted object description.
+ * @param string|null $attack Optional attack or damage value.
+ * @param string|null $range Optional attack range.
+ *
+ * @return array<string, mixed> Export payload accepted by Make a Master.
+ */
 function buildObjectExportData(
     string $title,
     string|int|float|null $value,
@@ -163,6 +186,7 @@ function buildObjectExportData(
         'desc' => $description ?? '',
         'image' => '',
         'valore' => exportCurrencyValue($value),
+        'currency' => exportCurrency($value),
         'weight' => exportNumber($weight),
         'rarity' => 'comune',
         'attack' => $attack ?? '',

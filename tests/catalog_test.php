@@ -17,6 +17,10 @@ $spells = new JsonSpellProvider($store);
 $monsters = new JsonMonsterProvider($store);
 $rules = new RulesCatalog($store);
 
+$dardoExport = buildObjectExportData('Dardo', '5 mr', '0,125 kg');
+expectTrue($dardoExport['valore'] === 5, 'Il valore esportato deve mantenere il numero originale del costo.');
+expectTrue($dardoExport['currency'] === 'bronze', 'I mr devono essere esportati come valuta bronze.');
+
 $weaponPage = $weapons->getWeapons(new WeaponQuery(page: 2, pageSize: 10));
 expectTrue(count($weaponPage->items) === 10, 'La seconda pagina delle armi deve contenere 10 elementi.');
 expectTrue($weaponPage->totalItems === 38, 'Il totale delle armi deve essere 38.');
