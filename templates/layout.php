@@ -6,6 +6,13 @@
     <meta name="description" content="Archivio localizzato in italiano del System Reference Document (SRD 5.2.1) di Wizards of the Coast">
     <title><?= e($pageTitle) ?> · SRD Italian Archive</title>
     <base href="<?= e(appUrl()) ?>">
+    <script>
+        (() => {
+            const theme = window.localStorage.getItem('isa:theme')
+                || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme;
+        })();
+    </script>
     <link rel="stylesheet" href="assets/css/style.css?v=<?= e((string) filemtime(__DIR__ . '/../assets/css/style.css')) ?>">
     <link rel="icon" href="assets/images/italian_srd_archive.png" type="image/png">
 </head>
@@ -24,6 +31,6 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js?v=18"></script>
+    <script src="assets/js/app.js?v=19"></script>
 </body>
 </html>
