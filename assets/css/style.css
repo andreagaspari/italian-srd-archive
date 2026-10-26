@@ -18,7 +18,7 @@
     --arrow: #c3bbb1;
     --tooltip-line: #dfd3ca;
     --accent-panel-line: #ead8d1;
-    --focus-bg: #fff4c2;
+    --focus-bg: #fffdf2;
     --focus-line: #c58a16;
     --focus-ink: #684500;
     --error: #a33b2f;
@@ -47,7 +47,7 @@
     --arrow: #81766e;
     --tooltip-line: #554a44;
     --accent-panel-line: #5d4037;
-    --focus-bg: #493b1e;
+    --focus-bg: #302c26;
     --focus-line: #e0ad3f;
     --focus-ink: #ffe4a0;
     --error: #ee8b7c;
@@ -104,6 +104,8 @@ button { cursor: pointer; }
 .mobile-search-button { display: none; padding: 4px; color: var(--accent); border: 0; background: transparent; font-size: 19px; line-height: 1; }
 .global-search-preview { position: absolute; z-index: 20; top: calc(100% + 8px); right: 0; width: min(430px, 78vw); max-height: 480px; overflow-y: auto; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); box-shadow: 0 12px 28px rgba(47, 37, 31, .16); }
 .global-search-group + .global-search-group { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.global-search-mixed-results { margin: 0; }
+.global-search-mixed-results .global-search-result + .global-search-result { border-top: 1px solid var(--line); border-radius: 0; }
 .global-search-group h3 { margin: 0 8px 5px; color: var(--accent); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
 .global-search-result { display: grid; grid-template-columns: 28px minmax(0, 1fr) minmax(0, 145px); align-items: start; gap: 8px; padding: 8px; border-radius: 5px; color: var(--ink); text-decoration: none; }
 .global-search-result:hover, .global-search-result:focus { background: var(--accent-soft); outline: 0; }

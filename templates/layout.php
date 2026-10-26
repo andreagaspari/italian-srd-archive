@@ -32,6 +32,6 @@
     </div>
 
     <button class="back-to-top" type="button" aria-label="Torna in cima" hidden>⌃</button>
-    <script src="assets/js/app.js?v=22"></script>
+    <script src="assets/js/app.js?v=23"></script>
 </body>
 </html>

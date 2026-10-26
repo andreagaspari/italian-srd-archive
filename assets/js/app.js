@@ -739,35 +739,28 @@ function renderGlobalSearch() {
         return;
     }
 
-    const groups = new Map();
-    globalSearchData
+    const results = globalSearchData
         .filter((item) => `${item.search || ''} ${item.title} ${item.description} ${item.section}`.toLocaleLowerCase('it').includes(query))
         .slice(0, 30)
-        .forEach((item) => {
-            if (!groups.has(item.section)) {
-                groups.set(item.section, []);
-            }
-            groups.get(item.section).push(item);
-        });
+        ;
 
-    if (!groups.size) {
+    if (!results.length) {
         globalSearchPreview.innerHTML = '<div class="global-search-empty">Nessun risultato trovato</div>';
     } else {
-        globalSearchPreview.innerHTML = [...groups].map(([section, items]) => `
-            <section class="global-search-group">
-                <h3>${escapeHtml(section)}</h3>
-                ${items.slice(0, 6).map((item) => `
+        globalSearchPreview.innerHTML = `
+            <section class="global-search-group global-search-mixed-results">
+                ${results.map((item) => `
                     <a class="global-search-result" href="${escapeAttribute(item.url)}">
-                            ${globalSearchTypeIcon(item.type)}
-                            <span class="global-search-result-main">
-                                <strong>${escapeHtml(item.title)}</strong>
-                                <span class="global-search-description">${escapeHtml(item.description)}</span>
-                            </span>
-                            <span class="global-search-tags">${(item.tags || []).map((tag, index) => `<span class="global-search-tag" title="${escapeAttribute(item.tagTitles?.[index] || 'Informazione aggiuntiva')}">${escapeHtml(tag)}</span>`).join('')}</span>
-            </a>
+                        ${globalSearchTypeIcon(item.type)}
+                        <span class="global-search-result-main">
+                            <strong>${escapeHtml(item.title)}</strong>
+                            <span class="global-search-description">${escapeHtml(item.description)}</span>
+                        </span>
+                        <span class="global-search-tags">${(item.tags || []).map((tag, index) => `<span class="global-search-tag" title="${escapeAttribute(item.tagTitles?.[index] || 'Informazione aggiuntiva')}">${escapeHtml(tag)}</span>`).join('')}</span>
+                    </a>
                 `).join('')}
             </section>
-        `).join('');
+        `;
     }
     globalSearchPreview.hidden = false;
     globalSearchInput.setAttribute('aria-expanded', 'true');
