@@ -142,7 +142,7 @@ function exportCurrencyValue(string|int|float|null $value): int|float
 }
 
 /**
- * Converts an Italian SRD currency abbreviation to a Make a Master identifier.
+ * Converts an Italian SRD currency abbreviation to Make a Master currency.
  *
  * @param string|int|float|null $value Cost containing an optional currency abbreviation.
  *
