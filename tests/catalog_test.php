@@ -21,6 +21,24 @@ $dardoExport = buildObjectExportData('Dardo', '5 mr', '0,125 kg');
 expectTrue($dardoExport['valore'] === 5, 'Il valore esportato deve mantenere il numero originale del costo.');
 expectTrue($dardoExport['currency'] === 'bronze', 'I mr devono essere esportati come valuta bronze.');
 
+$searchIndex = (new SearchIndexBuilder())->build([
+    'objectData' => $store->get('weapons'),
+    'armorData' => $store->get('armor'),
+    'ammunitionData' => $store->get('ammunition'),
+    'toolsData' => $store->get('tools'),
+    'adventuringGearData' => $store->get('adventuring-gear'),
+    'spellsData' => $store->get('spells'),
+    'monstersData' => $store->get('monsters'),
+    'rulesData' => $store->get('rules')
+]);
+$dardoSearchResult = array_values(array_filter(
+    $searchIndex,
+    static fn (array $item): bool => $item['title'] === 'Dardo'
+))[0] ?? null;
+expectTrue(is_array($dardoSearchResult) && str_contains($dardoSearchResult['url'], 'focus=dardo'), 'La ricerca globale deve indicare l’elemento da evidenziare.');
+expectTrue(is_array($dardoSearchResult) && $dardoSearchResult['type'] === 'Arma', 'La ricerca globale deve indicare il tipo del risultato.');
+expectTrue(is_array($dardoSearchResult) && $dardoSearchResult['tagTitles'][0] === 'Modalità di combattimento', 'I tag della ricerca globale devono avere un significato esplicito.');
+
 $weaponPage = $weapons->getWeapons(new WeaponQuery(page: 2, pageSize: 10));
 expectTrue(count($weaponPage->items) === 10, 'La seconda pagina delle armi deve contenere 10 elementi.');
 expectTrue($weaponPage->totalItems === 38, 'Il totale delle armi deve essere 38.');

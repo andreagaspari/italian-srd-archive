@@ -360,10 +360,46 @@ function refreshSectionResultReferences() {
 }
 
 /**
+ * Moves the result selected from global search to the top of its result grid.
+ *
+ * @returns {void}
+ */
+function prioritizeFocusedResult() {
+    const focusId = new URLSearchParams(window.location.search).get('focus');
+    if (!focusId) return;
+
+    document.querySelectorAll('.result-card.is-focused-result').forEach((card) => {
+        card.classList.remove('is-focused-result');
+    });
+    const focusedCard = [...document.querySelectorAll('.result-card')]
+        .find((card) => card.dataset.favoriteId === focusId);
+    if (!focusedCard) return;
+
+    const rulesList = focusedCard.closest('.rules-list');
+    if (rulesList) {
+        const columns = [...rulesList.querySelectorAll(':scope > .rules-column')];
+        const cards = [...rulesList.querySelectorAll('.rule-card')]
+            .sort((left, right) => Number(left.dataset.ruleOrder) - Number(right.dataset.ruleOrder))
+            .filter((card) => card !== focusedCard);
+        const orderedCards = [focusedCard, ...cards];
+        columns.forEach((column) => {
+            column.replaceChildren();
+        });
+        orderedCards.forEach((card, index) => {
+            columns[index % columns.length]?.append(card);
+        });
+    } else {
+        focusedCard.parentElement?.prepend(focusedCard);
+    }
+    focusedCard.classList.add('is-focused-result');
+}
+
+/**
  * Loads section search results from the server without replacing the page.
  *
  * @param {string} value Current search term.
  * @returns {Promise<void>} Resolves after the result fragments are replaced.
+ * @sideeffect Updates the URL and clears any focused result before loading new results.
  */
 async function fetchSectionResults(value) {
     const url = new URL(window.location.href);
@@ -373,6 +409,10 @@ async function fetchSectionResults(value) {
     } else {
         url.searchParams.delete('q');
     }
+    url.searchParams.delete('focus');
+    document.querySelectorAll('.result-card.is-focused-result').forEach((card) => {
+        card.classList.remove('is-focused-result');
+    });
     url.searchParams.delete('page');
     window.history.replaceState({}, '', url);
 
@@ -412,6 +452,8 @@ async function fetchSectionResults(value) {
     replaceElements('.pagination-summary');
     replaceElements('.pagination');
     refreshSectionResultReferences();
+    sortResults();
+    prioritizeFocusedResult();
 }
 
 function sortableNumber(value) {
@@ -424,8 +466,58 @@ function sortableNumber(value) {
     return number;
 }
 
+/**
+ * Sorts glossary cards globally and redistributes them across masonry columns.
+ *
+ * @param {HTMLElement} rulesList Glossary masonry container.
+ * @returns {void}
+ */
+function sortRules(rulesList) {
+    const columns = [...rulesList.querySelectorAll(':scope > .rules-column')];
+    if (columns.length === 0) return;
+
+    const cards = [...rulesList.querySelectorAll('.rule-card')];
+    const focusedCard = cards.find((card) => card.classList.contains('is-focused-result'));
+    const cardsToSort = cards.filter((card) => card !== focusedCard);
+    const sortValue = sortSelect?.value || 'default';
+    const [field, direction] = sortValue.split('-');
+    const dataKey = field ? `sort${field[0].toUpperCase()}${field.slice(1)}` : '';
+
+    cardsToSort.sort((left, right) => {
+        if (sortValue === 'default') {
+            return Number(left.dataset.ruleOrder) - Number(right.dataset.ruleOrder);
+        }
+
+        const leftRaw = left.dataset[dataKey] || '';
+        const rightRaw = right.dataset[dataKey] || '';
+        const leftValue = field === 'name' || field === 'category'
+            ? leftRaw.toLocaleLowerCase('it')
+            : sortableNumber(leftRaw);
+        const rightValue = field === 'name' || field === 'category'
+            ? rightRaw.toLocaleLowerCase('it')
+            : sortableNumber(rightRaw);
+        const comparison = typeof leftValue === 'string'
+            ? leftValue.localeCompare(rightValue, 'it')
+            : leftValue - rightValue;
+
+        return direction === 'desc' ? -comparison : comparison;
+    });
+
+    const orderedCards = focusedCard ? [focusedCard, ...cardsToSort] : cardsToSort;
+    columns.forEach((column) => column.replaceChildren());
+    orderedCards.forEach((card, index) => {
+        columns[index % columns.length]?.append(card);
+    });
+}
+
 function sortResults() {
-    if (!sortSelect || !resultsGrid) return;
+    if (!sortSelect) return;
+    const rulesList = document.querySelector('.rules-list');
+    if (rulesList) {
+        sortRules(rulesList);
+        return;
+    }
+    if (!resultsGrid) return;
     if (sortSelect.value === 'default') {
         resultContainers.forEach((container, index) => {
             originalCardOrders[index].forEach((card) => container.appendChild(card));
@@ -467,6 +559,7 @@ if (sortSelect) {
     sortSelect.addEventListener('change', sortResults);
     sortResults();
 }
+prioritizeFocusedResult();
 spellFilterSelects.forEach((select) => {
     select.addEventListener('change', () => select.form?.submit());
 });
@@ -646,37 +739,55 @@ function renderGlobalSearch() {
         return;
     }
 
-    const groups = new Map();
-    globalSearchData
+    const results = globalSearchData
         .filter((item) => `${item.search || ''} ${item.title} ${item.description} ${item.section}`.toLocaleLowerCase('it').includes(query))
         .slice(0, 30)
-        .forEach((item) => {
-            if (!groups.has(item.section)) {
-                groups.set(item.section, []);
-            }
-            groups.get(item.section).push(item);
-        });
+        ;
 
-    if (!groups.size) {
+    if (!results.length) {
         globalSearchPreview.innerHTML = '<div class="global-search-empty">Nessun risultato trovato</div>';
     } else {
-        globalSearchPreview.innerHTML = [...groups].map(([section, items]) => `
-            <section class="global-search-group">
-                <h3>${escapeHtml(section)}</h3>
-                ${items.slice(0, 6).map((item) => `
+        globalSearchPreview.innerHTML = `
+            <section class="global-search-group global-search-mixed-results">
+                ${results.map((item) => `
                     <a class="global-search-result" href="${escapeAttribute(item.url)}">
-                            <span class="global-search-result-main">
-                                <strong>${escapeHtml(item.title)}</strong>
-                                <span class="global-search-description">${escapeHtml(item.description)}</span>
-                            </span>
-                            <span class="global-search-tags">${(item.tags || []).map((tag) => `<span class="global-search-tag">${escapeHtml(tag)}</span>`).join('')}</span>
-            </a>
+                        ${globalSearchTypeIcon(item.type)}
+                        <span class="global-search-result-main">
+                            <strong>${escapeHtml(item.title)}</strong>
+                            <span class="global-search-description">${escapeHtml(item.description)}</span>
+                        </span>
+                        <span class="global-search-tags">${(item.tags || []).map((tag, index) => `<span class="global-search-tag" title="${escapeAttribute(item.tagTitles?.[index] || 'Informazione aggiuntiva')}">${escapeHtml(tag)}</span>`).join('')}</span>
+                    </a>
                 `).join('')}
             </section>
-        `).join('');
+        `;
     }
     globalSearchPreview.hidden = false;
     globalSearchInput.setAttribute('aria-expanded', 'true');
+}
+
+/**
+ * Renders the type icon for one global search result.
+ *
+ * @param {string} type Result type label.
+ * @returns {string} Accessible icon markup.
+ */
+function globalSearchTypeIcon(type) {
+    const icons = {
+        Arma: '⚔️',
+        Armatura: '🛡️',
+        Munizione: '🎯',
+        Strumento: '🛠️',
+        Equipaggiamento: '🎒',
+        Incantesimo: '✨',
+        Mostro: '👹',
+        Regola: '📖',
+        Categoria: '📚'
+    };
+    const label = type || 'Risultato';
+    const icon = icons[label] || '•';
+
+    return `<span class="global-search-type-icon" role="img" aria-label="${escapeAttribute(label)}" title="${escapeAttribute(label)}">${icon}</span>`;
 }
 
 function escapeHtml(value) {
