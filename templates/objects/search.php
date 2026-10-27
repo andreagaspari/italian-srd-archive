@@ -15,7 +15,8 @@ unset($searchFormParameters['route'], $searchFormParameters['page'], $searchForm
     <label class="object-sort">
         <span>Ordina</span>
         <select id="object-sort-select">
-            <option value="default" selected>Ordine SRD</option>
+            <option value="relevance" <?= trim((string) ($_GET['q'] ?? '')) !== '' ? 'selected' : '' ?>>Rilevanza</option>
+            <option value="default" <?= trim((string) ($_GET['q'] ?? '')) === '' ? 'selected' : '' ?>>Ordine SRD</option>
             <option value="name-asc">Nome ↑</option>
             <option value="name-desc">Nome ↓</option>
             <option value="category-asc">Categoria ↑</option>

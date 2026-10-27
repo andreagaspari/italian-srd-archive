@@ -413,6 +413,7 @@ async function fetchSectionResults(value) {
     document.querySelectorAll('.result-card.is-focused-result').forEach((card) => {
         card.classList.remove('is-focused-result');
     });
+    if (sortSelect) sortSelect.value = normalizedValue ? 'relevance' : 'default';
     url.searchParams.delete('page');
     window.history.replaceState({}, '', url);
 
@@ -467,6 +468,39 @@ function sortableNumber(value) {
 }
 
 /**
+ * Scores a section card against the current text query.
+ *
+ * @param {HTMLElement} card Catalog result card.
+ * @param {string} query Normalized search query.
+ * @returns {number} Relevance score, where higher values are more relevant.
+ */
+function sectionResultRelevanceScore(card, query) {
+    const title = (card.dataset.sortName || '').toLocaleLowerCase('it');
+    const searchableText = (card.dataset.search || '').toLocaleLowerCase('it');
+    if (!query || !title) return 0;
+    if (title === query) return 1000;
+    if (title.startsWith(query)) return 800;
+    if (new RegExp(`(^|[^\\p{L}\\p{N}])${escapeRegExp(query)}([^\\p{L}\\p{N}]|$)`, 'iu').test(title)) return 650;
+    if (title.includes(query)) return 550;
+
+    const terms = query.split(/\s+/u).filter(Boolean);
+    const titleTermMatches = terms.filter((term) => title.includes(term)).length;
+    const contentMatch = searchableText.includes(query) ? 150 : 0;
+
+    return titleTermMatches * 100 + contentMatch;
+}
+
+/**
+ * Escapes text for use in a regular expression.
+ *
+ * @param {string} value Text to escape.
+ * @returns {string} Escaped regular-expression text.
+ */
+function escapeRegExp(value) {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
  * Sorts glossary cards globally and redistributes them across masonry columns.
  *
  * @param {HTMLElement} rulesList Glossary masonry container.
@@ -486,6 +520,10 @@ function sortRules(rulesList) {
     cardsToSort.sort((left, right) => {
         if (sortValue === 'default') {
             return Number(left.dataset.ruleOrder) - Number(right.dataset.ruleOrder);
+        }
+        if (sortValue === 'relevance') {
+            return sectionResultRelevanceScore(right, searchInput?.value.trim().toLocaleLowerCase('it') || '')
+                - sectionResultRelevanceScore(left, searchInput?.value.trim().toLocaleLowerCase('it') || '');
         }
 
         const leftRaw = left.dataset[dataKey] || '';
@@ -525,6 +563,15 @@ function sortResults() {
         return;
     }
     const [field, direction] = sortSelect.value.split('-');
+    if (sortSelect.value === 'relevance') {
+        const query = searchInput?.value.trim().toLocaleLowerCase('it') || '';
+        resultContainers.forEach((container) => {
+            const cards = [...container.querySelectorAll('.result-card')];
+            cards.sort((left, right) => sectionResultRelevanceScore(right, query) - sectionResultRelevanceScore(left, query));
+            cards.forEach((card) => container.appendChild(card));
+        });
+        return;
+    }
     const dataKey = `sort${field[0].toUpperCase()}${field.slice(1)}`;
     resultContainers.forEach((container) => {
         const cards = [...container.querySelectorAll('.result-card')];
