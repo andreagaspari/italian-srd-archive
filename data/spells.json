@@ -123,8 +123,8 @@
       "range": "36 metri",
       "components": "V, S",
       "duration": "concentrazione, fino a 1 minuto",
-      "description": "L'incantatore attinge agli incubi di una creatura entro gittata che egli è in grado di vedere e crea un'illusione delle sue paure più profonde, visibile solo a lei. Il bersaglio effettua un tiro salvezza su Saggezza. In caso di fallimento, subisce 4d10 danni psichici e subisce svantaggio alle prove di caratteristica e ai tiri per colpire per la durata dell'incantesimo. In caso di successo, subisce soltanto la metà di quei danni e l'incantesimo termina. Per la durata dell'incantesimo, il bersaglio effettua un tiro salvezza su Saggezza alla fine di ogni suo Cambiare aspetto. L'incantatore altera il suo aspetto: decide come apparire e definisce altezza, peso, lineamenti facciali, tono della voce, lunghezza dei capelli, carnagione e altri tratti distintivi. Può scegliere di assomigliare a un membro di un'altra specie, ma le sue statistiche non subiscono modifiche. Non può apparire come una creatura di taglia diversa e la sua forma base rimane la stessa; per esempio, se è bipede, non può usare l'incantesimo per diventare quadrupede. Per la durata dell'incantesimo, può effettuare un'azione di Magia per cambiare di nuovo il suo aspetto.",
-      "higher_level": "",
+      "description": "L'incantatore attinge agli incubi di una creatura entro gittata che egli è in grado di vedere e crea un'illusione delle sue paure più profonde, visibile solo a lei. Il bersaglio effettua un tiro salvezza su Saggezza. In caso di fallimento, subisce 4d10 danni psichici e subisce svantaggio alle prove di caratteristica e ai tiri per colpire per la durata dell'incantesimo. In caso di successo, subisce soltanto la metà di quei danni e l'incantesimo termina. Per la durata dell'incantesimo, il bersaglio effettua un tiro salvezza su Saggezza alla fine di ogni suo turno. In caso di fallimento, subisce nuovamente i danni psichici. In caso di successo, l'incantesimo termina.",
+      "higher_level": "I danni aumentano di 1d10 per ogni slot di livello superiore al 4º.",
       "damage": "4d10",
       "area_diameter": null,
       "concentration": true
@@ -183,8 +183,8 @@
       "range": "9 metri",
       "components": "V, S, M (un boccone di cibo)",
       "duration": "24 ore",
-      "description": "turno. In caso di fallimento, subisce nuovamente i danni psichici. In caso di successo, l'incantesimo termina.",
-      "higher_level": "I danni aumentano di 1d10 per ogni slot di livello superiore al 4º.",
+      "description": "Una bestia Minuscola a scelta entro gittata che l'incantatore è in grado di vedere deve superare un tiro salvezza su Carisma, altrimenti deve cercare di consegnare un messaggio da parte dell'incantatore (se il grado di sfida del bersaglio non è 0, la prova viene superata automaticamente). L'incantatore specifica il luogo di consegna, che ha già visitato, e un destinatario che corrisponda a una descrizione generica, come \"una persona che indossa l'uniforme della guardia cittadina\" o \"un nano dai capelli rossi che indossa un cappello a punta\". Inoltre, l'incantatore comunica un messaggio composto da un massimo di venticinque parole. La bestia bersaglio viaggia per la durata dell'incantesimo verso il luogo specificato, percorrendo circa 37,5 chilometri in 24 ore o 75 chilometri se è una bestia volante. Quando la bestia arriva a destinazione, trasmette il messaggio alla creatura descritta, imitando il modo di comunicare dell'incantatore. Se la bestia non raggiunge la sua destinazione prima della fine dell'incantesimo, il messaggio viene perso e la bestia torna nel luogo dove l'incantatore ha lanciato l'incantesimo.",
+      "higher_level": "La durata dell'incantesimo aumenta di 48 ore per ogni slot di livello superiore al 2º.",
       "damage": null,
       "area_diameter": null,
       "concentration": false
@@ -202,11 +202,32 @@
       "range": "incantatore",
       "components": "V, S",
       "duration": "concentrazione, fino a 1 ora",
-      "description": "L'incantatore altera la propria forma fisica scegliendo tra le opzioni seguenti. Gli effetti permangono per la sua durata, durante la quale l'incantatore può effettuare un'azione di Magia per sostituire l'opzione scelta con una diversa. Adattamento acquatico. L'incantatore sviluppa le branchie e una membrana tra le dita. Inoltre, può respirare sott'acqua e ottenere una velocità di nuoto pari alla sua velocità. Armi naturali. L'incantatore sviluppa artigli (taglienti), zanne (perforanti), corna (perforanti) o zoccoli (contundenti). Quando usa il suo colpo senz'armi per infliggere danni con l'arma naturale creata, infligge 1d6 danni (del tipo indicato tra parentesi) invece di infliggere i danni normali del colpo senz'armi, usando il modificatore di caratteristica da incantatore per i tiri per colpire e per i tiri per i danni anziché quello di Forza. Una bestia Minuscola a scelta entro gittata che l'incantatore è in grado di vedere deve superare un tiro salvezza su Carisma, altrimenti deve cercare di consegnare un messaggio da parte dell'incantatore (se il grado di sfida del bersaglio non è 0, la prova viene superata automaticamente). L'incantatore specifica il luogo di consegna, che ha già visitato, e un destinatario che corrisponda a una descrizione generica, come \"una persona che indossa l'uniforme della guardia cittadina\" o \"un nano dai capelli rossi che indossa un cappello a punta\". Inoltre, l'incantatore comunica un messaggio composto da un massimo di venticinque parole. La bestia bersaglio viaggia per la durata dell'incantesimo verso il luogo specificato, percorrendo circa 37,5 chilometri in 24 ore o 75 chilometri se è una bestia volante. Quando la bestia arriva a destinazione, trasmette il messaggio alla creatura descritta, imitando il modo di comunicare dell'incantatore. Se la bestia non raggiunge la sua destinazione prima della fine dell'incantesimo, il messaggio viene perso e la bestia torna nel luogo dove l'incantatore ha lanciato l'incantesimo.",
+      "description": "L'incantatore altera la propria forma fisica scegliendo tra le opzioni seguenti. Gli effetti permangono per la sua durata, durante la quale l'incantatore può effettuare un'azione di Magia per sostituire l'opzione scelta con una diversa. Adattamento acquatico. L'incantatore sviluppa le branchie e una membrana tra le dita. Inoltre, può respirare sott'acqua e ottenere una velocità di nuoto pari alla sua velocità. Armi naturali. L'incantatore sviluppa artigli (taglienti), zanne (perforanti), corna (perforanti) o zoccoli (contundenti). Quando usa il suo colpo senz'armi per infliggere danni con l'arma naturale creata, infligge 1d6 danni (del tipo indicato tra parentesi) invece di infliggere i danni normali del colpo senz'armi, usando il modificatore di caratteristica da incantatore per i tiri per colpire e per i tiri per i danni anziché quello di Forza. Cambiare aspetto. L'incantatore altera il suo aspetto: decide come apparire e definisce altezza, peso, lineamenti facciali, tono della voce, lunghezza dei capelli, carnagione e altri tratti distintivi. Può scegliere di assomigliare a un membro di un'altra specie, ma le sue statistiche non subiscono modifiche. Non può apparire come una creatura di taglia diversa e la sua forma base rimane la stessa; per esempio, se è bipede, non può usare l'incantesimo per diventare quadrupede. Per la durata dell'incantesimo, può effettuare un'azione di Magia per cambiare di nuovo il suo aspetto.",
       "higher_level": "La durata dell'incantesimo aumenta di 48 ore per ogni slot di livello superiore al 2º.",
       "damage": "1d6",
       "area_diameter": null,
-      "concentration": true
+      "concentration": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "L'incantatore altera la propria forma fisica scegliendo tra le opzioni seguenti. Gli effetti permangono per la sua durata, durante la quale l'incantatore può effettuare un'azione di Magia per sostituire l'opzione scelta con una diversa."
+        },
+        {
+          "type": "section",
+          "title": "Adattamento acquatico",
+          "text": "L'incantatore sviluppa le branchie e una membrana tra le dita. Inoltre, può respirare sott'acqua e ottenere una velocità di nuoto pari alla sua velocità."
+        },
+        {
+          "type": "section",
+          "title": "Armi naturali",
+          "text": "L'incantatore sviluppa artigli (taglienti), zanne (perforanti), corna (perforanti) o zoccoli (contundenti). Quando usa il suo colpo senz'armi per infliggere danni con l'arma naturale creata, infligge 1d6 danni (del tipo indicato tra parentesi) invece di infliggere i danni normali del colpo senz'armi, usando il modificatore di caratteristica da incantatore per i tiri per colpire e per i tiri per i danni anziché quello di Forza."
+        },
+        {
+          "type": "section",
+          "title": "Cambiare aspetto",
+          "text": "L'incantatore altera il suo aspetto: decide come apparire e definisce altezza, peso, lineamenti facciali, tono della voce, lunghezza dei capelli, carnagione e altri tratti distintivi. Può scegliere di assomigliare a un membro di un'altra specie, ma le sue statistiche non subiscono modifiche. Non può apparire come una creatura di taglia diversa e la sua forma base rimane la stessa; per esempio, se è bipede, non può usare l'incantesimo per diventare quadrupede. Per la durata dell'incantesimo, può effettuare un'azione di Magia per cambiare di nuovo il suo aspetto."
+        }
+      ]
     },
     {
       "id": "animare-morti",
