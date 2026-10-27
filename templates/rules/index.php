@@ -78,7 +78,7 @@ $categoryLabels = [
                     <a class="rule-category" href="<?= e(appUrl('regole?' . http_build_query(['categoria' => $rule['category']]))) ?>"><?= e($categoryLabels[$rule['category']] ?? ucfirst((string) $rule['category'])) ?></a>
                 <?php endif; ?>
             </div>
-            <p class="rule-content"><?= ruleContentWithAbbreviations((string) $rule['content'], $abbreviations) ?></p>
+            <div class="rule-content"><?= renderRuleContent($rule, $abbreviations) ?></div>
             <span class="rule-source">pag. <?= e((string) ($rule['source_page'] ?? '')) ?></span>
         </article>
 <?php endforeach; ?>

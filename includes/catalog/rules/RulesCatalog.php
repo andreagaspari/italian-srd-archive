@@ -140,13 +140,14 @@ final class RulesCatalog
     private function loadMysqlItems(): array
     {
         $statement = $this->database->query(
-            'SELECT item_id AS id, name, category, source_page, content, see_also
+            'SELECT item_id AS id, name, category, source_page, content, see_also, payload
              FROM rule_items WHERE document_key = "rules" ORDER BY id ASC'
         );
         $items = [];
         foreach ($statement->fetchAll() as $item) {
             $item['source_page'] = (int) $item['source_page'];
             $item['see_also'] = $this->decodeJson($item['see_also'], 'riferimenti della regola');
+            $item = $this->mergePayload($item);
             $items[] = $item;
         }
         return $items;
@@ -182,7 +183,7 @@ final class RulesCatalog
         $totalItems = (int) $count->fetchColumn();
 
         $statement = $this->database->prepare(
-            "SELECT item_id AS id, name, category, source_page, content, see_also
+            "SELECT item_id AS id, name, category, source_page, content, see_also, payload
              FROM rule_items WHERE {$where} ORDER BY id ASC
              LIMIT :page_size OFFSET :offset"
         );
@@ -196,6 +197,7 @@ final class RulesCatalog
         foreach ($statement->fetchAll() as $item) {
             $item['source_page'] = (int) $item['source_page'];
             $item['see_also'] = $this->decodeJson($item['see_also'], 'riferimenti della regola');
+            $item = $this->mergePayload($item);
             $items[] = $item;
         }
 
@@ -221,5 +223,22 @@ final class RulesCatalog
             throw new UnexpectedValueException("Campo {$label} non valido nel database.");
         }
         return $decoded;
+    }
+
+    /**
+     * Restores optional structured presentation data stored in the rule payload.
+     *
+     * @param array<string, mixed> $item Database rule item.
+     *
+     * @return array<string, mixed> Rule item enriched with supported payload fields.
+     */
+    private function mergePayload(array $item): array
+    {
+        $payload = $this->decodeJson($item['payload'] ?? '{}', 'payload della regola');
+        if (isset($payload['blocks']) && is_array($payload['blocks'])) {
+            $item['blocks'] = $payload['blocks'];
+        }
+        unset($item['payload']);
+        return $item;
     }
 }

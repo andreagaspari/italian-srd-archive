@@ -47,6 +47,71 @@ function ruleContentWithAbbreviations(string $content, array $abbreviations): st
     ) ?? $escapedContent;
 }
 
+/**
+ * Renders structured rule blocks, falling back to legacy rule text.
+ *
+ * @param array<string, mixed> $rule Rule data with optional structured blocks.
+ * @param array<int, array{abbreviation: string, meaning: string}> $abbreviations Glossary abbreviations.
+ *
+ * @return string Safe HTML for paragraphs and tables.
+ */
+function renderRuleContent(array $rule, array $abbreviations): string
+{
+    $blocks = $rule['blocks'] ?? null;
+    if (!is_array($blocks)) {
+        return '<p>' . ruleContentWithAbbreviations((string) ($rule['content'] ?? ''), $abbreviations) . '</p>';
+    }
+
+    $html = '';
+    foreach ($blocks as $block) {
+        if (!is_array($block) || !is_string($block['type'] ?? null)) {
+            continue;
+        }
+        if ($block['type'] === 'paragraph' && is_string($block['text'] ?? null)) {
+            $html .= '<p>' . ruleContentWithAbbreviations($block['text'], $abbreviations) . '</p>';
+            continue;
+        }
+        if ($block['type'] === 'section'
+            && is_string($block['title'] ?? null)
+            && is_string($block['text'] ?? null)
+        ) {
+            $title = rtrim($block['title'], ". \t\n\r\0\x0B");
+            $html .= '<p><strong>' . e($title) . '.</strong> '
+                . ruleContentWithAbbreviations($block['text'], $abbreviations) . '</p>';
+            continue;
+        }
+        if ($block['type'] !== 'table' || !is_array($block['columns'] ?? null) || !is_array($block['rows'] ?? null)) {
+            continue;
+        }
+        $columns = array_values(array_filter($block['columns'], 'is_string'));
+        if ($columns === []) {
+            continue;
+        }
+        $html .= '<div class="rule-table-wrapper"><table class="rule-table">';
+        if (is_string($block['caption'] ?? null) && $block['caption'] !== '') {
+            $html .= '<caption>' . e($block['caption']) . '</caption>';
+        }
+        $html .= '<thead><tr>';
+        foreach ($columns as $column) {
+            $html .= '<th scope="col">' . e($column) . '</th>';
+        }
+        $html .= '</tr></thead><tbody>';
+        foreach ($block['rows'] as $row) {
+            if (!is_array($row) || count($row) !== count($columns)) {
+                continue;
+            }
+            $html .= '<tr>';
+            foreach ($row as $cell) {
+                $html .= '<td>' . e((string) $cell) . '</td>';
+            }
+            $html .= '</tr>';
+        }
+        $html .= '</tbody></table></div>';
+    }
+
+    return $html !== '' ? $html : '<p>' . ruleContentWithAbbreviations((string) ($rule['content'] ?? ''), $abbreviations) . '</p>';
+}
+
 function monsterDescriptionFeatures(string $content): array
 {
     preg_match_all('/<b>(.*?)<\/b>(.*?)(?=<b>|$)/su', $content, $matches, PREG_SET_ORDER);

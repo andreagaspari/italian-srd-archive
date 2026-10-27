@@ -179,6 +179,22 @@
       "category": "condizione",
       "source_page": 202,
       "content": "Quando il tuo personaggio ha la condizione \"accecato\", subisce i seguenti effetti: Non è in grado di vedere. Il personaggio non è in grado di vedere e fallisce automaticamente qualsiasi prova di caratteristica che richieda l'uso della vista. Influenza sugli attacchi. I tiri per colpire contro il personaggio dispongono di vantaggio, mentre i suoi tiri per colpire subiscono svantaggio.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"accecato\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Non è in grado di vedere",
+              "text": "Il personaggio non è in grado di vedere e fallisce automaticamente qualsiasi prova di caratteristica che richieda l'uso della vista."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "I tiri per colpire contro il personaggio dispongono di vantaggio, mentre i suoi tiri per colpire subiscono svantaggio."
+          }
+      ],
       "see_also": []
     },
     {
@@ -187,6 +203,22 @@
       "category": "condizione",
       "source_page": 202,
       "content": "Quando il tuo personaggio ha la condizione \"affascinato\", subisce i seguenti effetti: Non può attaccare chi lo ha affascinato. Il personaggio non può attaccare chi lo ha affascinato né bersagliarlo con abilità o effetti magici dannosi. Vantaggio sociale. Chi ha affascinato il personaggio dispone di vantaggio a qualsiasi prova di caratteristica effettuata per interagire socialmente con il personaggio.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"affascinato\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Non può attaccare chi lo ha affascinato",
+              "text": "Il personaggio non può attaccare chi lo ha affascinato né bersagliarlo con abilità o effetti magici dannosi."
+          },
+          {
+              "type": "section",
+              "title": "Vantaggio sociale",
+              "text": "Chi ha affascinato il personaggio dispone di vantaggio a qualsiasi prova di caratteristica effettuata per interagire socialmente con il personaggio."
+          }
+      ],
       "see_also": []
     },
     {
@@ -195,6 +227,27 @@
       "category": null,
       "source_page": 202,
       "content": "Una creatura può afferrare un'altra creatura. I personaggi tipicamente possono afferrare una creatura utilizzando un colpo senz'armi. Molti mostri dispongono di attacchi speciali che permettono loro di afferrare rapidamente la preda. A prescindere dal tipo di presa, bisogna fare riferimento alle seguenti regole. Vedi anche \"Colpo senz'armi\" e \"Afferrato\". Condizione afferrato. Se un personaggio riesce ad afferrare una creatura, questa subisce la condizione \"afferrato\". Una presa per ogni mano. Una creatura deve avere una mano libera per poter afferrare un'altra creatura. Alcune schede delle statistiche ed effetti di gioco consentono a una creatura di afferrarne un'altra utilizzando tentacoli, fauci o altre parti del corpo. A prescindere dalle modalità, una creatura può afferrare solo una creatura alla volta con la parte del corpo che ha scelto di usare, e non può utilizzare quella parte per bersagliare un'altra creatura, a meno che non termini la presa. Sfuggire a una presa. Una creatura afferrata può usare la sua azione per effettuare una prova di Forza (Atletica) o di Destrezza (Acrobazia) contro la CD per sfuggire alla presa, ponendo fine alla condizione \"afferrato\" su di sé in caso di successo. La condizione termina anche se chi ha afferrato la creatura è incapacitato o se la distanza tra il bersaglio afferrato e chi lo afferra supera la portata della presa. Inoltre, chi ha afferrato la creatura può lasciar andare il bersaglio in qualsiasi momento (nessuna azione richiesta).",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Una creatura può afferrare un'altra creatura. I personaggi tipicamente possono afferrare una creatura utilizzando un colpo senz'armi. Molti mostri dispongono di attacchi speciali che permettono loro di afferrare rapidamente la preda. A prescindere dal tipo di presa, bisogna fare riferimento alle seguenti regole. Vedi anche \"Colpo senz'armi\" e \"Afferrato\"."
+          },
+          {
+              "type": "section",
+              "title": "Condizione afferrato",
+              "text": "Se un personaggio riesce ad afferrare una creatura, questa subisce la condizione \"afferrato\"."
+          },
+          {
+              "type": "section",
+              "title": "Una presa per ogni mano",
+              "text": "Una creatura deve avere una mano libera per poter afferrare un'altra creatura. Alcune schede delle statistiche ed effetti di gioco consentono a una creatura di afferrarne un'altra utilizzando tentacoli, fauci o altre parti del corpo. A prescindere dalle modalità, una creatura può afferrare solo una creatura alla volta con la parte del corpo che ha scelto di usare, e non può utilizzare quella parte per bersagliare un'altra creatura, a meno che non termini la presa."
+          },
+          {
+              "type": "section",
+              "title": "Sfuggire a una presa",
+              "text": "Una creatura afferrata può usare la sua azione per effettuare una prova di Forza (Atletica) o di Destrezza (Acrobazia) contro la CD per sfuggire alla presa, ponendo fine alla condizione \"afferrato\" su di sé in caso di successo. La condizione termina anche se chi ha afferrato la creatura è incapacitato o se la distanza tra il bersaglio afferrato e chi lo afferra supera la portata della presa. Inoltre, chi ha afferrato la creatura può lasciar andare il bersaglio in qualsiasi momento (nessuna azione richiesta)."
+          }
+      ],
       "see_also": []
     },
     {
@@ -203,6 +256,27 @@
       "category": "condizione",
       "source_page": 203,
       "content": "Quando il tuo personaggio ha la condizione \"afferrato\", subisce i seguenti effetti: Velocità 0. La velocità del personaggio è pari a 0 e non può aumentare. Influenza sugli attacchi. Il personaggio subisce svantaggio ai tiri per colpire contro qualsiasi bersaglio che non sia chi lo ha afferrato. Movibile. Chi ha afferrato il personaggio, muovendosi, può trascinarlo o spostarlo, ma ogni 30 centimetri di movimento costano 30 centimetri extra, a meno che il personaggio non sia Minuscolo o più piccolo di due taglie o più rispetto a chi lo ha afferrato.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"afferrato\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Velocità 0",
+              "text": "La velocità del personaggio è pari a 0 e non può aumentare."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "Il personaggio subisce svantaggio ai tiri per colpire contro qualsiasi bersaglio che non sia chi lo ha afferrato."
+          },
+          {
+              "type": "section",
+              "title": "Movibile",
+              "text": "Chi ha afferrato il personaggio, muovendosi, può trascinarlo o spostarlo, ma ogni 30 centimetri di movimento costano 30 centimetri extra, a meno che il personaggio non sia Minuscolo o più piccolo di due taglie o più rispetto a chi lo ha afferrato."
+          }
+      ],
       "see_also": []
     },
     {
@@ -211,6 +285,22 @@
       "category": "azione",
       "source_page": 203,
       "content": "Quando il personaggio effettua l'azione di Aiuto, può scegliere di fare una di queste cose. Aiuto a una prova di caratteristica. Il personaggio sceglie una delle competenze in un'abilità (o in uno strumento) e un alleato sufficientemente vicino da poter aiutare verbalmente o fisicamente quando questi effettua una prova di caratteristica. L'alleato dispone di vantaggio alla successiva prova di caratteristica che effettua con l'abilità o lo strumento scelto. Questo beneficio termina se l'alleato non lo utilizza prima dell'inizio del turno successivo del personaggio. Il GM ha l'ultima parola sulla possibilità dell'aiuto da parte del personaggio. Aiuto a un tiro per colpire. Il personaggio distrae momentaneamente un nemico entro 1,5 metri da sé, fornendo vantaggio al tiro per colpire successivo di uno dei suoi alleati contro il nemico. Questo beneficio termina all'inizio del turno successivo del personaggio.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il personaggio effettua l'azione di Aiuto, può scegliere di fare una di queste cose."
+          },
+          {
+              "type": "section",
+              "title": "Aiuto a una prova di caratteristica",
+              "text": "Il personaggio sceglie una delle competenze in un'abilità (o in uno strumento) e un alleato sufficientemente vicino da poter aiutare verbalmente o fisicamente quando questi effettua una prova di caratteristica. L'alleato dispone di vantaggio alla successiva prova di caratteristica che effettua con l'abilità o lo strumento scelto. Questo beneficio termina se l'alleato non lo utilizza prima dell'inizio del turno successivo del personaggio. Il GM ha l'ultima parola sulla possibilità dell'aiuto da parte del personaggio."
+          },
+          {
+              "type": "section",
+              "title": "Aiuto a un tiro per colpire",
+              "text": "Il personaggio distrae momentaneamente un nemico entro 1,5 metri da sé, fornendo vantaggio al tiro per colpire successivo di uno dei suoi alleati contro il nemico. Questo beneficio termina all'inizio del turno successivo del personaggio."
+          }
+      ],
       "see_also": []
     },
     {
@@ -267,6 +357,32 @@
       "category": null,
       "source_page": 203,
       "content": "Un'arma improvvisata è un oggetto brandito come un'arma alla buona, quale ad esempio vetri rotti, la gamba di un tavolo o una padella. Anche un'arma semplice o da guerra conta come un'arma improvvisata se è impugnata in modo contrario al suo scopo originario; inoltre, qualora il personaggio utilizzi un'arma a distanza per effettuare un attacco in mischia o lanci un'arma da mischia priva della proprietà da lancio, l'arma conta come un'arma improvvisata. Un'arma improvvisata segue le regole illustrate di seguito: Competenza. Il personaggio non aggiunge il bonus di competenza ai tiri per colpire con un'arma improvvisata. Danni. Se il colpo va a segno, l'arma infligge 1d4 danni del tipo ritenuto appropriato dal GM per l'oggetto utilizzato. Gittata. Un'arma improvvisata ha una gittata normale di 6 metri e una gittata lunga di 18 metri. Equivalenti delle armi. Se un'arma improvvisata assomiglia a un'arma semplice o da guerra, il GM può decretarne un funzionamento analogo e usare le stesse regole di quell'arma. Per esempio, il GM può considerare la gamba di un tavolo come un randello.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Un'arma improvvisata è un oggetto brandito come un'arma alla buona, quale ad esempio vetri rotti, la gamba di un tavolo o una padella. Anche un'arma semplice o da guerra conta come un'arma improvvisata se è impugnata in modo contrario al suo scopo originario; inoltre, qualora il personaggio utilizzi un'arma a distanza per effettuare un attacco in mischia o lanci un'arma da mischia priva della proprietà da lancio, l'arma conta come un'arma improvvisata. Un'arma improvvisata segue le regole illustrate di seguito:"
+          },
+          {
+              "type": "section",
+              "title": "Competenza",
+              "text": "Il personaggio non aggiunge il bonus di competenza ai tiri per colpire con un'arma improvvisata."
+          },
+          {
+              "type": "section",
+              "title": "Danni",
+              "text": "Se il colpo va a segno, l'arma infligge 1d4 danni del tipo ritenuto appropriato dal GM per l'oggetto utilizzato."
+          },
+          {
+              "type": "section",
+              "title": "Gittata",
+              "text": "Un'arma improvvisata ha una gittata normale di 6 metri e una gittata lunga di 18 metri."
+          },
+          {
+              "type": "section",
+              "title": "Equivalenti delle armi",
+              "text": "Se un'arma improvvisata assomiglia a un'arma semplice o da guerra, il GM può decretarne un funzionamento analogo e usare le stesse regole di quell'arma. Per esempio, il GM può considerare la gamba di un tavolo come un randello."
+          }
+      ],
       "see_also": []
     },
     {
@@ -299,6 +415,22 @@
       "category": "azione",
       "source_page": 204,
       "content": "Quando il personaggio effettua l'azione di Attacco, può effettuare un tiro per colpire con un'arma o con un colpo senz'armi. Equipaggiarsi con le armi e riporle. Quando il personaggio effettua l'azione di Attacco come parte di questa azione, può anche equipaggiarsi con un'arma o riporla, decidendo se farlo prima o dopo l'attacco. Anche se il personaggio si equipaggia con un'arma prima di un attacco, non deve necessariamente usarla per quell'attacco. Equipaggiarsi con un'arma significa estrarla da un fodero o raccoglierla. Riporre un'arma significa rinfoderarla, metterla da parte o lasciarla cadere. Muoversi tra un attacco e l'altro. Se nel suo turno il personaggio si muove e ha un privilegio come, ad esempio, Attacco extra, questo gli fornisce la possibilità di effettuare più di un attacco come parte dell'azione di Attacco: il personaggio può quindi utilizzare (in parte o interamente) il movimento che ha a disposizione per muoversi tra un attacco e l'altro.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il personaggio effettua l'azione di Attacco, può effettuare un tiro per colpire con un'arma o con un colpo senz'armi."
+          },
+          {
+              "type": "section",
+              "title": "Equipaggiarsi con le armi e riporle",
+              "text": "Quando il personaggio effettua l'azione di Attacco come parte di questa azione, può anche equipaggiarsi con un'arma o riporla, decidendo se farlo prima o dopo l'attacco. Anche se il personaggio si equipaggia con un'arma prima di un attacco, non deve necessariamente usarla per quell'attacco. Equipaggiarsi con un'arma significa estrarla da un fodero o raccoglierla. Riporre un'arma significa rinfoderarla, metterla da parte o lasciarla cadere."
+          },
+          {
+              "type": "section",
+              "title": "Muoversi tra un attacco e l'altro",
+              "text": "Se nel suo turno il personaggio si muove e ha un privilegio come, ad esempio, Attacco extra, questo gli fornisce la possibilità di effettuare più di un attacco come parte dell'azione di Attacco: il personaggio può quindi utilizzare (in parte o interamente) il movimento che ha a disposizione per muoversi tra un attacco e l'altro."
+          }
+      ],
       "see_also": []
     },
     {
@@ -387,6 +519,28 @@
       "category": null,
       "source_page": 205,
       "content": "La taglia e il punteggio di Forza del tuo personaggio determinano il peso massimo, misurato in chilogrammi, che il personaggio può trasportare, come indicato nella tabella \"Capacità di trasporto\". La tabella indica anche il peso massimo che il personaggio può trascinare, sollevare o spingere. Mentre il personaggio trascina, solleva o spinge un peso superiore a quello massimo che è capace di trasportare, la sua velocità non può superare 1,5 metri. Capacità di trasporto Taglia delle Trascinare/ creature Trasportare sollevare/spingere Minuscola For × 3,75 kg For × 7,5 kg Piccola/Media For × 7,5 kg For × 15 kg Grande For × 15 kg For × 30 kg Enorme For × 30 kg For × 60 kg Mastodontica For × 60 kg For × 120 kg",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "La taglia e il punteggio di Forza del tuo personaggio determinano il peso massimo, misurato in chilogrammi, che il personaggio può trasportare, come indicato nella tabella \"Capacità di trasporto\". La tabella indica anche il peso massimo che il personaggio può trascinare, sollevare o spingere."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mentre il personaggio trascina, solleva o spinge un peso superiore a quello massimo che è capace di trasportare, la sua velocità non può superare 1,5 metri."
+        },
+        {
+          "type": "table",
+          "caption": "Capacità di trasporto",
+          "columns": ["Taglia delle creature", "Trasportare", "Trascinare/sollevare/spingere"],
+          "rows": [
+            ["Minuscola", "For × 3,75 kg", "For × 7,5 kg"],
+            ["Piccola/Media", "For × 7,5 kg", "For × 15 kg"],
+            ["Grande", "For × 15 kg", "For × 30 kg"],
+            ["Enorme", "For × 30 kg", "For × 60 kg"],
+            ["Mastodontica", "For × 60 kg", "For × 120 kg"]
+          ]
+        }
+      ],
       "see_also": []
     },
     {
@@ -427,6 +581,27 @@
       "category": null,
       "source_page": 205,
       "content": "Invece di usare un'arma per effettuare un attacco in mischia, il personaggio può sferrare un pugno, un calcio, una testata o un altro colpo violento di natura simile. In termini di gioco, questo si definisce un colpo senz'armi: un attacco in mischia che prevede l'uso del corpo per danneggiare, afferrare o spingere un bersaglio entro 1,5 metri dal personaggio. Ogni volta che il personaggio usa un colpo senz'armi, scegli una delle seguenti opzioni per determinarne l'effetto: Danni. Effettui un tiro per colpire contro il bersaglio. Il tuo bonus al tiro è pari al modificatore di Forza del personaggio più il bonus di competenza. Se il colpo va a segno, il bersaglio subisce danni contundenti pari a 1 più il modificatore di Forza del personaggio. Presa. Il bersaglio deve superare un tiro salvezza su Forza o su Destrezza (a sua scelta), altrimenti viene afferrato. La CD per il tiro salvezza e per qualsiasi tentativo di sfuggire alla presa è pari a 8 più il modificatore di Forza e il bonus di competenza del personaggio. La presa è possibile solo se il bersaglio è al massimo di una taglia più grande del personaggio e se quest'ultimo ha una mano libera per afferrarlo. Vedi anche \"Afferrare\". Spinta. Il bersaglio deve superare un tiro salvezza su Forza o su Destrezza (a sua scelta), altrimenti il personaggio lo spinge a 1,5 metri di distanza oppure lo fa diventare prono. La CD per il tiro salvezza è pari a 8 più il modificatore di Forza e il bonus di competenza del personaggio. La spinta è possibile solo se il bersaglio è al massimo di una taglia più grande del personaggio.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Invece di usare un'arma per effettuare un attacco in mischia, il personaggio può sferrare un pugno, un calcio, una testata o un altro colpo violento di natura simile. In termini di gioco, questo si definisce un colpo senz'armi: un attacco in mischia che prevede l'uso del corpo per danneggiare, afferrare o spingere un bersaglio entro 1,5 metri dal personaggio. Ogni volta che il personaggio usa un colpo senz'armi, scegli una delle seguenti opzioni per determinarne l'effetto:"
+          },
+          {
+              "type": "section",
+              "title": "Danni",
+              "text": "Effettui un tiro per colpire contro il bersaglio. Il tuo bonus al tiro è pari al modificatore di Forza del personaggio più il bonus di competenza. Se il colpo va a segno, il bersaglio subisce danni contundenti pari a 1 più il modificatore di Forza del personaggio."
+          },
+          {
+              "type": "section",
+              "title": "Presa",
+              "text": "Il bersaglio deve superare un tiro salvezza su Forza o su Destrezza (a sua scelta), altrimenti viene afferrato. La CD per il tiro salvezza e per qualsiasi tentativo di sfuggire alla presa è pari a 8 più il modificatore di Forza e il bonus di competenza del personaggio. La presa è possibile solo se il bersaglio è al massimo di una taglia più grande del personaggio e se quest'ultimo ha una mano libera per afferrarlo. Vedi anche \"Afferrare\"."
+          },
+          {
+              "type": "section",
+              "title": "Spinta",
+              "text": "Il bersaglio deve superare un tiro salvezza su Forza o su Destrezza (a sua scelta), altrimenti il personaggio lo spinge a 1,5 metri di distanza oppure lo fa diventare prono. La CD per il tiro salvezza è pari a 8 più il modificatore di Forza e il bonus di competenza del personaggio. La spinta è possibile solo se il bersaglio è al massimo di una taglia più grande del personaggio."
+          }
+      ],
       "see_also": []
     },
     {
@@ -451,6 +626,27 @@
       "category": null,
       "source_page": 206,
       "content": "Per rimanere attivi, alcuni incantesimi e altri effetti richiedono concentrazione, come specificato nelle rispettive descrizioni. Se il creatore dell'effetto perde la concentrazione, l'effetto termina. Se l'effetto ha una durata massima, la descrizione dell'effetto specifica quanto a lungo il creatore può concentrarsi su di esso: fino a 1 minuto, 1 ora o un'altra durata. Il creatore può terminare la concentrazione in qualsiasi momento (nessuna azione richiesta). La concentrazione viene interrotta dai fattori descritti di seguito. Un altro effetto di concentrazione. Il personaggio perde la concentrazione su un effetto nel momento in cui inizia a lanciare un incantesimo che richiede concentrazione, o se attiva un altro effetto che richiede concentrazione. Danni. Se il personaggio subisce danni, deve effettuare un tiro salvezza su Costituzione per mantenere la concentrazione. La CD è pari a 10 o alla metà dei danni subiti (arrotondata per difetto): si sceglie il numero più alto tra i due valori, fino a una CD di massimo 30. Incapacitato o morto. Se il personaggio è incapacitato o muore, la sua concentrazione termina.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Per rimanere attivi, alcuni incantesimi e altri effetti richiedono concentrazione, come specificato nelle rispettive descrizioni. Se il creatore dell'effetto perde la concentrazione, l'effetto termina. Se l'effetto ha una durata massima, la descrizione dell'effetto specifica quanto a lungo il creatore può concentrarsi su di esso: fino a 1 minuto, 1 ora o un'altra durata. Il creatore può terminare la concentrazione in qualsiasi momento (nessuna azione richiesta). La concentrazione viene interrotta dai fattori descritti di seguito."
+          },
+          {
+              "type": "section",
+              "title": "Un altro effetto di concentrazione",
+              "text": "Il personaggio perde la concentrazione su un effetto nel momento in cui inizia a lanciare un incantesimo che richiede concentrazione, o se attiva un altro effetto che richiede concentrazione."
+          },
+          {
+              "type": "section",
+              "title": "Danni",
+              "text": "Se il personaggio subisce danni, deve effettuare un tiro salvezza su Costituzione per mantenere la concentrazione. La CD è pari a 10 o alla metà dei danni subiti (arrotondata per difetto): si sceglie il numero più alto tra i due valori, fino a una CD di massimo 30."
+          },
+          {
+              "type": "section",
+              "title": "Incapacitato o morto",
+              "text": "Se il personaggio è incapacitato o muore, la sua concentrazione termina."
+          }
+      ],
       "see_also": []
     },
     {
@@ -515,6 +711,25 @@
       "category": "pericolo",
       "source_page": 207,
       "content": "In base alla propria taglia, una creatura necessita di una certa quantità di acqua al giorno, come indicato nella tabella \"Fabbisogno d'acqua giornaliero\". Una creatura che beve meno della metà dell'acqua necessaria in un giorno ottiene 1 livello di indebolimento alla fine della giornata. L'indebolimento causato dalla disidratazione può essere rimosso solo quando la creatura beve l'intera quantità d'acqua richiesta in un giorno. Vedi anche \"Indebolimento\". Fabbisogno d'acqua giornaliero Taglia Acqua Taglia Acqua Minuscola 1 litro Grande 16 litri Piccola 4 litri Enorme 64 litri Media 4 litri Mastodontica 256 litri",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In base alla propria taglia, una creatura necessita di una certa quantità di acqua al giorno, come indicato nella tabella \"Fabbisogno d'acqua giornaliero\". Una creatura che beve meno della metà dell'acqua necessaria in un giorno ottiene 1 livello di indebolimento alla fine della giornata. L'indebolimento causato dalla disidratazione può essere rimosso solo quando la creatura beve l'intera quantità d'acqua richiesta in un giorno. Vedi anche \"Indebolimento\"."
+        },
+        {
+          "type": "table",
+          "caption": "Fabbisogno d'acqua giornaliero",
+          "columns": ["Taglia", "Acqua"],
+          "rows": [
+            ["Minuscola", "1 litro"],
+            ["Piccola", "4 litri"],
+            ["Media", "4 litri"],
+            ["Grande", "16 litri"],
+            ["Enorme", "64 litri"],
+            ["Mastodontica", "256 litri"]
+          ]
+        }
+      ],
       "see_also": []
     },
     {
@@ -611,6 +826,32 @@
       "category": "condizione",
       "source_page": 208,
       "content": "Quando il tuo personaggio ha la condizione \"paralizzato\", subisce i seguenti effetti: Inattività. Il personaggio non è in grado di effettuare azioni, azioni bonus o reazioni. Nessuna concentrazione. La concentrazione del personaggio è interrotta. Senza parole. Il personaggio non è in grado di parlare. Sorpresa. Se il personaggio è incapacitato quando tira per l'iniziativa, subisce svantaggio al tiro.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"paralizzato\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Inattività",
+              "text": "Il personaggio non è in grado di effettuare azioni, azioni bonus o reazioni."
+          },
+          {
+              "type": "section",
+              "title": "Nessuna concentrazione",
+              "text": "La concentrazione del personaggio è interrotta."
+          },
+          {
+              "type": "section",
+              "title": "Senza parole",
+              "text": "Il personaggio non è in grado di parlare."
+          },
+          {
+              "type": "section",
+              "title": "Sorpresa",
+              "text": "Se il personaggio è incapacitato quando tira per l'iniziativa, subisce svantaggio al tiro."
+          }
+      ],
       "see_also": []
     },
     {
@@ -627,6 +868,32 @@
       "category": "condizione",
       "source_page": 208,
       "content": "Quando il tuo personaggio ha la condizione \"indebolimento\", subisce i seguenti effetti: Livelli di indebolimento. Questa condizione è cumulativa. Ogni volta che il personaggio la riceve, ottiene 1 livello di indebolimento. Il personaggio muore se il suo livello di indebolimento è pari a 6. Influenza sulle prove con d20. Quando effettui una prova con d20, il risultato ottenuto è ridotto del doppio del livello di indebolimento del personaggio. Velocità ridotta. La velocità del personaggio è ridotta di una quantità di metri pari a 1,5 × il suo livello di indebolimento. Rimozione dei livelli di indebolimento. Terminando un riposo lungo, il personaggio perde 1 livello di indebolimento. Quando l'indebolimento raggiunge il livello 0, la condizione termina.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"indebolimento\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Livelli di indebolimento",
+              "text": "Questa condizione è cumulativa. Ogni volta che il personaggio la riceve, ottiene 1 livello di indebolimento. Il personaggio muore se il suo livello di indebolimento è pari a 6."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sulle prove con d20",
+              "text": "Quando effettui una prova con d20, il risultato ottenuto è ridotto del doppio del livello di indebolimento del personaggio."
+          },
+          {
+              "type": "section",
+              "title": "Velocità ridotta",
+              "text": "La velocità del personaggio è ridotta di una quantità di metri pari a 1,5 × il suo livello di indebolimento."
+          },
+          {
+              "type": "section",
+              "title": "Rimozione dei livelli di indebolimento",
+              "text": "Terminando un riposo lungo, il personaggio perde 1 livello di indebolimento. Quando l'indebolimento raggiunge il livello 0, la condizione termina."
+          }
+      ],
       "see_also": []
     },
     {
@@ -651,6 +918,24 @@
       "category": "azione",
       "source_page": 208,
       "content": "Con l'azione di Influenza, il personaggio esorta un mostro a fare qualcosa. Descrivi o interpreta il modo in cui interagisce con il mostro: il personaggio cerca di ingannarlo, intimidirlo, intrattenerlo o persuaderlo gentilmente? Il GM determina se, dopo l'interazione, il mostro si sente ben disposto o meno verso il personaggio, o se è esitante. In base a ciò, si stabilisce se sia necessaria una prova di caratteristica, come spiegato di seguito: Ben disposto. Se l'esortazione del personaggio si allinea con i desideri del mostro, non è necessaria alcuna prova di caratteristica: il mostro soddisfa la richiesta del personaggio nel modo che preferisce. Maldisposto. Se l'esortazione del personaggio è sgradita al mostro o è contraria al suo allineamento, non è necessaria alcuna prova di caratteristica: il mostro si rifiuta di soddisfare la richiesta. Esitante. Se il personaggio esorta il mostro a fare qualcosa ma questo si mostra esitante, il personaggio deve effettuare una prova di caratteristica influenzata dall'atteggiamento del mostro: indifferente, amichevole, ostile (ciascuno dei quali è definito nel glossario). La tabella Prove di influenza indica quali prove di caratteristica effettuare in base all'interazione del personaggio con il mostro. Il GM sceglie la prova da effettuare, la quale ha una CD predefinita pari a 15 o pari al punteggio di Intelligenza del mostro (si sceglie il valore più alto tra i due). Se la prova viene superata, il mostro esegue la richiesta del personaggio. In caso di fallimento, il personaggio deve aspettare 24 ore (o un intervallo di tempo definito dal GM) prima di esortare di nuovo il mostro allo stesso modo. Prove di Influenza Prova di caratteristica Interazione Carisma (Inganno) Ingannare un mostro che capisce il personaggio Carisma (Intimidire) Intimidire un mostro Carisma (Intrattenere) Intrattenere un mostro Carisma (Persuasione) Persuadere un mostro che capisce il personaggio Saggezza (Addestrare Persuadere gentilmente una animali) bestia o una mostruosità",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Con l'azione di Influenza, il personaggio esorta un mostro a fare qualcosa. Descrivi o interpreta il modo in cui interagisce con il mostro: il personaggio cerca di ingannarlo, intimidirlo, intrattenerlo o persuaderlo gentilmente? Il GM determina se, dopo l'interazione, il mostro si sente ben disposto o meno verso il personaggio, o se è esitante. In base a ciò, si stabilisce se sia necessaria una prova di caratteristica, come spiegato di seguito: Ben disposto. Se l'esortazione del personaggio si allinea con i desideri del mostro, non è necessaria alcuna prova di caratteristica: il mostro soddisfa la richiesta del personaggio nel modo che preferisce. Maldisposto. Se l'esortazione del personaggio è sgradita al mostro o è contraria al suo allineamento, non è necessaria alcuna prova di caratteristica: il mostro si rifiuta di soddisfare la richiesta. Esitante. Se il personaggio esorta un mostro esitante a fare qualcosa, deve effettuare una prova di caratteristica influenzata dall'atteggiamento del mostro: indifferente, amichevole, ostile (ciascuno dei quali è definito nel glossario). La tabella seguente indica quali prove effettuare in base all'interazione. Il GM sceglie la prova, con CD pari a 15 o al punteggio di Intelligenza del mostro, scegliendo il valore più alto tra i due. Se la prova viene superata, il mostro esegue la richiesta; in caso di fallimento, il personaggio deve aspettare 24 ore, o un intervallo definito dal GM, prima di esortarlo di nuovo allo stesso modo."
+        },
+        {
+          "type": "table",
+          "caption": "Prove di Influenza",
+          "columns": ["Prova di caratteristica", "Interazione"],
+          "rows": [
+            ["Carisma (Inganno)", "Ingannare un mostro che capisce il personaggio"],
+            ["Carisma (Intimidire)", "Intimidire un mostro"],
+            ["Carisma (Intrattenere)", "Intrattenere un mostro"],
+            ["Carisma (Persuasione)", "Persuadere un mostro che capisce il personaggio"],
+            ["Saggezza (Addestrare animali)", "Persuadere gentilmente una bestia o una mostruosità"]
+          ]
+        }
+      ],
       "see_also": []
     },
     {
@@ -667,6 +952,27 @@
       "category": "condizione",
       "source_page": 209,
       "content": "Quando il tuo personaggio ha la condizione \"invisibile\", subisce i seguenti effetti: Sorpresa. Se il personaggio è invisibile quando tira per l'iniziativa, dispone di vantaggio al tiro. Occultamento. Il personaggio non è influenzato da alcun effetto che richieda la vista del bersaglio, a meno che il creatore dell'effetto non riesca in qualche modo a vederlo. Anche l'equipaggiamento che il personaggio indossa o trasporta è occultato. Influenza sugli attacchi. I tiri per colpire contro il personaggio subiscono svantaggio, mentre i suoi tiri per colpire dispongono di vantaggio. Se una creatura è in grado di vederlo, il personaggio non ottiene questo beneficio in relazione a quella creatura.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"invisibile\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Sorpresa",
+              "text": "Se il personaggio è invisibile quando tira per l'iniziativa, dispone di vantaggio al tiro."
+          },
+          {
+              "type": "section",
+              "title": "Occultamento",
+              "text": "Il personaggio non è influenzato da alcun effetto che richieda la vista del bersaglio, a meno che il creatore dell'effetto non riesca in qualche modo a vederlo. Anche l'equipaggiamento che il personaggio indossa o trasporta è occultato."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "I tiri per colpire contro il personaggio subiscono svantaggio, mentre i suoi tiri per colpire dispongono di vantaggio. Se una creatura è in grado di vederlo, il personaggio non ottiene questo beneficio in relazione a quella creatura."
+          }
+      ],
       "see_also": []
     },
     {
@@ -739,6 +1045,25 @@
       "category": "pericolo",
       "source_page": 209,
       "content": "In base alla propria taglia, una creatura necessita di una certa quantità di cibo al giorno, come indicato nella tabella \"Fabbisogno di cibo giornaliero\". Una creatura che mangia ma consuma meno della metà del cibo richiesto in un giorno, deve superare un tiro salvezza su Costituzione con CD 10, altrimenti ottiene 1 livello di indebolimento alla fine della giornata. Una creatura che non mangia niente per 5 giorni ottiene automaticamente 1 livello di indebolimento alla fine del quinto giorno e un livello aggiuntivo alla fine di ogni giorno successivo trascorso senza magiare. L'indebolimento causato dalla malnutrizione non può essere rimosso finché la creatura non mangia l'intera quantità di cibo richiesta in un giorno. Vedi anche \"Indebolimento\". Fabbisogno di cibo giornaliero Taglia Cibo Taglia Cibo Minuscola 125 grammi Grande 2 chili Piccola 0,5 chili Enorme 8 chili Media 0,5 chili Mastodon32 chili tica",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In base alla propria taglia, una creatura necessita di una certa quantità di cibo al giorno, come indicato nella tabella \"Fabbisogno di cibo giornaliero\". Una creatura che mangia ma consuma meno della metà del cibo richiesto in un giorno, deve superare un tiro salvezza su Costituzione con CD 10, altrimenti ottiene 1 livello di indebolimento alla fine della giornata. Una creatura che non mangia niente per 5 giorni ottiene automaticamente 1 livello di indebolimento alla fine del quinto giorno e un livello aggiuntivo alla fine di ogni giorno successivo trascorso senza mangiare. L'indebolimento causato dalla malnutrizione non può essere rimosso finché la creatura non mangia l'intera quantità di cibo richiesta in un giorno. Vedi anche \"Indebolimento\"."
+        },
+        {
+          "type": "table",
+          "caption": "Fabbisogno di cibo giornaliero",
+          "columns": ["Taglia", "Cibo"],
+          "rows": [
+            ["Minuscola", "125 grammi"],
+            ["Piccola", "0,5 chili"],
+            ["Media", "0,5 chili"],
+            ["Grande", "2 chili"],
+            ["Enorme", "8 chili"],
+            ["Mastodontica", "32 chili"]
+          ]
+        }
+      ],
       "see_also": []
     },
     {
@@ -819,6 +1144,37 @@
       "category": "condizione",
       "source_page": 210,
       "content": "Quando il tuo personaggio ha la condizione \"paralizzato\", subisce i seguenti effetti: Incapacitato. Il personaggio ha la condizione \"incapacitato\". Velocità 0. La velocità del personaggio è pari a 0 e non può aumentare. Influenza sui tiri salvezza. Il personaggio fallisce automaticamente i tiri salvezza su Forza e Destrezza. Influenza sugli attacchi. I tiri per colpire contro il personaggio dispongono di vantaggio. Colpi critici automatici. Ogni tiro per colpire che colpisce il personaggio è un colpo critico se l'attaccante si trova entro 1,5 metri dal personaggio.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"paralizzato\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Incapacitato",
+              "text": "Il personaggio ha la condizione \"incapacitato\"."
+          },
+          {
+              "type": "section",
+              "title": "Velocità 0",
+              "text": "La velocità del personaggio è pari a 0 e non può aumentare."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sui tiri salvezza",
+              "text": "Il personaggio fallisce automaticamente i tiri salvezza su Forza e Destrezza."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "I tiri per colpire contro il personaggio dispongono di vantaggio."
+          },
+          {
+              "type": "section",
+              "title": "Colpi critici automatici",
+              "text": "Ogni tiro per colpire che colpisce il personaggio è un colpo critico se l'attaccante si trova entro 1,5 metri dal personaggio."
+          }
+      ],
       "see_also": []
     },
     {
@@ -875,6 +1231,47 @@
       "category": "condizione",
       "source_page": 211,
       "content": "Quando il tuo personaggio ha la condizione \"pietrificato\", subisce i seguenti effetti: Trasformazione in sostanza inanimata. Il personaggio viene trasformato, insieme a tutti gli oggetti non magici che indossa e trasporta, in una sostanza solida inanimata (solitamente in pietra). Il personaggio cessa di invecchiare e il suo peso viene decuplicato. Incapacitato. Il personaggio ha la condizione \"incapacitato\". Velocità 0. La velocità del personaggio è pari a 0 e non può aumentare. Influenza sugli attacchi. I tiri per colpire contro il personaggio dispongono di vantaggio. Influenza sui tiri salvezza. Il personaggio fallisce automaticamente i tiri salvezza su Forza e Destrezza. Resistenza ai danni. Il personaggio è resistente a tutti i danni. Immunità ai veleni. Il personaggio è immune alla condizione \"avvelenato\".",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"pietrificato\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Trasformazione in sostanza inanimata",
+              "text": "Il personaggio viene trasformato, insieme a tutti gli oggetti non magici che indossa e trasporta, in una sostanza solida inanimata (solitamente in pietra). Il personaggio cessa di invecchiare e il suo peso viene decuplicato."
+          },
+          {
+              "type": "section",
+              "title": "Incapacitato",
+              "text": "Il personaggio ha la condizione \"incapacitato\"."
+          },
+          {
+              "type": "section",
+              "title": "Velocità 0",
+              "text": "La velocità del personaggio è pari a 0 e non può aumentare."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "I tiri per colpire contro il personaggio dispongono di vantaggio."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sui tiri salvezza",
+              "text": "Il personaggio fallisce automaticamente i tiri salvezza su Forza e Destrezza."
+          },
+          {
+              "type": "section",
+              "title": "Resistenza ai danni",
+              "text": "Il personaggio è resistente a tutti i danni."
+          },
+          {
+              "type": "section",
+              "title": "Immunità ai veleni",
+              "text": "Il personaggio è immune alla condizione \"avvelenato\"."
+          }
+      ],
       "see_also": []
     },
     {
@@ -907,6 +1304,42 @@
       "category": "condizione",
       "source_page": 212,
       "content": "Quando il tuo personaggio ha la condizione \"privo di sensi\", subisce i seguenti effetti: Inerte. Il personaggio ha le condizioni \"incapacitato\" e \"prono\", e lascia cadere qualsiasi cosa stia impugnando. Quando la condizione termina, il personaggio resta prono. Velocità 0. La velocità del personaggio è pari a 0 e non può aumentare. Influenza sugli attacchi. I tiri per colpire contro il personaggio dispongono di vantaggio. Influenza sui tiri salvezza. Il personaggio fallisce automaticamente i tiri salvezza su Forza e Destrezza. Colpi critici automatici. Ogni tiro per colpire che colpisce il personaggio è un colpo critico se l'attaccante si trova entro 1,5 metri dal personaggio. Ignaro. Il personaggio non è consapevole di ciò che lo circonda.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"privo di sensi\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Inerte",
+              "text": "Il personaggio ha le condizioni \"incapacitato\" e \"prono\", e lascia cadere qualsiasi cosa stia impugnando. Quando la condizione termina, il personaggio resta prono."
+          },
+          {
+              "type": "section",
+              "title": "Velocità 0",
+              "text": "La velocità del personaggio è pari a 0 e non può aumentare."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "I tiri per colpire contro il personaggio dispongono di vantaggio."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sui tiri salvezza",
+              "text": "Il personaggio fallisce automaticamente i tiri salvezza su Forza e Destrezza."
+          },
+          {
+              "type": "section",
+              "title": "Colpi critici automatici",
+              "text": "Ogni tiro per colpire che colpisce il personaggio è un colpo critico se l'attaccante si trova entro 1,5 metri dal personaggio."
+          },
+          {
+              "type": "section",
+              "title": "Ignaro",
+              "text": "Il personaggio non è consapevole di ciò che lo circonda."
+          }
+      ],
       "see_also": []
     },
     {
@@ -915,6 +1348,22 @@
       "category": "condizione",
       "source_page": 212,
       "content": "Quando il tuo personaggio ha la condizione \"prono\", subisce i seguenti effetti: Movimento limitato. Le uniche possibilità di movimento del personaggio sono strisciare o spendere una quantità di movimento pari alla metà della sua velocità (arrotondata per difetto) per rialzarsi e, quindi, porre fine alla condizione. Se la sua velocità è pari a 0, il personaggio non può rialzarsi. Influenza sugli attacchi. Il personaggio subisce svantaggio ai tiri per colpire. Un tiro per colpire contro il personaggio dispone di vantaggio se l'attaccante si trova entro 1,5 metri dal personaggio. Altrimenti, il tiro per colpire subisce svantaggio.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"prono\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Movimento limitato",
+              "text": "Le uniche possibilità di movimento del personaggio sono strisciare o spendere una quantità di movimento pari alla metà della sua velocità (arrotondata per difetto) per rialzarsi e, quindi, porre fine alla condizione. Se la sua velocità è pari a 0, il personaggio non può rialzarsi."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "Il personaggio subisce svantaggio ai tiri per colpire. Un tiro per colpire contro il personaggio dispone di vantaggio se l'attaccante si trova entro 1,5 metri dal personaggio. Altrimenti, il tiro per colpire subisce svantaggio."
+          }
+      ],
       "see_also": []
     },
     {
@@ -987,6 +1436,23 @@
       "category": "azione",
       "source_page": 212,
       "content": "Quando il personaggio effettua l'azione di Ricerca, effettua una prova di Saggezza per discernere qualcosa che non sia ovvio. La tabella Cercare indica quali abilità sono applicabili quando si usa questa azione, in base a ciò che il personaggio sta cercando di individuare. Ricerca Abilità Elemento da individuare Intuizione Stato mentale di una creatura Medicina Malattia o causa di morte di una creatura Percezione Creature o oggetti nascosti Sopravvivenza Tracce di cibo",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quando il personaggio effettua l'azione di Ricerca, effettua una prova di Saggezza per discernere qualcosa che non sia ovvio. La tabella \"Cercare\" indica quali abilità sono applicabili quando si usa questa azione, in base a ciò che il personaggio sta cercando di individuare."
+        },
+        {
+          "type": "table",
+          "caption": "Cercare",
+          "columns": ["Abilità", "Elemento da individuare"],
+          "rows": [
+            ["Intuizione", "Stato mentale di una creatura"],
+            ["Medicina", "Malattia o causa di morte di una creatura"],
+            ["Percezione", "Creature o oggetti nascosti"],
+            ["Sopravvivenza", "Tracce di cibo"]
+          ]
+        }
+      ],
       "see_also": []
     },
     {
@@ -995,6 +1461,32 @@
       "category": null,
       "source_page": 213,
       "content": "Un riposo breve è un periodo di inattività della durata di 1 ora, durante il quale una creatura non svolge alcuna attività che sia più faticosa di leggere, parlare, mangiare o montare la guardia. Per iniziare un riposo breve, il personaggio deve avere almeno 1 punto ferita. Benefici del riposo. Una volta terminato il riposo, il personaggio ottiene i seguenti benefici: Dadi Vita da spendere. Puoi spendere uno o più dei Dadi Vita del tuo personaggio per fargli recuperare punti ferita. Per ogni Dado Vita speso in questo modo, lancia il dado e aggiungi al risultato il modificatore di Costituzione del personaggio. Il personaggio recupera un numero di punti ferita pari al totale ottenuto (il minimo è 1). Dopo ogni tiro, puoi decidere se spendere un Dado Vita aggiuntivo. Capacità speciali. Alcune capacità si ricaricano con un riposo breve. Se il personaggio possiede una capacità del genere, essa si ricarica nella modalità indicata nella sua descrizione. Interruzione del riposo. Un riposo breve viene interrotto dai seguenti eventi: • Tirare per l'iniziativa • Lanciare un incantesimo diverso da un trucchetto • Subire danni Un riposo breve interrotto non conferisce alcun beneficio.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Un riposo breve è un periodo di inattività della durata di 1 ora, durante il quale una creatura non svolge alcuna attività che sia più faticosa di leggere, parlare, mangiare o montare la guardia. Per iniziare un riposo breve, il personaggio deve avere almeno 1 punto ferita."
+          },
+          {
+              "type": "section",
+              "title": "Benefici del riposo",
+              "text": "Una volta terminato il riposo, il personaggio ottiene i seguenti benefici:"
+          },
+          {
+              "type": "section",
+              "title": "Dadi Vita da spendere",
+              "text": "Puoi spendere uno o più dei Dadi Vita del tuo personaggio per fargli recuperare punti ferita. Per ogni Dado Vita speso in questo modo, lancia il dado e aggiungi al risultato il modificatore di Costituzione del personaggio. Il personaggio recupera un numero di punti ferita pari al totale ottenuto (il minimo è 1). Dopo ogni tiro, puoi decidere se spendere un Dado Vita aggiuntivo."
+          },
+          {
+              "type": "section",
+              "title": "Capacità speciali",
+              "text": "Alcune capacità si ricaricano con un riposo breve. Se il personaggio possiede una capacità del genere, essa si ricarica nella modalità indicata nella sua descrizione."
+          },
+          {
+              "type": "section",
+              "title": "Interruzione del riposo",
+              "text": "Un riposo breve viene interrotto dai seguenti eventi: • Tirare per l'iniziativa • Lanciare un incantesimo diverso da un trucchetto • Subire danni Un riposo breve interrotto non conferisce alcun beneficio."
+          }
+      ],
       "see_also": []
     },
     {
@@ -1003,6 +1495,42 @@
       "category": null,
       "source_page": 213,
       "content": "Un riposo lungo è un periodo di inattività esteso (almeno 8 ore) disponibile per tutte le creature. Durante un riposo lungo, il personaggio dorme per almeno 6 ore e svolge non più di 2 ore di attività poco impegnative come leggere, parlare, mangiare o montare la guardia. Durante il sonno, il personaggio ha la condizione \"privo di sensi\". Dopo aver terminato un riposo lungo, il personaggio deve aspettare almeno 16 ore prima di poterne iniziare un altro. Benefici del riposo. Per iniziare un riposo lungo, il personaggio deve avere almeno 1 punto ferita. Una volta terminato il riposo, ottiene i seguenti benefici: Recupero di tutti i PF. Il personaggio recupera tutti i punti ferita perduti e tutti i Dadi Vita spesi. Se i suoi punti ferita massimi erano ridotti, ritornano alla normalità. Ripristino dei punteggi di caratteristica. Se uno o più punteggi di caratteristica del personaggio erano ridotti, ritornano alla normalità. Riduzione dell'indebolimento. Se il personaggio ha la condizione \"indebolimento\", questa diminuisce di 1 livello. Capacità speciali. Alcune capacità si ricaricano con un riposo lungo. Se il personaggio possiede una capacità del genere, essa si ricarica nella modalità indicata nella sua descrizione. Interruzione del riposo. Un riposo lungo viene interrotto dai seguenti eventi: • Tirare per l'iniziativa • Lanciare un incantesimo diverso da un trucchetto • Subire danni • 1 ora di camminata o di un altro tipo di sforzo fisico Se il personaggio si è riposato per almeno 1 ora prima dell'interruzione, riceve i benefici di un riposo breve. Vedi anche \"Riposo breve\". Il personaggio può riprendere un riposo lungo subito dopo un'interruzione. In questo caso, per essere completato, il riposo richiede 1 ora in più per ogni interruzione.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Un riposo lungo è un periodo di inattività esteso (almeno 8 ore) disponibile per tutte le creature. Durante un riposo lungo, il personaggio dorme per almeno 6 ore e svolge non più di 2 ore di attività poco impegnative come leggere, parlare, mangiare o montare la guardia. Durante il sonno, il personaggio ha la condizione \"privo di sensi\". Dopo aver terminato un riposo lungo, il personaggio deve aspettare almeno 16 ore prima di poterne iniziare un altro."
+          },
+          {
+              "type": "section",
+              "title": "Benefici del riposo",
+              "text": "Per iniziare un riposo lungo, il personaggio deve avere almeno 1 punto ferita. Una volta terminato il riposo, ottiene i seguenti benefici:"
+          },
+          {
+              "type": "section",
+              "title": "Recupero di tutti i PF",
+              "text": "Il personaggio recupera tutti i punti ferita perduti e tutti i Dadi Vita spesi. Se i suoi punti ferita massimi erano ridotti, ritornano alla normalità."
+          },
+          {
+              "type": "section",
+              "title": "Ripristino dei punteggi di caratteristica",
+              "text": "Se uno o più punteggi di caratteristica del personaggio erano ridotti, ritornano alla normalità."
+          },
+          {
+              "type": "section",
+              "title": "Riduzione dell'indebolimento",
+              "text": "Se il personaggio ha la condizione \"indebolimento\", questa diminuisce di 1 livello."
+          },
+          {
+              "type": "section",
+              "title": "Capacità speciali",
+              "text": "Alcune capacità si ricaricano con un riposo lungo. Se il personaggio possiede una capacità del genere, essa si ricarica nella modalità indicata nella sua descrizione."
+          },
+          {
+              "type": "section",
+              "title": "Interruzione del riposo",
+              "text": "Un riposo lungo viene interrotto dai seguenti eventi: • Tirare per l'iniziativa • Lanciare un incantesimo diverso da un trucchetto • Subire danni • 1 ora di camminata o di un altro tipo di sforzo fisico Se il personaggio si è riposato per almeno 1 ora prima dell'interruzione, riceve i benefici di un riposo breve. Vedi anche \"Riposo breve\". Il personaggio può riprendere un riposo lungo subito dopo un'interruzione. In questo caso, per essere completato, il riposo richiede 1 ora in più per ogni interruzione."
+          }
+      ],
       "see_also": []
     },
     {
@@ -1019,6 +1547,54 @@
       "category": null,
       "source_page": 213,
       "content": "È possibile danneggiare gli oggetti usando attacchi o alcuni incantesimi, facendo riferimento alle regole di seguito. Se un oggetto è estremamente fragile, il GM può consentire a una creatura di romperlo automaticamente con l'azione di Attacco o di Utilizzo. Classe Armatura. La tabella \"Classe Armatura degli oggetti\" indica le CA di materiali diversi. Classe Armatura degli oggetti CA Materiale CA Materiale 11 Stoffa, carta, corda 19 Ferro, acciaio 13 Cristallo, vetro, 21 Mithral ghiaccio 15 Legno 23 Adamantio 17 Pietra Punti ferita. Un oggetto viene distrutto quando scende a 0 punti ferita. Nella tabella \"Punti ferita degli oggetti\" sono elencati i punti ferita suggeriti per gli oggetti fragili e resilienti di taglia Grande o inferiore. Per tenere conto dei punti ferita di un oggetto Enorme o Mastodontico, suddividilo in sezioni di taglia Grande o inferiore e annota i punti ferita di ciascuna sezione separatamente. Il GM determina se la distruzione di una parte di un oggetto lo fa crollare interamente. Punti ferita degli oggetti Taglia Fragile Resiliente Minuscola (bottiglia, serratura) 2 (1d4) 5 (2d4) Piccola (forziere, liuto) 3 (1d6) 10 (3d6) Media (barile, lampadario) 4 (1d8) 18 (4d8) Grande (carro, tavolo da 5 (1d10) 27 (5d10) pranzo) Tipi di danno e oggetti. Gli oggetti sono immuni ai danni psichici e da veleno. Il GM può stabilire che, contro un determinato oggetto, certi tipi di danno siano più o meno efficaci. Per esempio, i danni contundenti sono efficaci nel caso si voglia spaccare qualcosa, ma non per tagliare. Gli oggetti di carta o di tessuto possono essere vulnerabili ai danni da fuoco. Soglia di danno. Certi oggetti molto grossi, come le mura di un castello, sono sovente più resistenti e per questo possiedono una soglia di danno. Vedi anche \"Soglia di danno\". Nessun punteggio di caratteristica. Un oggetto non possiede punteggi di caratteristica, a meno che una regola non preveda diversamente e glieli assegni. Senza punteggi di caratteristica, un oggetto non è in grado di effettuare prove di caratteristica e fallisce tutti i tiri salvezza.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "È possibile danneggiare gli oggetti usando attacchi o alcuni incantesimi, facendo riferimento alle regole di seguito. Se un oggetto è estremamente fragile, il GM può consentire a una creatura di romperlo automaticamente con l'azione di Attacco o di Utilizzo."
+        },
+        {
+          "type": "paragraph",
+          "text": "Classe Armatura. La tabella \"Classe Armatura degli oggetti\" indica le CA di materiali diversi."
+        },
+        {
+          "type": "table",
+          "caption": "Classe Armatura degli oggetti",
+          "columns": ["CA", "Materiale", "CA", "Materiale"],
+          "rows": [
+            ["11", "Stoffa, carta, corda", "19", "Ferro, acciaio"],
+            ["13", "Cristallo, vetro, ghiaccio", "21", "Mithral"],
+            ["15", "Legno", "23", "Adamantio"],
+            ["17", "Pietra", "", ""]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Punti ferita. Un oggetto viene distrutto quando scende a 0 punti ferita. Nella tabella \"Punti ferita degli oggetti\" sono elencati i punti ferita suggeriti per gli oggetti fragili e resilienti di taglia Grande o inferiore. Per tenere conto dei punti ferita di un oggetto Enorme o Mastodontico, suddividilo in sezioni di taglia Grande o inferiore e annota i punti ferita di ciascuna sezione separatamente. Il GM determina se la distruzione di una parte di un oggetto lo fa crollare interamente."
+        },
+        {
+          "type": "table",
+          "caption": "Punti ferita degli oggetti",
+          "columns": ["Taglia", "Fragile", "Resiliente"],
+          "rows": [
+            ["Minuscola (bottiglia, serratura)", "2 (1d4)", "5 (2d4)"],
+            ["Piccola (forziere, liuto)", "3 (1d6)", "10 (3d6)"],
+            ["Media (barile, lampadario)", "4 (1d8)", "18 (4d8)"],
+            ["Grande (carro, tavolo da pranzo)", "5 (1d10)", "27 (5d10)"]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Tipi di danno e oggetti. Gli oggetti sono immuni ai danni psichici e da veleno. Il GM può stabilire che, contro un determinato oggetto, certi tipi di danno siano più o meno efficaci. Per esempio, i danni contundenti sono efficaci nel caso si voglia spaccare qualcosa, ma non per tagliare. Gli oggetti di carta o di tessuto possono essere vulnerabili ai danni da fuoco."
+        },
+        {
+          "type": "paragraph",
+          "text": "Soglia di danno. Certi oggetti molto grossi, come le mura di un castello, sono sovente più resistenti e per questo possiedono una soglia di danno. Vedi anche \"Soglia di danno\"."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nessun punteggio di caratteristica. Un oggetto non possiede punteggi di caratteristica, a meno che una regola non preveda diversamente e glieli assegni. Senza punteggi di caratteristica, un oggetto non è in grado di effettuare prove di caratteristica e fallisce tutti i tiri salvezza."
+        }
+      ],
       "see_also": []
     },
     {
@@ -1075,6 +1651,112 @@
       "category": null,
       "source_page": 215,
       "content": "Una scheda delle statistiche contiene le statistiche di gioco di un mostro. Ogni scheda contiene le seguenti informazioni, presentate subito dopo il nome del mostro: Taglia. Un mostro può essere Minuscolo, Piccolo, Medio, Grande, Enorme o Mastodontico. Vedi anche \"Taglia\". Tipo di creatura. Questa voce riporta la famiglia a cui appartiene il mostro, insieme ad altri descrittori. Vedi anche \"Tipo di creatura\". Allineamento. Per ogni mostro viene suggerito un allineamento, ma questo può essere definito a discrezione del GM. Vedi anche \"Allineamento\". CA, iniziativa e PF. Queste voci indicano la Classe Armatura, l'iniziativa e i punti ferita del mostro, descritti in dettaglio in \"Come si gioca\". Tra parentesi, dopo i punti ferita, sono indicati i Dadi Vita del mostro e, se presente, il contributo dato dalla sua caratteristica Costituzione ai suoi punti ferita. Il punteggio di iniziativa è indicato subito dopo il modificatore di iniziativa. Alcune creature che sono state create dalla magia non presentano informazioni riguardanti i Dadi Vita e l'iniziativa. Velocità. Qui viene indicata la velocità del mostro, insieme a eventuali velocità speciali. Vedi anche \"Velocità di nuoto\", \"Velocità di scalata\", \"Velocità di scavo\" e \"Velocità di volo\". Punteggi di caratteristica. In una tabella sono indicati i punteggi di caratteristica, i modificatori e i modificatori ai tiri salvezza del mostro, descritti in dettaglio in \"Come si gioca\". Abilità. Questa voce elenca le competenze nelle abilità del mostro, se presenti. Vedi anche \"Come si gioca\" (\"Competenza\"). Resistenza e vulnerabilità. Queste voci elencano le resistenze e le vulnerabilità del mostro, se presenti. Vedi anche \"Resistenza\" e \"Vulnerabilità\". Immunità. Questa sezione indica le immunità del mostro a danni e condizioni, se presenti. Vedi anche \"Immunità\". Attrezzatura. Se il mostro ha qualsiasi tipo di equipaggiamento recuperabile o che può essere ceduto, viene indicato in questa voce. Sensi. Questa voce elenca i sensi speciali del mostro, come la percezione passiva e la scurovisione. Vedi anche \"Percezione passiva\". Lingue. Questa voce elenca le lingue che il mostro conosce. GS. Il grado di sfida indica quanto è grave la minaccia costituita dal mostro ed è descritta in dettaglio in \"Mostri\". Subito dopo vengono indicati i punti esperienza che i personaggi ricevono per aver sconfitto il mostro, e il bonus di competenza del mostro. Alcune creature create dalla magia non hanno alcun GS. Vedi anche \"Grado di sfida\" e \"Punti esperienza\". Tratti. I tratti del mostro, se presenti, sono caratteristiche sempre attive o attive solo in certe situazioni. Azioni. Oltre alle azioni descritte nel glossario, il mostro può effettuare le azioni indicate in questa sezione. Vedi anche \"Come si gioca\" (\"Azioni\"). Azioni bonus. Se il mostro ha delle azioni bonus da effettuare, sono indicate in questa sezione. Reazioni. Se il mostro può effettuare delle reazioni speciali, sono indicate in questa sezione. Informazioni sull'attacco. La voce che descrive l'attacco di un mostro fornisce varie informazioni, a partire dal tipo di attacco (in mischia o a distanza), il bonus al tiro per colpire, la sua portata o gittata, e le conseguenze se il colpo va a segno. Un attacco è inteso contro un singolo bersaglio, a meno che la voce non indichi altrimenti. Informazioni sul tiro salvezza. Se un effetto costringe a effettuare un tiro salvezza, la voce riferita all'effetto indica il tipo di tiro salvezza richiesto e fornisce la CD dell'incantesimo, una descrizione di quali creature devono effettuare il tiro, e le conseguenze di un tiro salvezza riuscito o fallito. Informazioni sui danni. La scheda delle statistiche, per ogni istanza di danno, di solito fornisce sia un numero statico sia una formula che utilizza i dadi. Ad esempio, un attacco potrebbe infliggere 4 (1d4 + 2) danni se il colpo va a segno. È il GM a scegliere se far utilizzare il numero statico o la formula con i dadi in parentesi. Non bisogna utilizzare entrambi.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Una scheda delle statistiche contiene le statistiche di gioco di un mostro. Ogni scheda contiene le seguenti informazioni, presentate subito dopo il nome del mostro:"
+          },
+          {
+              "type": "section",
+              "title": "Taglia",
+              "text": "Un mostro può essere Minuscolo, Piccolo, Medio, Grande, Enorme o Mastodontico. Vedi anche \"Taglia\"."
+          },
+          {
+              "type": "section",
+              "title": "Tipo di creatura",
+              "text": "Questa voce riporta la famiglia a cui appartiene il mostro, insieme ad altri descrittori. Vedi anche \"Tipo di creatura\"."
+          },
+          {
+              "type": "section",
+              "title": "Allineamento",
+              "text": "Per ogni mostro viene suggerito un allineamento, ma questo può essere definito a discrezione del GM. Vedi anche \"Allineamento\"."
+          },
+          {
+              "type": "section",
+              "title": "CA, iniziativa e PF",
+              "text": "Queste voci indicano la Classe Armatura, l'iniziativa e i punti ferita del mostro, descritti in dettaglio in \"Come si gioca\". Tra parentesi, dopo i punti ferita, sono indicati i Dadi Vita del mostro e, se presente, il contributo dato dalla sua caratteristica Costituzione ai suoi punti ferita. Il punteggio di iniziativa è indicato subito dopo il modificatore di iniziativa. Alcune creature che sono state create dalla magia non presentano informazioni riguardanti i Dadi Vita e l'iniziativa."
+          },
+          {
+              "type": "section",
+              "title": "Velocità",
+              "text": "Qui viene indicata la velocità del mostro, insieme a eventuali velocità speciali. Vedi anche \"Velocità di nuoto\", \"Velocità di scalata\", \"Velocità di scavo\" e \"Velocità di volo\"."
+          },
+          {
+              "type": "section",
+              "title": "Punteggi di caratteristica",
+              "text": "In una tabella sono indicati i punteggi di caratteristica, i modificatori e i modificatori ai tiri salvezza del mostro, descritti in dettaglio in \"Come si gioca\"."
+          },
+          {
+              "type": "section",
+              "title": "Abilità",
+              "text": "Questa voce elenca le competenze nelle abilità del mostro, se presenti. Vedi anche \"Come si gioca\" (\"Competenza\")."
+          },
+          {
+              "type": "section",
+              "title": "Resistenza e vulnerabilità",
+              "text": "Queste voci elencano le resistenze e le vulnerabilità del mostro, se presenti. Vedi anche \"Resistenza\" e \"Vulnerabilità\"."
+          },
+          {
+              "type": "section",
+              "title": "Immunità",
+              "text": "Questa sezione indica le immunità del mostro a danni e condizioni, se presenti. Vedi anche \"Immunità\"."
+          },
+          {
+              "type": "section",
+              "title": "Attrezzatura",
+              "text": "Se il mostro ha qualsiasi tipo di equipaggiamento recuperabile o che può essere ceduto, viene indicato in questa voce."
+          },
+          {
+              "type": "section",
+              "title": "Sensi",
+              "text": "Questa voce elenca i sensi speciali del mostro, come la percezione passiva e la scurovisione. Vedi anche \"Percezione passiva\"."
+          },
+          {
+              "type": "section",
+              "title": "Lingue",
+              "text": "Questa voce elenca le lingue che il mostro conosce."
+          },
+          {
+              "type": "section",
+              "title": "GS",
+              "text": "Il grado di sfida indica quanto è grave la minaccia costituita dal mostro ed è descritta in dettaglio in \"Mostri\". Subito dopo vengono indicati i punti esperienza che i personaggi ricevono per aver sconfitto il mostro, e il bonus di competenza del mostro. Alcune creature create dalla magia non hanno alcun GS. Vedi anche \"Grado di sfida\" e \"Punti esperienza\"."
+          },
+          {
+              "type": "section",
+              "title": "Tratti",
+              "text": "I tratti del mostro, se presenti, sono caratteristiche sempre attive o attive solo in certe situazioni."
+          },
+          {
+              "type": "section",
+              "title": "Azioni",
+              "text": "Oltre alle azioni descritte nel glossario, il mostro può effettuare le azioni indicate in questa sezione. Vedi anche \"Come si gioca\" (\"Azioni\")."
+          },
+          {
+              "type": "section",
+              "title": "Azioni bonus",
+              "text": "Se il mostro ha delle azioni bonus da effettuare, sono indicate in questa sezione."
+          },
+          {
+              "type": "section",
+              "title": "Reazioni",
+              "text": "Se il mostro può effettuare delle reazioni speciali, sono indicate in questa sezione."
+          },
+          {
+              "type": "section",
+              "title": "Informazioni sull'attacco",
+              "text": "La voce che descrive l'attacco di un mostro fornisce varie informazioni, a partire dal tipo di attacco (in mischia o a distanza), il bonus al tiro per colpire, la sua portata o gittata, e le conseguenze se il colpo va a segno. Un attacco è inteso contro un singolo bersaglio, a meno che la voce non indichi altrimenti."
+          },
+          {
+              "type": "section",
+              "title": "Informazioni sul tiro salvezza",
+              "text": "Se un effetto costringe a effettuare un tiro salvezza, la voce riferita all'effetto indica il tipo di tiro salvezza richiesto e fornisce la CD dell'incantesimo, una descrizione di quali creature devono effettuare il tiro, e le conseguenze di un tiro salvezza riuscito o fallito."
+          },
+          {
+              "type": "section",
+              "title": "Informazioni sui danni",
+              "text": "La scheda delle statistiche, per ogni istanza di danno, di solito fornisce sia un numero statico sia una formula che utilizza i dadi. Ad esempio, un attacco potrebbe infliggere 4 (1d4 + 2) danni se il colpo va a segno. È il GM a scegliere se far utilizzare il numero statico o la formula con i dadi in parentesi. Non bisogna utilizzare entrambi."
+          }
+      ],
       "see_also": []
     },
     {
@@ -1147,6 +1829,22 @@
       "category": "condizione",
       "source_page": 216,
       "content": "Quando il tuo personaggio ha la condizione \"spaventato\", subisce i seguenti effetti: Influenza sulle prove di caratteristica e sugli attacchi. Il personaggio subisce svantaggio alle prove di caratteristica e ai tiri per colpire finché la fonte della sua paura è nel suo campo visivo. Non è in grado di avvicinarsi. Il personaggio non è in grado di avvicinarsi volontariamente alla fonte della sua paura.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"spaventato\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Influenza sulle prove di caratteristica e sugli attacchi",
+              "text": "Il personaggio subisce svantaggio alle prove di caratteristica e ai tiri per colpire finché la fonte della sua paura è nel suo campo visivo."
+          },
+          {
+              "type": "section",
+              "title": "Non è in grado di avvicinarsi",
+              "text": "Il personaggio non è in grado di avvicinarsi volontariamente alla fonte della sua paura."
+          }
+      ],
       "see_also": []
     },
     {
@@ -1179,6 +1877,27 @@
       "category": "condizione",
       "source_page": 216,
       "content": "Quando il tuo personaggio ha la condizione \"stordito\", subisce i seguenti effetti: Incapacitato. Il personaggio ha la condizione \"incapacitato\". Influenza sui tiri salvezza. Il personaggio fallisce automaticamente i tiri salvezza su Forza e Destrezza. Influenza sugli attacchi. I tiri per colpire contro il personaggio dispongono di vantaggio.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"stordito\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Incapacitato",
+              "text": "Il personaggio ha la condizione \"incapacitato\"."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sui tiri salvezza",
+              "text": "Il personaggio fallisce automaticamente i tiri salvezza su Forza e Destrezza."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "I tiri per colpire contro il personaggio dispongono di vantaggio."
+          }
+      ],
       "see_also": []
     },
     {
@@ -1195,6 +1914,24 @@
       "category": "azione",
       "source_page": 216,
       "content": "Quando il personaggio effettua l'azione di Studio, effettua una prova di Intelligenza per analizzare la propria memoria, un libro, un indizio o un'altra fonte di conoscenza, richiamando alla mente un'informazione importante a riguardo. La tabella Aree di conoscenza indica quali abilità sono applicabili alle varie aree di conoscenza. Aree di conoscenza Abilità Aree Arcano Incantesimi, oggetti magici, simboli occulti, tradizioni magiche, piani di esistenza e alcune creature (aberrazioni, costrutti, elementali, folletti e mostruosità) Indagare Trappole, cifrari, indovinelli e congegni Natura Terreno, flora, tempo atmosferico e alcune creature (bestie, draghi, melme e vegetali) Religione Divinità, riti e gerarchie religiose, simboli sacri, culti e alcune creature (celestiali, immondi e non morti) Storia Eventi e personaggi storici, antiche civiltà, guerre e alcune creature (giganti e umanoidi)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quando il personaggio effettua l'azione di Studio, effettua una prova di Intelligenza per analizzare la propria memoria, un libro, un indizio o un'altra fonte di conoscenza, richiamando alla mente un'informazione importante a riguardo. La tabella \"Aree di conoscenza\" indica quali abilità sono applicabili alle varie aree di conoscenza."
+        },
+        {
+          "type": "table",
+          "caption": "Aree di conoscenza",
+          "columns": ["Abilità", "Aree"],
+          "rows": [
+            ["Arcano", "Incantesimi, oggetti magici, simboli occulti, tradizioni magiche, piani di esistenza e alcune creature (aberrazioni, costrutti, elementali, folletti e mostruosità)"],
+            ["Indagare", "Trappole, cifrari, indovinelli e congegni"],
+            ["Natura", "Terreno, flora, tempo atmosferico e alcune creature (bestie, draghi, melme e vegetali)"],
+            ["Religione", "Divinità, riti e gerarchie religiose, simboli sacri, culti e alcune creature (celestiali, immondi e non morti)"],
+            ["Storia", "Eventi e personaggi storici, antiche civiltà, guerre e alcune creature (giganti e umanoidi)"]
+          ]
+        }
+      ],
       "see_also": []
     },
     {
@@ -1243,6 +1980,32 @@
       "category": null,
       "source_page": 217,
       "content": "Gli attacchi e altri effetti dannosi infliggono vari tipi di danno. I tipi di danno non seguono regole particolari; tuttavia, altre regole, come quelle riguardanti la resistenza, possono farvi riferimento. La tabella \"Tipi di danno\" fornisce degli esempi per aiutare il GM ad assegnare un tipo di danno a un determinato effetto. Tipi di danno Tipo Esempi Acido Liquidi corrosivi, enzimi digestivi Contundente Oggetti contundenti, stritolamento, caduta Forza Pura energia magica Freddo Acqua gelata, getti ghiacciati Fulmine Elettricità Fuoco Fiamme, calore insopportabile Necrotico Energia in grado di risucchiare la vita Perforante Zanne, oggetti perforanti Psichico Energia in grado di spezzare la mente Radioso Energia sacra, radiazione incandescente Tagliente Artigli, oggetti taglienti Tuono Suono concussivo Veleno Gas tossico, veleno",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gli attacchi e altri effetti dannosi infliggono vari tipi di danno. I tipi di danno non seguono regole particolari; tuttavia, altre regole, come quelle riguardanti la resistenza, possono farvi riferimento. La tabella \"Tipi di danno\" fornisce degli esempi per aiutare il GM ad assegnare un tipo di danno a un determinato effetto."
+        },
+        {
+          "type": "table",
+          "caption": "Tipi di danno",
+          "columns": ["Tipo", "Esempi"],
+          "rows": [
+            ["Acido", "Liquidi corrosivi, enzimi digestivi"],
+            ["Contundente", "Oggetti contundenti, stritolamento, caduta"],
+            ["Forza", "Pura energia magica"],
+            ["Freddo", "Acqua gelata, getti ghiacciati"],
+            ["Fulmine", "Elettricità"],
+            ["Fuoco", "Fiamme, calore insopportabile"],
+            ["Necrotico", "Energia in grado di risucchiare la vita"],
+            ["Perforante", "Zanne, oggetti perforanti"],
+            ["Psichico", "Energia in grado di spezzare la mente"],
+            ["Radioso", "Energia sacra, radiazione incandescente"],
+            ["Tagliente", "Artigli, oggetti taglienti"],
+            ["Tuono", "Suono concussivo"],
+            ["Veleno", "Gas tossico, veleno"]
+          ]
+        }
+      ],
       "see_also": []
     },
     {
@@ -1299,6 +2062,27 @@
       "category": "condizione",
       "source_page": 218,
       "content": "Quando il tuo personaggio ha la condizione \"trattenuto\", subisce i seguenti effetti: Velocità 0. La velocità del personaggio è pari a 0 e non può aumentare. Influenza sugli attacchi. I tiri per colpire contro il personaggio dispongono di vantaggio, mentre i suoi tiri per colpire subiscono svantaggio. Influenza sui tiri salvezza. Il personaggio subisce svantaggio ai tiri salvezza su Destrezza.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Quando il tuo personaggio ha la condizione \"trattenuto\", subisce i seguenti effetti:"
+          },
+          {
+              "type": "section",
+              "title": "Velocità 0",
+              "text": "La velocità del personaggio è pari a 0 e non può aumentare."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sugli attacchi",
+              "text": "I tiri per colpire contro il personaggio dispongono di vantaggio, mentre i suoi tiri per colpire subiscono svantaggio."
+          },
+          {
+              "type": "section",
+              "title": "Influenza sui tiri salvezza",
+              "text": "Il personaggio subisce svantaggio ai tiri salvezza su Destrezza."
+          }
+      ],
       "see_also": []
     },
     {
@@ -1331,6 +2115,22 @@
       "category": null,
       "source_page": 218,
       "content": "Ogni creatura ha la propria velocità, che è la distanza in metri che la creatura può percorrere quando si muove nel suo turno. Vedi anche \"Nuotare\", \"Saltare\", \"Scalare\", \"Strisciare\", \"Volare\" e \"Come si gioca\" (\"Combattimento\"). Velocità speciali. Alcune creature hanno velocità speciali, come la velocità di nuoto, la velocità di scalata, la velocità di scavo o la velocità di volo (ognuna di esse è descritta nel glossario). Se il personaggio ha più di una velocità, sceglie quale utilizzare per muoversi; quando si muove, può passare da un tipo di velocità all'altra. Ogni volta che il personaggio cambia velocità, sottrai la distanza di cui si è già mosso dalla nuova velocità: il risultato determina la distanza di cui può ancora muoversi. Se il risultato è pari o inferiore a 0, il personaggio non può usare la nuova velocità durante il movimento in corso. Per esempio, se il personaggio possiede una velocità di 9 metri e una velocità in volo di 18 metri, può volare per 6 metri, poi camminare per 3 metri e poi volare di nuovo per altri 9 metri. Modifiche alle velocità. Se un effetto aumenta o diminuisce la velocità del personaggio per un certo periodo di tempo, anche le sue velocità speciali (se presenti) aumentano o diminuiscono della stessa quantità e per la stessa durata. Per esempio, se la velocità del personaggio scende a 0 e il personaggio ha anche una velocità di scalata, anche la sua velocità di scalata scende a 0. Allo stesso modo, se la sua velocità è dimezzata e il personaggio ha anche una velocità di volo, anche la sua velocità di volo è dimezzata.",
+      "blocks": [
+          {
+              "type": "paragraph",
+              "text": "Ogni creatura ha la propria velocità, che è la distanza in metri che la creatura può percorrere quando si muove nel suo turno. Vedi anche \"Nuotare\", \"Saltare\", \"Scalare\", \"Strisciare\", \"Volare\" e \"Come si gioca\" (\"Combattimento\")."
+          },
+          {
+              "type": "section",
+              "title": "Velocità speciali",
+              "text": "Alcune creature hanno velocità speciali, come la velocità di nuoto, la velocità di scalata, la velocità di scavo o la velocità di volo (ognuna di esse è descritta nel glossario). Se il personaggio ha più di una velocità, sceglie quale utilizzare per muoversi; quando si muove, può passare da un tipo di velocità all'altra. Ogni volta che il personaggio cambia velocità, sottrai la distanza di cui si è già mosso dalla nuova velocità: il risultato determina la distanza di cui può ancora muoversi. Se il risultato è pari o inferiore a 0, il personaggio non può usare la nuova velocità durante il movimento in corso. Per esempio, se il personaggio possiede una velocità di 9 metri e una velocità in volo di 18 metri, può volare per 6 metri, poi camminare per 3 metri e poi volare di nuovo per altri 9 metri."
+          },
+          {
+              "type": "section",
+              "title": "Modifiche alle velocità",
+              "text": "Se un effetto aumenta o diminuisce la velocità del personaggio per un certo periodo di tempo, anche le sue velocità speciali (se presenti) aumentano o diminuiscono della stessa quantità e per la stessa durata. Per esempio, se la velocità del personaggio scende a 0 e il personaggio ha anche una velocità di scalata, anche la sua velocità di scalata scende a 0. Allo stesso modo, se la sua velocità è dimezzata e il personaggio ha anche una velocità di volo, anche la sua velocità di volo è dimezzata."
+          }
+      ],
       "see_also": []
     },
     {
