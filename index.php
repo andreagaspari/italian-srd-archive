@@ -9,7 +9,7 @@
  * 
  * I dati riportati sono compatibili con la v5.5 (2024).
  * 
- * Version: 0.01.12
+ * Version: 0.01.13
  * SRDVersion: 5.2.1
  * Author: Andrea Gaspari
  * Author URI: https://andreagaspari.dev
