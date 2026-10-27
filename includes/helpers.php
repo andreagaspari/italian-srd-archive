@@ -112,6 +112,109 @@ function renderRuleContent(array $rule, array $abbreviations): string
     return $html !== '' ? $html : '<p>' . ruleContentWithAbbreviations((string) ($rule['content'] ?? ''), $abbreviations) . '</p>';
 }
 
+/**
+ * Renders an optional structured spell description.
+ *
+ * @param array<string, mixed> $spell Spell data with an optional blocks collection.
+ *
+ * @return string Safe HTML for the spell description.
+ */
+function renderSpellContent(array $spell): string
+{
+    $blocks = $spell['blocks'] ?? null;
+    if (!is_array($blocks)) {
+        return '<p>' . e((string) ($spell['description'] ?? '')) . '</p>';
+    }
+
+    return renderSpellBlocks($blocks, (string) ($spell['description'] ?? ''));
+}
+
+/**
+ * Renders structured blocks used by spell descriptions and higher-level effects.
+ *
+ * @param array<int, mixed> $blocks Structured paragraph, section, and table blocks.
+ * @param string $fallback Text shown when no valid block can be rendered.
+ *
+ * @return string Safe HTML for the structured content.
+ */
+function renderSpellBlocks(array $blocks, string $fallback): string
+{
+    $html = '';
+    foreach ($blocks as $block) {
+        if (!is_array($block) || !is_string($block['type'] ?? null)) {
+            continue;
+        }
+        if ($block['type'] === 'paragraph' && is_string($block['text'] ?? null)) {
+            $html .= '<p>' . e($block['text']) . '</p>';
+            continue;
+        }
+        if ($block['type'] === 'section'
+            && is_string($block['title'] ?? null)
+            && is_string($block['text'] ?? null)
+        ) {
+            $title = rtrim($block['title'], ". \t\n\r\0\x0B");
+            $html .= '<p><strong>' . e($title) . '.</strong> ' . e($block['text']) . '</p>';
+            continue;
+        }
+        if ($block['type'] !== 'table'
+            || !is_array($block['columns'] ?? null)
+            || !is_array($block['rows'] ?? null)
+        ) {
+            continue;
+        }
+        $columns = array_values(array_filter($block['columns'], 'is_string'));
+        if ($columns === []) {
+            continue;
+        }
+        $html .= '<div class="rule-table-wrapper"><table class="rule-table">';
+        if (is_string($block['caption'] ?? null) && $block['caption'] !== '') {
+            $html .= '<caption>' . e($block['caption']) . '</caption>';
+        }
+        $html .= '<thead><tr>';
+        foreach ($columns as $column) {
+            $html .= '<th scope="col">' . e($column) . '</th>';
+        }
+        $html .= '</tr></thead><tbody>';
+        foreach ($block['rows'] as $row) {
+            if (!is_array($row) || count($row) !== count($columns)) {
+                continue;
+            }
+            $html .= '<tr>';
+            foreach ($row as $cell) {
+                $html .= '<td>' . e((string) $cell) . '</td>';
+            }
+            $html .= '</tr>';
+        }
+        $html .= '</tbody></table></div>';
+    }
+
+    return $html !== '' ? $html : '<p>' . e($fallback) . '</p>';
+}
+
+/**
+ * Renders the optional structured content shown when a spell uses a higher-level slot.
+ *
+ * @param array<string, mixed> $spell Spell data with an optional higher_level_blocks collection.
+ *
+ * @return string Safe HTML for the higher-level effect.
+ */
+function renderSpellHigherLevel(array $spell): string
+{
+    $blocks = $spell['higher_level_blocks'] ?? null;
+    if (!is_array($blocks)) {
+        return e((string) ($spell['higher_level'] ?? ''));
+    }
+
+    return renderSpellBlocks($blocks, (string) ($spell['higher_level'] ?? ''));
+}
+
+/**
+ * Extracts structured feature entries from legacy monster HTML content.
+ *
+ * @param string $content Legacy HTML containing bold feature titles.
+ *
+ * @return array<int, array{title: string, text: string}> Parsed monster features.
+ */
 function monsterDescriptionFeatures(string $content): array
 {
     preg_match_all('/<b>(.*?)<\/b>(.*?)(?=<b>|$)/su', $content, $matches, PREG_SET_ORDER);
@@ -122,12 +225,40 @@ function monsterDescriptionFeatures(string $content): array
             $description = preg_replace('/\s+/u', ' ', trim(strip_tags($match[2]))) ?? '';
 
             return [
-                'label' => rtrim($label, '.'),
-                'description' => $description
+                'title' => rtrim($label, '.'),
+                'text' => $description
             ];
         },
         $matches
-    ), static fn (array $feature): bool => $feature['label'] !== ''));
+    ), static fn (array $feature): bool => $feature['title'] !== ''));
+}
+
+/**
+ * Converts structured monster features to the HTML format required by exports.
+ *
+ * @param array<string, mixed> $block Monster description block.
+ *
+ * @return string HTML containing the block's feature entries.
+ */
+function monsterDescriptionHtml(array $block): string
+{
+    $features = $block['features'] ?? null;
+    if (!is_array($features)) {
+        return (string) ($block['content'] ?? '');
+    }
+
+    $html = '';
+    foreach ($features as $feature) {
+        if (!is_array($feature)
+            || !is_string($feature['title'] ?? null)
+            || !is_string($feature['text'] ?? null)
+        ) {
+            continue;
+        }
+        $html .= '<div><b>' . e($feature['title']) . '.</b> ' . e($feature['text']) . '</div>';
+    }
+
+    return $html !== '' ? $html : (string) ($block['content'] ?? '');
 }
 
 function monsterAbilityStats(array $abilities): array
@@ -160,16 +291,27 @@ function monsterDescriptionColor(string $title): string
     };
 }
 
+/**
+ * Normalizes monster description blocks and preserves compatibility with legacy data.
+ *
+ * @param array<string, mixed> $monster Monster record containing description blocks.
+ *
+ * @return array<int, array<string, mixed>> Normalized monster description blocks.
+ */
 function normalizeMonsterDescriptionBlocks(array $monster): array
 {
     foreach ($monster['description_blocks'] as &$block) {
         if ($monster['name'] !== 'Aboleth' || $block['title'] !== 'Azioni leggendarie') {
+            if (!is_array($block['features'] ?? null)) {
+                $block['features'] = monsterDescriptionFeatures((string) ($block['content'] ?? ''));
+            }
             continue;
         }
 
         $block['content'] = '<div><b>Utilizzi di azioni leggendarie: 3 (4 nella tana).</b> Subito dopo il turno di un\'altra creatura, l\'aboleth può consumare un utilizzo per effettuare una delle seguenti azioni. L\'aboleth recupera tutti gli utilizzi consumati all\'inizio di ogni suo turno.</div>'
             . '<div><b>Risucchio psichico.</b> Se l\'aboleth ha affascinato o afferrato almeno una creatura, utilizza Consuma ricordi e recupera 5 (1d10) punti ferita.</div>'
             . '<div><b>Sferzata.</b> L\'aboleth effettua un attacco Tentacolo.</div>';
+        $block['features'] = monsterDescriptionFeatures($block['content']);
     }
     unset($block);
 
@@ -336,7 +478,7 @@ function buildMonsterExportData(array $monster): array
                 'id' => '',
                 'title' => $block['title'],
                 'color' => monsterDescriptionColor($block['title']),
-                'content' => $block['content']
+                'content' => monsterDescriptionHtml($block)
             ],
             $monster['description_blocks']
         ),

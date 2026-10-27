@@ -367,6 +367,9 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .spell-description { color: var(--muted); font-size: 12px; line-height: 1.55; white-space: pre-line; }
 .spell-higher { margin-top: 14px; padding: 9px 10px; color: var(--muted); border-left: 3px solid #d7b5ab; background: var(--accent-soft); font-size: 11px; line-height: 1.45; }
 .spell-higher strong { color: var(--ink); }
+.spell-higher p { margin: 8px 0 0; }
+.spell-higher p:first-of-type { margin-top: 8px; }
+.spell-higher p:last-child { margin-bottom: 0; }
 .spell-filters { display: flex; align-items: flex-end; gap: 9px; margin: -2px 0 15px; }
 .spell-filters label { display: grid; gap: 5px; color: var(--muted); font-size: 10px; font-weight: 700; }
 .spell-filters select { min-width: 150px; padding: 8px 26px 8px 9px; color: var(--ink); border: 1px solid var(--line); border-radius: 6px; background: var(--panel); font: inherit; }

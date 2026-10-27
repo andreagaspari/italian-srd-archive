@@ -91,7 +91,13 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
             break;
         }
     }
-    $description = implode(' ', array_map(static fn (array $block): string => strip_tags($block['content']), $monster['description_blocks']));
+    $description = implode(' ', array_map(
+        static fn (array $block): string => implode(' ', array_map(
+            static fn (array $feature): string => (string) ($feature['title'] ?? '') . ' ' . (string) ($feature['text'] ?? ''),
+            is_array($block['features'] ?? null) ? $block['features'] : monsterDescriptionFeatures((string) ($block['content'] ?? ''))
+        )),
+        $monster['description_blocks']
+    ));
     $searchText = implode(' ', [
         $monster['name'],
         $monster['type'],
@@ -162,16 +168,16 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
             </div>
 <?php endif; ?>
 <?php foreach ($monster['description_blocks'] as $block): ?>
-<?php $features = monsterDescriptionFeatures($block['content']); ?>
+<?php $features = $block['features'] ?? monsterDescriptionFeatures((string) ($block['content'] ?? '')); ?>
             <section class="monster-block">
                 <div class="weapon-detail">
                     <div>
                         <span class="weapon-label"><?= e($block['title']) ?></span>
                         <span class="weapon-value weapon-tooltip-list">
 <?php foreach ($features as $featureIndex => $feature): ?>
-                            <button class="tooltip-term" type="button" aria-label="<?= e($feature['label'] . ': ' . $feature['description']) ?>">
-                                <?= e($feature['label']) ?>
-                                <span class="tooltip-box" role="tooltip"><?= e($feature['description']) ?></span>
+                            <button class="tooltip-term" type="button" aria-label="<?= e($feature['title'] . ': ' . $feature['text']) ?>">
+                                <?= e($feature['title']) ?>
+                                <span class="tooltip-box" role="tooltip"><?= e($feature['text']) ?></span>
                             </button><?= $featureIndex < count($features) - 1 ? ' ·' : '' ?>
 <?php endforeach; ?>
                         </span>

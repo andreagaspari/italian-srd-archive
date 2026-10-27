@@ -1636,7 +1636,48 @@
       "higher_level": "",
       "damage": "1d10",
       "area_diameter": null,
-      "concentration": false
+      "concentration": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Desiderio è l'incantesimo più potente che un mortale sia in grado di lanciare. Gli basta parlare a voce alta per alterare l'essenza stessa della realtà. L'uso base di questo incantesimo è riprodurre un qualsiasi altro incantesimo di livello pari o inferiore all'8º. Utilizzandolo in questo modo, non è necessario soddisfare particolari requisiti per lanciarlo e non servono costose componenti: l'incantesimo ha semplicemente effetto. In alternativa, l'incantatore può creare uno dei seguenti effetti a sua scelta:"
+        },
+        {
+          "type": "section",
+          "title": "Creazione di un oggetto",
+          "text": "L'incantatore crea un oggetto del valore massimo di 25.000 mo che non sia un oggetto magico e che non misuri più di 90 metri in ogni dimensione. L'oggetto si materializza a terra in uno spazio libero che l'incantatore è in grado di vedere."
+        },
+        {
+          "type": "section",
+          "title": "Salute istantanea",
+          "text": "L'incantatore consente a sé e un massimo di venti creature che egli è in grado di vedere di recuperare tutti i punti ferita e pone fine a tutti gli effetti su di loro come descritto nell'incantesimo ristorare superiore."
+        },
+        {
+          "type": "section",
+          "title": "Resistenza",
+          "text": "L'incantatore conferisce a un massimo di dieci creature che egli è in grado di vedere resistenza a un tipo di danno a sua scelta. La resistenza conferita è permanente."
+        },
+        {
+          "type": "section",
+          "title": "Immunità a un incantesimo",
+          "text": "L'incantatore conferisce a un massimo di dieci creature che egli è in grado di vedere immunità a un singolo incantesimo o un altro effetto magico per 8 ore."
+        },
+        {
+          "type": "section",
+          "title": "Apprendimento improvviso",
+          "text": "L'incantatore sostituisce uno dei suoi talenti con un altro di cui soddisfa i requisiti, perdendo tutti i benefici di quello precedente e ottenendo quelli del nuovo talento. Non è possibile sostituirne uno che è un prerequisito per altri talenti o caratteristiche del personaggio."
+        },
+        {
+          "type": "section",
+          "title": "Ripetizione del tiro",
+          "text": "L'incantatore annulla un singolo evento recente imponendo la ripetizione di un qualsiasi tiro effettuato entro l'ultimo round (incluso il suo ultimo turno). La realtà viene rimodellata e si adatta al nuovo risultato. Per esempio, un incantesimo desiderio potrebbe annullare un tiro salvezza fallito da un alleato o il colpo critico inferto da un avversario. L'incantatore può imporre che il tiro ripetuto sia effettuato con vantaggio o svantaggio e poi può scegliere se usare il tiro ripetuto o il tiro originale."
+        },
+        {
+          "type": "section",
+          "title": "Riplasmazione della realtà",
+          "text": "L'incantatore potrebbe desiderare qualcosa che non è incluso negli altri effetti elencati. Per farlo, deve dichiarare il suo desiderio al GM nel modo più preciso possibile. Il GM ha la massima libertà di decidere cosa accade in questi casi: più potente è il desiderio, maggiori sono le probabilità che qualcosa vada storto. L'incantesimo potrebbe semplicemente fallire, l'effetto desiderato potrebbe avverarsi solo in parte o l'incantatore potrebbe subire conseguenze inaspettate come risultato della formulazione del desiderio. Per esempio, se desidera che un suo nemico sia morto, potrebbe essere trascinato nel futuro fino al momento in cui quel nemico non è più in vita, venendo a tutti gli effetti rimosso dal gioco. Analogamente, se desidera un manufatto o un oggetto magico leggendario, potrebbe essere trasportato istantaneamente in presenza del suo attuale proprietario. Se il desiderio viene esaudito e i suoi effetti hanno conseguenze per un'intera comunità, regione o per tutto il mondo, l'incantatore potrebbe attirare l'attenzione di potenti nemici. Se invece potrebbe avere effetti su una divinità, i suoi servi divini potrebbero intervenire all'istante per impedirlo o incoraggiare l'incantatore a formularlo in un modo preciso. Se dovesse disfare il multiverso stesso, il desiderio fallisce. La tensione provocata dal lancio di desiderio per produrre un qualsiasi effetto diverso dalla duplicazione di un altro incantesimo debilita l'incantatore. Dopo aver sopportato quella tensione, ogni volta che l'incantatore lancia un incantesimo prima di avere completato un riposo lungo, subisce 1d10 danni necrotici per livello di quell'incantesimo. Questi danni non possono essere ridotti o prevenuti in alcun modo. Inoltre, il punteggio di Forza dell'incantatore scende a 3 per 2d4 giorni. Per ognuno di quei giorni trascorso a riposare e a non fare nulla fuorché attività poco impegnative, il tempo di recupero rimanente diminuisce di 2 giorni. Esiste infine una probabilità del 33% che l'incantatore non sia più in grado di lanciare desiderio, se non riesce a reggere la tensione."
+        }
+      ]
     },
     {
       "id": "destriero-fantomatico",
@@ -3831,7 +3872,59 @@
       "higher_level": "",
       "damage": "12d6",
       "area_diameter": null,
-      "concentration": false
+      "concentration": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Un piano scintillante di luce multicolore forma un muro opaco verticale (che può misurare fino a 27 metri di lunghezza, 9 metri di altezza e 2,5 centimetri di spessore), centrato su un punto entro gittata. In alternativa, l'incantatore modella il muro in un globo del diametro massimo di 9 metri centrato su un punto entro gittata. Il muro permane per tutta la durata dell'incantesimo. Se l'incantatore posiziona il muro in uno spazio occupato da una creatura, l'incantesimo termina immediatamente, senza alcun effetto. Il muro emana luce intensa entro 30 metri e luce fioca per ulteriori 30 metri. L'incantatore e le creature da lui scelte al momento del lancio dell'incantesimo possono passare attraverso il muro o rimanervi accanto senza subire danni. Se un'altra creatura in grado di vedere il muro giunge entro 6 metri da esso o comincia lì il proprio turno, deve superare un tiro salvezza su Costituzione, altrimenti è accecata per 1 minuto. Il muro è composto da sette strati, ognuno di un colore diverso. Quando una creatura si protende oltre il muro o ci passa attraverso, lo fa attraversando uno strato alla volta. Ogni strato costringe la creatura a effettuare un tiro salvezza su Destrezza, altrimenti viene influenzata dalle proprietà di quello strato, come descritto nella tabella degli strati prismatici. Il muro, che ha una CA pari a 10, può essere distrutto uno strato alla volta e in ordine dal rosso al viola, in un modo specifico per ogni strato. Se uno strato viene distrutto, resta distrutto per la durata dell'incantesimo. L'incantesimo campo anti-magia non ha alcun effetto sul muro e l'incantesimo dissolvi magie può influenzare solo lo strato viola."
+        },
+        {
+          "type": "table",
+          "caption": "Strati prismatici",
+          "columns": [
+            "Ordine",
+            "Colore",
+            "Effetti"
+          ],
+          "rows": [
+            [
+              "1",
+              "Rosso",
+              "Tiro salvezza fallito: 12d6 danni da fuoco. Tiro salvezza superato: la metà dei danni. Effetti aggiuntivi: gli attacchi a distanza non magici non possono attraversare questo strato, che viene distrutto se subisce almeno 25 danni da freddo."
+            ],
+            [
+              "2",
+              "Arancione",
+              "Tiro salvezza fallito: 12d6 danni da acido. Tiro salvezza superato: la metà dei danni. Effetti aggiuntivi: gli attacchi a distanza magici non possono attraversare questo strato, che viene distrutto da un vento forte (come quello creato da folata di vento)."
+            ],
+            [
+              "3",
+              "Giallo",
+              "Tiro salvezza fallito: 12d6 danni da fulmine. Tiro salvezza superato: la metà dei danni. Effetti aggiuntivi: questo strato viene distrutto se subisce almeno 60 danni da forza."
+            ],
+            [
+              "4",
+              "Verde",
+              "Tiro salvezza fallito: 12d6 danni da veleno. Tiro salvezza superato: la metà dei danni. Effetti aggiuntivi: un incantesimo passapareti o un altro incantesimo di livello pari o superiore che è in grado di aprire un portale su una superficie solida, distrugge questo strato."
+            ],
+            [
+              "5",
+              "Blu",
+              "Tiro salvezza fallito: 12d6 danni da freddo. Tiro salvezza superato: la metà dei danni. Effetti aggiuntivi: questo strato viene distrutto se subisce almeno 25 danni da fuoco."
+            ],
+            [
+              "6",
+              "Indaco",
+              "Tiro salvezza fallito: il bersaglio è trattenuto ed effettua un tiro salvezza su Costituzione alla fine di ogni suo turno. Se lo supera per tre volte, pone fine alla condizione. Se fallisce per tre volte, resta pietrificato finché non viene liberato da un effetto come quello dell'incantesimo ristorare superiore. Non è necessario che i tiri superati o falliti siano consecutivi: si tiene semplicemente il conto di entrambi finché il bersaglio non ne accumula tre di un certo tipo. Effetti aggiuntivi: non è possibile lanciare incantesimi attraverso questo strato, che viene distrutto dalla luce intensa emanata dall'incantesimo luce diurna. Ordine Effetti"
+            ],
+            [
+              "7",
+              "Viola",
+              "Tiro salvezza fallito: il bersaglio è accecato ed effettua un tiro salvezza su Saggezza all'inizio del turno successivo dell'incantatore. Se lo supera, non è più accecato. Se lo fallisce, non è più accecato e viene teletrasportato su un altro piano di esistenza (a scelta del GM). Effetti aggiuntivi: questo strato viene distrutto da dissolvi magie."
+            ]
+          ]
+        }
+      ]
     },
     {
       "id": "nube-di-nebbia",
@@ -5232,7 +5325,48 @@
       "higher_level": "",
       "damage": null,
       "area_diameter": null,
-      "concentration": false
+      "concentration": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "L'incantatore tocca un punto e infonde un potere sacro o sacrilego in un'area del raggio massimo di 18 metri intorno a esso. L'incantesimo tuttavia fallisce se il raggio comprende un'area già sotto l'effetto di santificare. L'area influenzata è soggetta ai seguenti effetti:"
+        },
+        {
+          "type": "section",
+          "title": "Protezione consacrata",
+          "text": "L'incantatore sceglie uno dei seguenti tipi di creature: aberrazione, celestiale, elementale, folletto, immondo o non morto. Le creature del tipo scelto non possono entrare volontariamente nell'area, e qualsiasi creatura affascinata, spaventata o posseduta da tali creature non viene affascinata, spaventata o posseduta fintantoché si trova nell'area."
+        },
+        {
+          "type": "section",
+          "title": "Effetto aggiuntivo",
+          "text": "L'incantatore vincola un effetto aggiuntivo all'area, scegliendolo dalla lista sottostante:"
+        },
+        {
+          "type": "section",
+          "title": "Coraggio",
+          "text": "Le creature di qualsiasi tipo scelto dall'incantatore non possono essere spaventate finché si trovano nell'area."
+        },
+        {
+          "type": "section",
+          "title": "Interferenza extradimensionale",
+          "text": "Le creature di qualsiasi tipo scelte dall'incantatore non possono entrare o uscire dall'area utilizzando il teletrasporto o i viaggi interplanari."
+        },
+        {
+          "type": "section",
+          "title": "Linguaggi",
+          "text": "Le creature di qualsiasi tipo scelto dall'incantatore possono comunicare con qualsiasi creatura all'interno dell'area, anche se non condividono la stessa lingua."
+        },
+        {
+          "type": "section",
+          "title": "Luce diurna",
+          "text": "L'area è pervasa di luce intensa. L'oscurità magica creata dagli incantesimi di livello inferiore rispetto a questo incantesimo non può sopprimere la luce."
+        },
+        {
+          "type": "section",
+          "title": "Oscurità",
+          "text": "L'area si riempie di oscurità. La luce normale, nonché la luce magica creata dagli incantesimi di livello inferiore rispetto a questo incantesimo, non possono illuminare l'area. Paura. Le creature di qualsiasi tipo scelto dall'incantatore non possono essere spaventate finché si trovano nell'area. Resistenza. Le creature di qualsiasi tipo scelto dall'incantatore sono resistenti a un tipo di danno scelto dall'incantatore finché si trovano nell'area. Sereno riposo. I cadaveri sepolti nell'area non possono diventare non morti. Silenzio. L'area è insonorizzata, nessun suono può fuoriuscire o penetrare al suo interno. Vulnerabilità. Le creature di qualsiasi tipo scelto dall'incantatore sono vulnerabili a un tipo di danno scelto dall'incantatore finché si trovano nell'area."
+        }
+      ]
     },
     {
       "id": "santuario",
@@ -5955,7 +6089,59 @@
       "higher_level": "",
       "damage": "12d6",
       "area_diameter": "18",
-      "concentration": false
+      "concentration": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Otto raggi di luce si sprigionano dall'incantatore in un cono di 18 metri. Ogni creatura presente nel cono effettua un tiro salvezza su Destrezza. Per ogni bersaglio, si tira 1d8 per determinare da quale raggio viene influenzato, consultando la tabella"
+        },
+        {
+          "type": "table",
+          "caption": "Raggi prismatici",
+          "columns": [
+            "1d8",
+            "Raggio",
+            "Effetti"
+          ],
+          "rows": [
+            [
+              "1",
+              "Rosso",
+              "Tiro salvezza fallito: 12d6 danni da fuoco. Tiro salvezza superato: la metà dei danni."
+            ],
+            [
+              "2",
+              "Arancione",
+              "Tiro salvezza fallito: 12d6 danni da acido. Tiro salvezza superato: la metà dei danni."
+            ],
+            [
+              "3",
+              "Giallo",
+              "Tiro salvezza fallito: 12d6 danni da fulmine. Tiro salvezza superato: la metà dei danni."
+            ],
+            [
+              "4",
+              "Verde",
+              "Tiro salvezza fallito: 12d6 danni da veleno. Tiro salvezza superato: la metà dei danni."
+            ],
+            [
+              "5",
+              "Blu",
+              "Tiro salvezza fallito: 12d6 danni da freddo. Tiro salvezza superato: la metà dei danni."
+            ],
+            [
+              "6",
+              "Indaco",
+              "Tiro salvezza fallito: il bersaglio è trattenuto ed effettua un tiro salvezza su Costituzione alla fine di ogni suo turno. Se lo supera per tre volte, pone fine alla condizione. Se fallisce per tre volte, resta pietrificato finché non viene liberato da un effetto come quello dell'incantesimo ristorare superiore. Non è necessario che i tiri superati o falliti siano consecutivi: si tiene semplicemente il conto di entrambi finché il bersaglio non ne accumula tre di un certo tipo."
+            ],
+            [
+              "7",
+              "Viola",
+              "Tiro salvezza fallito: il bersaglio è accecato ed effettua un tiro salvezza su Saggezza all'inizio del turno successivo dell'incantatore. Se lo supera, non è più accecato. Se lo fallisce, non è più accecato e viene teletrasportato su un altro piano di esistenza (a scelta del GM). 8 Speciale. Il bersaglio viene colpito da due raggi. Si tira altre due volte, rilanciando i dadi se il risultato ottenuto è 8."
+            ]
+          ]
+        }
+      ]
     },
     {
       "id": "spruzzo-velenoso",
@@ -6129,7 +6315,93 @@
       "higher_level": "",
       "damage": "3d10",
       "area_diameter": null,
-      "concentration": false
+      "concentration": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Questo incantesimo teletrasporta immediatamente l'incantatore e un solo oggetto o un massimo di otto creature consenzienti, che si trovano entro gittata e che egli è in grado di vedere, fino a una destinazione a sua scelta. Se il bersaglio è un oggetto, deve essere di taglia Grande o inferiore e non può essere impugnato o trasportato da una creatura non consenziente. La destinazione scelta deve essere nota all'incantatore e deve trovarsi sul suo stesso piano di esistenza. La sua familiarità con la destinazione determina il successo del teletrasporto. Il GM tira 1d100 e consulta la tabella"
+        },
+        {
+          "type": "table",
+          "caption": "Risultato del teletrasporto",
+          "columns": [
+            "Familiarità",
+            "Errore",
+            "Area simile",
+            "Fuori bersaglio",
+            "Sul bersaglio"
+          ],
+          "rows": [
+            [
+              "Cerchio permanente",
+              "—",
+              "—",
+              "—",
+              "01–00"
+            ],
+            [
+              "Oggetto collegato",
+              "—",
+              "—",
+              "—",
+              "01–00"
+            ],
+            [
+              "Molto familiare",
+              "01–05",
+              "06–13",
+              "14–24",
+              "25–00"
+            ],
+            [
+              "Visto occasionalmente",
+              "01–33",
+              "34–43",
+              "44–53",
+              "54–00"
+            ],
+            [
+              "Visto una volta o descritto",
+              "01–43",
+              "44–53",
+              "54–73",
+              "74–00"
+            ],
+            [
+              "Falsa destinazione",
+              "01–50",
+              "51–00",
+              "—",
+              "—"
+            ]
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Familiarità",
+          "text": "Di seguito vengono spiegati i significati dei termini presenti nella colonna Familiarità: • \"Cerchio permanente\" indica un cerchio di teletrasporto permanente di cui l'incantatore conosce la sequenza di sigilli. • \"Oggetto collegato\" indica un oggetto in possesso dell'incantatore prelevato dalla destinazione desiderata negli ultimi sei mesi, come un libro della biblioteca di un mago. • \"Molto familiare\" indica un luogo che l'incantatore ha visitato spesso, un luogo che ha studiato con attenzione o un luogo che è in grado di vedere quando lancia l'incantesimo. • \"Visto occasionalmente\" indica un luogo che l'incantatore ha visto più di una volta, ma che non gli è troppo familiare. • \"Visto una volta o descritto\" indica un luogo che l'incantatore ha visto una volta, magari usando la magia, o un luogo noto attraverso la descrizione di un'altra persona o una mappa. • \"Falsa destinazione\" è un luogo inesistente. Per esempio, l'incantatore ha cercato di scrutare il rifugio segreto di un nemico ma ha visto invece un'illusione, oppure tenta di teletrasportarsi in un luogo che non esiste più."
+        },
+        {
+          "type": "section",
+          "title": "Errore",
+          "text": "La magia imprevedibile dell'incantesimo rende difficile il viaggio. Ogni creatura che si teletrasporta (o l'oggetto bersaglio) subisce 3d10 danni da forza e il GM lancia di nuovo sulla tabella per determinare dove arriverà (potrebbero verificarsi vari errori, nel qual caso i danni verranno inflitti ogni volta)."
+        },
+        {
+          "type": "section",
+          "title": "Area simile",
+          "text": "L'incantatore e il suo gruppo (o l'oggetto bersaglio) arrivano in un'area diversa che è visivamente o tematicamente simile all'area bersaglio, oltre a essere nelle sue immediate vicinanze. Per esempio, se l'incantatore vuole dirigersi al suo laboratorio personale, potrebbe comparire in quello di un'altra persona nella stessa città."
+        },
+        {
+          "type": "section",
+          "title": "Fuori bersaglio",
+          "text": "L'incantatore e il suo gruppo (o l'oggetto bersaglio) compaiono a una distanza di 2d12 chilometri dalla destinazione in una direzione casuale. Tira 1d8 per la direzione: 1, est; 2, sud-est; 3, sud; 4, sud-ovest; 5, ovest; 6, nord-ovest; 7, nord; oppure 8, nord-est."
+        },
+        {
+          "type": "section",
+          "title": "Sul bersaglio",
+          "text": "L'incantatore e il suo gruppo (o l'oggetto bersaglio) compaiono nel luogo designato."
+        }
+      ]
     },
     {
       "id": "tempesta-di-fuoco",
@@ -6401,7 +6673,96 @@
       "higher_level": "Usa il livello dello slot incantesimo relativo al livello dell'incantesimo nella scheda delle statistiche. Cavalcatura ultraterrena Celestiale Grande, folletto o immondo (a scelta dell'incantatore), neutrale CA 10 + 1 per livello dell'incantesimo PF 5 + 10 per livello dell'incantesimo (la cavalcatura ha un numero di Dadi Vita [d10] pari al livello dell'incantesimo) Velocità 18 m, volo 18 m (richiede incantesimo di 4º livello o superiore) MOD SALV MOD SALV MOD SALV For 18 +4 +4 Des 12 +1 +1 Cos 14 +2 +2 Int 6 −2 −2 Sag 12 +1 +1 Car 8 −1 −1 Sensi Percezione passiva 11 Lingue telepatia 1,5 km (funziona solo con l'incantatore) GS nessuno (PE 0; BC pari al bonus di competenza del personaggio) Tratti Legame vitale. Quando l'incantatore recupera punti ferita grazie a un incantesimo di 1º livello o superiore, la cavalcatura recupera la stessa quantità di punti ferita se l'incantatore si trova entro 1,5 metri da essa. Azioni Schianto ultraterreno. Tiro per colpire in mischia: il bonus equivale al modificatore di attacco dell'incantesimo del personaggio, portata di 1,5 m Colpito: 1d8 più il livello dell'incantesimo danni radiosi (celestiale), danni psichici (folletto) o danni necrotici (immondo). Azioni bonus Passo fatato (solo folletto; ricarica dopo un riposo lungo). La cavalcatura si teletrasporta, insieme al suo cavaliere, in un uno spazio libero a scelta del personaggio situato a 18 metri da sé. Sguardo letale (solo immondo; ricarica dopo un riposo lungo). Tiro salvezza su Saggezza: La CD è pari alla CD del tiro salvezza sull'incantesimo, una creatura entro 18 metri che la cavalcatura è in grado di vedere. Fallimento: Il bersaglio è spaventato fino al termine del turno successivo dell'incantantore. Tocco guaritore (solo celestiale; ricarica dopo un riposo lungo). Una creatura entro 1,5 metri dalla cavalcatura recupera un numero di punti ferita pari a 2d8 più il livello dell'incantesimo.",
       "damage": null,
       "area_diameter": null,
-      "concentration": false
+      "concentration": false,
+      "higher_level_blocks": [
+        {
+          "type": "paragraph",
+          "text": "Usa il livello dello slot incantesimo relativo al livello dell'incantesimo nella scheda delle statistiche."
+        },
+        {
+          "type": "section",
+          "title": "Cavalcatura ultraterrena",
+          "text": "Celestiale Grande, folletto o immondo (a scelta dell'incantatore), neutrale CA 10 + 1 per livello dell'incantesimo PF 5 + 10 per livello dell'incantesimo (la cavalcatura ha un numero di Dadi Vita [d10] pari al livello dell'incantesimo) Velocità 18 m, volo 18 m (richiede incantesimo di 4º livello o superiore)"
+        },
+        {
+          "type": "table",
+          "caption": "Punteggi di caratteristica",
+          "columns": [
+            "Caratteristica",
+            "Punteggio",
+            "Mod",
+            "Salv"
+          ],
+          "rows": [
+            [
+              "For",
+              "18",
+              "+4",
+              "+4"
+            ],
+            [
+              "Des",
+              "12",
+              "+1",
+              "+1"
+            ],
+            [
+              "Cos",
+              "14",
+              "+2",
+              "+2"
+            ],
+            [
+              "Int",
+              "6",
+              "−2",
+              "−2"
+            ],
+            [
+              "Sag",
+              "12",
+              "+1",
+              "+1"
+            ],
+            [
+              "Car",
+              "8",
+              "−1",
+              "−1"
+            ]
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Sensi",
+          "text": "Percezione passiva 11"
+        },
+        {
+          "type": "section",
+          "title": "Lingue",
+          "text": "telepatia 1,5 km (funziona solo con l'incantatore)"
+        },
+        {
+          "type": "section",
+          "title": "GS",
+          "text": "nessuno (PE 0; BC pari al bonus di competenza del personaggio)"
+        },
+        {
+          "type": "section",
+          "title": "Tratti",
+          "text": "Legame vitale. Quando l'incantatore recupera punti ferita grazie a un incantesimo di 1º livello o superiore, la cavalcatura recupera la stessa quantità di punti ferita se l'incantatore si trova entro 1,5 metri da essa."
+        },
+        {
+          "type": "section",
+          "title": "Azioni",
+          "text": "Schianto ultraterreno. Tiro per colpire in mischia: il bonus equivale al modificatore di attacco dell'incantesimo del personaggio, portata di 1,5 m Colpito: 1d8 più il livello dell'incantesimo danni radiosi (celestiale), danni psichici (folletto) o danni necrotici (immondo)."
+        },
+        {
+          "type": "section",
+          "title": "Azioni bonus",
+          "text": "Passo fatato (solo folletto; ricarica dopo un riposo lungo). La cavalcatura si teletrasporta, insieme al suo cavaliere, in un uno spazio libero a scelta del personaggio situato a 18 metri da sé. Sguardo letale (solo immondo; ricarica dopo un riposo lungo). Tiro salvezza su Saggezza: La CD è pari alla CD del tiro salvezza sull'incantesimo, una creatura entro 18 metri che la cavalcatura è in grado di vedere. Fallimento: Il bersaglio è spaventato fino al termine del turno successivo dell'incantantore. Tocco guaritore (solo celestiale; ricarica dopo un riposo lungo). Una creatura entro 1,5 metri dalla cavalcatura recupera un numero di punti ferita pari a 2d8 più il livello dell'incantesimo."
+        }
+      ]
     },
     {
       "id": "trova-famiglio",
@@ -6532,7 +6893,33 @@
       "higher_level": "",
       "damage": null,
       "area_diameter": null,
-      "concentration": false
+      "concentration": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "L'incantatore crea una difesa che protegge un'area di terreno di massimo 225 metri quadrati. L'area protetta può essere alta fino a 6 metri e l'incantatore può darle una delle seguenti forme: un quadrato con lato di 15 metri, cento quadrati contigui con lato di 1,5 metri o venticinque quadrati contigui con lato di 3 metri. Quando lancia questo incantesimo, l'incantatore può specificare quali individui non saranno influenzati dagli effetti dell'incantesimo. Può anche specificare una parola d'ordine che, una volta pronunciata a voce alta entro 1,5 metri dall'area protetta, renderà chi la pronuncia immune a questi effetti. L'incantesimo crea gli effetti illustrati di seguito all'interno dell'area protetta. Dissolvi magie non ha effetti su vigilanza e interdizione, ma ciascuno dei seguenti effetti può essere dissolto. Se tutti e quattro vengono dissolti, vigilanza e interdizione termina. Se l'incantatore lancia l'incantesimo ogni giorno per 365 giorni sulla stessa area, esso permane finché tutti i suoi effetti non vengono dissolti."
+        },
+        {
+          "type": "section",
+          "title": "Corridoi",
+          "text": "Tutti i corridoi protetti si riempiono di nebbia e diventano pesantemente oscurati. Inoltre, a ogni incrocio o diramazione che richieda di scegliere una direzione, una creatura diversa dall'incantatore ha una probabilità del 50% di credere di andare in una direzione differente da quella che ha scelto."
+        },
+        {
+          "type": "section",
+          "title": "Porte",
+          "text": "Tutte le porte nell'area protetta vengono chiuse a chiave magicamente, come sigillate dall'incantesimo serratura arcana. Inoltre, l'incantatore può coprire fino a dieci porte con un'illusione per farle apparire come normali sezioni di parete."
+        },
+        {
+          "type": "section",
+          "title": "Scale",
+          "text": "Tutte le scale nell'area protetta si riempiono da cima a fondo di ragnatele, come succederebbe lanciando l'incantesimo ragnatela. Per la durata dell'incantesimo vigilanza e interdizione, i fili di queste ragnatele si riformano in 10 minuti se queste vengono distrutte."
+        },
+        {
+          "type": "section",
+          "title": "Altri effetti dell'incantesimo",
+          "text": "L'incantatore posiziona uno dei seguenti effetti magici all'interno dell'area protetta: • Luci danzanti in quattro corridoi, specificando anche un semplice schema che le luci ripetono per la durata di vigilanza e interdizione. • Bocca magica in due luoghi. • Nube maleodorante in due luoghi (il vapore riappare nel giro di 10 minuti se disperso fintantoché vigilanza e interdizione permane). • Folata di vento in un corridoio o una stanza (il vento soffia ininterrottamente per la durata dell'incantesimo). • Suggestione in un'area quadrata con lato di 1,5 metri. Qualsiasi creatura che entri nell'area riceve mentalmente la suggestione."
+        }
+      ]
     },
     {
       "id": "vincolo-di-interdizione",
