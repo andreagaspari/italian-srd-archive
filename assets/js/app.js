@@ -637,13 +637,19 @@ function openExportDialog(items) {
             <p class="eyebrow">Esportazione ${itemLabel}</p>
             <h2>Esporta ${itemCount === 1 ? escapeHtml(firstTitle) : `${itemCount} ${itemLabelPlural}`}</h2>
             <p class="export-dialog-copy">I campi seguenti sono facoltativi. Il file verrà creato come <strong>${itemCount === 1 ? `${escapeHtml(firstTitle)}.zip` : archiveName}</strong>.</p>
-            <label class="export-field">
-                <span>ID cartella</span>
-                <input name="folderId" type="text" maxlength="80" placeholder="Lascia vuoto per omettere">
+            <label class="export-field export-folder-field">
+                <span class="export-checkbox-label"><input name="createFolder" type="checkbox"> Crea una cartella per ${itemCount === 1 ? 'l’elemento' : 'gli elementi selezionati'}</span>
+                <span class="export-folder-control" hidden>
+                    <input name="folderName" type="text" maxlength="120" placeholder="Nome cartella" disabled>
+                    <span class="export-color-control">
+                        <input name="folderColor" type="color" value="#ef4444" disabled>
+                        <input name="folderColorText" type="text" value="#ef4444" pattern="#[0-9a-fA-F]{6}" maxlength="7" disabled>
+                    </span>
+                </span>
             </label>
             <label class="export-field export-color-field">
                 <span class="export-checkbox-label"><input name="useCardColor" type="checkbox"> Imposta colore della card</span>
-                <span class="export-color-control" hidden>
+                <span class="export-color-control export-card-color-control" hidden>
                     <input name="cardColor" type="color" value="#ef4444" disabled>
                     <input name="cardColorText" type="text" value="#ef4444" pattern="#[0-9a-fA-F]{6}" maxlength="7" disabled>
                 </span>
@@ -660,17 +666,50 @@ function openExportDialog(items) {
     `;
     document.body.appendChild(backdrop);
     const form = backdrop.querySelector('form');
-    const colorPicker = form.querySelector('input[type="color"]');
+    const colorPicker = form.querySelector('input[name="cardColor"]');
     const colorText = form.querySelector('input[name="cardColorText"]');
     const useCardColor = form.querySelector('input[name="useCardColor"]');
+    const createFolder = form.querySelector('input[name="createFolder"]');
+    const folderName = form.querySelector('input[name="folderName"]');
+    const folderColorPicker = form.querySelector('input[name="folderColor"]');
+    const folderColorText = form.querySelector('input[name="folderColorText"]');
+    const separateZips = form.querySelector('input[name="separateZips"]');
+    createFolder.addEventListener('change', () => {
+        if (createFolder.checked) {
+            separateZips.checked = false;
+            separateZips.disabled = true;
+        } else {
+            separateZips.disabled = itemCount <= 1;
+        }
+        folderName.disabled = !createFolder.checked;
+        folderColorPicker.disabled = !createFolder.checked;
+        folderColorText.disabled = !createFolder.checked;
+        form.querySelector('.export-folder-control').hidden = !createFolder.checked;
+    });
+    separateZips.addEventListener('change', () => {
+        if (separateZips.checked) {
+            createFolder.checked = false;
+            createFolder.disabled = true;
+            folderName.disabled = true;
+            folderColorPicker.disabled = true;
+            folderColorText.disabled = true;
+            form.querySelector('.export-folder-control').hidden = true;
+        } else {
+            createFolder.disabled = false;
+        }
+    });
     useCardColor.addEventListener('change', () => {
         colorPicker.disabled = !useCardColor.checked;
         colorText.disabled = !useCardColor.checked;
-        form.querySelector('.export-color-control').hidden = !useCardColor.checked;
+        form.querySelector('.export-card-color-control').hidden = !useCardColor.checked;
     });
     colorPicker.addEventListener('input', () => { colorText.value = colorPicker.value; });
     colorText.addEventListener('input', () => {
         if (/^#[0-9a-fA-F]{6}$/.test(colorText.value)) colorPicker.value = colorText.value;
+    });
+    folderColorPicker.addEventListener('input', () => { folderColorText.value = folderColorPicker.value; });
+    folderColorText.addEventListener('input', () => {
+        if (/^#[0-9a-fA-F]{6}$/.test(folderColorText.value)) folderColorPicker.value = folderColorText.value;
     });
     backdrop.querySelector('[data-export-cancel]').addEventListener('click', closeExportDialog);
     backdrop.querySelector('.export-dialog-close').addEventListener('click', closeExportDialog);
@@ -680,11 +719,23 @@ function openExportDialog(items) {
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const error = form.querySelector('.export-error');
-        const folderId = form.elements.folderId.value.trim();
+        const shouldCreateFolder = createFolder.checked;
+        const folderNameValue = folderName.value.trim();
+        const folderColor = shouldCreateFolder ? folderColorText.value.trim() : '';
         const cardColor = useCardColor.checked ? colorText.value.trim() : '';
-        const separateZips = form.elements.separateZips.checked;
-        if (folderId && !/^[A-Za-z0-9_-]+$/.test(folderId)) {
-            error.textContent = 'L’ID cartella può contenere solo lettere, numeri, trattini e underscore.';
+        const shouldCreateSeparateZips = separateZips.checked;
+        if (shouldCreateFolder && shouldCreateSeparateZips) {
+            error.textContent = 'La creazione della cartella e degli ZIP separati non possono essere usate insieme.';
+            error.hidden = false;
+            return;
+        }
+        if (shouldCreateFolder && !folderNameValue) {
+            error.textContent = 'Inserisci il nome della cartella.';
+            error.hidden = false;
+            return;
+        }
+        if (shouldCreateFolder && folderColor && !/^#[0-9a-fA-F]{6}$/.test(folderColor)) {
+            error.textContent = 'Inserisci un colore valido per la cartella.';
             error.hidden = false;
             return;
         }
@@ -695,9 +746,11 @@ function openExportDialog(items) {
         }
         const body = new FormData();
         body.append('items', JSON.stringify(items));
-        body.append('folderId', folderId);
+        body.append('createFolder', shouldCreateFolder ? '1' : '0');
+        body.append('folderName', folderNameValue);
+        body.append('folderColor', folderColor);
         body.append('cardColor', cardColor);
-        body.append('separateZips', separateZips ? '1' : '0');
+        body.append('separateZips', shouldCreateSeparateZips ? '1' : '0');
         const submit = form.querySelector('[type="submit"]');
         submit.disabled = true;
         submit.textContent = 'Preparazione...';

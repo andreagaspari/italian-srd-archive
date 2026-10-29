@@ -4,6 +4,18 @@ declare(strict_types=1);
 
 require __DIR__ . '/includes/bootstrap.php';
 
+/**
+ * Generates an export identifier that cannot overlap with Make a Master's mv-prefixed IDs.
+ *
+ * @return string A unique identifier with an ISA-specific prefix.
+ */
+function generateExportId(): string
+{
+    $timestamp = base_convert((string) floor(microtime(true) * 1000), 10, 36);
+
+    return 'isa' . $timestamp . bin2hex(random_bytes(8));
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     header('Content-Type: text/plain; charset=UTF-8');
@@ -203,13 +215,27 @@ foreach ($items as $item) {
     }
 }
 
-$folderId = trim((string) ($_POST['folderId'] ?? ''));
+$createFolder = filter_var($_POST['createFolder'] ?? false, FILTER_VALIDATE_BOOLEAN);
+$folderName = trim((string) ($_POST['folderName'] ?? ''));
+$folderColor = trim((string) ($_POST['folderColor'] ?? ''));
 $cardColor = trim((string) ($_POST['cardColor'] ?? ''));
 $separateZips = filter_var($_POST['separateZips'] ?? false, FILTER_VALIDATE_BOOLEAN);
-if ($folderId !== '' && !preg_match('/^[A-Za-z0-9_-]+$/', $folderId)) {
+if ($createFolder && $separateZips) {
     http_response_code(400);
     header('Content-Type: text/plain; charset=UTF-8');
-    echo 'ID cartella non valido.';
+    echo 'La creazione della cartella e degli ZIP separati non possono essere usate insieme.';
+    exit;
+}
+if ($createFolder && $folderName === '') {
+    http_response_code(400);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo 'Nome cartella non valido.';
+    exit;
+}
+if ($createFolder && !preg_match('/^#[0-9a-fA-F]{6}$/', $folderColor)) {
+    http_response_code(400);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo 'Colore cartella non valido.';
     exit;
 }
 if ($cardColor !== '' && !preg_match('/^#[0-9a-fA-F]{6}$/', $cardColor)) {
@@ -219,8 +245,30 @@ if ($cardColor !== '' && !preg_match('/^#[0-9a-fA-F]{6}$/', $cardColor)) {
     exit;
 }
 
+if ($createFolder) {
+    $folderId = generateExportId();
+    $tabs = array_values(array_unique(array_map(
+        static fn (array $item): string => (string) ($item['tab'] ?? ''),
+        $items
+    )));
+    array_unshift($items, [
+        'id' => $folderId,
+        'type' => 'folder',
+        'title' => $folderName,
+        'folderId' => null,
+        'tab' => count($tabs) === 1 ? $tabs[0] : 'session',
+        'createdAt' => (int) floor(microtime(true) * 1000),
+        'cardColor' => strtolower($folderColor)
+    ]);
+} else {
+    $folderId = null;
+}
+
 foreach ($items as &$item) {
-    $item['folderId'] = $folderId === '' ? null : $folderId;
+    if (($item['type'] ?? '') === 'folder') {
+        continue;
+    }
+    $item['folderId'] = $folderId;
     if ($cardColor === '') {
         unset($item['cardColor']);
     } else {
@@ -229,7 +277,7 @@ foreach ($items as &$item) {
     if (($item['type'] ?? '') === 'oggetti') {
         $item['rarity'] = $item['rarity'] ?? 'comune';
     }
-    $item['id'] = 'srd_' . bin2hex(random_bytes(8));
+    $item['id'] = generateExportId();
     $item['createdAt'] = (int) floor(microtime(true) * 1000);
     if (($item['type'] ?? '') === 'png') {
         foreach (['descBlocks', 'extraStats'] as $collection) {
@@ -238,7 +286,7 @@ foreach ($items as &$item) {
             }
             foreach ($item[$collection] as &$entry) {
                 if (is_array($entry)) {
-                    $entry['id'] = 'srd_' . bin2hex(random_bytes(8));
+                    $entry['id'] = generateExportId();
                 }
             }
             unset($entry);

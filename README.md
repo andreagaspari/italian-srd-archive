@@ -22,6 +22,10 @@ L'archivio mette a disposizione:
 - ricerca globale nell'archivio;
 - glossario delle regole con introduzione, abbreviazioni, categorie e filtri;
 - esportazione dei risultati e dei singoli elementi;
+- creazione opzionale di una nuova cartella Make a Master durante l'esportazione,
+  con nome, colore e ID generato automaticamente;
+- creazione della cartella e ZIP separati sono opzioni mutuamente esclusive,
+  per compatibilità con l'importazione attuale di Make a Master;
 - tema chiaro/scuro con preferenza salvata nel browser.
 
 ## Tema
