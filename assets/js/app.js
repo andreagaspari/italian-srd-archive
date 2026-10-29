@@ -191,6 +191,7 @@ async function renderFavoritesPage() {
 
     const groups = [
         { dataset: 'spells', label: 'Incantesimi', route: 'incantesimi' },
+        { dataset: 'feats', label: 'Talenti', route: 'talenti' },
         { dataset: 'monsters', label: 'Mostri', route: 'mostri' },
         { dataset: 'weapons', label: 'Oggetti · Armi', route: 'oggetti/armi' },
         { dataset: 'armor', label: 'Oggetti · Armature', route: 'oggetti/armature' },

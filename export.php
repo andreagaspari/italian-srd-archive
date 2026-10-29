@@ -31,7 +31,8 @@ if ($allResults) {
         toolsProvider: new JsonToolsProvider($datasetStore),
         adventuringGearProvider: new JsonAdventuringGearProvider($datasetStore),
         spellProvider: new JsonSpellProvider($datasetStore),
-        monsterProvider: new JsonMonsterProvider($datasetStore)
+        monsterProvider: new JsonMonsterProvider($datasetStore),
+        featProvider: new JsonFeatProvider($datasetStore)
     );
 
     $items = match ($route) {
@@ -152,6 +153,14 @@ if ($allResults) {
                 size: (string) ($request['taglia'] ?? ''),
                 challengeRating: (string) ($request['gs'] ?? ''),
                 alignment: (string) ($request['allineamento'] ?? ''),
+                search: (string) ($request['q'] ?? ''),
+                pageSize: null
+            ))->items
+        ),
+        'talenti' => array_map(
+            static fn (array $item): array => buildFeatExportData($item),
+            $catalog->getFeats(new FeatQuery(
+                subcategory: (string) ($request['categoria'] ?? ''),
                 search: (string) ($request['q'] ?? ''),
                 pageSize: null
             ))->items

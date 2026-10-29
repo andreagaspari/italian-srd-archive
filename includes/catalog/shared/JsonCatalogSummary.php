@@ -32,7 +32,7 @@ final class JsonCatalogSummary implements CatalogSummaryInterface
                 + $this->countItems('ammunition')
                 + $this->countItems('tools')
                 + $this->countItems('adventuring-gear'),
-            'weapons', 'armor', 'ammunition', 'tools', 'adventuring-gear', 'spells', 'monsters'
+            'weapons', 'armor', 'ammunition', 'tools', 'adventuring-gear', 'spells', 'monsters', 'feats'
                 => $this->countItems($resource),
             default => throw new InvalidArgumentException("Risorsa non supportata: {$resource}")
         };

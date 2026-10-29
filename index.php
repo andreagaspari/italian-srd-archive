@@ -45,10 +45,12 @@ $catalog = new DataCatalog(
     toolsProvider: $mysqlProvider ?? new JsonToolsProvider($datasetStore),
     adventuringGearProvider: $mysqlProvider ?? new JsonAdventuringGearProvider($datasetStore),
     spellProvider: $mysqlProvider ?? new JsonSpellProvider($datasetStore),
-    monsterProvider: $mysqlProvider ?? new JsonMonsterProvider($datasetStore)
+    monsterProvider: $mysqlProvider ?? new JsonMonsterProvider($datasetStore),
+    featProvider: new JsonFeatProvider($datasetStore)
 );
 $spellsCount = $summary->count('spells');
 $monsterCount = $summary->count('monsters');
+$featCount = $summary->count('feats');
 $objectCount = $summary->count('objects');
 $rulesCount = count($rulesCatalog->document()['items'] ?? []);
 $spellCategories = $summary->categories('spells');

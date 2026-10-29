@@ -11,11 +11,13 @@ final class MySqlSearchIndexProvider implements SearchIndexProviderInterface
      * @param PDO $database Configured MySQL connection.
      * @param SearchIndexBuilder $builder Shared index formatting logic.
      * @param RulesCatalog $rulesCatalog Glossary rules provider.
+     * @param JsonDatasetStore $store JSON store for datasets not yet normalized in MySQL.
      */
     public function __construct(
         private readonly PDO $database,
         private readonly SearchIndexBuilder $builder,
-        private readonly RulesCatalog $rulesCatalog
+        private readonly RulesCatalog $rulesCatalog,
+        private readonly JsonDatasetStore $store
     ) {
     }
 
@@ -58,6 +60,7 @@ final class MySqlSearchIndexProvider implements SearchIndexProviderInterface
             'toolsData' => ['items' => []],
             'adventuringGearData' => ['items' => []],
             'spellsData' => ['items' => []],
+            'featsData' => $this->store->get('feats'),
             'monstersData' => ['items' => []],
             'rulesData' => $this->rulesCatalog->document(),
         ];
@@ -68,6 +71,7 @@ final class MySqlSearchIndexProvider implements SearchIndexProviderInterface
             'tools' => 'toolsData',
             'adventuring-gear' => 'adventuringGearData',
             'spells' => 'spellsData',
+            'feats' => 'featsData',
             'monsters' => 'monstersData',
         ];
 

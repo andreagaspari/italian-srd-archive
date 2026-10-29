@@ -28,6 +28,7 @@ final class SearchIndexBuilder
             ['section' => 'Strumenti', 'title' => 'Strumenti', 'description' => 'Strumenti da artigiano, musicali, giochi e altri strumenti.', 'tags' => ['Categoria'], 'url' => appUrl('oggetti/strumenti')],
             ['section' => 'Equipaggiamento', 'title' => 'Equipaggiamento', 'description' => 'Oggetti, contenitori, consumabili e attrezzatura da avventura.', 'tags' => ['Categoria'], 'url' => appUrl('oggetti/avventura')],
             ['section' => 'Incantesimi', 'title' => 'Incantesimi', 'description' => 'Trucchetti e incantesimi dal 1° al 9° livello.', 'tags' => ['Categoria'], 'url' => appUrl('incantesimi')],
+            ['section' => 'Talenti', 'title' => 'Talenti', 'description' => 'Talenti di origine, generali, epici e di stile di combattimento.', 'tags' => ['Categoria'], 'url' => appUrl('talenti')],
             ['section' => 'Mostri', 'title' => 'Mostri', 'description' => 'Blocchi statistici dei mostri dello SRD 5.2.1.', 'tags' => ['Categoria'], 'url' => appUrl('mostri')]
         ];
         foreach ($index as &$entry) {
@@ -45,6 +46,11 @@ final class SearchIndexBuilder
             $item['level'] === 0 ? 'Trucchetto' : 'Livello ' . $item['level'],
             $item['school'],
             ...$item['classes']
+        ]);
+        $this->appendSearchItems($index, $datasets['featsData']['items'] ?? [], 'Talenti', appUrl('talenti'), static fn (array $item): string => $item['name'], static fn (array $item): array => [
+            $item['subcategory'],
+            (string) ($item['prerequisite'] ?? ''),
+            !empty($item['repeatable']) ? 'Ripetibile' : ''
         ]);
         $this->appendSearchItems($index, $datasets['monstersData']['items'] ?? [], 'Mostri', appUrl('mostri'), static fn (array $item): string => $item['name'], static fn (array $item): array => [$item['type'], $item['size'], $item['challenge_rating']]);
         $this->appendSearchItems($index, $datasets['rulesData']['items'] ?? [], 'Regole', appUrl('regole'), static fn (array $item): string => $item['name'], static fn (array $item): array => [(string) ($item['category'] ?? '')]);

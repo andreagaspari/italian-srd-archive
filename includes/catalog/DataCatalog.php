@@ -16,6 +16,7 @@ final class DataCatalog
      * @param AdventuringGearProviderInterface $adventuringGearProvider Provider for adventuring gear queries.
      * @param SpellProviderInterface $spellProvider Provider for spell queries.
      * @param MonsterProviderInterface $monsterProvider Provider for monster queries.
+     * @param FeatProviderInterface $featProvider Provider for feat queries.
      */
     public function __construct(
         private readonly JsonDatasetStore $store,
@@ -25,7 +26,8 @@ final class DataCatalog
         private readonly ToolsProviderInterface $toolsProvider,
         private readonly AdventuringGearProviderInterface $adventuringGearProvider,
         private readonly SpellProviderInterface $spellProvider,
-        private readonly MonsterProviderInterface $monsterProvider
+        private readonly MonsterProviderInterface $monsterProvider,
+        private readonly FeatProviderInterface $featProvider
     ) {
     }
 
@@ -114,6 +116,18 @@ final class DataCatalog
     }
 
     /**
+     * Retrieves filtered and paginated feats.
+     *
+     * @param FeatQuery $query Filtering and pagination criteria.
+     *
+     * @return PageResult Query results and pagination metadata.
+     */
+    public function getFeats(FeatQuery $query): PageResult
+    {
+        return $this->featProvider->getFeats($query);
+    }
+
+    /**
      * Returns the weapons dataset.
      *
      * @return array<string, mixed>
@@ -181,5 +195,15 @@ final class DataCatalog
     public function monsters(): array
     {
         return $this->store->get('monsters');
+    }
+
+    /**
+     * Returns the feats dataset.
+     *
+     * @return array<string, mixed> Imported feat data.
+     */
+    public function feats(): array
+    {
+        return $this->store->get('feats');
     }
 }

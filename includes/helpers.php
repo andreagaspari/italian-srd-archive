@@ -209,6 +209,36 @@ function renderSpellHigherLevel(array $spell): string
 }
 
 /**
+ * Builds the portable export representation of a feat.
+ *
+ * @param array<string, mixed> $feat Feat data.
+ *
+ * @return array<string, mixed> Export-ready feat data.
+ */
+function buildFeatExportData(array $feat): array
+{
+    return [
+        'type' => 'talenti',
+        'title' => (string) ($feat['name'] ?? ''),
+        'range' => '',
+        'rangeNumber' => null,
+        'duration' => '',
+        'damage' => null,
+        'concentration' => 'false',
+        'image' => '',
+        'desc' => (string) ($feat['description'] ?? ''),
+        'category' => (string) ($feat['subcategory'] ?? ''),
+        'prerequisite' => $feat['prerequisite'] ?? null,
+        'repeatable' => (bool) ($feat['repeatable'] ?? false),
+        'sourcePage' => $feat['sourcePage'] ?? null,
+        'folderId' => null,
+        'tab' => 'talenti',
+        'id' => '',
+        'createdAt' => 0
+    ];
+}
+
+/**
  * Extracts structured feature entries from legacy monster HTML content.
  *
  * @param string $content Legacy HTML containing bold feature titles.

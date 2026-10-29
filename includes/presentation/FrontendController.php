@@ -211,6 +211,33 @@ final class FrontendController
                 $contentView = $this->templatesDirectory . '/spells/index.php';
                 break;
 
+            case 'talenti':
+                $featsData = $this->catalog->feats();
+                $featSubcategories = [];
+                foreach ($featsData['items'] ?? [] as $feat) {
+                    if (is_array($feat) && is_string($feat['subcategory'] ?? null)) {
+                        $featSubcategories[$feat['subcategory']] = $feat['subcategory'];
+                    }
+                }
+                ksort($featSubcategories);
+                $selectedFeatSubcategory = (string) ($request['categoria'] ?? '');
+                if ($selectedFeatSubcategory !== ''
+                    && !array_key_exists($selectedFeatSubcategory, $featSubcategories)
+                ) {
+                    $selectedFeatSubcategory = '';
+                }
+                $featsResult = $this->catalog->getFeats(new FeatQuery(
+                    subcategory: $selectedFeatSubcategory,
+                    search: $this->parseSearch($request),
+                    page: $page,
+                    pageSize: $pageSize
+                ));
+                $feats = $featsResult->items;
+                $pagination = $featsResult;
+                $pageTitle = 'Talenti';
+                $contentView = $this->templatesDirectory . '/feats/index.php';
+                break;
+
             case 'mostri':
                 $monstersData = $this->catalog->monsters();
                 $monsters = $monstersData['items'] ?? [];

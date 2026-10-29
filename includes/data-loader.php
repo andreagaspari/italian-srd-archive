@@ -28,6 +28,9 @@ require_once __DIR__ . '/catalog/objects/adventuring-gear/JsonAdventuringGearPro
 require_once __DIR__ . '/catalog/spells/SpellQuery.php';
 require_once __DIR__ . '/catalog/spells/SpellProviderInterface.php';
 require_once __DIR__ . '/catalog/spells/JsonSpellProvider.php';
+require_once __DIR__ . '/catalog/feats/FeatQuery.php';
+require_once __DIR__ . '/catalog/feats/FeatProviderInterface.php';
+require_once __DIR__ . '/catalog/feats/JsonFeatProvider.php';
 require_once __DIR__ . '/catalog/monsters/MonsterQuery.php';
 require_once __DIR__ . '/catalog/monsters/MonsterProviderInterface.php';
 require_once __DIR__ . '/catalog/monsters/JsonMonsterProvider.php';

@@ -49,6 +49,18 @@ CREATE TABLE IF NOT EXISTS spell_classes (
         FOREIGN KEY (catalog_item_id) REFERENCES catalog_items (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS feat_items (
+    catalog_item_id BIGINT UNSIGNED NOT NULL,
+    subcategory VARCHAR(64) NOT NULL,
+    prerequisite VARCHAR(255) NULL,
+    repeatable BOOLEAN NOT NULL,
+    source_page SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (catalog_item_id),
+    KEY idx_feat_items_subcategory (subcategory),
+    CONSTRAINT fk_feat_items_catalog
+        FOREIGN KEY (catalog_item_id) REFERENCES catalog_items (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE IF NOT EXISTS monster_items (
     catalog_item_id BIGINT UNSIGNED NOT NULL,
     monster_type VARCHAR(64) NOT NULL,

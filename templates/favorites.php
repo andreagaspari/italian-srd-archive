@@ -16,6 +16,7 @@
             <select id="favorites-type-filter">
                 <option value="">Tutte</option>
                 <option value="spells">Incantesimi</option>
+                <option value="feats">Talenti</option>
                 <option value="monsters">Mostri</option>
                 <option value="weapons">Oggetti · Armi</option>
                 <option value="armor">Oggetti · Armature</option>

@@ -142,7 +142,8 @@ try {
             'armor',
             'ammunition',
             'tools',
-            'adventuring-gear'
+            'adventuring-gear',
+            'feats'
         ], true)
     ));
     sort($files, SORT_STRING);
@@ -232,6 +233,15 @@ try {
              ON DUPLICATE KEY UPDATE
                 category = VALUES(category), weight_text = VALUES(weight_text),
                 cost_text = VALUES(cost_text)'
+        ),
+        'feats' => $database->prepare(
+            'INSERT INTO feat_items
+                (catalog_item_id, subcategory, prerequisite, repeatable, source_page)
+             VALUES
+                (:catalog_item_id, :subcategory, :prerequisite, :repeatable, :source_page)
+             ON DUPLICATE KEY UPDATE
+                subcategory = VALUES(subcategory), prerequisite = VALUES(prerequisite),
+                repeatable = VALUES(repeatable), source_page = VALUES(source_page)'
         ),
     ];
     $deleteSpellClasses = $database->prepare(
@@ -331,6 +341,13 @@ try {
                         'category' => catalogString($item, 'category', $dataset),
                         'weight_text' => catalogString($item, 'weight', $dataset),
                         'cost_text' => catalogString($item, 'cost', $dataset),
+                    ],
+                    'feats' => [
+                        'catalog_item_id' => $catalogItemId,
+                        'subcategory' => catalogString($item, 'subcategory', $dataset),
+                        'prerequisite' => catalogNullableString($item, 'prerequisite', $dataset),
+                        'repeatable' => (int) catalogBoolean($item, 'repeatable', $dataset),
+                        'source_page' => (int) catalogString($item, 'sourcePage', $dataset),
                     ],
                 };
                 $specializedStatements[$dataset]->execute($parameters);

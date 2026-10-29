@@ -349,6 +349,17 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .weapon-category-arrow { color: #c3bbb1; }
 .weapon-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
 .result-card h3 { margin: 0; font: 500 22px/1.15 Georgia, "Times New Roman", serif; letter-spacing: -.02em; }
+.feat-card { position: relative; }
+.feat-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.feat-category, .feat-repeatable { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.feat-category { text-decoration: none; }
+.feat-category:hover { text-decoration: underline; }
+.feat-repeatable { padding: 4px 7px; border: 1px solid var(--accent-line); border-radius: 999px; white-space: nowrap; }
+.feat-prerequisite { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+.feat-description { margin-top: 14px; color: var(--muted); font-size: 13px; }
+.feat-description p { margin: 0 0 8px; }
+.feat-description p:last-child { margin-bottom: 0; }
+.feat-source { margin: 14px 0 0; color: var(--subtle); font-size: 11px; }
 .spell-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
 .spell-level { margin: 0 0 5px; color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 .spell-school { flex: 0 0 auto; padding: 4px 7px; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; font-size: 10px; }

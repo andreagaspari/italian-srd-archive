@@ -11,6 +11,7 @@ I preferiti sono salvati localmente nel browser tramite `localStorage`. Vengono 
 L'archivio mette a disposizione:
 
 - incantesimi, filtrabili per livello, scuola e classe;
+- talenti, filtrabili per categoria;
 - mostri, filtrabili per tipo, taglia, grado di sfida e allineamento;
 - oggetti suddivisi in:
   - armi;
@@ -20,7 +21,7 @@ L'archivio mette a disposizione:
   - equipaggiamento d'avventura;
 - ricerca globale nell'archivio;
 - glossario delle regole con introduzione, abbreviazioni, categorie e filtri;
-- esportazione dei risultati e dei singoli elementi.
+- esportazione dei risultati e dei singoli elementi;
 - tema chiaro/scuro con preferenza salvata nel browser.
 
 ## Tema

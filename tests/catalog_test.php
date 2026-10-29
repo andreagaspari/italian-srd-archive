@@ -14,6 +14,7 @@ function expectTrue(bool $condition, string $message): void
 $store = new JsonDatasetStore(new JsonFileImporter(), dirname(__DIR__) . '/data');
 $weapons = new JsonWeaponProvider($store);
 $spells = new JsonSpellProvider($store);
+$feats = new JsonFeatProvider($store);
 $monsters = new JsonMonsterProvider($store);
 $rules = new RulesCatalog($store);
 
@@ -28,6 +29,7 @@ $searchIndex = (new SearchIndexBuilder())->build([
     'toolsData' => $store->get('tools'),
     'adventuringGearData' => $store->get('adventuring-gear'),
     'spellsData' => $store->get('spells'),
+    'featsData' => $store->get('feats'),
     'monstersData' => $store->get('monsters'),
     'rulesData' => $store->get('rules')
 ]);
@@ -47,6 +49,14 @@ expectTrue($weaponPage->totalPages() === 4, 'Le armi devono occupare 4 pagine da
 $spellSearch = $spells->getSpells(new SpellQuery(search: 'palla di fuoco', pageSize: 24));
 expectTrue($spellSearch->totalItems === 2, 'La ricerca degli incantesimi deve trovare 2 risultati.');
 expectTrue($spellSearch->items[0]['name'] === 'Palla di fuoco', 'La ricerca deve restituire Palla di fuoco.');
+
+$featSearch = $feats->getFeats(new FeatQuery(subcategory: 'Origini', search: 'abile', pageSize: 24));
+expectTrue($featSearch->totalItems === 1, 'La ricerca dei talenti deve filtrare per categoria e testo.');
+$featSearchResult = array_values(array_filter(
+    $searchIndex,
+    static fn (array $item): bool => $item['title'] === 'Abile'
+))[0] ?? null;
+expectTrue(is_array($featSearchResult) && $featSearchResult['section'] === 'Talenti', 'La ricerca globale deve includere i talenti.');
 
 $monsterSearch = $monsters->getMonsters(new MonsterQuery(search: 'drago', pageSize: 24));
 expectTrue($monsterSearch->totalItems > 0, 'La ricerca dei mostri deve trovare almeno un risultato.');

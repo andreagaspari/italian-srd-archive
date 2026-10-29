@@ -25,7 +25,8 @@ $provider = $dataSource === 'MYSQL'
         return new MySqlSearchIndexProvider(
             $database,
             new SearchIndexBuilder(),
-            new RulesCatalog($store, $database)
+            new RulesCatalog($store, $database),
+            $store
         );
     })()
     : new JsonSearchIndexProvider(

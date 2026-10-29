@@ -36,6 +36,11 @@
                 Mostri
                 <span class="nav-count"><?= $monsterCount ?: '' ?></span>
             </a>
+            <a class="nav-item <?= $route === 'talenti' ? 'is-active' : '' ?>" href="<?= e(appUrl('talenti')) ?>">
+                <span class="nav-icon" aria-hidden="true">🌟</span>
+                Talenti
+                <span class="nav-count"><?= $featCount ?: '' ?></span>
+            </a>
             <a class="nav-item <?= $route === 'regole' ? 'is-active' : '' ?>" href="<?= e(appUrl('regole')) ?>">
                 <span class="nav-icon" aria-hidden="true">📖</span>
                 Regole
