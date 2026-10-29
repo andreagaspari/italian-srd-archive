@@ -306,9 +306,18 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .export-checkbox-label input { accent-color: var(--accent); }
 .export-folder-control { display: grid; gap: 8px; }
 .export-folder-control[hidden] { display: none; }
+.export-color-label { color: var(--muted); font-size: 11px; font-weight: 400; }
 .export-color-control { display: flex; align-items: center; gap: 8px; }
 .export-color-control[hidden] { display: none; }
 .export-color-control input[type="color"] { width: 38px; height: 35px; padding: 2px; border: 1px solid var(--line); border-radius: 5px; background: var(--panel); cursor: pointer; }
+.export-color-control[data-color-state="default"] input[type="color"] { opacity: .45; border-style: dashed; background: transparent; }
+.export-color-control[data-color-state="default"] input[type="color"]:hover { opacity: .75; }
+.export-color-reset { width: 24px; height: 24px; padding: 0; color: var(--muted); border: 0; border-radius: 50%; background: transparent; font-size: 18px; line-height: 1; cursor: pointer; }
+.export-color-reset:hover { color: var(--accent); background: var(--accent-soft); }
+.export-color-reset[hidden] { display: none; }
+.export-color-copy { width: 24px; height: 24px; padding: 0; color: var(--muted); border: 0; border-radius: 50%; background: transparent; font-size: 16px; line-height: 1; cursor: pointer; }
+.export-color-copy:hover { color: var(--accent); background: var(--accent-soft); }
+.export-color-copy[hidden] { display: none; }
 .export-dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; }
 .button-primary, .button-secondary { padding: 8px 12px; border-radius: 5px; font: inherit; font-size: 11px; cursor: pointer; }
 .button-primary { color: #fff; border: 1px solid var(--accent); background: var(--accent); }

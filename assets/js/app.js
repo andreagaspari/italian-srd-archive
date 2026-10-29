@@ -619,6 +619,50 @@ function closeExportDialog() {
     document.querySelector('.export-dialog-backdrop')?.remove();
 }
 
+/**
+ * Connects a color picker, hexadecimal input, and reset action.
+ *
+ * @param {HTMLElement} control Color control container.
+ * @returns {void}
+ */
+function initializeExportColorControl(control) {
+    const picker = control.querySelector('input[type="color"]');
+    const text = control.querySelector('input[type="text"]');
+    const reset = control.querySelector('.export-color-reset');
+    const copy = control.querySelector('.export-color-copy');
+    const updateResetState = () => {
+        const isDefault = text.value.trim() === '';
+        control.dataset.colorState = isDefault ? 'default' : 'custom';
+        reset.hidden = isDefault;
+        copy.hidden = isDefault;
+    };
+
+    updateResetState();
+    picker.addEventListener('input', () => {
+        text.value = picker.value;
+        updateResetState();
+    });
+    text.addEventListener('input', () => {
+        if (/^#[0-9a-fA-F]{6}$/.test(text.value)) picker.value = text.value;
+        updateResetState();
+    });
+    reset.addEventListener('click', () => {
+        text.value = '';
+        picker.value = '';
+        updateResetState();
+        text.focus();
+    });
+    copy.addEventListener('click', async () => {
+        try {
+            if (!navigator.clipboard) throw new Error('Clipboard API non disponibile.');
+            await navigator.clipboard.writeText(text.value.trim());
+            copy.title = 'Colore copiato';
+        } catch (error) {
+            copy.title = error.message || 'Impossibile copiare il colore.';
+        }
+    });
+}
+
 function openExportDialog(items) {
     const itemCount = items.length;
     const firstTitle = items[0].title;
@@ -641,17 +685,22 @@ function openExportDialog(items) {
                 <span class="export-checkbox-label"><input name="createFolder" type="checkbox"> Crea una cartella per ${itemCount === 1 ? 'l’elemento' : 'gli elementi selezionati'}</span>
                 <span class="export-folder-control" hidden>
                     <input name="folderName" type="text" maxlength="120" placeholder="Nome cartella" disabled>
-                    <span class="export-color-control">
-                        <input name="folderColor" type="color" value="#ef4444" disabled>
-                        <input name="folderColorText" type="text" value="#ef4444" pattern="#[0-9a-fA-F]{6}" maxlength="7" disabled>
+                    <span class="export-color-label">Colore cartella</span>
+                    <span class="export-color-control" data-color-control>
+                        <input name="folderColorPicker" type="color" value="" disabled aria-label="Seleziona colore cartella">
+                        <input name="folderColor" type="text" value="" placeholder="Predefinito" pattern="#[0-9a-fA-F]{6}" maxlength="7" disabled aria-label="Codice colore cartella">
+                        <button class="export-color-copy" type="button" aria-label="Copia colore cartella" title="Copia colore cartella" hidden disabled>⧉</button>
+                        <button class="export-color-reset" type="button" aria-label="Ripristina colore predefinito" title="Cancella colore cartella" hidden disabled>×</button>
                     </span>
                 </span>
             </label>
             <label class="export-field export-color-field">
-                <span class="export-checkbox-label"><input name="useCardColor" type="checkbox"> Imposta colore della card</span>
-                <span class="export-color-control export-card-color-control" hidden>
-                    <input name="cardColor" type="color" value="#ef4444" disabled>
-                    <input name="cardColorText" type="text" value="#ef4444" pattern="#[0-9a-fA-F]{6}" maxlength="7" disabled>
+                <span class="export-checkbox-label">Colore card</span>
+                <span class="export-color-control" data-color-control>
+                    <input name="cardColorPicker" type="color" value="" aria-label="Seleziona colore card">
+                    <input name="cardColor" type="text" value="" placeholder="Predefinito" pattern="#[0-9a-fA-F]{6}" maxlength="7" aria-label="Codice colore card">
+                    <button class="export-color-copy" type="button" aria-label="Copia colore card" title="Copia colore card" hidden>⧉</button>
+                    <button class="export-color-reset" type="button" aria-label="Ripristina colore predefinito" title="Cancella colore card" hidden>×</button>
                 </span>
             </label>
             <label class="export-field">
@@ -666,14 +715,16 @@ function openExportDialog(items) {
     `;
     document.body.appendChild(backdrop);
     const form = backdrop.querySelector('form');
-    const colorPicker = form.querySelector('input[name="cardColor"]');
-    const colorText = form.querySelector('input[name="cardColorText"]');
-    const useCardColor = form.querySelector('input[name="useCardColor"]');
     const createFolder = form.querySelector('input[name="createFolder"]');
     const folderName = form.querySelector('input[name="folderName"]');
-    const folderColorPicker = form.querySelector('input[name="folderColor"]');
-    const folderColorText = form.querySelector('input[name="folderColorText"]');
+    const folderColorControl = form.querySelector('[data-color-control]');
+    const folderColorPicker = form.querySelector('input[name="folderColorPicker"]');
+    const folderColorText = form.querySelector('input[name="folderColor"]');
+    const cardColorControl = form.querySelectorAll('[data-color-control]')[1];
+    const cardColorText = form.querySelector('input[name="cardColor"]');
     const separateZips = form.querySelector('input[name="separateZips"]');
+    initializeExportColorControl(folderColorControl);
+    initializeExportColorControl(cardColorControl);
     createFolder.addEventListener('change', () => {
         if (createFolder.checked) {
             separateZips.checked = false;
@@ -684,6 +735,8 @@ function openExportDialog(items) {
         folderName.disabled = !createFolder.checked;
         folderColorPicker.disabled = !createFolder.checked;
         folderColorText.disabled = !createFolder.checked;
+        folderColorControl.querySelector('.export-color-copy').disabled = !createFolder.checked;
+        folderColorControl.querySelector('.export-color-reset').disabled = !createFolder.checked;
         form.querySelector('.export-folder-control').hidden = !createFolder.checked;
     });
     separateZips.addEventListener('change', () => {
@@ -693,23 +746,12 @@ function openExportDialog(items) {
             folderName.disabled = true;
             folderColorPicker.disabled = true;
             folderColorText.disabled = true;
+            folderColorControl.querySelector('.export-color-copy').disabled = true;
+            folderColorControl.querySelector('.export-color-reset').disabled = true;
             form.querySelector('.export-folder-control').hidden = true;
         } else {
             createFolder.disabled = false;
         }
-    });
-    useCardColor.addEventListener('change', () => {
-        colorPicker.disabled = !useCardColor.checked;
-        colorText.disabled = !useCardColor.checked;
-        form.querySelector('.export-card-color-control').hidden = !useCardColor.checked;
-    });
-    colorPicker.addEventListener('input', () => { colorText.value = colorPicker.value; });
-    colorText.addEventListener('input', () => {
-        if (/^#[0-9a-fA-F]{6}$/.test(colorText.value)) colorPicker.value = colorText.value;
-    });
-    folderColorPicker.addEventListener('input', () => { folderColorText.value = folderColorPicker.value; });
-    folderColorText.addEventListener('input', () => {
-        if (/^#[0-9a-fA-F]{6}$/.test(folderColorText.value)) folderColorPicker.value = folderColorText.value;
     });
     backdrop.querySelector('[data-export-cancel]').addEventListener('click', closeExportDialog);
     backdrop.querySelector('.export-dialog-close').addEventListener('click', closeExportDialog);
@@ -722,7 +764,7 @@ function openExportDialog(items) {
         const shouldCreateFolder = createFolder.checked;
         const folderNameValue = folderName.value.trim();
         const folderColor = shouldCreateFolder ? folderColorText.value.trim() : '';
-        const cardColor = useCardColor.checked ? colorText.value.trim() : '';
+        const cardColor = cardColorText.value.trim();
         const shouldCreateSeparateZips = separateZips.checked;
         if (shouldCreateFolder && shouldCreateSeparateZips) {
             error.textContent = 'La creazione della cartella e degli ZIP separati non possono essere usate insieme.';

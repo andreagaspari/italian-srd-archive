@@ -232,7 +232,7 @@ if ($createFolder && $folderName === '') {
     echo 'Nome cartella non valido.';
     exit;
 }
-if ($createFolder && !preg_match('/^#[0-9a-fA-F]{6}$/', $folderColor)) {
+if ($createFolder && $folderColor !== '' && !preg_match('/^#[0-9a-fA-F]{6}$/', $folderColor)) {
     http_response_code(400);
     header('Content-Type: text/plain; charset=UTF-8');
     echo 'Colore cartella non valido.';
@@ -258,7 +258,7 @@ if ($createFolder) {
         'folderId' => null,
         'tab' => count($tabs) === 1 ? $tabs[0] : 'session',
         'createdAt' => (int) floor(microtime(true) * 1000),
-        'cardColor' => strtolower($folderColor)
+        'cardColor' => $folderColor === '' ? null : strtolower($folderColor)
     ]);
 } else {
     $folderId = null;
