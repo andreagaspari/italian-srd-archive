@@ -624,10 +624,11 @@ function openExportDialog(items) {
     const firstTitle = items[0].title;
     const exportTypes = new Set(items.map((item) => item.type));
     const isSpellExport = exportTypes.size === 1 && items[0].type === 'armi';
+    const isNoteExport = exportTypes.size === 1 && items[0].type === 'session';
     const isMixedExport = exportTypes.size > 1;
-    const itemLabel = isMixedExport ? 'preferito' : (isSpellExport ? 'incantesimo' : 'oggetto');
-    const itemLabelPlural = isMixedExport ? 'preferiti' : (isSpellExport ? 'incantesimi' : 'oggetti');
-    const archiveName = isMixedExport ? 'preferiti.zip' : (isSpellExport ? 'incantesimi.zip' : 'oggetti.zip');
+    const itemLabel = isMixedExport ? 'preferito' : (isSpellExport ? 'incantesimo' : (isNoteExport ? 'appunto' : 'oggetto'));
+    const itemLabelPlural = isMixedExport ? 'preferiti' : (isSpellExport ? 'incantesimi' : (isNoteExport ? 'appunti' : 'oggetti'));
+    const archiveName = isMixedExport ? 'preferiti.zip' : (isSpellExport ? 'incantesimi.zip' : (isNoteExport ? 'appunti.zip' : 'oggetti.zip'));
     const backdrop = document.createElement('div');
     backdrop.className = 'export-dialog-backdrop';
     backdrop.innerHTML = `
@@ -707,7 +708,7 @@ function openExportDialog(items) {
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
-            link.download = `${itemCount === 1 ? firstTitle : (isSpellExport ? 'incantesimi' : 'oggetti')}.zip`;
+            link.download = `${itemCount === 1 ? firstTitle : (isSpellExport ? 'incantesimi' : (isNoteExport ? 'appunti' : 'oggetti'))}.zip`;
             link.click();
             URL.revokeObjectURL(url);
             closeExportDialog();

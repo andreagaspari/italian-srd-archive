@@ -27,7 +27,5 @@ unset($searchFormParameters['route'], $searchFormParameters['page'], $searchForm
             <option value="value-desc">Valore ↓</option>
         </select>
     </label>
-    <?php if (($route ?? '') !== 'regole'): ?>
-        <button class="export-visible-button" id="export-visible-button" type="button">⇩ Esporta risultati filtrati (<?= e((string) $pagination->totalItems) ?>)</button>
-    <?php endif; ?>
+    <button class="export-visible-button" id="export-visible-button" type="button">⇩ Esporta risultati filtrati (<?= e((string) $pagination->totalItems) ?>)</button>
 </form>

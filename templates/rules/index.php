@@ -71,7 +71,8 @@ $categoryLabels = [
 <?php foreach ($ruleColumns as $ruleColumn): ?>
         <div class="rules-column">
 <?php foreach ($ruleColumn as $rule): ?>
-        <article class="result-card rule-card" style="--rule-order: <?= (int) $rule['display_order'] ?>" data-rule-order="<?= (int) $rule['display_order'] ?>" data-favorite-dataset="rules" data-favorite-id="<?= e((string) $rule['id']) ?>" data-sort-name="<?= e((string) $rule['name']) ?>" data-sort-category="<?= e((string) ($rule['category'] ?? '')) ?>" data-search="<?= e(implode(' ', [(string) $rule['name'], (string) ($rule['category'] ?? ''), (string) $rule['content']])) ?>">
+<?php $exportData = buildRuleExportData($rule, $abbreviations); ?>
+        <article class="result-card rule-card" style="--rule-order: <?= (int) $rule['display_order'] ?>" data-rule-order="<?= (int) $rule['display_order'] ?>" data-favorite-dataset="rules" data-favorite-id="<?= e((string) $rule['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e((string) $rule['name']) ?>" data-sort-category="<?= e((string) ($rule['category'] ?? '')) ?>" data-search="<?= e(implode(' ', [(string) $rule['name'], (string) ($rule['category'] ?? ''), (string) $rule['content']])) ?>">
             <div class="rule-card-heading">
                 <h3><?= e((string) $rule['name']) ?></h3>
                 <?php if (($rule['category'] ?? '') !== ''): ?>
@@ -80,6 +81,7 @@ $categoryLabels = [
             </div>
             <div class="rule-content"><?= renderRuleContent($rule, $abbreviations) ?></div>
             <span class="rule-source">pag. <?= e((string) ($rule['source_page'] ?? '')) ?></span>
+            <button class="export-button" type="button">⇩ Esporta</button>
         </article>
 <?php endforeach; ?>
         </div>

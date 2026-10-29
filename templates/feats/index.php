@@ -44,7 +44,6 @@
             <p class="feat-prerequisite"><strong>Prerequisito:</strong> <?= e((string) $feat['prerequisite']) ?></p>
             <?php endif; ?>
             <div class="feat-description"><?= renderSpellContent($feat) ?></div>
-            <?php if (isset($feat['sourcePage'])): ?><p class="feat-source">Pagina <?= e((string) $feat['sourcePage']) ?></p><?php endif; ?>
             <button class="export-button" type="button">⇩ Esporta</button>
         </article>
 <?php endforeach; ?>

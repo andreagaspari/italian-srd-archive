@@ -54,7 +54,6 @@ CREATE TABLE IF NOT EXISTS feat_items (
     subcategory VARCHAR(64) NOT NULL,
     prerequisite VARCHAR(255) NULL,
     repeatable BOOLEAN NOT NULL,
-    source_page SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (catalog_item_id),
     KEY idx_feat_items_subcategory (subcategory),
     CONSTRAINT fk_feat_items_catalog

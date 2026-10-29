@@ -23,6 +23,7 @@ if ($allResults) {
     }
 
     $datasetStore = new JsonDatasetStore(new JsonFileImporter(), __DIR__ . '/data');
+    $rulesCatalog = new RulesCatalog($datasetStore);
     $catalog = new DataCatalog(
         store: $datasetStore,
         weaponProvider: new JsonWeaponProvider($datasetStore),
@@ -164,6 +165,15 @@ if ($allResults) {
                 search: (string) ($request['q'] ?? ''),
                 pageSize: null
             ))->items
+        ),
+        'regole' => array_map(
+            static fn (array $item): array => buildRuleExportData($item, $rulesCatalog->document()['abbreviations'] ?? []),
+            $rulesCatalog->getRules(
+                category: (string) ($request['categoria'] ?? ''),
+                search: (string) ($request['q'] ?? ''),
+                page: 1,
+                pageSize: 10000
+            )->items
         ),
         default => []
     };

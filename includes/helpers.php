@@ -217,24 +217,58 @@ function renderSpellHigherLevel(array $spell): string
  */
 function buildFeatExportData(array $feat): array
 {
+    $description = '<b>Categoria:</b> ' . (string) ($feat['subcategory'] ?? '') . '<br>';
+    if (($feat['prerequisite'] ?? null) !== null && $feat['prerequisite'] !== '') {
+        $description .= '<b>Prerequisito:</b> ' . (string) $feat['prerequisite'] . '<br>';
+    }
+    if (($feat['repeatable'] ?? false) === true) {
+        $description .= '<b>Ripetibile</b><br>';
+    }
+    $description .= '<br>' . (string) ($feat['description'] ?? '');
     return [
-        'type' => 'talenti',
+        'type' => 'session',
         'title' => (string) ($feat['name'] ?? ''),
-        'range' => '',
-        'rangeNumber' => null,
-        'duration' => '',
-        'damage' => null,
-        'concentration' => 'false',
         'image' => '',
-        'desc' => (string) ($feat['description'] ?? ''),
-        'category' => (string) ($feat['subcategory'] ?? ''),
-        'prerequisite' => $feat['prerequisite'] ?? null,
-        'repeatable' => (bool) ($feat['repeatable'] ?? false),
-        'sourcePage' => $feat['sourcePage'] ?? null,
+        'content' => '<p>' . $description . '</p>',
+        'date' => date('Y-m-d'),
         'folderId' => null,
-        'tab' => 'talenti',
+        'tab' => 'session',
         'id' => '',
-        'createdAt' => 0
+        'createdAt' => 0,
+        'cardColor' => null
+    ];
+}
+
+/**
+ * Builds the Make a Master note export payload for a rule.
+ *
+ * @param array<string, mixed> $rule Rule data.
+ * @param array<int, array{abbreviation: string, meaning: string}> $abbreviations Glossary abbreviations.
+ *
+ * @return array<string, mixed> Export payload accepted by Make a Master.
+ */
+function buildRuleExportData(array $rule, array $abbreviations): array
+{
+    $content = '';
+    if (($rule['category'] ?? '') !== '') {
+        $content .= '<p><b>Categoria: </b>' . e((string) $rule['category']) . '</p>';
+    }
+    $content .= renderRuleContent($rule, $abbreviations);
+    if (isset($rule['source_page'])) {
+        $content .= '<p><i>Pagina SRD: ' . e((string) $rule['source_page']) . '</i></p>';
+    }
+
+    return [
+        'type' => 'session',
+        'title' => (string) ($rule['name'] ?? ''),
+        'content' => $content,
+        'date' => date('Y-m-d'),
+        'folderId' => null,
+        'tab' => 'session',
+        'id' => '',
+        'createdAt' => 0,
+        'cardColor' => null,
+        'image' => ''
     ];
 }
 

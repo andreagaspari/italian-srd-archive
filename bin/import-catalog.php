@@ -236,12 +236,12 @@ try {
         ),
         'feats' => $database->prepare(
             'INSERT INTO feat_items
-                (catalog_item_id, subcategory, prerequisite, repeatable, source_page)
+            (catalog_item_id, subcategory, prerequisite, repeatable)
              VALUES
-                (:catalog_item_id, :subcategory, :prerequisite, :repeatable, :source_page)
+            (:catalog_item_id, :subcategory, :prerequisite, :repeatable)
              ON DUPLICATE KEY UPDATE
                 subcategory = VALUES(subcategory), prerequisite = VALUES(prerequisite),
-                repeatable = VALUES(repeatable), source_page = VALUES(source_page)'
+            repeatable = VALUES(repeatable)'
         ),
     ];
     $deleteSpellClasses = $database->prepare(
@@ -347,7 +347,6 @@ try {
                         'subcategory' => catalogString($item, 'subcategory', $dataset),
                         'prerequisite' => catalogNullableString($item, 'prerequisite', $dataset),
                         'repeatable' => (int) catalogBoolean($item, 'repeatable', $dataset),
-                        'source_page' => (int) catalogString($item, 'sourcePage', $dataset),
                     ],
                 };
                 $specializedStatements[$dataset]->execute($parameters);
