@@ -13,9 +13,11 @@ $categoryLabels = [
 ?>
 <section class="results-view rules-view">
     <div class="breadcrumb">
-        <a href="<?= e(appUrl()) ?>">Archivio</a>
+        <a href="<?= e(appUrl('regole')) ?>">Regole</a>
         <span>/</span>
-        <strong>Glossario delle regole</strong>
+        <strong><?= e($selectedRuleCategory !== ''
+            ? ($categoryLabels[$selectedRuleCategory] ?? ucfirst($selectedRuleCategory))
+            : 'Tutte le regole') ?></strong>
     </div>
 
     <div class="section-heading">

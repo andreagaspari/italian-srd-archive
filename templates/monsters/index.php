@@ -1,5 +1,9 @@
 <section class="results-view monster-list-view">
-    <div class="breadcrumb"><strong>Mostri</strong></div>
+    <div class="breadcrumb">
+        <a href="<?= e(appUrl('mostri')) ?>">Mostri</a>
+        <span>/</span>
+        <strong><?= e($selectedMonsterType !== '' ? $monsterTypes[$selectedMonsterType] : 'Tutte le specie') ?></strong>
+    </div>
     <div class="section-heading"><div><h1><?= e($pageTitle) ?></h1></div></div>
     <?php require __DIR__ . '/../objects/search.php'; ?>
 

@@ -2,11 +2,10 @@
     <div class="breadcrumb">
         <a href="<?= e(appUrl('talenti')) ?>">Talenti</a>
         <span>/</span>
-        <strong><?= e($pageTitle) ?></strong>
+        <strong><?= e($selectedFeatSubcategory !== '' ? $selectedFeatSubcategory : 'Tutti i talenti') ?></strong>
     </div>
     <div class="section-heading">
         <div>
-            <p class="eyebrow">Personaggio</p>
             <h1><?= e($pageTitle) ?></h1>
         </div>
     </div>
