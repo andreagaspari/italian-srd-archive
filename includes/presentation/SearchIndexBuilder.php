@@ -143,6 +143,7 @@ final class SearchIndexBuilder
             'Incantesimi' => 'Incantesimo',
             'Mostri' => 'Mostro',
             'Regole' => 'Regola',
+            'Talenti' => 'Talento',
             default => 'Categoria'
         };
     }

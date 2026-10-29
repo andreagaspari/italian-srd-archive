@@ -926,6 +926,7 @@ function globalSearchTypeIcon(type) {
         Incantesimo: '✨',
         Mostro: '👹',
         Regola: '📖',
+        Talento: '🏅',
         Categoria: '📚'
     };
     const label = type || 'Risultato';
