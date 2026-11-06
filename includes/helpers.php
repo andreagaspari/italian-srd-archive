@@ -8,6 +8,82 @@ function e(string $value): string
 }
 
 /**
+ * Builds links for glossary and spell names.
+ *
+ * @param array<string, mixed> $rulesDocument Rules glossary document.
+ * @param array<string, mixed> $spellsData Spells dataset.
+ *
+ * @return array<string, string> Term labels mapped to internal URLs.
+ */
+function buildInternalLinkTargets(array $rulesDocument, array $spellsData): array
+{
+    $targets = [];
+    foreach (($rulesDocument['items'] ?? []) as $rule) {
+        if (!is_array($rule) || !is_string($rule['name'] ?? null) || trim($rule['name']) === '') {
+            continue;
+        }
+        $name = trim($rule['name']);
+        $targets[$name] = appUrl('regole?' . http_build_query(['q' => $name]));
+    }
+    foreach (($spellsData['items'] ?? []) as $spell) {
+        if (!is_array($spell) || !is_string($spell['name'] ?? null) || trim($spell['name']) === '') {
+            continue;
+        }
+        $name = trim($spell['name']);
+        $targets[$name] ??= appUrl('incantesimi?' . http_build_query(['q' => $name]));
+    }
+
+    return $targets;
+}
+
+/**
+ * Adds internal links to escaped HTML text without changing tag attributes.
+ *
+ * @param string $html Escaped HTML content.
+ * @param array<string, string> $targets Term labels mapped to internal URLs.
+ *
+ * @return string HTML with internal links.
+ */
+function linkifyInternalTerms(string $html, array $targets): string
+{
+    if ($targets === []) {
+        return $html;
+    }
+    uksort($targets, static fn (string $left, string $right): int => mb_strlen($right, 'UTF-8') <=> mb_strlen($left, 'UTF-8'));
+    $pattern = '/(?<![\p{L}\p{N}])(' . implode('|', array_map(
+        static fn (string $term): string => preg_quote(e($term), '/'),
+        array_keys($targets)
+    )) . ')(?![\p{L}\p{N}])/iu';
+
+    return preg_replace_callback(
+        '/(<[^>]+>)|([^<]+)/u',
+        static function (array $segment) use ($pattern, $targets): string {
+            if (($segment[1] ?? '') !== '') {
+                return $segment[1];
+            }
+            return preg_replace_callback(
+                $pattern,
+                static function (array $match) use ($targets): string {
+                    $term = html_entity_decode($match[1], ENT_QUOTES, 'UTF-8');
+                    $url = null;
+                    foreach ($targets as $target => $targetUrl) {
+                        if (mb_strtolower($target, 'UTF-8') === mb_strtolower($term, 'UTF-8')) {
+                            $url = $targetUrl;
+                            break;
+                        }
+                    }
+                    return $url === null
+                        ? $match[1]
+                        : '<a class="internal-term-link" href="' . e($url) . '">' . $match[1] . '</a>';
+                },
+                $segment[2] ?? ''
+            ) ?? ($segment[2] ?? '');
+        },
+        $html
+    ) ?? $html;
+}
+
+/**
  * Marks glossary abbreviations with accessible browser tooltips.
  *
  * @param string $content Rule text to render.
@@ -52,14 +128,18 @@ function ruleContentWithAbbreviations(string $content, array $abbreviations): st
  *
  * @param array<string, mixed> $rule Rule data with optional structured blocks.
  * @param array<int, array{abbreviation: string, meaning: string}> $abbreviations Glossary abbreviations.
+ * @param array<string, string> $internalLinks Navigable internal terms.
  *
  * @return string Safe HTML for paragraphs and tables.
  */
-function renderRuleContent(array $rule, array $abbreviations): string
+function renderRuleContent(array $rule, array $abbreviations, array $internalLinks = []): string
 {
     $blocks = $rule['blocks'] ?? null;
     if (!is_array($blocks)) {
-        return '<p>' . ruleContentWithAbbreviations((string) ($rule['content'] ?? ''), $abbreviations) . '</p>';
+        return '<p>' . linkifyInternalTerms(
+            ruleContentWithAbbreviations((string) ($rule['content'] ?? ''), $abbreviations),
+            $internalLinks
+        ) . '</p>';
     }
 
     $html = '';
@@ -109,24 +189,32 @@ function renderRuleContent(array $rule, array $abbreviations): string
         $html .= '</tbody></table></div>';
     }
 
-    return $html !== '' ? $html : '<p>' . ruleContentWithAbbreviations((string) ($rule['content'] ?? ''), $abbreviations) . '</p>';
+    $rendered = $html !== ''
+        ? $html
+        : '<p>' . ruleContentWithAbbreviations((string) ($rule['content'] ?? ''), $abbreviations) . '</p>';
+
+    return linkifyInternalTerms($rendered, $internalLinks);
 }
 
 /**
  * Renders an optional structured spell description.
  *
  * @param array<string, mixed> $spell Spell data with an optional blocks collection.
+ * @param array<string, string> $internalLinks Navigable internal terms.
  *
  * @return string Safe HTML for the spell description.
  */
-function renderSpellContent(array $spell): string
+function renderSpellContent(array $spell, array $internalLinks = []): string
 {
     $blocks = $spell['blocks'] ?? null;
     if (!is_array($blocks)) {
-        return '<p>' . e((string) ($spell['description'] ?? '')) . '</p>';
+        return '<p>' . linkifyInternalTerms(e((string) ($spell['description'] ?? '')), $internalLinks) . '</p>';
     }
 
-    return renderSpellBlocks($blocks, (string) ($spell['description'] ?? ''));
+    return linkifyInternalTerms(
+        renderSpellBlocks($blocks, (string) ($spell['description'] ?? '')),
+        $internalLinks
+    );
 }
 
 /**
@@ -195,17 +283,21 @@ function renderSpellBlocks(array $blocks, string $fallback): string
  * Renders the optional structured content shown when a spell uses a higher-level slot.
  *
  * @param array<string, mixed> $spell Spell data with an optional higher_level_blocks collection.
+ * @param array<string, string> $internalLinks Navigable internal terms.
  *
  * @return string Safe HTML for the higher-level effect.
  */
-function renderSpellHigherLevel(array $spell): string
+function renderSpellHigherLevel(array $spell, array $internalLinks = []): string
 {
     $blocks = $spell['higher_level_blocks'] ?? null;
     if (!is_array($blocks)) {
-        return e((string) ($spell['higher_level'] ?? ''));
+        return linkifyInternalTerms(e((string) ($spell['higher_level'] ?? '')), $internalLinks);
     }
 
-    return renderSpellBlocks($blocks, (string) ($spell['higher_level'] ?? ''));
+    return linkifyInternalTerms(
+        renderSpellBlocks($blocks, (string) ($spell['higher_level'] ?? '')),
+        $internalLinks
+    );
 }
 
 /**

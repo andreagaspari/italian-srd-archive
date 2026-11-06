@@ -100,9 +100,9 @@ if ($selectedSchool !== '') {
 <?php endif; ?>
                 <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🧩</span><div><span class="weapon-label">Componenti</span><span class="weapon-value"><?= e($spell['components']) ?></span></div></div>
             </div>
-            <div class="spell-description"><?= renderSpellContent($spell) ?></div>
+            <div class="spell-description"><?= renderSpellContent($spell, $internalLinkTargets) ?></div>
 <?php if ($spell['higher_level'] !== ''): ?>
-            <div class="spell-higher"><strong>A slot superiore:</strong> <?= renderSpellHigherLevel($spell) ?></div>
+            <div class="spell-higher"><strong>A slot superiore:</strong> <?= renderSpellHigherLevel($spell, $internalLinkTargets) ?></div>
 <?php endif; ?>
             <button class="export-button" type="button">⇩ Esporta</button>
         </article>

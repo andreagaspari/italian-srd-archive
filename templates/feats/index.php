@@ -42,7 +42,7 @@
             <?php if (($feat['prerequisite'] ?? null) !== null && $feat['prerequisite'] !== ''): ?>
             <p class="feat-prerequisite"><strong>Prerequisito:</strong> <?= e((string) $feat['prerequisite']) ?></p>
             <?php endif; ?>
-            <div class="feat-description"><?= renderSpellContent($feat) ?></div>
+            <div class="feat-description"><?= renderSpellContent($feat, $internalLinkTargets) ?></div>
             <button class="export-button" type="button">⇩ Esporta</button>
         </article>
 <?php endforeach; ?>

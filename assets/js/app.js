@@ -816,7 +816,65 @@ function openExportDialog(items) {
     });
 }
 
+/**
+ * Opens a result card in a modal without leaving the current page.
+ *
+ * @param {string} url Destination URL used to load the result card.
+ * @returns {Promise<void>} Resolves after the modal is opened or navigation fallback starts.
+ */
+async function openInternalTermModal(url) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'internal-term-modal-backdrop';
+    backdrop.innerHTML = `
+        <section class="internal-term-modal" role="dialog" aria-modal="true" aria-label="Dettaglio elemento">
+            <button class="internal-term-modal-close" type="button" aria-label="Chiudi">×</button>
+            <p class="internal-term-modal-status">Caricamento...</p>
+        </section>
+    `;
+    document.body.appendChild(backdrop);
+    const modal = backdrop.querySelector('.internal-term-modal');
+    const closeButton = backdrop.querySelector('.internal-term-modal-close');
+    const onKeydown = (event) => {
+        if (event.key === 'Escape') close();
+    };
+    const close = () => {
+        document.removeEventListener('keydown', onKeydown);
+        backdrop.remove();
+    };
+    closeButton.addEventListener('click', close);
+    backdrop.addEventListener('click', (event) => {
+        if (event.target === backdrop) close();
+    });
+    document.addEventListener('keydown', onKeydown, { once: true });
+
+    try {
+        const response = await fetch(url, { headers: { Accept: 'text/html' } });
+        if (!response.ok) throw new Error('Impossibile caricare il dettaglio.');
+        const documentHtml = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const searchTerm = new URL(url, window.location.href).searchParams.get('q')?.trim() ?? '';
+        const cards = [...documentHtml.querySelectorAll('.result-card')];
+        const card = cards.find((candidate) => (
+            candidate.querySelector('h3')?.textContent.trim().toLocaleLowerCase('it')
+            === searchTerm.toLocaleLowerCase('it')
+        )) || (cards.length === 1 ? cards[0] : null);
+        if (!card) throw new Error('Scheda non trovata.');
+        modal.querySelector('.internal-term-modal-status')?.remove();
+        modal.appendChild(document.importNode(card, true));
+        enhanceFavoriteCard(modal.querySelector('.result-card'));
+    } catch (error) {
+        close();
+        window.location.href = url;
+    }
+}
+
 document.addEventListener('click', (event) => {
+    const internalLink = event.target.closest('.internal-term-link');
+    if (internalLink) {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        openInternalTermModal(internalLink.href);
+        return;
+    }
     const button = event.target.closest('.export-button');
     if (button) {
         const item = JSON.parse(button.closest('[data-export]').dataset.export);

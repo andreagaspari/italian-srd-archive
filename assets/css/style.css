@@ -387,6 +387,14 @@ kbd { padding: 2px 7px; color: var(--subtle); border: 1px solid var(--line); bor
 .spell-details { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0 0 15px; padding: 11px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .spell-details .weapon-value { overflow-wrap: anywhere; }
 .spell-description { color: var(--muted); font-size: 12px; line-height: 1.55; white-space: pre-line; }
+.internal-term-link { color: var(--accent); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
+.internal-term-link:hover, .internal-term-link:focus-visible { color: var(--ink); text-decoration-style: solid; }
+.internal-term-modal-backdrop { position: fixed; z-index: 45; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(47, 37, 31, .34); }
+.internal-term-modal { position: relative; width: min(100%, 560px); max-height: min(90vh, 760px); padding: 20px; overflow: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); box-shadow: 0 18px 45px rgba(47, 37, 31, .2); }
+.internal-term-modal .result-card { min-height: 0; border: 0; box-shadow: none; transform: none; }
+.internal-term-modal-close { position: absolute; z-index: 1; top: 10px; right: 12px; padding: 2px 6px; color: var(--muted); border: 0; background: transparent; font-size: 24px; cursor: pointer; }
+.internal-term-modal-close:hover { color: var(--ink); }
+.internal-term-modal-status { margin: 20px 0; color: var(--muted); text-align: center; }
 .spell-higher { margin-top: 14px; padding: 9px 10px; color: var(--muted); border-left: 3px solid #d7b5ab; background: var(--accent-soft); font-size: 11px; line-height: 1.45; }
 .spell-higher strong { color: var(--ink); }
 .spell-higher p { margin: 8px 0 0; }

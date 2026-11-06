@@ -53,6 +53,10 @@ $monsterCount = $summary->count('monsters');
 $featCount = $summary->count('feats');
 $objectCount = $summary->count('objects');
 $rulesCount = count($rulesCatalog->document()['items'] ?? []);
+$internalLinkTargets = buildInternalLinkTargets(
+    $rulesCatalog->document(),
+    $datasetStore->get('spells')
+);
 $spellCategories = $summary->categories('spells');
 $spellClassCategories = $summary->categories('spell-classes');
 $monsterCategories = $summary->categories('monsters');

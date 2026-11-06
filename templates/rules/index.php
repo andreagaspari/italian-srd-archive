@@ -81,7 +81,7 @@ $categoryLabels = [
                     <a class="rule-category" href="<?= e(appUrl('regole?' . http_build_query(['categoria' => $rule['category']]))) ?>"><?= e($categoryLabels[$rule['category']] ?? ucfirst((string) $rule['category'])) ?></a>
                 <?php endif; ?>
             </div>
-            <div class="rule-content"><?= renderRuleContent($rule, $abbreviations) ?></div>
+            <div class="rule-content"><?= renderRuleContent($rule, $abbreviations, $internalLinkTargets) ?></div>
             <span class="rule-source">pag. <?= e((string) ($rule['source_page'] ?? '')) ?></span>
             <button class="export-button" type="button">⇩ Esporta</button>
         </article>
