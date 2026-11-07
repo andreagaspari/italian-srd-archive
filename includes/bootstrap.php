@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Current application version displayed in the frontend.
  */
-const APP_VERSION = '0.15.01';
+const APP_VERSION = '0.15.02';
 
 require __DIR__ . '/helpers.php';
 require __DIR__ . '/data-loader.php';
