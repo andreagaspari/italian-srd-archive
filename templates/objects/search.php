@@ -27,5 +27,5 @@ unset($searchFormParameters['route'], $searchFormParameters['page'], $searchForm
             <option value="value-desc">Valore ↓</option>
         </select>
     </label>
-    <button class="export-visible-button btn btn-sm btn-outline-primary col-12 col-sm-auto" id="export-visible-button" type="button">⇩ Esporta risultati filtrati (<?= e((string) $pagination->totalItems) ?>)</button>
+    <button class="export-visible-button btn btn-outline-primary col-12 col-sm-auto" id="export-visible-button" type="button">⇩ Esporta risultati filtrati (<?= e((string) $pagination->totalItems) ?>)</button>
 </form>

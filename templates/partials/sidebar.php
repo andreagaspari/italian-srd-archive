@@ -79,6 +79,6 @@
     </div>
 
     <div class="sidebar-section sidebar-bottom">
-        <button class="sidebar-link sidebar-link-button" type="button" data-source-dialog data-bs-toggle="modal" data-bs-target="#source-dialog">Fonti e Licenza</button>
+        <button class="source-dialog-trigger btn btn-outline-secondary btn-sm w-100" type="button" data-source-dialog data-bs-toggle="modal" data-bs-target="#source-dialog">Fonti e Licenza</button>
     </div>
 </aside>

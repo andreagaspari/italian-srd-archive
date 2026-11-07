@@ -61,6 +61,11 @@ $categoryLabels = [
 <?php endforeach; ?>
     </nav>
 
+    <div class="description-expansion-control form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="expand-all-descriptions">
+        <label class="form-check-label" for="expand-all-descriptions">Espandi tutte le descrizioni</label>
+    </div>
+
 <?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
     <?php
     $ruleColumns = [[], []];
@@ -69,19 +74,19 @@ $categoryLabels = [
         $ruleColumns[$ruleIndex % 2][] = $rule;
     }
     ?>
-    <div class="rules-list row row-cols-1 row-cols-md-2 g-3">
+    <div class="rules-list row row-cols-1 row-cols-md-2 g-4 align-items-start">
 <?php foreach ($ruleColumns as $ruleColumn): ?>
         <div class="rules-column col d-flex flex-column gap-3">
 <?php foreach ($ruleColumn as $rule): ?>
 <?php $exportData = buildRuleExportData($rule, $abbreviations); ?>
         <article class="result-card rule-card card h-100 position-relative" style="--rule-order: <?= (int) $rule['display_order'] ?>" data-rule-order="<?= (int) $rule['display_order'] ?>" data-favorite-dataset="rules" data-favorite-id="<?= e((string) $rule['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e((string) $rule['name']) ?>" data-sort-category="<?= e((string) ($rule['category'] ?? '')) ?>" data-search="<?= e(implode(' ', [(string) $rule['name'], (string) ($rule['category'] ?? ''), (string) $rule['content']])) ?>">
-            <div class="card-body">
-            <div class="rule-card-heading d-flex align-items-start justify-content-between gap-3 bg-body-tertiary border-bottom px-3 py-2 mx-n3 mt-n3 mb-3">
+            <div class="card-header d-flex align-items-start justify-content-between gap-3">
                 <h3><?= e((string) $rule['name']) ?></h3>
                 <?php if (($rule['category'] ?? '') !== ''): ?>
                     <a class="rule-category" href="<?= e(appUrl('regole?' . http_build_query(['categoria' => $rule['category']]))) ?>"><?= e($categoryLabels[$rule['category']] ?? ucfirst((string) $rule['category'])) ?></a>
                 <?php endif; ?>
             </div>
+            <div class="card-body">
             <div class="rule-content"><?= renderRuleContent($rule, $abbreviations) ?></div>
             <span class="rule-source">pag. <?= e((string) ($rule['source_page'] ?? '')) ?></span>
             </div>

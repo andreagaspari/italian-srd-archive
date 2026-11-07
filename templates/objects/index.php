@@ -1,5 +1,5 @@
-<section class="home-view container-fluid px-0">
-    <div class="hero">
+<section class="object-index-view container-fluid px-0">
+    <div class="section-heading mb-4">
         <div>
             <h1>Oggetti</h1>
             <p class="hero-copy">Scegli una categoria per consultare gli elementi dell’equipaggiamento.</p>

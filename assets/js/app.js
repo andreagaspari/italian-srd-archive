@@ -15,6 +15,24 @@ let resultContainers = resultsGrid?.classList.contains('monster-species-groups')
 let originalCardOrders = resultContainers.map((container) => [...container.querySelectorAll('.result-card')]);
 
 /**
+ * Returns the Bootstrap grid item containing a result card.
+ *
+ * @param {HTMLElement} card Result card element.
+ * @param {HTMLElement} [container] Results container used to repair an unwrapped card.
+ * @returns {HTMLElement} Grid item to move when reordering results.
+ */
+function resultGridItem(card, container = null) {
+    if (card.parentElement?.classList.contains('col')) return card.parentElement;
+
+    const wrapper = container?.querySelector(':scope > .col:not(:has(.result-card))')
+        || document.createElement('div');
+    wrapper.classList.add('col');
+    wrapper.append(card);
+    if (!wrapper.parentElement) container?.append(wrapper);
+    return wrapper;
+}
+
+/**
  * Stores browser-local favorite references and keeps their format versioned for future migrations.
  */
 class LocalStorageFavoriteStore {
@@ -149,7 +167,7 @@ function enhanceFavoriteCard(card) {
     if (!dataset || !id || card.querySelector('.favorite-button')) return;
 
     const button = document.createElement('button');
-    button.className = 'favorite-button btn btn-sm btn-outline-primary rounded-circle p-0';
+    button.className = 'favorite-button btn btn-outline-primary rounded-circle d-inline-flex align-items-center justify-content-center p-0';
     button.type = 'button';
     button.addEventListener('click', () => {
         if (favoriteStore.has(dataset, id)) {
@@ -183,6 +201,60 @@ function updateFavoriteButton(button, dataset, id) {
     button.setAttribute('aria-pressed', String(isFavorite));
     button.setAttribute('aria-label', isFavorite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti');
     button.title = isFavorite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti';
+}
+
+/**
+ * Sets the expanded state of a long description and synchronizes its control.
+ *
+ * @param {HTMLElement} description Description content element.
+ * @param {boolean} expanded Whether the full content should be visible.
+ * @returns {void}
+ */
+function setDescriptionExpanded(description, expanded) {
+    description.classList.toggle('is-collapsed', !expanded);
+    const control = description.nextElementSibling;
+    const button = control?.querySelector('.description-toggle');
+    if (!(button instanceof HTMLButtonElement)) return;
+    button.textContent = expanded ? 'Mostra meno' : 'Leggi tutto';
+    button.setAttribute('aria-expanded', String(expanded));
+}
+
+/**
+ * Adds read-more controls to long spell and rule descriptions.
+ *
+ * @returns {void}
+ */
+function initializeExpandableDescriptions() {
+    const expandAll = document.querySelector('#expand-all-descriptions');
+    const expanded = expandAll instanceof HTMLInputElement && expandAll.checked;
+
+    document.querySelectorAll('.spell-description, .feat-description, .rule-content').forEach((description) => {
+        if (!(description instanceof HTMLElement) || description.dataset.expandableInitialized === 'true') return;
+        if (description.textContent.trim().length < 320) return;
+
+        description.dataset.expandableInitialized = 'true';
+        description.classList.add('expandable-description');
+        const control = document.createElement('div');
+        control.className = 'description-toggle-control';
+        const button = document.createElement('button');
+        button.className = 'description-toggle btn btn-sm';
+        button.type = 'button';
+        button.addEventListener('click', () => {
+            setDescriptionExpanded(description, description.classList.contains('is-collapsed'));
+        });
+        control.append(button);
+        description.after(control);
+        setDescriptionExpanded(description, expanded);
+    });
+
+    if (expandAll instanceof HTMLInputElement && expandAll.dataset.listenerAttached !== 'true') {
+        expandAll.dataset.listenerAttached = 'true';
+        expandAll.addEventListener('change', () => {
+            document.querySelectorAll('.expandable-description').forEach((description) => {
+                setDescriptionExpanded(description, expandAll.checked);
+            });
+        });
+    }
 }
 
 /**
@@ -363,6 +435,7 @@ function refreshSectionResultReferences() {
         : (resultsGrid ? [resultsGrid] : []);
     originalCardOrders = resultContainers.map((container) => [...container.querySelectorAll('.result-card')]);
     resultCards.forEach(enhanceFavoriteCard);
+    initializeExpandableDescriptions();
 }
 
 /**
@@ -395,7 +468,7 @@ function prioritizeFocusedResult() {
             columns[index % columns.length]?.append(card);
         });
     } else {
-        focusedCard.parentElement?.prepend(focusedCard);
+        focusedCard.parentElement?.prepend(resultGridItem(focusedCard));
     }
     focusedCard.classList.add('is-focused-result');
 }
@@ -564,7 +637,7 @@ function sortResults() {
     if (!resultsGrid) return;
     if (sortSelect.value === 'default') {
         resultContainers.forEach((container, index) => {
-            originalCardOrders[index].forEach((card) => container.appendChild(card));
+        originalCardOrders[index].forEach((card) => container.appendChild(resultGridItem(card, container)));
         });
         return;
     }
@@ -574,7 +647,7 @@ function sortResults() {
         resultContainers.forEach((container) => {
             const cards = [...container.querySelectorAll('.result-card')];
             cards.sort((left, right) => sectionResultRelevanceScore(right, query) - sectionResultRelevanceScore(left, query));
-            cards.forEach((card) => container.appendChild(card));
+            cards.forEach((card) => container.appendChild(resultGridItem(card, container)));
         });
         return;
     }
@@ -593,7 +666,7 @@ function sortResults() {
             const comparison = typeof aValue === 'string' ? aValue.localeCompare(bValue, 'it') : aValue - bValue;
             return direction === 'desc' ? -comparison : comparison;
         });
-        cards.forEach((card) => container.appendChild(card));
+        cards.forEach((card) => container.appendChild(resultGridItem(card, container)));
     });
 }
 
@@ -613,6 +686,7 @@ if (sortSelect) {
     sortResults();
 }
 prioritizeFocusedResult();
+initializeExpandableDescriptions();
 spellFilterSelects.forEach((select) => {
     select.addEventListener('change', () => select.form?.submit());
 });
@@ -679,44 +753,54 @@ function openExportDialog(items) {
     const itemLabelPlural = isMixedExport ? 'preferiti' : (isSpellExport ? 'incantesimi' : (isNoteExport ? 'appunti' : 'oggetti'));
     const archiveName = isMixedExport ? 'preferiti.zip' : (isSpellExport ? 'incantesimi.zip' : (isNoteExport ? 'appunti.zip' : 'oggetti.zip'));
     const backdrop = document.createElement('div');
-    backdrop.className = 'export-dialog-backdrop';
+    backdrop.className = 'export-dialog-backdrop modal fade show d-block';
+    backdrop.setAttribute('role', 'dialog');
+    backdrop.setAttribute('aria-modal', 'true');
     backdrop.innerHTML = `
-        <form class="export-dialog" method="dialog">
-            <button class="export-dialog-close" type="button" aria-label="Chiudi">×</button>
-            <p class="eyebrow">Esportazione ${itemLabel}</p>
-            <h2>Esporta ${itemCount === 1 ? escapeHtml(firstTitle) : `${itemCount} ${itemLabelPlural}`}</h2>
-            <p class="export-dialog-copy">I campi seguenti sono facoltativi. Il file verrà creato come <strong>${itemCount === 1 ? `${escapeHtml(firstTitle)}.zip` : archiveName}</strong>.</p>
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <form class="export-dialog modal-content" method="dialog">
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow mb-1">Esportazione ${itemLabel}</p>
+                    <h2 class="modal-title fs-5">Esporta ${itemCount === 1 ? escapeHtml(firstTitle) : `${itemCount} ${itemLabelPlural}`}</h2>
+                </div>
+                <button class="export-dialog-close btn-close" type="button" aria-label="Chiudi"></button>
+            </div>
+            <div class="modal-body">
+            <p class="text-body-secondary">I campi seguenti sono facoltativi. Il file verrà creato come <strong>${itemCount === 1 ? `${escapeHtml(firstTitle)}.zip` : archiveName}</strong>.</p>
             <label class="export-field export-folder-field">
-                <span class="export-checkbox-label"><input name="createFolder" type="checkbox"> Crea una cartella per ${itemCount === 1 ? 'l’elemento' : 'gli elementi selezionati'}</span>
-                <span class="export-folder-control" hidden>
-                    <input name="folderName" type="text" maxlength="120" placeholder="Nome cartella" disabled>
+                <span class="export-checkbox-label form-check-label"><input class="form-check-input me-2" name="createFolder" type="checkbox"> Crea una cartella per ${itemCount === 1 ? 'l’elemento' : 'gli elementi selezionati'}</span>
+                <span class="export-folder-control mt-2" hidden>
+                    <input class="form-control mb-2" name="folderName" type="text" maxlength="120" placeholder="Nome cartella" disabled>
                     <span class="export-color-label">Colore cartella</span>
-                    <span class="export-color-control" data-color-control>
-                        <input name="folderColorPicker" type="color" value="" disabled aria-label="Seleziona colore cartella">
-                        <input name="folderColor" type="text" value="" placeholder="Predefinito" pattern="#[0-9a-fA-F]{6}" maxlength="7" disabled aria-label="Codice colore cartella">
+                    <span class="export-color-control d-flex align-items-center gap-2" data-color-control>
+                        <input class="form-control form-control-color" name="folderColorPicker" type="color" value="" disabled aria-label="Seleziona colore cartella">
+                        <input class="form-control" name="folderColor" type="text" value="" placeholder="Predefinito" pattern="#[0-9a-fA-F]{6}" maxlength="7" disabled aria-label="Codice colore cartella">
                         <button class="export-color-copy" type="button" aria-label="Copia colore cartella" title="Copia colore cartella" hidden disabled>⧉</button>
                         <button class="export-color-reset" type="button" aria-label="Ripristina colore predefinito" title="Cancella colore cartella" hidden disabled>×</button>
                     </span>
                 </span>
             </label>
             <label class="export-field export-color-field">
-                <span class="export-checkbox-label">Colore card</span>
-                <span class="export-color-control" data-color-control>
-                    <input name="cardColorPicker" type="color" value="" aria-label="Seleziona colore card">
-                    <input name="cardColor" type="text" value="" placeholder="Predefinito" pattern="#[0-9a-fA-F]{6}" maxlength="7" aria-label="Codice colore card">
+                <span class="export-checkbox-label form-label">Colore card</span>
+                <span class="export-color-control d-flex align-items-center gap-2" data-color-control>
+                    <input class="form-control form-control-color" name="cardColorPicker" type="color" value="" aria-label="Seleziona colore card">
+                    <input class="form-control" name="cardColor" type="text" value="" placeholder="Predefinito" pattern="#[0-9a-fA-F]{6}" maxlength="7" aria-label="Codice colore card">
                     <button class="export-color-copy" type="button" aria-label="Copia colore card" title="Copia colore card" hidden>⧉</button>
                     <button class="export-color-reset" type="button" aria-label="Ripristina colore predefinito" title="Cancella colore card" hidden>×</button>
                 </span>
             </label>
             <label class="export-field">
-                <span class="export-checkbox-label"><input name="separateZips" type="checkbox" ${itemCount > 1 ? '' : 'disabled'}> Crea uno ZIP separato per ogni elemento</span>
+                <span class="export-checkbox-label form-check-label"><input class="form-check-input me-2" name="separateZips" type="checkbox" ${itemCount > 1 ? '' : 'disabled'}> Crea uno ZIP separato per ogni elemento</span>
             </label>
-            <div class="export-dialog-actions">
+            </div>
+            <div class="modal-footer">
                 <button class="btn btn-outline-secondary" type="button" data-export-cancel>Annulla</button>
                 <button class="btn btn-primary" type="submit">Scarica ZIP</button>
             </div>
             <p class="export-error" role="alert" hidden></p>
         </form>
+        </div>
     `;
     document.body.appendChild(backdrop);
     const form = backdrop.querySelector('form');
@@ -1003,6 +1087,7 @@ const backToTop = document.querySelector('.back-to-top');
  */
 function setTheme(theme) {
     document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.bsTheme = theme;
     window.localStorage.setItem('isa:theme', theme);
     if (!themeToggle) return;
     const isDark = theme === 'dark';

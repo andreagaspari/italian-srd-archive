@@ -1,4 +1,4 @@
-<header class="topbar navbar bg-body-tertiary d-flex align-items-center justify-content-between">
+<header class="topbar navbar bg-body-tertiary px-3 px-sm-4 d-flex align-items-center justify-content-between">
     <a class="brand d-flex align-items-center gap-2 text-reset text-decoration-none" href="<?= e(appUrl()) ?>" aria-label="Torna alla home" title="Torna alla home">
         <img src="assets/images/italian_srd_archive.png" class="brand-mark" alt="Italian SRD Archive">
         <span class="brand-name fw-bold">Italian SRD Archive</span>

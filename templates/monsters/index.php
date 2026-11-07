@@ -30,11 +30,11 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
 <?php endforeach; ?>
     </nav>
 
-    <form class="monster-filters row g-2 align-items-end" method="get" action="<?= e(appUrl('mostri')) ?>">
+    <form class="monster-filters row g-2 align-items-center mb-3" method="get" action="<?= e(appUrl('mostri')) ?>">
 <?php if ($selectedMonsterType !== ''): ?>
         <input type="hidden" name="tipo" value="<?= e($selectedMonsterType) ?>">
 <?php endif; ?>
-        <label class="col-12 col-sm-auto">
+        <label class="col-12 col-sm-auto d-flex flex-column gap-1">
             <span>Taglia</span>
             <select class="monster-filter-select form-select" name="taglia">
                 <option value="">Tutte le taglie</option>
@@ -43,7 +43,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
 <?php endforeach; ?>
             </select>
         </label>
-        <label class="col-12 col-sm-auto">
+        <label class="col-12 col-sm-auto d-flex flex-column gap-1">
             <span>GS</span>
             <select class="monster-filter-select form-select" name="gs">
                 <option value="">Tutti i GS</option>
@@ -52,7 +52,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
 <?php endforeach; ?>
             </select>
         </label>
-        <label class="col-12 col-sm-auto">
+        <label class="col-12 col-sm-auto d-flex flex-column gap-1">
             <span>Allineamento</span>
             <select class="monster-filter-select form-select" name="allineamento">
                 <option value="">Tutti gli allineamenti</option>
@@ -62,12 +62,12 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
             </select>
         </label>
         <?php if ($selectedMonsterType !== '' || $selectedMonsterSize !== '' || $selectedMonsterChallenge !== '' || $selectedMonsterAlignment !== ''): ?>
-            <a class="btn btn-outline-secondary monster-reset-filters" href="<?= e(appUrl('mostri')) ?>">× Resetta filtri</a>
+            <a class="btn btn-outline-secondary col-12 col-sm-auto align-self-end" href="<?= e(appUrl('mostri')) ?>">× Resetta filtri</a>
         <?php endif; ?>
     </form>
 
 <?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
-    <div id="results-grid" class="results-grid monster-results-grid row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
+    <div id="results-grid" class="results-grid monster-results-grid row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 align-items-start">
 <?php foreach ($monsters as $monster): ?>
 <?php
     $monster['description_blocks'] = normalizeMonsterDescriptionBlocks($monster);
@@ -121,11 +121,12 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
         $description
     ]);
 ?>
-        <article class="result-card monster-card card col h-100 position-relative" data-favorite-dataset="monsters" data-favorite-id="<?= e($monster['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($monster['name']) ?>" data-sort-category="<?= e($monster['type']) ?>" data-sort-weight="0" data-sort-value="<?= e($monster['challenge_rating']) ?>" data-search="<?= e($searchText) ?>">
+        <div class="col">
+        <article class="result-card monster-card card h-100 position-relative" data-favorite-dataset="monsters" data-favorite-id="<?= e($monster['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($monster['name']) ?>" data-sort-category="<?= e($monster['type']) ?>" data-sort-weight="0" data-sort-value="<?= e($monster['challenge_rating']) ?>" data-search="<?= e($searchText) ?>">
+        <div class="card-header d-flex align-items-start justify-content-between gap-3"><h3><?= e($monster['name']) ?></h3><a class="weapon-mode monster-filter-link" href="<?= e($monsterChallengeUrl) ?>">GS <?= e($monster['challenge_rating']) ?></a></div>
         <div class="card-body">
         <div class="weapon-category"><a class="weapon-category-main monster-filter-link" href="<?= e($monsterTypeUrl) ?>"><?= e($monster['type']) ?></a></div>
-        <div class="weapon-heading d-flex align-items-start justify-content-between gap-3 bg-body-tertiary border-bottom px-3 py-2 mx-n3 mt-n3 mb-3"><h3><?= e($monster['name']) ?></h3><a class="weapon-mode monster-filter-link" href="<?= e($monsterChallengeUrl) ?>">GS <?= e($monster['challenge_rating']) ?></a></div>
-        <div class="weapon-details monster-details">
+        <div class="row g-2 my-3">
             <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">❤️</span><div><span class="weapon-label">Punti Ferita</span><span class="weapon-value"><?= e($hitPointsTotal) ?></span></div></div>
             <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🛡️</span><div><span class="weapon-label">Classe Armatura</span><span class="weapon-value"><?= e($monster['armor_class']) ?></span></div></div>
             <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">⚡</span><div><span class="weapon-label">Iniziativa</span><span class="weapon-value"><?= e($monster['initiative']) ?></span></div></div>
@@ -133,7 +134,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
             <?php if ($hitDice !== ''): ?><div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🎲</span><div><span class="weapon-label">Dadi Vita</span><span class="weapon-value"><?= e($hitDice) ?></span></div></div><?php endif; ?>
             <?php if ($proficiencyBonus !== ''): ?><div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">📈</span><div><span class="weapon-label">Bonus di Competenza</span><span class="weapon-value"><?= e($proficiencyBonus) ?></span></div></div><?php endif; ?>
         </div>
-        <div class="weapon-details monster-subdetails">
+        <div class="row g-2 my-3">
             <div class="weapon-detail">
                 <span class="weapon-icon" aria-hidden="true">📏</span>
                 <div>
@@ -196,6 +197,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
                 <button class="export-button btn btn-sm btn-outline-primary position-static" type="button">⇩ Esporta</button>
             </div>
         </article>
+        </div>
 <?php endforeach; ?>
     </div>
     <div id="empty-state" class="empty-state text-center p-5" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca o i filtri.</p></div>

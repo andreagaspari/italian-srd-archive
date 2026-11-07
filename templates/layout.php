@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="assets/css/style.css?v=<?= e((string) filemtime(__DIR__ . '/../assets/css/style.css')) ?>">
     <link rel="icon" href="assets/images/italian_srd_archive.png" type="image/png">
 </head>
-<body class="bg-body">
+<body>
     <div class="app-shell d-flex flex-column">
         <?php require __DIR__ . '/partials/header.php'; ?>
 

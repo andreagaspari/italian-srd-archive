@@ -18,8 +18,13 @@
 <?php endforeach; ?>
     </nav>
 
+    <div class="description-expansion-control form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="expand-all-descriptions">
+        <label class="form-check-label" for="expand-all-descriptions">Espandi tutte le descrizioni</label>
+    </div>
+
 <?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
-    <div id="results-grid" class="results-grid row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
+    <div id="results-grid" class="results-grid row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 align-items-start">
 <?php foreach ($feats as $feat): ?>
 <?php
     $description = (string) ($feat['description'] ?? '');
@@ -31,15 +36,16 @@
     ]);
     $exportData = buildFeatExportData($feat);
 ?>
-        <article class="result-card feat-card card col h-100 position-relative" data-favorite-dataset="feats" data-favorite-id="<?= e((string) $feat['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e((string) $feat['name']) ?>" data-sort-category="<?= e((string) $feat['subcategory']) ?>" data-sort-weight="0" data-sort-value="0" data-search="<?= e($searchText) ?>">
-            <div class="card-body">
-            <div class="feat-heading d-flex align-items-start justify-content-between gap-3 bg-body-tertiary border-bottom px-3 py-2 mx-n3 mt-n3 mb-3">
+        <div class="col">
+        <article class="result-card feat-card card h-100 position-relative" data-favorite-dataset="feats" data-favorite-id="<?= e((string) $feat['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e((string) $feat['name']) ?>" data-sort-category="<?= e((string) $feat['subcategory']) ?>" data-sort-weight="0" data-sort-value="0" data-search="<?= e($searchText) ?>">
+            <div class="card-header d-flex align-items-start justify-content-between gap-3">
                 <div>
                     <a class="feat-category" href="<?= e(appUrl('talenti?' . http_build_query(['categoria' => $feat['subcategory']]))) ?>"><?= e((string) $feat['subcategory']) ?></a>
                     <h3><?= e((string) $feat['name']) ?></h3>
                 </div>
                 <?php if (($feat['repeatable'] ?? false) === true): ?><span class="feat-repeatable">Ripetibile</span><?php endif; ?>
             </div>
+            <div class="card-body">
             <?php if (($feat['prerequisite'] ?? null) !== null && $feat['prerequisite'] !== ''): ?>
             <p class="feat-prerequisite"><strong>Prerequisito:</strong> <?= e((string) $feat['prerequisite']) ?></p>
             <?php endif; ?>
@@ -49,6 +55,7 @@
                 <button class="export-button btn btn-sm btn-outline-primary position-static" type="button">⇩ Esporta</button>
             </div>
         </article>
+        </div>
 <?php endforeach; ?>
     </div>
     <div id="empty-state" class="empty-state text-center p-5" hidden>
