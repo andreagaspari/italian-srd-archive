@@ -328,19 +328,26 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 }
 
 @media (max-width: 620px) {
-    .topbar { min-height: 3.875rem; padding-block: .4rem; }
+    .topbar { flex-wrap: nowrap; min-height: 3.875rem; padding-block: .4rem; }
     .brand-mark { width: 2.75rem; height: 2.75rem; }
-    .brand-name { max-width: 7rem; font-size: .8125rem; line-height: 1.1; }
-    .topbar-actions { gap: .4rem; }
+    .brand { min-width: 0; }
+    .brand-name { max-width: 6rem; font-size: .8125rem; line-height: 1.1; white-space: normal; }
+    .topbar-actions { flex-shrink: 0; gap: .4rem; }
     .top-search { width: auto; padding: 0; border: 0; background: transparent; }
     .top-search input, .top-search .search-icon { display: none; }
     .mobile-search-button, .icon-button { display: grid; }
-    .top-search-wrap.is-open .top-search { position: fixed; top: 4.5rem; right: 1rem; left: 1rem; display: flex; padding: 0 .7rem; border: 1px solid var(--line); background: var(--panel); }
+    .icon-button { gap: 4px; padding: 6px; color: var(--ink); }
+    .icon-button span { display: block; width: 18px; height: 2px; background: currentColor; }
+    .top-search-wrap.is-open .top-search { position: fixed; top: 3.875rem; right: 1rem; left: 1rem; display: flex; padding: 0 .7rem; border: 1px solid var(--line); background: var(--panel); }
     .top-search-wrap.is-open .top-search input, .top-search-wrap.is-open .top-search .search-icon { display: block; }
-    .top-search-wrap.is-open .global-search-preview { position: fixed; top: 7.5rem; right: 1rem; left: 1rem; width: auto; }
+    .top-search-wrap.is-open .global-search-preview { position: fixed; top: 6.875rem; right: 1rem; left: 1rem; width: auto; }
     .sidebar { position: absolute; z-index: 25; display: none !important; width: 15rem; min-height: calc(100vh - 3.875rem); box-shadow: var(--shadow); }
     .sidebar.is-open { display: flex !important; }
     .main-content { padding: 2.25rem 5vw 1.5rem; }
     .favorites-export-button { width: 100%; }
-    .pagination-row > nav { position: static !important; transform: none !important; }
+    .pagination-row { row-gap: .5rem; }
+    .pagination-summary, .pagination-page-size { flex: 0 0 100%; max-width: 100%; }
+    .pagination-summary { text-align: center; }
+    .pagination-page-size { justify-content: center !important; }
+    .pagination-row > nav { position: static !important; width: 100%; transform: none !important; }
 }
