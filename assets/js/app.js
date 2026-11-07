@@ -33,6 +33,51 @@ function resultGridItem(card, container = null) {
 }
 
 /**
+ * Lays out one result container as a height-aware masonry grid.
+ *
+ * @param {HTMLElement} container Result container whose direct children are Bootstrap columns.
+ * @returns {void}
+ */
+function layoutMasonryGrid(container) {
+    if (!container || container.hidden || container.clientWidth === 0) return;
+
+    const columns = window.innerWidth >= 1200 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+    const gap = 24;
+    const visibleItems = [...container.children].filter((item) => !item.hidden);
+    const columnHeights = Array.from({ length: columns }, () => 0);
+    const itemWidth = (container.clientWidth - gap * (columns - 1)) / columns;
+
+    container.classList.add('masonry-ready');
+    container.style.height = 'auto';
+
+    [...container.children].forEach((item) => {
+        item.style.width = `${itemWidth}px`;
+        item.style.display = item.hidden ? 'none' : '';
+    });
+
+    visibleItems.forEach((item) => {
+        const columnIndex = columnHeights.indexOf(Math.min(...columnHeights));
+        item.style.transform = `translate(${columnIndex * (itemWidth + gap)}px, ${columnHeights[columnIndex]}px)`;
+        columnHeights[columnIndex] += item.offsetHeight + gap;
+    });
+
+    container.style.height = `${Math.max(0, ...columnHeights) - (visibleItems.length ? gap : 0)}px`;
+}
+
+/**
+ * Recalculates every result masonry container on the current page.
+ *
+ * @returns {void}
+ */
+function layoutMasonryGrids() {
+    const containers = [
+        ...resultContainers,
+        ...document.querySelectorAll('#favorites-groups .results-grid')
+    ];
+    [...new Set(containers)].forEach(layoutMasonryGrid);
+}
+
+/**
  * Stores browser-local favorite references and keeps their format versioned for future migrations.
  */
 class LocalStorageFavoriteStore {
@@ -153,6 +198,7 @@ function filterFavoriteCards() {
         exportButton.disabled = visibleCards === 0;
         exportButton.textContent = `⇩ Esporta preferiti (${visibleCards})`;
     }
+    layoutMasonryGrids();
 }
 
 /**
@@ -418,6 +464,7 @@ function filterResults() {
     if (emptyState) {
         emptyState.hidden = visibleCount > 0;
     }
+    layoutMasonryGrids();
 }
 
 /**
@@ -436,6 +483,7 @@ function refreshSectionResultReferences() {
     originalCardOrders = resultContainers.map((container) => [...container.querySelectorAll('.result-card')]);
     resultCards.forEach(enhanceFavoriteCard);
     initializeExpandableDescriptions();
+    layoutMasonryGrids();
 }
 
 /**
@@ -535,6 +583,7 @@ async function fetchSectionResults(value) {
     refreshSectionResultReferences();
     sortResults();
     prioritizeFocusedResult();
+    layoutMasonryGrids();
 }
 
 function sortableNumber(value) {
@@ -640,6 +689,7 @@ function sortResults() {
         resultContainers.forEach((container, index) => {
         originalCardOrders[index].forEach((card) => container.appendChild(resultGridItem(card, container)));
         });
+        layoutMasonryGrids();
         return;
     }
     const [field, direction] = sortSelect.value.split('-');
@@ -650,6 +700,7 @@ function sortResults() {
             cards.sort((left, right) => sectionResultRelevanceScore(right, query) - sectionResultRelevanceScore(left, query));
             cards.forEach((card) => container.appendChild(resultGridItem(card, container)));
         });
+        layoutMasonryGrids();
         return;
     }
     const dataKey = `sort${field[0].toUpperCase()}${field.slice(1)}`;
@@ -669,6 +720,7 @@ function sortResults() {
         });
         cards.forEach((card) => container.appendChild(resultGridItem(card, container)));
     });
+    layoutMasonryGrids();
 }
 
 if (searchInput) {
@@ -688,6 +740,12 @@ if (sortSelect) {
 }
 prioritizeFocusedResult();
 initializeExpandableDescriptions();
+layoutMasonryGrids();
+let masonryResizeFrame = 0;
+window.addEventListener('resize', () => {
+    window.cancelAnimationFrame(masonryResizeFrame);
+    masonryResizeFrame = window.requestAnimationFrame(layoutMasonryGrids);
+});
 spellFilterSelects.forEach((select) => {
     select.addEventListener('change', () => select.form?.submit());
 });

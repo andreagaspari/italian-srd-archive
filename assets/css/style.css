@@ -225,6 +225,8 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .result-card[hidden] { display: none !important; }
 .result-card.is-focused-result { color: var(--focus-ink); border-color: var(--focus-line); background: var(--focus-bg); box-shadow: 0 1rem 2rem rgba(145, 96, 12, .25); }
 .result-card h3 { margin: 0; font-size: 1.25rem; }
+.results-grid.masonry-ready { position: relative; display: block; }
+.results-grid.masonry-ready > .col { position: absolute; top: 0; left: 0; padding: 0; }
 .card-header > div { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; }
 .favorite-button { width: 2.25rem; height: 2.25rem; flex: 0 0 auto; font-size: 1rem; line-height: 1; }
 .weapon-category { color: var(--subtle); font-size: .875rem; }
