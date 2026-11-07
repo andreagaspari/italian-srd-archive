@@ -232,6 +232,8 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .eyebrow { margin: 0 0 .4rem; color: var(--subtle); font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .result-card[hidden] { display: none !important; }
 .result-card.is-focused-result { color: var(--focus-ink); border-color: var(--focus-line); background: var(--focus-bg); box-shadow: 0 1rem 2rem rgba(145, 96, 12, .25); }
+.results-grid.masonry-ready > .col:has(.result-card:hover),
+.results-grid.masonry-ready > .col:has(.result-card:focus-within) { z-index: 10; }
 .result-card h3 { margin: 0; font-size: 1.25rem; }
 .results-grid.masonry-ready { position: relative; display: block; }
 .results-grid.masonry-ready > .col { position: absolute; top: 0; left: 0; padding: 0; }
@@ -275,7 +277,7 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .monster-meta strong { color: var(--ink); }
 .monster-block { margin-top: 1rem; }
 .monster-block .weapon-label { color: var(--accent); }
-.monster-card:hover, .monster-card:focus-within { z-index: 2; }
+.result-card:hover, .result-card:focus-within { z-index: 10; }
 .weapon-tooltip-list { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .25rem; overflow: visible; }
 .tooltip-term { position: relative; padding: 0; color: var(--muted); border: 0; border-bottom: 1px dotted var(--accent); background: transparent; font: inherit; line-height: inherit; text-align: left; white-space: nowrap; }
 .tooltip-term:hover, .tooltip-term:focus-visible { color: var(--accent); outline: none; }
@@ -335,6 +337,13 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 }
 
 @media (max-width: 767.98px) {
+    .weapon-list-view .tooltip-box,
+    .monster-card .tooltip-box {
+        right: auto;
+        left: 0;
+        width: min(235px, calc(100vw - 1rem));
+    }
+
     .armor-timing-details { flex-basis: auto; }
 }
 
