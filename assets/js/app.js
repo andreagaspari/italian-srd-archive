@@ -9,6 +9,7 @@ const globalSearchPreview = document.querySelector('#global-search-preview');
 let globalSearchData = [];
 const spellFilterSelects = [...document.querySelectorAll('.spell-filter-select')];
 const monsterFilterSelects = [...document.querySelectorAll('.monster-filter-select')];
+const favoritesSortSelect = document.querySelector('#favorites-sort-select');
 let resultContainers = resultsGrid?.classList.contains('monster-species-groups')
     ? [...resultsGrid.querySelectorAll('.monster-results-grid')]
     : (resultsGrid ? [resultsGrid] : []);
@@ -43,6 +44,7 @@ function layoutMasonryGrid(container) {
 
     const columns = window.innerWidth >= 1200 ? 3 : window.innerWidth >= 768 ? 2 : 1;
     const gap = 24;
+    const bottomPadding = 24;
     const visibleItems = [...container.children].filter((item) => !item.hidden);
     const columnHeights = Array.from({ length: columns }, () => 0);
     const itemWidth = (container.clientWidth - gap * (columns - 1)) / columns;
@@ -61,7 +63,7 @@ function layoutMasonryGrid(container) {
         columnHeights[columnIndex] += item.offsetHeight + gap;
     });
 
-    container.style.height = `${Math.max(0, ...columnHeights) - (visibleItems.length ? gap : 0)}px`;
+    container.style.height = `${Math.max(0, ...columnHeights) - (visibleItems.length ? gap : 0) + bottomPadding}px`;
 }
 
 /**
@@ -175,7 +177,7 @@ function updateFavoriteCount() {
  */
 function filterFavoriteCards() {
     const query = document.querySelector('#favorites-search')?.value.trim().toLocaleLowerCase('it') ?? '';
-    const dataset = document.querySelector('#favorites-type-filter')?.value ?? '';
+    const dataset = document.querySelector('.favorites-category-filters .is-selected')?.dataset.favoritesCategory ?? '';
     let visibleCards = 0;
 
     document.querySelectorAll('.favorite-group').forEach((group) => {
@@ -185,6 +187,9 @@ function filterFavoriteCards() {
             const matchesQuery = !query || card.textContent.toLocaleLowerCase('it').includes(query);
             const visible = matchesDataset && matchesQuery;
             card.hidden = !visible;
+            if (card.parentElement?.classList.contains('col')) {
+                card.parentElement.hidden = !visible;
+            }
             if (visible) visibleInGroup += 1;
         });
         group.hidden = visibleInGroup === 0;
@@ -198,7 +203,69 @@ function filterFavoriteCards() {
         exportButton.disabled = visibleCards === 0;
         exportButton.textContent = `⇩ Esporta preferiti (${visibleCards})`;
     }
+    sortFavoriteCards();
     layoutMasonryGrids();
+}
+
+/**
+ * Sorts the visible favorite groups using the selected ordering.
+ *
+ * @returns {void}
+ */
+function sortFavoriteCards() {
+    const sortValue = favoritesSortSelect?.value || 'default';
+    document.querySelectorAll('.favorite-group .results-grid').forEach((grid) => {
+        const wrappers = [...grid.children];
+        wrappers.sort((left, right) => {
+            if (sortValue === 'default') {
+                return Number(left.dataset.favoriteOrder) - Number(right.dataset.favoriteOrder);
+            }
+            const [field, direction] = sortValue.split('-');
+            const leftCard = left.querySelector('.result-card');
+            const rightCard = right.querySelector('.result-card');
+            if (field === 'category') {
+                const comparison = favoriteCategoryKey(leftCard).localeCompare(favoriteCategoryKey(rightCard), 'it', { sensitivity: 'base' });
+                if (comparison !== 0) return direction === 'desc' ? -comparison : comparison;
+                return favoriteNameKey(leftCard).localeCompare(favoriteNameKey(rightCard), 'it', { sensitivity: 'base' });
+            }
+            const dataKey = `sort${field[0].toUpperCase()}${field.slice(1)}`;
+            const leftRaw = leftCard?.dataset[dataKey] ?? '';
+            const rightRaw = rightCard?.dataset[dataKey] ?? '';
+            const comparison = field === 'name' || field === 'category'
+                ? leftRaw.localeCompare(rightRaw, 'it', { sensitivity: 'base' })
+                : sortableNumber(leftRaw) - sortableNumber(rightRaw);
+            return direction === 'desc' ? -comparison : comparison;
+        });
+        grid.append(...wrappers);
+    });
+}
+
+/**
+ * Returns the hierarchical category path shown by a favorite card.
+ *
+ * @param {HTMLElement|null} card Favorite card.
+ * @returns {string} Normalized category path.
+ */
+function favoriteCategoryKey(card) {
+    if (!card) return '';
+    if (card.dataset.favoriteDataset === 'spells') {
+        const level = card.querySelector('.spell-level')?.textContent.trim().toLocaleLowerCase('it') ?? '';
+        const levelNumber = level === 'trucchetto' ? 0 : Number.parseInt(level, 10);
+        return `${Number.isNaN(levelNumber) ? 99 : levelNumber}`.padStart(2, '0');
+    }
+    return (card.querySelector('.weapon-category, .armor-category, .tool-category')?.textContent
+        || card.dataset.sortCategory
+        || '').trim().replace(/\s+/g, ' ');
+}
+
+/**
+ * Returns a normalized favorite card name.
+ *
+ * @param {HTMLElement|null} card Favorite card.
+ * @returns {string} Normalized name.
+ */
+function favoriteNameKey(card) {
+    return card?.dataset.sortName?.trim() || card?.querySelector('h3')?.textContent.trim() || '';
 }
 
 /**
@@ -365,11 +432,20 @@ async function renderFavoritesPage() {
             <div class="results-grid"></div>
         </section>
     `).join('');
+    const availableDatasets = new Set(renderedGroups.map((group) => group.dataset));
+    document.querySelectorAll('[data-favorites-category]').forEach((button) => {
+        button.hidden = button.dataset.favoritesCategory !== ''
+            && !availableDatasets.has(button.dataset.favoritesCategory);
+    });
     renderedGroups.forEach((group, index) => {
         const grid = groupsContainer.querySelectorAll('.favorite-group .results-grid')[index];
-        group.cards.forEach((card) => {
+        group.cards.forEach((card, cardIndex) => {
             const clone = card.cloneNode(true);
-            grid.appendChild(clone);
+            const wrapper = document.createElement('div');
+            wrapper.className = 'col';
+            wrapper.dataset.favoriteOrder = String(cardIndex);
+            wrapper.appendChild(clone);
+            grid.appendChild(wrapper);
             enhanceFavoriteCard(clone);
         });
     });
@@ -388,7 +464,18 @@ document.querySelectorAll('[data-favorite-dataset]').forEach(enhanceFavoriteCard
 updateFavoriteCount();
 window.addEventListener('favoriteschange', updateFavoriteCount);
 document.querySelector('#favorites-search')?.addEventListener('input', filterFavoriteCards);
-document.querySelector('#favorites-type-filter')?.addEventListener('change', filterFavoriteCards);
+favoritesSortSelect?.addEventListener('change', () => {
+    sortFavoriteCards();
+    layoutMasonryGrids();
+});
+document.querySelectorAll('[data-favorites-category]').forEach((button) => {
+    button.addEventListener('click', () => {
+        document.querySelectorAll('[data-favorites-category]').forEach((categoryButton) => {
+            categoryButton.classList.toggle('is-selected', categoryButton === button);
+        });
+        filterFavoriteCards();
+    });
+});
 renderFavoritesPage().catch((error) => {
     const missingMessage = document.querySelector('#favorites-missing');
     if (missingMessage) {

@@ -79,6 +79,9 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: var(--accent-line);
     --bs-btn-hover-border-color: var(--accent-line);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--accent-line);
+    --bs-btn-active-border-color: var(--accent-line);
 }
 .btn-outline-primary {
     --bs-btn-color: var(--accent);
@@ -86,6 +89,16 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: var(--accent);
     --bs-btn-hover-border-color: var(--accent);
+    --bs-btn-disabled-color: var(--accent);
+    --bs-btn-disabled-border-color: var(--accent-line);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--accent);
+    --bs-btn-active-border-color: var(--accent);
+}
+.btn-outline-primary:active, .btn-outline-primary.active {
+    color: var(--accent) !important;
+    border-color: var(--accent-line) !important;
+    background: var(--accent-soft) !important;
 }
 .page-link.active {
     --bs-pagination-active-bg: var(--accent);
@@ -116,8 +129,8 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
     outline: 0;
     box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25) !important;
 }
-.btn:focus-visible, .description-toggle:focus-visible {
-    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
+.btn:focus, .btn:focus-visible, .description-toggle:focus-visible {
+    box-shadow: 0 0 0 .25rem var(--accent-soft);
 }
 .accordion-button:focus {
     z-index: 3;

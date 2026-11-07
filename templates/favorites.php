@@ -1,31 +1,42 @@
 <section class="results-view favorites-view container-fluid px-0">
     <div class="section-heading d-flex justify-content-between align-items-end mb-3">
         <div>
-            <p class="eyebrow">Archivio personale</p>
             <h1>Preferiti</h1>
         </div>
     </div>
     <p class="favorites-intro">Questi elementi sono salvati solo in questo browser. Nessun dato viene salvato sul server.</p>
-    <div class="favorites-filters d-flex flex-wrap align-items-end gap-3 my-4" role="search" aria-label="Filtra i preferiti">
-        <label class="favorites-search d-flex align-items-center gap-2 flex-grow-1">
-            <span class="search-icon" aria-hidden="true">🔎</span>
+    <form class="object-toolbar favorites-filters row g-2 align-items-end mb-3" role="search" aria-label="Filtra i preferiti">
+        <label class="object-search input-group col-12 col-lg">
+            <span class="search-icon input-group-text" aria-hidden="true">🔎</span>
             <input class="form-control" id="favorites-search" type="search" placeholder="Cerca nei preferiti..." autocomplete="off">
         </label>
-        <label class="favorites-type-filter d-flex flex-column gap-1 text-body-secondary small">
-            <span>Categoria</span>
-            <select class="form-select" id="favorites-type-filter">
-                <option value="">Tutte</option>
-                <option value="spells">Incantesimi</option>
-                <option value="feats">Talenti</option>
-                <option value="monsters">Mostri</option>
-                <option value="weapons">Oggetti · Armi</option>
-                <option value="armor">Oggetti · Armature</option>
-                <option value="ammunition">Oggetti · Munizioni</option>
-                <option value="tools">Oggetti · Strumenti</option>
-                <option value="adventuring-gear">Oggetti · Equipaggiamento</option>
+        <label class="object-sort d-flex align-items-center gap-2 text-body-secondary small col-12 col-sm-auto">
+            <span>Ordina</span>
+            <select class="form-select" id="favorites-sort-select">
+                <option value="default">Ordine preferiti</option>
+                <option value="name-asc">Nome ↑</option>
+                <option value="name-desc">Nome ↓</option>
+                <option value="category-asc">Categoria ↑</option>
+                <option value="category-desc">Categoria ↓</option>
+                <option value="weight-asc">Peso ↑</option>
+                <option value="weight-desc">Peso ↓</option>
+                <option value="value-asc">Valore ↑</option>
+                <option value="value-desc">Valore ↓</option>
             </select>
         </label>
-        <button class="export-visible-button favorites-export-button btn btn-sm btn-outline-primary" id="export-favorites-button" type="button" disabled>⇩ Esporta preferiti (0)</button>
+        <button class="export-visible-button favorites-export-button btn btn-outline-primary col-12 col-sm-auto" id="export-favorites-button" type="button" disabled>⇩ Esporta preferiti (0)</button>
+    </form>
+    <div class="favorites-category-filters d-flex flex-wrap gap-2 mb-4" role="group" aria-label="Filtra i preferiti per categoria">
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary is-selected" type="button" data-favorites-category="">Tutti</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="spells">Incantesimi</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="feats">Talenti</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="monsters">Mostri</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="weapons">Oggetti · Armi</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="armor">Oggetti · Armature</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="ammunition">Oggetti · Munizioni</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="tools">Oggetti · Strumenti</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="adventuring-gear">Oggetti · Equipaggiamento</button>
+        <button class="taxonomy-filter btn btn-sm btn-outline-secondary" type="button" data-favorites-category="rules">Glossario</button>
     </div>
     <div id="favorites-groups"></div>
     <p id="favorites-filter-empty" class="favorites-filter-empty" hidden>Nessun preferito corrisponde ai filtri selezionati.</p>
