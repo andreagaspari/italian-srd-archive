@@ -229,6 +229,33 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .spell-classes, .feat-prerequisite, .spell-description, .feat-description, .rule-content { font-size: .9375rem; }
 .spell-classes, .feat-prerequisite { color: var(--muted); }
 .weapon-detail { display: flex; gap: .4rem; align-items: flex-start; font-size: .875rem; }
+.monster-card .card-header > div { gap: .5rem; }
+.monster-card .weapon-category-main { color: var(--accent); font-size: .75rem; font-weight: 600; text-decoration: none; text-transform: uppercase; }
+.monster-card .weapon-details { margin-bottom: 0; }
+.monster-card .weapon-detail > div { min-width: 0; }
+.monster-abilities { width: 100%; margin: 1rem 0; border-collapse: separate; border-spacing: .25rem; table-layout: fixed; }
+.monster-abilities td { padding: .35rem; border: 1px solid var(--line); background: var(--sidebar); }
+.monster-ability-cell { font-size: .75rem; line-height: 1.15; }
+.monster-ability-legend, .monster-ability-values { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr)); gap: .2rem; align-items: baseline; }
+.monster-ability-legend { color: var(--subtle); font-size: .5625rem; font-weight: 700; text-transform: uppercase; }
+.monster-ability-legend span:first-child { grid-column: 3; }
+.monster-ability-legend span:last-child { grid-column: 4; }
+.monster-ability-name { font-weight: 700; }
+.monster-ability-mod, .monster-ability-save { color: var(--muted); text-align: center; }
+.monster-meta { display: grid; gap: .35rem; margin-bottom: 1rem; color: var(--muted); font-size: .8125rem; line-height: 1.4; }
+.monster-meta strong { color: var(--ink); }
+.monster-block { margin-top: 1rem; }
+.monster-block .weapon-label { color: var(--accent); }
+.monster-card:hover, .monster-card:focus-within { z-index: 2; }
+.weapon-tooltip-list { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .25rem; overflow: visible; }
+.tooltip-term { position: relative; padding: 0; color: var(--muted); border: 0; border-bottom: 1px dotted var(--accent); background: transparent; font: inherit; line-height: inherit; text-align: left; white-space: nowrap; }
+.tooltip-term:hover, .tooltip-term:focus-visible { color: var(--accent); outline: none; }
+.tooltip-term:focus-visible { outline: 2px solid var(--accent-line); outline-offset: 3px; }
+.tooltip-box { position: absolute; z-index: 5; bottom: calc(100% + .5rem); left: 0; display: block; visibility: hidden; width: min(235px, 70vw); padding: .625rem .7rem; color: var(--ink); border: 1px solid var(--line); border-radius: var(--bs-border-radius); background: var(--panel); box-shadow: var(--shadow); font-size: .8125rem; font-weight: 400; line-height: 1.4; opacity: 0; pointer-events: none; text-transform: none; white-space: normal; overflow-wrap: break-word; transition: opacity .12s ease, visibility .12s ease; }
+.tooltip-box::after { position: absolute; bottom: -.3rem; left: .875rem; width: .5rem; height: .5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--panel); content: ""; transform: rotate(45deg); }
+.tooltip-term:hover .tooltip-box, .tooltip-term:focus-visible .tooltip-box { visibility: visible; opacity: 1; }
+.monster-card .tooltip-box { right: 0; left: auto; }
+.monster-card .tooltip-box::after { right: .875rem; left: auto; }
 .weapon-label { display: block; color: var(--subtle); font-size: .75rem; }
 .weapon-value { display: block; color: var(--ink); font-weight: 600; }
 .spell-description, .feat-description, .rule-content { color: var(--ink); }

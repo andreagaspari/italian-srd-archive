@@ -123,19 +123,22 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
 ?>
         <div class="col">
         <article class="result-card monster-card card h-100 position-relative" data-favorite-dataset="monsters" data-favorite-id="<?= e($monster['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($monster['name']) ?>" data-sort-category="<?= e($monster['type']) ?>" data-sort-weight="0" data-sort-value="<?= e($monster['challenge_rating']) ?>" data-search="<?= e($searchText) ?>">
-        <div class="card-header d-flex align-items-start justify-content-between gap-3"><h3><?= e($monster['name']) ?></h3><a class="weapon-mode monster-filter-link" href="<?= e($monsterChallengeUrl) ?>">GS <?= e($monster['challenge_rating']) ?></a></div>
-        <div class="card-body">
-        <div class="weapon-category"><a class="weapon-category-main monster-filter-link" href="<?= e($monsterTypeUrl) ?>"><?= e($monster['type']) ?></a></div>
-        <div class="row g-2 my-3">
-            <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">❤️</span><div><span class="weapon-label">Punti Ferita</span><span class="weapon-value"><?= e($hitPointsTotal) ?></span></div></div>
-            <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🛡️</span><div><span class="weapon-label">Classe Armatura</span><span class="weapon-value"><?= e($monster['armor_class']) ?></span></div></div>
-            <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">⚡</span><div><span class="weapon-label">Iniziativa</span><span class="weapon-value"><?= e($monster['initiative']) ?></span></div></div>
-            <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">👣</span><div><span class="weapon-label">Velocità</span><span class="weapon-value"><?= e($monster['speed']) ?></span></div></div>
-            <?php if ($hitDice !== ''): ?><div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🎲</span><div><span class="weapon-label">Dadi Vita</span><span class="weapon-value"><?= e($hitDice) ?></span></div></div><?php endif; ?>
-            <?php if ($proficiencyBonus !== ''): ?><div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">📈</span><div><span class="weapon-label">Bonus di Competenza</span><span class="weapon-value"><?= e($proficiencyBonus) ?></span></div></div><?php endif; ?>
+        <div class="card-header d-flex align-items-start justify-content-between gap-3">
+            <div>
+                <a class="weapon-category-main monster-filter-link" href="<?= e($monsterTypeUrl) ?>"><?= e($monster['type']) ?></a>
+                <h3><?= e($monster['name']) ?></h3>
+            </div>
+            <a class="weapon-mode monster-filter-link" href="<?= e($monsterChallengeUrl) ?>">GS <?= e($monster['challenge_rating']) ?></a>
         </div>
-        <div class="row g-2 my-3">
-            <div class="weapon-detail">
+        <div class="card-body">
+        <div class="weapon-details monster-details row row-cols-2 g-3">
+            <div class="weapon-detail col d-flex gap-2 align-items-start"><span class="weapon-icon" aria-hidden="true">❤️</span><div><span class="weapon-label">Punti Ferita</span><span class="weapon-value"><?= e($hitPointsTotal) ?></span></div></div>
+            <div class="weapon-detail col d-flex gap-2 align-items-start"><span class="weapon-icon" aria-hidden="true">🛡️</span><div><span class="weapon-label">Classe Armatura</span><span class="weapon-value"><?= e($monster['armor_class']) ?></span></div></div>
+            <div class="weapon-detail col d-flex gap-2 align-items-start"><span class="weapon-icon" aria-hidden="true">⚡</span><div><span class="weapon-label">Iniziativa</span><span class="weapon-value"><?= e($monster['initiative']) ?></span></div></div>
+            <div class="weapon-detail col d-flex gap-2 align-items-start"><span class="weapon-icon" aria-hidden="true">👣</span><div><span class="weapon-label">Velocità</span><span class="weapon-value"><?= e($monster['speed']) ?></span></div></div>
+            <?php if ($hitDice !== ''): ?><div class="weapon-detail col d-flex gap-2 align-items-start"><span class="weapon-icon" aria-hidden="true">🎲</span><div><span class="weapon-label">Dadi Vita</span><span class="weapon-value"><?= e($hitDice) ?></span></div></div><?php endif; ?>
+            <?php if ($proficiencyBonus !== ''): ?><div class="weapon-detail col d-flex gap-2 align-items-start"><span class="weapon-icon" aria-hidden="true">📈</span><div><span class="weapon-label">Bonus di Competenza</span><span class="weapon-value"><?= e($proficiencyBonus) ?></span></div></div><?php endif; ?>
+            <div class="weapon-detail col d-flex gap-2 align-items-start">
                 <span class="weapon-icon" aria-hidden="true">📏</span>
                 <div>
                     <span class="weapon-label">Taglia</span>
@@ -144,7 +147,7 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
                     </span>
                 </div>
             </div>
-            <div class="weapon-detail">
+            <div class="weapon-detail col d-flex gap-2 align-items-start">
                 <span class="weapon-icon" aria-hidden="true">⚖️</span>
                 <div>
                     <span class="weapon-label">Allineamento</span>
@@ -200,6 +203,6 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
         </div>
 <?php endforeach; ?>
     </div>
-    <div id="empty-state" class="empty-state text-center p-5" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca o i filtri.</p></div>
+    <div id="empty-state" class="empty-state" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca o i filtri.</p></div>
 </section>
 <?php $paginationPosition = 'bottom'; require __DIR__ . '/../partials/pagination.php'; ?>
