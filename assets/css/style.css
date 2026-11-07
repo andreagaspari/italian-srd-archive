@@ -218,6 +218,14 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .home-view .hero p { max-width: 66rem; font-size: 1rem; }
 .taxonomy-filter.is-selected { color: #fff; border-color: var(--accent); background: var(--accent); }
 .section-heading h1 { margin: 0; font-size: 1.75rem; }
+.home-view .category-buttons { --bs-gutter-x: 0; --bs-gutter-y: 0; gap: .5rem; margin-right: 0; margin-left: 0; }
+.home-view .category-buttons > .taxonomy-filter { flex: 0 0 calc(50% - .25rem); width: calc(50% - .25rem); }
+.home-view .area-card:not(.area-card-items) .category-buttons:not(.spell-class-links) > .taxonomy-filter:first-child,
+.object-area-grid .category-buttons > .col:first-child { flex-basis: 100%; width: 100%; }
+.home-view .taxonomy-filter span, .object-area-grid .taxonomy-filter span { color: var(--muted); font-size: .8em; font-weight: 400; opacity: .8; }
+.home-view .taxonomy-filter span::before, .object-area-grid .taxonomy-filter span::before { content: " ("; }
+.home-view .taxonomy-filter span::after, .object-area-grid .taxonomy-filter span::after { content: ")"; }
+.home-view .home-card-label { display: block; margin-top: 1rem; margin-bottom: .5rem; }
 .area-card-heading { color: var(--ink); background: var(--accent-soft); }
 .area-card-heading h2 { color: var(--ink); }
 .area-card-heading .area-card-icon { color: var(--accent); }
@@ -353,4 +361,8 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
     .pagination-summary { text-align: center; }
     .pagination-page-size { justify-content: center !important; }
     .pagination-row > nav { position: static !important; width: 100%; transform: none !important; }
+}
+
+@media (max-width: 575.98px) {
+    .home-view .category-buttons > .taxonomy-filter { flex-basis: 100%; width: 100%; }
 }
