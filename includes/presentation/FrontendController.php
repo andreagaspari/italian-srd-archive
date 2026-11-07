@@ -156,6 +156,39 @@ final class FrontendController
             case 'oggetti':
                 $pageTitle = 'Oggetti';
                 $contentView = $this->templatesDirectory . '/objects/index.php';
+                $objectCategoryCounts = [
+                    'oggetti/armi' => [
+                        'all' => $this->catalog->getWeapons(new WeaponQuery(category: 'items-weapons', pageSize: null))->totalItems,
+                        'items-weapons-simple-melee' => $this->catalog->getWeapons(new WeaponQuery(category: 'items-weapons-simple-melee', pageSize: null))->totalItems,
+                        'items-weapons-simple-ranged' => $this->catalog->getWeapons(new WeaponQuery(category: 'items-weapons-simple-ranged', pageSize: null))->totalItems,
+                        'items-weapons-martial-melee' => $this->catalog->getWeapons(new WeaponQuery(category: 'items-weapons-martial-melee', pageSize: null))->totalItems,
+                        'items-weapons-martial-ranged' => $this->catalog->getWeapons(new WeaponQuery(category: 'items-weapons-martial-ranged', pageSize: null))->totalItems
+                    ],
+                    'oggetti/armature' => [
+                        'all' => $this->catalog->getArmor(new ArmorQuery(category: 'armor', pageSize: null))->totalItems,
+                        'armor-light' => $this->catalog->getArmor(new ArmorQuery(category: 'armor-light', pageSize: null))->totalItems,
+                        'armor-medium' => $this->catalog->getArmor(new ArmorQuery(category: 'armor-medium', pageSize: null))->totalItems,
+                        'armor-heavy' => $this->catalog->getArmor(new ArmorQuery(category: 'armor-heavy', pageSize: null))->totalItems,
+                        'armor-shields' => $this->catalog->getArmor(new ArmorQuery(category: 'armor-shields', pageSize: null))->totalItems
+                    ],
+                    'oggetti/munizioni' => [
+                        'all' => count($this->catalog->ammunition())
+                    ],
+                    'oggetti/strumenti' => [
+                        'all' => $this->catalog->getTools(new ToolsQuery(category: 'tools', pageSize: null))->totalItems,
+                        'artigiano' => $this->catalog->getTools(new ToolsQuery(category: 'artigiano', pageSize: null))->totalItems,
+                        'giochi' => $this->catalog->getTools(new ToolsQuery(category: 'giochi', pageSize: null))->totalItems,
+                        'musicali' => $this->catalog->getTools(new ToolsQuery(category: 'musicali', pageSize: null))->totalItems,
+                        'altri' => $this->catalog->getTools(new ToolsQuery(category: 'altri', pageSize: null))->totalItems
+                    ],
+                    'oggetti/avventura' => [
+                        'all' => $this->catalog->getAdventuringGear(new AdventuringGearQuery(category: 'gear', pageSize: null))->totalItems,
+                        'avventura' => $this->catalog->getAdventuringGear(new AdventuringGearQuery(category: 'avventura', pageSize: null))->totalItems,
+                        'consumabili' => $this->catalog->getAdventuringGear(new AdventuringGearQuery(category: 'consumabili', pageSize: null))->totalItems,
+                        'contenitori' => $this->catalog->getAdventuringGear(new AdventuringGearQuery(category: 'contenitori', pageSize: null))->totalItems,
+                        'illuminazione' => $this->catalog->getAdventuringGear(new AdventuringGearQuery(category: 'illuminazione', pageSize: null))->totalItems
+                    ]
+                ];
                 break;
 
             case 'incantesimi':
