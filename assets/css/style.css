@@ -113,9 +113,16 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 }
 .form-control:focus, .form-select:focus, .form-check-input:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25) !important;
 }
 .btn:focus-visible, .description-toggle:focus-visible {
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
+}
+.accordion-button:focus {
+    z-index: 3;
+    border-color: var(--accent);
+    outline: 0;
     box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
 }
 .export-folder-control:not([hidden]) { display: block; }
@@ -159,10 +166,12 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
     background: var(--bs-card-bg);
     box-shadow: var(--shadow);
 }
-.global-search-result { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; gap: .5rem; padding: .5rem; color: var(--ink); border-radius: .375rem; text-decoration: none; }
+.global-search-result { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .25rem .5rem; padding: .5rem; color: var(--ink); border-radius: .375rem; text-decoration: none; }
 .global-search-result:hover, .global-search-result:focus { background: var(--accent-soft); }
+.global-search-result-main { min-width: 0; }
 .global-search-result strong, .global-search-result-main span { display: block; }
 .global-search-description { overflow: hidden; color: var(--muted); font-size: .875rem; text-overflow: ellipsis; white-space: nowrap; }
+.global-search-tags { grid-column: 2; display: flex; flex-wrap: wrap; gap: .25rem; min-width: 0; }
 .global-search-tag { display: inline-block; padding: .2rem .4rem; color: var(--accent); border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); font-size: .75rem; }
 .global-search-group + .global-search-group { margin-top: .5rem; padding-top: .5rem; border-top: 1px solid var(--line); }
 .global-search-group h3 { margin: 0 .5rem .25rem; color: var(--accent); font: 700 .625rem/1.2 var(--bs-body-font-family); letter-spacing: .1em; text-transform: uppercase; }
@@ -209,12 +218,22 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .home-view .hero p { max-width: 66rem; font-size: 1rem; }
 .taxonomy-filter.is-selected { color: #fff; border-color: var(--accent); background: var(--accent); }
 .section-heading h1 { margin: 0; font-size: 1.75rem; }
+.area-card-heading { color: var(--ink); background: var(--accent-soft); }
+.area-card-heading h2 { color: var(--ink); }
+.area-card-heading .area-card-icon { color: var(--accent); }
 .eyebrow { margin: 0 0 .4rem; color: var(--subtle); font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .result-card[hidden] { display: none !important; }
 .result-card.is-focused-result { color: var(--focus-ink); border-color: var(--focus-line); background: var(--focus-bg); box-shadow: 0 1rem 2rem rgba(145, 96, 12, .25); }
 .result-card h3 { margin: 0; font-size: 1.25rem; }
 .card-header > div { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; }
 .favorite-button { width: 2.25rem; height: 2.25rem; flex: 0 0 auto; font-size: 1rem; line-height: 1; }
+.weapon-category { color: var(--subtle); font-size: .875rem; }
+.weapon-category a { text-decoration: none; }
+.weapon-category a:hover { text-decoration: underline; }
+.weapon-category-main { color: var(--accent); }
+.weapon-category-subcategory { color: var(--accent); }
+.weapon-category-container { color: var(--subtle); }
+.weapon-category-arrow { color: var(--muted); }
 .spell-level, .feat-category, .weapon-mode, .rule-category {
     display: inline-block;
     padding: .25rem .5rem;
@@ -228,6 +247,7 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 }
 .spell-classes, .feat-prerequisite, .spell-description, .feat-description, .rule-content { font-size: .9375rem; }
 .spell-classes, .feat-prerequisite { color: var(--muted); }
+.spell-concentration { position: absolute; top: 0; right: 0; left: auto; width: max-content; }
 .weapon-detail { display: flex; gap: .4rem; align-items: flex-start; font-size: .875rem; }
 .monster-card .card-header > div { gap: .5rem; }
 .monster-card .weapon-category-main { color: var(--accent); font-size: .75rem; font-weight: 600; text-decoration: none; text-transform: uppercase; }
@@ -254,10 +274,35 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .tooltip-box { position: absolute; z-index: 5; bottom: calc(100% + .5rem); left: 0; display: block; visibility: hidden; width: min(235px, 70vw); padding: .625rem .7rem; color: var(--ink); border: 1px solid var(--line); border-radius: var(--bs-border-radius); background: var(--panel); box-shadow: var(--shadow); font-size: .8125rem; font-weight: 400; line-height: 1.4; opacity: 0; pointer-events: none; text-transform: none; white-space: normal; overflow-wrap: break-word; transition: opacity .12s ease, visibility .12s ease; }
 .tooltip-box::after { position: absolute; bottom: -.3rem; left: .875rem; width: .5rem; height: .5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--panel); content: ""; transform: rotate(45deg); }
 .tooltip-term:hover .tooltip-box, .tooltip-term:focus-visible .tooltip-box { visibility: visible; opacity: 1; }
+.weapon-list-view .tooltip-box { right: 0; left: auto; }
+.weapon-list-view .tooltip-box::after { right: .875rem; left: auto; }
 .monster-card .tooltip-box { right: 0; left: auto; }
 .monster-card .tooltip-box::after { right: .875rem; left: auto; }
+.rules-introduction .accordion-button { color: var(--ink); background: var(--panel); }
+.rules-introduction .accordion-button:not(.collapsed) { color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) var(--line); }
+.rules-introduction .accordion-button::after {
+    width: .65rem;
+    height: .65rem;
+    margin-right: .25rem;
+    background-image: none;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(45deg);
+}
+.rules-introduction .accordion-button:not(.collapsed)::after { transform: rotate(225deg); }
+.rules-introduction .accordion-body { color: var(--muted); }
+.rules-abbreviations { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.rules-abbreviations h3 { margin-bottom: 1rem; font-size: 1.1rem; }
+.rules-abbreviations .table { --bs-table-color: var(--ink); --bs-table-bg: transparent; --bs-table-border-color: var(--line); }
+.rules-abbreviations .table th:first-child { width: 10rem; color: var(--accent); }
 .weapon-label { display: block; color: var(--subtle); font-size: .75rem; }
 .weapon-value { display: block; color: var(--ink); font-weight: 600; }
+.armor-timing-details { flex-basis: 42%; }
+.gear-use-summary::after { display: block; clear: both; content: ""; }
+.gear-use-description { color: var(--ink); font-size: .875rem; line-height: 1.5; }
+.gear-use-label { margin-bottom: .4rem; }
+.pagination-page-size { position: relative; z-index: 2; }
+.pagination-row > nav { z-index: 1; }
 .spell-description, .feat-description, .rule-content { color: var(--ink); }
 .expandable-description.is-collapsed { max-height: 8rem; overflow: hidden; }
 .description-toggle-control { display: flex; align-items: center; gap: .75rem; margin: 1rem 0; }
@@ -276,6 +321,10 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 
 @media (max-width: 850px) {
     .sidebar { width: 13rem; }
+}
+
+@media (max-width: 767.98px) {
+    .armor-timing-details { flex-basis: auto; }
 }
 
 @media (max-width: 620px) {

@@ -16,12 +16,11 @@
 <?php foreach ($featSubcategories as $subcategory): ?>
         <a class="taxonomy-filter btn btn-sm btn-outline-secondary <?= $subcategory === $selectedFeatSubcategory ? 'is-selected' : '' ?>" href="<?= e(appUrl('talenti?' . http_build_query(['categoria' => $subcategory]))) ?>"><?= e($subcategory) ?></a>
 <?php endforeach; ?>
+        <div class="description-expansion-control form-check form-switch ms-auto align-self-center mb-0">
+            <input class="form-check-input" type="checkbox" role="switch" id="expand-all-descriptions">
+            <label class="form-check-label" for="expand-all-descriptions">Espandi tutte le descrizioni</label>
+        </div>
     </nav>
-
-    <div class="description-expansion-control form-check form-switch mb-3">
-        <input class="form-check-input" type="checkbox" role="switch" id="expand-all-descriptions">
-        <label class="form-check-label" for="expand-all-descriptions">Espandi tutte le descrizioni</label>
-    </div>
 
 <?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
     <div id="results-grid" class="results-grid row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 align-items-start">

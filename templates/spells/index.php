@@ -91,19 +91,19 @@ if ($selectedSchool !== '') {
                 <a class="spell-school spell-filter-link" href="<?= e(appUrl('incantesimi?' . http_build_query($spellSchoolQuery))) ?>"><?= e($spell['school']) ?></a>
             </div>
             <div class="card-body">
-            <div class="row g-2 my-3">
+            <div class="spell-stats row g-2 mt-0 mb-3 position-relative">
 <?php if ($spell['damage'] !== null): ?>
                 <div class="col-6 d-flex gap-2 align-items-start small"><span class="flex-shrink-0" aria-hidden="true">⚔️</span><div><span class="weapon-label">Danni base</span><span class="weapon-value"><?= e($spell['damage']) ?></span></div></div>
 <?php endif; ?>
                 <div class="col-6 d-flex gap-2 align-items-start small"><span class="flex-shrink-0" aria-hidden="true">🎯</span><div><span class="weapon-label">Gittata</span><span class="weapon-value"><?= e($spell['range']) ?></span></div></div>
+<?php if ($spell['concentration']): ?>
+                <span class="spell-concentration position-absolute top-0 end-0 fs-4 lh-1" title="Concentrazione" aria-label="Concentrazione" role="img">🌀</span>
+<?php endif; ?>
 <?php if ($spell['area_diameter'] !== null): ?>
                 <div class="col-6 d-flex gap-2 align-items-start small"><span class="flex-shrink-0" aria-hidden="true">💥</span><div><span class="weapon-label">Area</span><span class="weapon-value"><?= e($spell['area_diameter']) ?> m</span></div></div>
 <?php endif; ?>
                 <div class="col-6 d-flex gap-2 align-items-start small"><span class="flex-shrink-0" aria-hidden="true">⏱️</span><div><span class="weapon-label">Tempo</span><span class="weapon-value"><?= e($spell['casting_time']) ?></span></div></div>
                 <div class="col-6 d-flex gap-2 align-items-start small"><span class="flex-shrink-0" aria-hidden="true">⌛</span><div><span class="weapon-label">Durata</span><span class="weapon-value"><?= e($spell['duration']) ?></span></div></div>
-<?php if ($spell['concentration']): ?>
-                <div class="col-6 d-flex gap-2 align-items-start small"><span class="flex-shrink-0" aria-hidden="true">🌀</span><div><span class="weapon-label">Concentrazione</span></div></div>
-<?php endif; ?>
                 <div class="col-6 d-flex gap-2 align-items-start small"><span class="flex-shrink-0" aria-hidden="true">🧩</span><div><span class="weapon-label">Componenti</span><span class="weapon-value"><?= e($spell['components']) ?></span></div></div>
             </div>
             <div class="spell-description"><?= renderSpellContent($spell) ?></div>

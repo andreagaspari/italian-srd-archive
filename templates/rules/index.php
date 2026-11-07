@@ -26,29 +26,48 @@ $categoryLabels = [
         </div>
     </div>
 
-    <div class="rules-introduction">
+    <div class="rules-introduction accordion mb-4" id="rules-conventions">
 <?php foreach ($introduction as $section): ?>
-        <details class="rules-introduction-section">
-            <summary><?= e((string) ($section['title'] ?? '')) ?></summary>
-            <div class="rules-introduction-content">
+        <div class="rules-introduction-section accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rules-conventions-content" aria-expanded="false" aria-controls="rules-conventions-content">
+                    <?= e((string) ($section['title'] ?? '')) ?>
+                </button>
+            </h2>
+            <div id="rules-conventions-content" class="accordion-collapse collapse">
+                <div class="rules-introduction-content accordion-body">
 <?php foreach (($section['paragraphs'] ?? []) as $paragraph): ?>
             <p><?= e((string) $paragraph) ?></p>
 <?php endforeach; ?>
             <section class="rules-abbreviations">
                 <h3>Abbreviazioni</h3>
                 <div class="rules-abbreviations-content">
-                <dl>
-<?php foreach ($abbreviations as $abbreviation): ?>
-                    <div>
-                        <dt><?= e((string) ($abbreviation['abbreviation'] ?? '')) ?></dt>
-                        <dd><?= e((string) ($abbreviation['meaning'] ?? '')) ?></dd>
+                <div class="row row-cols-1 row-cols-lg-2 g-4">
+<?php foreach (array_chunk($abbreviations, (int) ceil(count($abbreviations) / 2)) as $abbreviationColumn): ?>
+                    <div class="col">
+                    <div class="table-responsive">
+                    <table class="table table-sm align-middle mb-0">
+                    <thead>
+                        <tr><th scope="col">Abbreviazione</th><th scope="col">Significato</th></tr>
+                    </thead>
+                    <tbody>
+<?php foreach ($abbreviationColumn as $abbreviation): ?>
+                        <tr>
+                            <th scope="row"><?= e((string) ($abbreviation['abbreviation'] ?? '')) ?></th>
+                            <td><?= e((string) ($abbreviation['meaning'] ?? '')) ?></td>
+                        </tr>
+<?php endforeach; ?>
+                    </tbody>
+                    </table>
+                    </div>
                     </div>
 <?php endforeach; ?>
-                </dl>
+                </div>
                 </div>
             </section>
+                </div>
             </div>
-        </details>
+        </div>
 <?php endforeach; ?>
     </div>
 
@@ -59,12 +78,11 @@ $categoryLabels = [
 <?php foreach ($ruleCategories as $category): ?>
         <a class="taxonomy-filter btn btn-sm btn-outline-secondary <?= $selectedRuleCategory === $category ? 'is-selected' : '' ?>" href="<?= e(appUrl('regole?' . http_build_query(['categoria' => $category]))) ?>"><?= e($categoryLabels[$category] ?? ucfirst($category)) ?></a>
 <?php endforeach; ?>
+        <div class="description-expansion-control form-check form-switch ms-auto align-self-center mb-0">
+            <input class="form-check-input" type="checkbox" role="switch" id="expand-all-descriptions">
+            <label class="form-check-label" for="expand-all-descriptions">Espandi tutte le descrizioni</label>
+        </div>
     </nav>
-
-    <div class="description-expansion-control form-check form-switch mb-3">
-        <input class="form-check-input" type="checkbox" role="switch" id="expand-all-descriptions">
-        <label class="form-check-label" for="expand-all-descriptions">Espandi tutte le descrizioni</label>
-    </div>
 
 <?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
     <?php

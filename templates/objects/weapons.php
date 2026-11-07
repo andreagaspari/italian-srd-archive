@@ -71,7 +71,7 @@
     ];
 ?>
         <div class="col">
-        <article class="result-card card h-100 position-relative" data-favorite-dataset="weapons" data-favorite-id="<?= e($weapon['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($weapon['name']) ?>" data-sort-category="<?= e($weapon['subcategory']) ?>" data-sort-weight="<?= e($weapon['weight']) ?>" data-sort-value="<?= e($weapon['cost']) ?>" data-search="<?= e(implode(' ', [
+        <article class="result-card card position-relative" data-favorite-dataset="weapons" data-favorite-id="<?= e($weapon['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($weapon['name']) ?>" data-sort-category="<?= e($weapon['subcategory']) ?>" data-sort-weight="<?= e($weapon['weight']) ?>" data-sort-value="<?= e($weapon['cost']) ?>" data-search="<?= e(implode(' ', [
             $weapon['name'],
             $weapon['proficiency'],
             $weapon['mode'],
@@ -81,22 +81,34 @@
             $weapon['mastery']
         ])) ?>">
             <div class="card-header d-flex align-items-start justify-content-between gap-3">
+            <div>
+                <div class="weapon-category d-flex align-items-center gap-2 mb-1">
+                    <a class="weapon-category-main" href="<?= e(appUrl('oggetti/armi')) ?>">Armi</a>
+                    <span class="weapon-category-arrow">→</span>
+                    <a class="weapon-category-subcategory" href="<?= e(appUrl('oggetti/armi?categoria=' . $weaponCategory)) ?>"><?= e($weapon['subcategory']) ?></a>
+                </div>
                 <h3><?= e($weapon['name']) ?></h3>
-                <span class="weapon-mode"><?= e($weapon['mode']) ?></span>
             </div>
-            <div class="card-body">
-            <div class="weapon-category">
-                <a class="weapon-category-main" href="<?= e(appUrl('oggetti/armi')) ?>">Armi</a>
-                <span class="weapon-category-arrow">→</span>
-                <a class="weapon-category-subcategory" href="<?= e(appUrl('oggetti/armi?categoria=' . $weaponCategory)) ?>"><?= e($weapon['subcategory']) ?></a>
-            </div>
-            <div class="weapon-damage">
+            <span class="weapon-mode"><?= e($weapon['mode']) ?></span>
+        </div>
+        <div class="card-body">
+        <div class="weapon-summary d-flex align-items-center gap-3 mb-3">
+            <div class="weapon-damage d-flex align-items-center gap-1">
                 <span class="weapon-icon" aria-hidden="true">⚔️</span>
                 <strong><?= e($damageDice) ?></strong>
                 <span><?= e(ucfirst($damageType)) ?></span>
             </div>
-            <div class="row g-2 my-3">
-                <div class="weapon-detail weapon-properties">
+            <div class="weapon-summary-detail d-flex align-items-center gap-1 ms-auto" title="Peso">
+                <span class="weapon-icon" aria-hidden="true">⚖️</span>
+                <span class="weapon-value"><?= e($weapon['weight']) ?></span>
+            </div>
+            <div class="weapon-summary-detail d-flex align-items-center gap-1" title="Valore">
+                <span class="weapon-icon" aria-hidden="true">🪙</span>
+                <span class="weapon-value"><?= e($weapon['cost']) ?></span>
+            </div>
+        </div>
+        <div class="row row-cols-1 g-2">
+            <div class="col weapon-detail weapon-properties">
                     <span class="weapon-icon" aria-hidden="true">🧩</span>
                     <div>
                         <span class="weapon-label">Proprietà</span>
@@ -118,7 +130,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="weapon-detail">
+                <div class="col weapon-detail">
                     <span class="weapon-icon" aria-hidden="true">✨</span>
                     <div>
                         <span class="weapon-label">Padronanza</span>
@@ -128,20 +140,6 @@
                                 <span class="tooltip-box" role="tooltip"><?= e($masteryTooltips[$weapon['mastery']]) ?></span>
                             </button>
                         </span>
-                    </div>
-                </div>
-                <div class="weapon-detail">
-                    <span class="weapon-icon" aria-hidden="true">⚖️</span>
-                    <div>
-                        <span class="weapon-label">Peso</span>
-                        <span class="weapon-value"><?= e($weapon['weight']) ?></span>
-                    </div>
-                </div>
-                <div class="weapon-detail">
-                    <span class="weapon-icon" aria-hidden="true">🪙</span>
-                    <div>
-                        <span class="weapon-label">Valore</span>
-                        <span class="weapon-value"><?= e($weapon['cost']) ?></span>
                     </div>
                 </div>
             </div>

@@ -468,7 +468,8 @@ function prioritizeFocusedResult() {
             columns[index % columns.length]?.append(card);
         });
     } else {
-        focusedCard.parentElement?.prepend(resultGridItem(focusedCard));
+        const gridItem = resultGridItem(focusedCard);
+        gridItem.parentElement?.prepend(gridItem);
     }
     focusedCard.classList.add('is-focused-result');
 }
@@ -989,7 +990,7 @@ function renderGlobalSearch() {
                             <strong>${escapeHtml(item.title)}</strong>
                             <span class="global-search-description">${escapeHtml(item.description)}</span>
                         </span>
-                        <span class="global-search-tags">${(item.tags || []).map((tag, index) => `<span class="global-search-tag" title="${escapeAttribute(item.tagTitles?.[index] || 'Informazione aggiuntiva')}">${escapeHtml(tag)}</span>`).join('')}</span>
+                        <span class="global-search-tags">${(item.tags || []).map((tag, index) => `<span class="global-search-tag" title="${escapeAttribute(item.tagTitles?.[index] || 'Informazione aggiuntiva')}">${escapeHtml(String(tag).charAt(0).toLocaleUpperCase('it') + String(tag).slice(1))}</span>`).join('')}</span>
                     </a>
                 `).join('')}
             </section>

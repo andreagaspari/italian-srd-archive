@@ -30,20 +30,40 @@ $toolTypeLabels = [
     $exportData = buildObjectExportData($tool['name'], $tool['cost'], $tool['weight'], $toolDescription);
 ?>
         <div class="col">
-        <article class="result-card tool-card card h-100 position-relative" data-favorite-dataset="tools" data-favorite-id="<?= e($tool['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($tool['name']) ?>" data-sort-category="<?= e($toolTypeLabels[$tool['tool_type']]) ?>" data-sort-weight="<?= e($tool['weight']) ?>" data-sort-value="<?= e($tool['cost']) ?>" data-search="<?= e(implode(' ', [$tool['name'], $tool['tool_type'], $tool['ability'], $tool['weight'], $tool['cost'], $tool['use'], $tool['creation'] ?? '', $tool['variants'] ?? ''])) ?>">
-            <div class="card-header d-flex align-items-start justify-content-between gap-3"><h3><?= e($tool['name']) ?></h3><span class="weapon-mode">Strumento</span></div>
+        <article class="result-card tool-card card position-relative" data-favorite-dataset="tools" data-favorite-id="<?= e($tool['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($tool['name']) ?>" data-sort-category="<?= e($toolTypeLabels[$tool['tool_type']]) ?>" data-sort-weight="<?= e($tool['weight']) ?>" data-sort-value="<?= e($tool['cost']) ?>" data-search="<?= e(implode(' ', [$tool['name'], $tool['tool_type'], $tool['ability'], $tool['weight'], $tool['cost'], $tool['use'], $tool['creation'] ?? '', $tool['variants'] ?? ''])) ?>">
+            <div class="card-header d-flex align-items-start justify-content-between gap-3">
+                <div>
+                    <div class="weapon-category d-flex align-items-center gap-2 mb-1">
+                        <a class="weapon-category-main" href="<?= e(appUrl('oggetti/strumenti')) ?>">Strumenti</a>
+                        <span class="weapon-category-arrow">→</span>
+                        <a class="weapon-category-subcategory" href="<?= e(appUrl('oggetti/strumenti?categoria=' . urlencode($tool['tool_type']))) ?>"><?= e($toolTypeLabels[$tool['tool_type']]) ?></a>
+                    </div>
+                    <h3><?= e($tool['name']) ?></h3>
+                </div>
+                <span class="weapon-mode">Strumento</span>
+            </div>
             <div class="card-body">
-            <div class="weapon-category"><span class="weapon-category-main">Strumenti</span><span class="weapon-category-arrow">→</span><span><?= e($toolTypeLabels[$tool['tool_type']]) ?></span></div>
-            <div class="tool-use"><span class="armor-icon" aria-hidden="true">🔧</span><div><span class="weapon-label">Utilizzo</span><span><?= e($tool['use']) ?></span></div></div>
-            <div class="row g-2 my-3">
-                <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🧠</span><div><span class="weapon-label">Caratteristica</span><span class="weapon-value"><?= e($tool['ability']) ?></span></div></div>
-                <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">⚖️</span><div><span class="weapon-label">Peso</span><span class="weapon-value"><?= e($tool['weight']) ?></span></div></div>
-                <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🪙</span><div><span class="weapon-label">Valore</span><span class="weapon-value"><?= e($tool['cost']) ?></span></div></div>
+            <div class="weapon-summary d-flex align-items-center gap-3 mb-3">
+                <div class="d-flex align-items-center gap-1" title="Caratteristica">
+                    <span class="weapon-icon" aria-hidden="true">🧠</span>
+                    <strong><?= e($tool['ability']) ?></strong>
+                </div>
+                <div class="weapon-summary-detail d-flex align-items-center gap-1 ms-auto" title="Peso">
+                    <span class="weapon-icon" aria-hidden="true">⚖️</span>
+                    <span class="weapon-value"><?= e($tool['weight']) ?></span>
+                </div>
+                <div class="weapon-summary-detail d-flex align-items-center gap-1" title="Valore">
+                    <span class="weapon-icon" aria-hidden="true">🪙</span>
+                    <span class="weapon-value"><?= e($tool['cost']) ?></span>
+                </div>
+            </div>
+            <div class="row row-cols-1 g-2">
+                <div class="col weapon-detail"><span class="weapon-icon" aria-hidden="true">🔧</span><div><span class="weapon-label">Utilizzo</span><span class="weapon-value"><?= e($tool['use']) ?></span></div></div>
 <?php if (!empty($tool['creation'])): ?>
-                <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🛠️</span><div><span class="weapon-label">Creazione</span><span class="weapon-value"><?= e($tool['creation']) ?></span></div></div>
+                <div class="col weapon-detail"><span class="weapon-icon" aria-hidden="true">🛠️</span><div><span class="weapon-label">Creazione</span><span class="weapon-value"><?= e($tool['creation']) ?></span></div></div>
 <?php endif; ?>
 <?php if (!empty($tool['variants'])): ?>
-                <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🔀</span><div><span class="weapon-label">Varianti</span><span class="weapon-value"><?= e($tool['variants']) ?></span></div></div>
+                <div class="col weapon-detail"><span class="weapon-icon" aria-hidden="true">🔀</span><div><span class="weapon-label">Varianti</span><span class="weapon-value"><?= e($tool['variants']) ?></span></div></div>
 <?php endif; ?>
             </div>
             </div>
