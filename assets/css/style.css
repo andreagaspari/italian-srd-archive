@@ -230,8 +230,7 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .weapon-category { color: var(--subtle); font-size: .875rem; }
 .weapon-category a { text-decoration: none; }
 .weapon-category a:hover { text-decoration: underline; }
-.weapon-category-main { color: var(--accent); }
-.weapon-category-subcategory { color: var(--accent); }
+.weapon-category-main, .weapon-category-subcategory { color: var(--accent); }
 .weapon-category-container { color: var(--subtle); }
 .weapon-category-arrow { color: var(--muted); }
 .spell-level, .feat-category, .weapon-mode, .rule-category {
@@ -245,7 +244,7 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
     font-weight: 600;
     text-decoration: none;
 }
-.spell-classes, .feat-prerequisite, .spell-description, .feat-description, .rule-content { font-size: .9375rem; }
+.spell-description, .feat-description, .rule-content { color: var(--ink); font-size: .9375rem; }
 .spell-classes, .feat-prerequisite { color: var(--muted); }
 .spell-concentration { position: absolute; top: 0; right: 0; left: auto; width: max-content; }
 .weapon-detail { display: flex; gap: .4rem; align-items: flex-start; font-size: .875rem; }
@@ -303,7 +302,6 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .gear-use-label { margin-bottom: .4rem; }
 .pagination-page-size { position: relative; z-index: 2; }
 .pagination-row > nav { z-index: 1; }
-.spell-description, .feat-description, .rule-content { color: var(--ink); }
 .expandable-description.is-collapsed { max-height: 8rem; overflow: hidden; }
 .description-toggle-control { display: flex; align-items: center; gap: .75rem; margin: 1rem 0; }
 .description-toggle-control::before, .description-toggle-control::after { flex: 1 1 auto; height: 1px; content: ""; background: var(--line); }
