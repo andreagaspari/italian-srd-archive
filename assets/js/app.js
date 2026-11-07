@@ -149,7 +149,7 @@ function enhanceFavoriteCard(card) {
     if (!dataset || !id || card.querySelector('.favorite-button')) return;
 
     const button = document.createElement('button');
-    button.className = 'favorite-button';
+    button.className = 'favorite-button btn btn-sm btn-outline-primary rounded-circle p-0';
     button.type = 'button';
     button.addEventListener('click', () => {
         if (favoriteStore.has(dataset, id)) {
@@ -159,7 +159,12 @@ function enhanceFavoriteCard(card) {
         }
         updateFavoriteButton(button, dataset, id);
     });
-    card.insertBefore(button, card.firstChild);
+    const footer = card.querySelector('.card-footer');
+    if (footer) {
+        footer.prepend(button);
+    } else {
+        card.insertBefore(button, card.firstChild);
+    }
     updateFavoriteButton(button, dataset, id);
 }
 
@@ -707,8 +712,8 @@ function openExportDialog(items) {
                 <span class="export-checkbox-label"><input name="separateZips" type="checkbox" ${itemCount > 1 ? '' : 'disabled'}> Crea uno ZIP separato per ogni elemento</span>
             </label>
             <div class="export-dialog-actions">
-                <button class="button-secondary" type="button" data-export-cancel>Annulla</button>
-                <button class="button-primary" type="submit">Scarica ZIP</button>
+                <button class="btn btn-outline-secondary" type="button" data-export-cancel>Annulla</button>
+                <button class="btn btn-primary" type="submit">Scarica ZIP</button>
             </div>
             <p class="export-error" role="alert" hidden></p>
         </form>
@@ -889,12 +894,12 @@ function renderGlobalSearch() {
         ;
 
     if (!results.length) {
-        globalSearchPreview.innerHTML = '<div class="global-search-empty">Nessun risultato trovato</div>';
+        globalSearchPreview.innerHTML = '<div class="global-search-empty list-group-item text-body-secondary">Nessun risultato trovato</div>';
     } else {
         globalSearchPreview.innerHTML = `
             <section class="global-search-group global-search-mixed-results">
                 ${results.map((item) => `
-                    <a class="global-search-result" href="${escapeAttribute(item.url)}">
+                    <a class="global-search-result list-group-item list-group-item-action" href="${escapeAttribute(item.url)}">
                         ${globalSearchTypeIcon(item.type)}
                         <span class="global-search-result-main">
                             <strong>${escapeHtml(item.title)}</strong>
@@ -1051,15 +1056,5 @@ if (menuButton && sidebar) {
     menuButton.addEventListener('click', () => {
         const isOpen = sidebar.classList.toggle('is-open');
         menuButton.setAttribute('aria-expanded', String(isOpen));
-    });
-}
-
-const sourceDialog = document.querySelector('#source-dialog');
-const sourceDialogButton = document.querySelector('[data-source-dialog]');
-
-if (sourceDialog && sourceDialogButton) {
-    sourceDialogButton.addEventListener('click', () => sourceDialog.showModal());
-    sourceDialog.addEventListener('click', (event) => {
-        if (event.target === sourceDialog) sourceDialog.close();
     });
 }

@@ -1,5 +1,5 @@
-<section class="results-view weapon-list-view">
-    <div class="breadcrumb">
+<section class="results-view weapon-list-view container-fluid px-0">
+    <div class="breadcrumb d-flex flex-wrap gap-2 mb-4 text-body-secondary small">
         <a class="breadcrumb-home" href="<?= e(appUrl('oggetti')) ?>">Oggetti</a>
         <span>/</span>
         <a href="<?= e(appUrl('oggetti/armi')) ?>">Armi</a>
@@ -7,21 +7,21 @@
         <strong><?= e($pageTitle) ?></strong>
     </div>
 
-    <div class="section-heading">
+    <div class="section-heading d-flex justify-content-between align-items-end mb-3">
         <div>
             <h1><?= e($pageTitle) ?></h1>
         </div>
     </div>
     <?php require __DIR__ . '/search.php'; ?>
-    <nav class="taxonomy-filters" aria-label="Categorie armi">
+    <nav class="taxonomy-filters d-flex flex-wrap gap-2 mb-3" aria-label="Categorie armi">
 <?php foreach ($categoryLabels as $category => $label): ?>
-        <a class="taxonomy-filter <?= $category === $selectedCategory ? 'is-selected' : '' ?>" href="<?= e(appUrl('oggetti/armi?categoria=' . urlencode($category))) ?>"><?= e($label) ?></a>
+        <a class="taxonomy-filter btn btn-sm btn-outline-secondary <?= $category === $selectedCategory ? 'is-selected' : '' ?>" href="<?= e(appUrl('oggetti/armi?categoria=' . urlencode($category))) ?>"><?= e($label) ?></a>
 <?php endforeach; ?>
     </nav>
 
 <?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
 
-    <div id="results-grid" class="results-grid">
+    <div id="results-grid" class="results-grid row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
 <?php foreach ($filteredWeapons as $weapon): ?>
 <?php
     [$damageDice, $damageType] = array_pad(explode(' ', $weapon['damage'], 2), 2, '');
@@ -70,7 +70,7 @@
         'Vessazione' => 'Se colpisci una creatura, hai vantaggio sul prossimo tiro per colpire che effettui contro di essa prima della fine del tuo turno successivo.'
     ];
 ?>
-        <article class="result-card" data-favorite-dataset="weapons" data-favorite-id="<?= e($weapon['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($weapon['name']) ?>" data-sort-category="<?= e($weapon['subcategory']) ?>" data-sort-weight="<?= e($weapon['weight']) ?>" data-sort-value="<?= e($weapon['cost']) ?>" data-search="<?= e(implode(' ', [
+        <article class="result-card card col h-100 position-relative" data-favorite-dataset="weapons" data-favorite-id="<?= e($weapon['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($weapon['name']) ?>" data-sort-category="<?= e($weapon['subcategory']) ?>" data-sort-weight="<?= e($weapon['weight']) ?>" data-sort-value="<?= e($weapon['cost']) ?>" data-search="<?= e(implode(' ', [
             $weapon['name'],
             $weapon['proficiency'],
             $weapon['mode'],
@@ -79,12 +79,13 @@
             implode(' ', $weapon['properties']),
             $weapon['mastery']
         ])) ?>">
+            <div class="card-body">
             <div class="weapon-category">
                 <a class="weapon-category-main" href="<?= e(appUrl('oggetti/armi')) ?>">Armi</a>
                 <span class="weapon-category-arrow">→</span>
                 <a class="weapon-category-subcategory" href="<?= e(appUrl('oggetti/armi?categoria=' . $weaponCategory)) ?>"><?= e($weapon['subcategory']) ?></a>
             </div>
-            <div class="weapon-heading">
+            <div class="weapon-heading d-flex align-items-start justify-content-between gap-3 bg-body-tertiary border-bottom px-3 py-2 mx-n3 mt-n3 mb-3">
                 <h3><?= e($weapon['name']) ?></h3>
                 <span class="weapon-mode"><?= e($weapon['mode']) ?></span>
             </div>
@@ -143,12 +144,15 @@
                     </div>
                 </div>
             </div>
-            <button class="export-button" type="button">⇩ Esporta</button>
+            </div>
+            <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center px-3 pb-3">
+                <button class="export-button btn btn-sm btn-outline-primary position-static" type="button">⇩ Esporta</button>
+            </div>
         </article>
 <?php endforeach; ?>
     </div>
 
-    <div id="empty-state" class="empty-state" hidden>
+    <div id="empty-state" class="empty-state text-center p-5" hidden>
         <span class="empty-icon">⌕</span>
         <h3>Nessun risultato</h3>
         <p>Prova a modificare la ricerca o a scegliere un’altra categoria.</p>

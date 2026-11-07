@@ -1,10 +1,10 @@
-<section class="results-view monster-list-view">
-    <div class="breadcrumb">
+<section class="results-view monster-list-view container-fluid px-0">
+    <div class="breadcrumb d-flex flex-wrap gap-2 mb-4 text-body-secondary small">
         <a href="<?= e(appUrl('mostri')) ?>">Mostri</a>
         <span>/</span>
         <strong><?= e($selectedMonsterType !== '' ? $monsterTypes[$selectedMonsterType] : 'Tutte le specie') ?></strong>
     </div>
-    <div class="section-heading"><div><h1><?= e($pageTitle) ?></h1></div></div>
+    <div class="section-heading d-flex justify-content-between align-items-end mb-3"><div><h1><?= e($pageTitle) ?></h1></div></div>
     <?php require __DIR__ . '/../objects/search.php'; ?>
 
 <?php
@@ -20,41 +20,41 @@ if ($selectedMonsterAlignment !== '') {
 }
 $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_query($monsterFilterQuery) : ''));
 ?>
-    <nav class="taxonomy-filters monster-type-filters" aria-label="Specie dei mostri">
-        <a class="taxonomy-filter <?= $selectedMonsterType === '' ? 'is-selected' : '' ?>" href="<?= e($allMonsterTypesUrl) ?>">Tutte le specie</a>
+    <nav class="taxonomy-filters monster-type-filters d-flex flex-wrap gap-2 mb-3" aria-label="Specie dei mostri">
+        <a class="taxonomy-filter btn btn-sm btn-outline-secondary <?= $selectedMonsterType === '' ? 'is-selected' : '' ?>" href="<?= e($allMonsterTypesUrl) ?>">Tutte le specie</a>
 <?php foreach ($monsterTypes as $type => $label): ?>
 <?php
     $typeFilterQuery = ['tipo' => $type] + $monsterFilterQuery;
 ?>
-        <a class="taxonomy-filter <?= $type === $selectedMonsterType ? 'is-selected' : '' ?>" href="<?= e(appUrl('mostri?' . http_build_query($typeFilterQuery))) ?>"><?= e($label) ?></a>
+        <a class="taxonomy-filter btn btn-sm btn-outline-secondary <?= $type === $selectedMonsterType ? 'is-selected' : '' ?>" href="<?= e(appUrl('mostri?' . http_build_query($typeFilterQuery))) ?>"><?= e($label) ?></a>
 <?php endforeach; ?>
     </nav>
 
-    <form class="monster-filters" method="get" action="<?= e(appUrl('mostri')) ?>">
+    <form class="monster-filters row g-2 align-items-end" method="get" action="<?= e(appUrl('mostri')) ?>">
 <?php if ($selectedMonsterType !== ''): ?>
         <input type="hidden" name="tipo" value="<?= e($selectedMonsterType) ?>">
 <?php endif; ?>
-        <label>
+        <label class="col-12 col-sm-auto">
             <span>Taglia</span>
-            <select class="monster-filter-select" name="taglia">
+            <select class="monster-filter-select form-select" name="taglia">
                 <option value="">Tutte le taglie</option>
 <?php foreach ($monsterSizes as $size => $label): ?>
                 <option value="<?= e($size) ?>" <?= $size === $selectedMonsterSize ? 'selected' : '' ?>><?= e($label) ?></option>
 <?php endforeach; ?>
             </select>
         </label>
-        <label>
+        <label class="col-12 col-sm-auto">
             <span>GS</span>
-            <select class="monster-filter-select" name="gs">
+            <select class="monster-filter-select form-select" name="gs">
                 <option value="">Tutti i GS</option>
 <?php foreach ($monsterChallenges as $challenge => $label): ?>
                 <option value="<?= e((string) $challenge) ?>" <?= (string) $challenge === $selectedMonsterChallenge ? 'selected' : '' ?>><?= e($label) ?></option>
 <?php endforeach; ?>
             </select>
         </label>
-        <label>
+        <label class="col-12 col-sm-auto">
             <span>Allineamento</span>
-            <select class="monster-filter-select" name="allineamento">
+            <select class="monster-filter-select form-select" name="allineamento">
                 <option value="">Tutti gli allineamenti</option>
 <?php foreach ($monsterAlignments as $alignment => $label): ?>
                 <option value="<?= e($alignment) ?>" <?= $alignment === $selectedMonsterAlignment ? 'selected' : '' ?>><?= e($label) ?></option>
@@ -62,12 +62,12 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
             </select>
         </label>
         <?php if ($selectedMonsterType !== '' || $selectedMonsterSize !== '' || $selectedMonsterChallenge !== '' || $selectedMonsterAlignment !== ''): ?>
-            <a class="button-secondary monster-reset-filters" href="<?= e(appUrl('mostri')) ?>">× Resetta filtri</a>
+            <a class="btn btn-outline-secondary monster-reset-filters" href="<?= e(appUrl('mostri')) ?>">× Resetta filtri</a>
         <?php endif; ?>
     </form>
 
 <?php $paginationPosition = 'top'; require __DIR__ . '/../partials/pagination.php'; ?>
-    <div id="results-grid" class="results-grid monster-results-grid">
+    <div id="results-grid" class="results-grid monster-results-grid row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
 <?php foreach ($monsters as $monster): ?>
 <?php
     $monster['description_blocks'] = normalizeMonsterDescriptionBlocks($monster);
@@ -121,9 +121,10 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
         $description
     ]);
 ?>
-        <article class="result-card monster-card" data-favorite-dataset="monsters" data-favorite-id="<?= e($monster['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($monster['name']) ?>" data-sort-category="<?= e($monster['type']) ?>" data-sort-weight="0" data-sort-value="<?= e($monster['challenge_rating']) ?>" data-search="<?= e($searchText) ?>">
+        <article class="result-card monster-card card col h-100 position-relative" data-favorite-dataset="monsters" data-favorite-id="<?= e($monster['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e($monster['name']) ?>" data-sort-category="<?= e($monster['type']) ?>" data-sort-weight="0" data-sort-value="<?= e($monster['challenge_rating']) ?>" data-search="<?= e($searchText) ?>">
+        <div class="card-body">
         <div class="weapon-category"><a class="weapon-category-main monster-filter-link" href="<?= e($monsterTypeUrl) ?>"><?= e($monster['type']) ?></a></div>
-        <div class="weapon-heading"><h3><?= e($monster['name']) ?></h3><a class="weapon-mode monster-filter-link" href="<?= e($monsterChallengeUrl) ?>">GS <?= e($monster['challenge_rating']) ?></a></div>
+        <div class="weapon-heading d-flex align-items-start justify-content-between gap-3 bg-body-tertiary border-bottom px-3 py-2 mx-n3 mt-n3 mb-3"><h3><?= e($monster['name']) ?></h3><a class="weapon-mode monster-filter-link" href="<?= e($monsterChallengeUrl) ?>">GS <?= e($monster['challenge_rating']) ?></a></div>
         <div class="weapon-details monster-details">
             <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">❤️</span><div><span class="weapon-label">Punti Ferita</span><span class="weapon-value"><?= e($hitPointsTotal) ?></span></div></div>
             <div class="weapon-detail"><span class="weapon-icon" aria-hidden="true">🛡️</span><div><span class="weapon-label">Classe Armatura</span><span class="weapon-value"><?= e($monster['armor_class']) ?></span></div></div>
@@ -190,10 +191,13 @@ $allMonsterTypesUrl = appUrl('mostri' . ($monsterFilterQuery ? '?' . http_build_
             </section>
 
 <?php endforeach; ?>
-            <button class="export-button" type="button">⇩ Esporta</button>
+            </div>
+            <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center px-3 pb-3">
+                <button class="export-button btn btn-sm btn-outline-primary position-static" type="button">⇩ Esporta</button>
+            </div>
         </article>
 <?php endforeach; ?>
     </div>
-    <div id="empty-state" class="empty-state" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca o i filtri.</p></div>
+    <div id="empty-state" class="empty-state text-center p-5" hidden><span class="empty-icon">⌕</span><h3>Nessun risultato</h3><p>Prova a modificare la ricerca o i filtri.</p></div>
 </section>
 <?php $paginationPosition = 'bottom'; require __DIR__ . '/../partials/pagination.php'; ?>

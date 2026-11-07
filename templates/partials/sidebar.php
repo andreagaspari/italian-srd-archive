@@ -1,6 +1,6 @@
-<aside class="sidebar" aria-label="Navigazione principale">
+<aside class="sidebar d-flex flex-column" aria-label="Navigazione principale">
     <div class="sidebar-section">
-        <nav class="main-nav">
+        <nav class="main-nav nav flex-column gap-1">
             <div class="nav-group <?= $route === 'incantesimi' ? 'is-active' : '' ?>">
                 <a class="nav-item <?= $route === 'incantesimi' ? 'is-active' : '' ?>" href="<?= e(appUrl('incantesimi')) ?>">
                     <span class="nav-icon" aria-hidden="true">✨</span>
@@ -79,6 +79,6 @@
     </div>
 
     <div class="sidebar-section sidebar-bottom">
-        <button class="sidebar-link sidebar-link-button" type="button" data-source-dialog>Fonti e Licenza</button>
+        <button class="sidebar-link sidebar-link-button" type="button" data-source-dialog data-bs-toggle="modal" data-bs-target="#source-dialog">Fonti e Licenza</button>
     </div>
 </aside>

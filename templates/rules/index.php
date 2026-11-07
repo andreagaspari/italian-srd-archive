@@ -11,8 +11,8 @@ $categoryLabels = [
     'pericolo' => 'Pericoli'
 ];
 ?>
-<section class="results-view rules-view">
-    <div class="breadcrumb">
+<section class="results-view rules-view container-fluid px-0">
+    <div class="breadcrumb d-flex flex-wrap gap-2 mb-4 text-body-secondary small">
         <a href="<?= e(appUrl('regole')) ?>">Regole</a>
         <span>/</span>
         <strong><?= e($selectedRuleCategory !== ''
@@ -20,7 +20,7 @@ $categoryLabels = [
             : 'Tutte le regole') ?></strong>
     </div>
 
-    <div class="section-heading">
+    <div class="section-heading d-flex justify-content-between align-items-end mb-3">
         <div>
             <h1>Glossario delle regole</h1>
         </div>
@@ -54,10 +54,10 @@ $categoryLabels = [
 
     <?php require __DIR__ . '/../objects/search.php'; ?>
 
-    <nav class="taxonomy-filters" aria-label="Categorie delle regole">
-        <a class="taxonomy-filter <?= $selectedRuleCategory === '' ? 'is-selected' : '' ?>" href="<?= e(appUrl('regole')) ?>">Tutte</a>
+    <nav class="taxonomy-filters d-flex flex-wrap gap-2 mb-3" aria-label="Categorie delle regole">
+        <a class="taxonomy-filter btn btn-sm btn-outline-secondary <?= $selectedRuleCategory === '' ? 'is-selected' : '' ?>" href="<?= e(appUrl('regole')) ?>">Tutte</a>
 <?php foreach ($ruleCategories as $category): ?>
-        <a class="taxonomy-filter <?= $selectedRuleCategory === $category ? 'is-selected' : '' ?>" href="<?= e(appUrl('regole?' . http_build_query(['categoria' => $category]))) ?>"><?= e($categoryLabels[$category] ?? ucfirst($category)) ?></a>
+        <a class="taxonomy-filter btn btn-sm btn-outline-secondary <?= $selectedRuleCategory === $category ? 'is-selected' : '' ?>" href="<?= e(appUrl('regole?' . http_build_query(['categoria' => $category]))) ?>"><?= e($categoryLabels[$category] ?? ucfirst($category)) ?></a>
 <?php endforeach; ?>
     </nav>
 
@@ -69,13 +69,14 @@ $categoryLabels = [
         $ruleColumns[$ruleIndex % 2][] = $rule;
     }
     ?>
-    <div class="rules-list">
+    <div class="rules-list row row-cols-1 row-cols-md-2 g-3">
 <?php foreach ($ruleColumns as $ruleColumn): ?>
-        <div class="rules-column">
+        <div class="rules-column col d-flex flex-column gap-3">
 <?php foreach ($ruleColumn as $rule): ?>
 <?php $exportData = buildRuleExportData($rule, $abbreviations); ?>
-        <article class="result-card rule-card" style="--rule-order: <?= (int) $rule['display_order'] ?>" data-rule-order="<?= (int) $rule['display_order'] ?>" data-favorite-dataset="rules" data-favorite-id="<?= e((string) $rule['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e((string) $rule['name']) ?>" data-sort-category="<?= e((string) ($rule['category'] ?? '')) ?>" data-search="<?= e(implode(' ', [(string) $rule['name'], (string) ($rule['category'] ?? ''), (string) $rule['content']])) ?>">
-            <div class="rule-card-heading">
+        <article class="result-card rule-card card h-100 position-relative" style="--rule-order: <?= (int) $rule['display_order'] ?>" data-rule-order="<?= (int) $rule['display_order'] ?>" data-favorite-dataset="rules" data-favorite-id="<?= e((string) $rule['id']) ?>" data-export="<?= e(json_encode($exportData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR)) ?>" data-sort-name="<?= e((string) $rule['name']) ?>" data-sort-category="<?= e((string) ($rule['category'] ?? '')) ?>" data-search="<?= e(implode(' ', [(string) $rule['name'], (string) ($rule['category'] ?? ''), (string) $rule['content']])) ?>">
+            <div class="card-body">
+            <div class="rule-card-heading d-flex align-items-start justify-content-between gap-3 bg-body-tertiary border-bottom px-3 py-2 mx-n3 mt-n3 mb-3">
                 <h3><?= e((string) $rule['name']) ?></h3>
                 <?php if (($rule['category'] ?? '') !== ''): ?>
                     <a class="rule-category" href="<?= e(appUrl('regole?' . http_build_query(['categoria' => $rule['category']]))) ?>"><?= e($categoryLabels[$rule['category']] ?? ucfirst((string) $rule['category'])) ?></a>
@@ -83,7 +84,10 @@ $categoryLabels = [
             </div>
             <div class="rule-content"><?= renderRuleContent($rule, $abbreviations) ?></div>
             <span class="rule-source">pag. <?= e((string) ($rule['source_page'] ?? '')) ?></span>
-            <button class="export-button" type="button">⇩ Esporta</button>
+            </div>
+            <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center px-3 pb-3">
+                <button class="export-button btn btn-sm btn-outline-primary position-static" type="button">⇩ Esporta</button>
+            </div>
         </article>
 <?php endforeach; ?>
         </div>
