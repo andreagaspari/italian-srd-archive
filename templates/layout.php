@@ -17,6 +17,10 @@
         })();
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .btn-outline-primary, .export-visible-button { --bs-btn-color: #a54b37; --bs-btn-border-color: #d7b5ab; --bs-btn-disabled-color: #a54b37; --bs-btn-disabled-border-color: #d7b5ab; }
+        [data-theme="dark"] .btn-outline-primary, [data-theme="dark"] .export-visible-button { --bs-btn-color: #e08a70; --bs-btn-border-color: #875244; --bs-btn-disabled-color: #e08a70; --bs-btn-disabled-border-color: #875244; }
+    </style>
     <link rel="stylesheet" href="assets/css/style.css?v=<?= e((string) filemtime(__DIR__ . '/../assets/css/style.css')) ?>">
     <link rel="icon" href="assets/images/italian_srd_archive.png" type="image/png">
 </head>
