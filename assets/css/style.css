@@ -326,7 +326,7 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
 .gear-use-description { color: var(--ink); font-size: .875rem; line-height: 1.5; }
 .gear-use-label { margin-bottom: .4rem; }
 .pagination-page-size { position: relative; z-index: 2; }
-.pagination-row > nav { z-index: 1; }
+.pagination-row > nav { z-index: 3; }
 .expandable-description.is-collapsed { max-height: 8rem; overflow: hidden; }
 .description-toggle-control { display: flex; align-items: center; gap: .75rem; margin: 1rem 0; }
 .description-toggle-control::before, .description-toggle-control::after { flex: 1 1 auto; height: 1px; content: ""; background: var(--line); }
