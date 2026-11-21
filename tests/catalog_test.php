@@ -49,6 +49,9 @@ expectTrue($weaponPage->totalPages() === 4, 'Le armi devono occupare 4 pagine da
 $spellSearch = $spells->getSpells(new SpellQuery(search: 'palla di fuoco', pageSize: 24));
 expectTrue($spellSearch->totalItems === 2, 'La ricerca degli incantesimi deve trovare 2 risultati.');
 expectTrue($spellSearch->items[0]['name'] === 'Palla di fuoco', 'La ricerca deve restituire Palla di fuoco.');
+$spellExport = buildSpellExportData($spellSearch->items[0]);
+expectTrue($spellExport['title'] === 'Palla di fuoco', 'Il livello non deve essere incluso nel nome esportato.');
+expectTrue($spellExport['level'] === '3', 'Il livello dell’incantesimo deve essere esportato nel campo dedicato.');
 
 $featSearch = $feats->getFeats(new FeatQuery(subcategory: 'Origini', search: 'abile', pageSize: 24));
 expectTrue($featSearch->totalItems === 1, 'La ricerca dei talenti deve filtrare per categoria e testo.');

@@ -471,6 +471,13 @@ function buildObjectExportData(
     ];
 }
 
+/**
+ * Builds the Make a Master export payload for a spell.
+ *
+ * @param array<string, mixed> $spell Spell data from the catalog.
+ *
+ * @return array<string, mixed> Export payload with the spell level in Make a Master's dedicated field.
+ */
 function buildSpellExportData(array $spell): array
 {
     $duration = $spell['duration'];
@@ -490,7 +497,7 @@ function buildSpellExportData(array $spell): array
 
     return [
         'type' => 'armi',
-        'title' => $spell['name'] . ' (' . $spell['level'] . ')',
+        'title' => $spell['name'],
         'range' => $range,
         'rangeNumber' => $spell['area_diameter'],
         'duration' => $duration,
@@ -498,6 +505,7 @@ function buildSpellExportData(array $spell): array
         'concentration' => $spell['concentration'] ? 'true' : 'false',
         'image' => '',
         'desc' => $description,
+        'level' => (string) $spell['level'],
         'folderId' => null,
         'tab' => 'armi',
         'id' => '',
