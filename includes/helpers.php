@@ -283,7 +283,7 @@ function monsterDescriptionFeatures(string $content): array
 {
     preg_match_all('/<b>(.*?)<\/b>(.*?)(?=<b>|$)/su', $content, $matches, PREG_SET_ORDER);
 
-    return array_values(array_filter(array_map(
+    $features = array_values(array_filter(array_map(
         static function (array $match): array {
             $label = trim(strip_tags($match[1]));
             $description = preg_replace('/\s+/u', ' ', trim(strip_tags($match[2]))) ?? '';
@@ -295,6 +295,8 @@ function monsterDescriptionFeatures(string $content): array
         },
         $matches
     ), static fn (array $feature): bool => $feature['title'] !== ''));
+
+    return $features;
 }
 
 /**
@@ -319,10 +321,32 @@ function monsterDescriptionHtml(array $block): string
         ) {
             continue;
         }
-        $html .= '<div><b>' . e($feature['title']) . '.</b> ' . e($feature['text']) . '</div>';
+        $html .= '<div><b>' . e($feature['title']) . '.</b> '
+            . e(normalizeMonsterAttackText($feature['text']))
+            . '</div>';
     }
 
     return $html !== '' ? $html : (string) ($block['content'] ?? '');
+}
+
+/**
+ * Normalizes monster attack labels for Make a Master's automatic interactions.
+ *
+ * Make a Master recognizes the canonical "Tiro per colpire: +N" label inside
+ * description blocks. The source dataset includes melee and ranged qualifiers
+ * in that label, so they are removed only from the export representation.
+ *
+ * @param string $text Monster feature text.
+ *
+ * @return string Text with recognized attack labels in the export format.
+ */
+function normalizeMonsterAttackText(string $text): string
+{
+    return preg_replace(
+        '/\bTiro per colpire(?: in mischia o a distanza| in mischia| a distanza):/u',
+        'Tiro per colpire:',
+        $text
+    ) ?? $text;
 }
 
 function monsterAbilityStats(array $abilities): array
@@ -515,6 +539,7 @@ function buildSpellExportData(array $spell): array
 
 function buildMonsterExportData(array $monster): array
 {
+    $descriptionBlocks = normalizeMonsterDescriptionBlocks($monster);
     $initiativeText = str_replace('−', '-', (string) $monster['initiative']);
     $initiative = preg_match('/[+-]?\d+/', $initiativeText, $initiativeMatch)
         ? $initiativeMatch[0]
@@ -552,7 +577,7 @@ function buildMonsterExportData(array $monster): array
                 'color' => monsterDescriptionColor($block['title']),
                 'content' => monsterDescriptionHtml($block)
             ],
-            $monster['description_blocks']
+            $descriptionBlocks
         ),
         'extraStats' => array_map(
             static fn (array $stat): array => [

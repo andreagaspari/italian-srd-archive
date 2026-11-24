@@ -705,11 +705,15 @@
         {
           "title": "Azioni",
           "color": "hsl(350, 68%, 52%)",
-          "content": "<div><b>Artigli.</b> Tiro per colpire in mischia: +6, portata 1,5 m. Colpito: 8 (1d8 + 4) danni taglienti. Se il bersaglio è una creatura di taglia Grande o inferiore e l'allosauro si è mosso di 9 metri o più in linea retta verso di esso subito prima del colpo, il bersaglio cade a terra prono e l'allosauro può effettuare un attacco Morso contro di esso. Morso. Tiro per colpire in mischia: +6, portata 1,5 m. Colpito: 15 (2d10 + 4) danni perforanti.</div>",
+          "content": "<div><b>Artigli.</b> Tiro per colpire in mischia: +6, portata 1,5 m. Colpito: 8 (1d8 + 4) danni taglienti. Se il bersaglio è una creatura di taglia Grande o inferiore e l'allosauro si è mosso di 9 metri o più in linea retta verso di esso subito prima del colpo, il bersaglio cade a terra prono e l'allosauro può effettuare un attacco Morso contro di esso.</div><div><b>Morso.</b> Tiro per colpire in mischia: +6, portata 1,5 m. Colpito: 15 (2d10 + 4) danni perforanti.</div>",
           "features": [
             {
               "title": "Artigli",
               "text": "Tiro per colpire in mischia: +6, portata 1,5 m. Colpito: 8 (1d8 + 4) danni taglienti. Se il bersaglio è una creatura di taglia Grande o inferiore e l'allosauro si è mosso di 9 metri o più in linea retta verso di esso subito prima del colpo, il bersaglio cade a terra prono e l'allosauro può effettuare un attacco Morso contro di esso. Morso. Tiro per colpire in mischia: +6, portata 1,5 m. Colpito: 15 (2d10 + 4) danni perforanti."
+            },
+            {
+              "title": "Morso",
+              "text": "Tiro per colpire in mischia: +6, portata 1,5 m. Colpito: 15 (2d10 + 4) danni perforanti."
             }
           ]
         }

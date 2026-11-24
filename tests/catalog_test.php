@@ -64,6 +64,29 @@ expectTrue(is_array($featSearchResult) && $featSearchResult['section'] === 'Tale
 $monsterSearch = $monsters->getMonsters(new MonsterQuery(search: 'drago', pageSize: 24));
 expectTrue($monsterSearch->totalItems > 0, 'La ricerca dei mostri deve trovare almeno un risultato.');
 expectTrue(count($monsterSearch->items) <= 24, 'La ricerca dei mostri deve rispettare la paginazione.');
+$monsterAttackExport = monsterDescriptionHtml([
+    'features' => [[
+        'title' => 'Artiglio',
+        'text' => 'Tiro per colpire in mischia: +4, portata 1,5 m.'
+    ]]
+]);
+expectTrue(
+    str_contains($monsterAttackExport, 'Tiro per colpire: +4'),
+    'L’export dei mostri deve usare il formato di attacco riconosciuto da Make a Master.'
+);
+expectTrue(
+    !str_contains($monsterAttackExport, 'Tiro per colpire in mischia:'),
+    'L’export dei mostri non deve mantenere il qualificatore nel titolo dell’attacco.'
+);
+$allosaurus = array_values(array_filter(
+    $store->get('monsters')['items'],
+    static fn (array $monster): bool => $monster['name'] === 'Allosauro'
+))[0];
+$allosaurusFeatures = normalizeMonsterDescriptionBlocks($allosaurus)[0]['features'];
+expectTrue(
+    array_column($allosaurusFeatures, 'title') === ['Artigli', 'Morso'],
+    'Il parser dei mostri deve separare Artigli e Morso nell’Allosauro.'
+);
 
 $conditionRules = $rules->getRules('condizione', 'accecato', 1, 24);
 expectTrue($conditionRules->totalItems > 0, 'Il glossario deve trovare la regola Accecato.');
